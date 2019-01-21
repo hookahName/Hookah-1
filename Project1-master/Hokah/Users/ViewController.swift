@@ -35,6 +35,7 @@ class ViewController: UITableViewController {
         super.viewDidLoad()
         
         title = "Choose table"
+        tableView.tableFooterView = UIView()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -61,17 +62,29 @@ class ViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Admin" {
+            
             guard let admin = segue.destination as? AdminViewController else {return}
-            admin.tobaccos = tobaccos
+            admin.tobaccos = self.tobaccos
         } else if segue.identifier == "ToTabaco" {
             guard let tobaco = segue.destination as? SeconViewController else {return}
             tobaco.tobaccos = tobaccos
             if let indexPath = tableView.indexPathForSelectedRow {
                 tobaco.selectedTable = indexPath.row
             }
-
-            
         }
+    }
+    
+    @IBAction func EditButtonPressed(_ sender: UIBarButtonItem) {
+        ref = Database.database().reference()
+        let alertController = UIAlertController(title: "Password", message: "Enter password", preferredStyle: .alert)
+        alertController.addTextField()
+        let ok = UIAlertAction(title: "Ok", style: .default) {
+            action in self.performSegue(withIdentifier: "Admin", sender: self)
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .default)
+        alertController.addAction(ok)
+        alertController.addAction(cancel)
+        present(alertController, animated: true)
     }
 }
 

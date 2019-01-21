@@ -39,11 +39,14 @@
                     <navigationItem key="navigationItem" id="FbX-LR-Nx0">
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="wEF-z2-XGz">
                             <connections>
-                                <segue destination="tMF-Ig-Ibo" kind="show" identifier="Admin" id="feP-Fn-DXZ"/>
+                                <action selector="EditButtonPressed:" destination="cDQ-3p-U6r" id="7cV-wE-CAV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="tMF-Ig-Ibo" kind="show" identifier="Admin" id="EvP-ae-eCQ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6NX-bZ-Rxt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
