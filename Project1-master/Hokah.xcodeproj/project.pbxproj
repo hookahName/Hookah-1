@@ -1,0 +1,486 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		222B8DB721E9F8A300CF4431 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 222B8DB621E9F8A300CF4431 /* GoogleService-Info.plist */; };
+		22404B3021EA4D6B00DF041C /* TobaccoClassForDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22404B2F21EA4D6B00DF041C /* TobaccoClassForDB.swift */; };
+		22404B3421F4CAED00DF041C /* AddTastesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22404B3321F4CAED00DF041C /* AddTastesTableViewController.swift */; };
+		22404B3621F4DDB600DF041C /* TasteClassForDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22404B3521F4DDB600DF041C /* TasteClassForDB.swift */; };
+		22404B3821F60D6B00DF041C /* ChooseTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22404B3721F60D6B00DF041C /* ChooseTimeViewController.swift */; };
+		2265D20121EA07740093ABD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2265D20021EA07740093ABD3 /* Main.storyboard */; };
+		2265D20321EA08C00093ABD3 /* AddTobaccoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2265D20221EA08C00093ABD3 /* AddTobaccoViewController.swift */; };
+		7157316790B458B34EA9F430 /* Pods_Hokah.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6278C823D3E93911490742 /* Pods_Hokah.framework */; };
+		ED18062921E23AB1006148BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED18062821E23AB1006148BE /* AppDelegate.swift */; };
+		ED18062B21E23AB1006148BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED18062A21E23AB1006148BE /* ViewController.swift */; };
+		ED18063021E23AB3006148BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED18062F21E23AB3006148BE /* Assets.xcassets */; };
+		ED18063321E23AB3006148BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED18063121E23AB3006148BE /* LaunchScreen.storyboard */; };
+		ED18063D21E23E7A006148BE /* SeconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED18063C21E23E7A006148BE /* SeconViewController.swift */; };
+		ED18063F21E24772006148BE /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED18063E21E24772006148BE /* ThirdViewController.swift */; };
+		ED18064121E24EAB006148BE /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED18064021E24EAB006148BE /* Result.swift */; };
+		ED18064321E267BC006148BE /* TabacooTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED18064221E267BC006148BE /* TabacooTableViewCell.swift */; };
+		ED18064521E267F0006148BE /* FlavourTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED18064421E267F0006148BE /* FlavourTableViewCell.swift */; };
+		ED18064A21E26FE5006148BE /* Tabacoo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED18064921E26FE5006148BE /* Tabacoo.swift */; };
+		ED18064D21E29A9F006148BE /* Flavour.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED18064C21E29A9F006148BE /* Flavour.swift */; };
+		EDABF6C321F40E1300C73656 /* AdminTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDABF6C221F40E1300C73656 /* AdminTableViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0B6278C823D3E93911490742 /* Pods_Hokah.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hokah.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FAA80603602E5E19EDF5647 /* Pods-Hokah.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hokah.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hokah/Pods-Hokah.release.xcconfig"; sourceTree = "<group>"; };
+		222B8DB621E9F8A300CF4431 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		22404B2F21EA4D6B00DF041C /* TobaccoClassForDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TobaccoClassForDB.swift; sourceTree = "<group>"; };
+		22404B3321F4CAED00DF041C /* AddTastesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTastesTableViewController.swift; sourceTree = "<group>"; };
+		22404B3521F4DDB600DF041C /* TasteClassForDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasteClassForDB.swift; sourceTree = "<group>"; };
+		22404B3721F60D6B00DF041C /* ChooseTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChooseTimeViewController.swift; path = ../../../../../Documents/ChooseTimeViewController.swift; sourceTree = "<group>"; };
+		2265D20021EA07740093ABD3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		2265D20221EA08C00093ABD3 /* AddTobaccoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTobaccoViewController.swift; sourceTree = "<group>"; };
+		B1410928FA4C41FB94A139DE /* Pods-Hokah.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hokah.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hokah/Pods-Hokah.debug.xcconfig"; sourceTree = "<group>"; };
+		ED18062521E23AB1006148BE /* Hokah.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hokah.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED18062821E23AB1006148BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		ED18062A21E23AB1006148BE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		ED18062F21E23AB3006148BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ED18063221E23AB3006148BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		ED18063421E23AB3006148BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED18063C21E23E7A006148BE /* SeconViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeconViewController.swift; sourceTree = "<group>"; };
+		ED18063E21E24772006148BE /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		ED18064021E24EAB006148BE /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		ED18064221E267BC006148BE /* TabacooTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabacooTableViewCell.swift; sourceTree = "<group>"; };
+		ED18064421E267F0006148BE /* FlavourTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlavourTableViewCell.swift; sourceTree = "<group>"; };
+		ED18064921E26FE5006148BE /* Tabacoo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabacoo.swift; sourceTree = "<group>"; };
+		ED18064C21E29A9F006148BE /* Flavour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flavour.swift; sourceTree = "<group>"; };
+		EDABF6C221F40E1300C73656 /* AdminTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTableViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		ED18062221E23AB1006148BE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7157316790B458B34EA9F430 /* Pods_Hokah.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0D74FEC33137F7D6F8EC3364 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B1410928FA4C41FB94A139DE /* Pods-Hokah.debug.xcconfig */,
+				1FAA80603602E5E19EDF5647 /* Pods-Hokah.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BC2EB5DB9CB1A2B636AA1D2F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0B6278C823D3E93911490742 /* Pods_Hokah.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ED18061C21E23AB0006148BE = {
+			isa = PBXGroup;
+			children = (
+				ED18062721E23AB1006148BE /* Hokah */,
+				ED18062621E23AB1006148BE /* Products */,
+				0D74FEC33137F7D6F8EC3364 /* Pods */,
+				BC2EB5DB9CB1A2B636AA1D2F /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		ED18062621E23AB1006148BE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ED18062521E23AB1006148BE /* Hokah.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ED18062721E23AB1006148BE /* Hokah */ = {
+			isa = PBXGroup;
+			children = (
+				2265D20021EA07740093ABD3 /* Main.storyboard */,
+				EDABF6C221F40E1300C73656 /* AdminTableViewController.swift */,
+				22404B3321F4CAED00DF041C /* AddTastesTableViewController.swift */,
+				ED18062821E23AB1006148BE /* AppDelegate.swift */,
+				ED18062A21E23AB1006148BE /* ViewController.swift */,
+				ED18063C21E23E7A006148BE /* SeconViewController.swift */,
+				ED18063E21E24772006148BE /* ThirdViewController.swift */,
+				22404B3721F60D6B00DF041C /* ChooseTimeViewController.swift */,
+				ED18064021E24EAB006148BE /* Result.swift */,
+				ED18064B21E27039006148BE /* Classes */,
+				ED18064621E267F9006148BE /* Cells */,
+				ED18062F21E23AB3006148BE /* Assets.xcassets */,
+				ED18063121E23AB3006148BE /* LaunchScreen.storyboard */,
+				ED18063421E23AB3006148BE /* Info.plist */,
+				222B8DB621E9F8A300CF4431 /* GoogleService-Info.plist */,
+				2265D20221EA08C00093ABD3 /* AddTobaccoViewController.swift */,
+			);
+			path = Hokah;
+			sourceTree = "<group>";
+		};
+		ED18064621E267F9006148BE /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				ED18064221E267BC006148BE /* TabacooTableViewCell.swift */,
+				ED18064421E267F0006148BE /* FlavourTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		ED18064B21E27039006148BE /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				ED18064921E26FE5006148BE /* Tabacoo.swift */,
+				22404B2F21EA4D6B00DF041C /* TobaccoClassForDB.swift */,
+				ED18064C21E29A9F006148BE /* Flavour.swift */,
+				22404B3521F4DDB600DF041C /* TasteClassForDB.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		ED18062421E23AB1006148BE /* Hokah */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED18063721E23AB3006148BE /* Build configuration list for PBXNativeTarget "Hokah" */;
+			buildPhases = (
+				46D8A9ACC0A0788181AB0A7E /* [CP] Check Pods Manifest.lock */,
+				ED18062121E23AB1006148BE /* Sources */,
+				ED18062221E23AB1006148BE /* Frameworks */,
+				ED18062321E23AB1006148BE /* Resources */,
+				612E08B658BF34C44CF6F384 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Hokah;
+			productName = Hokah;
+			productReference = ED18062521E23AB1006148BE /* Hokah.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		ED18061D21E23AB0006148BE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "Kirill Ivanoff";
+				TargetAttributes = {
+					ED18062421E23AB1006148BE = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = ED18062021E23AB0006148BE /* Build configuration list for PBXProject "Hokah" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = ED18061C21E23AB0006148BE;
+			productRefGroup = ED18062621E23AB1006148BE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ED18062421E23AB1006148BE /* Hokah */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		ED18062321E23AB1006148BE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED18063321E23AB3006148BE /* LaunchScreen.storyboard in Resources */,
+				222B8DB721E9F8A300CF4431 /* GoogleService-Info.plist in Resources */,
+				ED18063021E23AB3006148BE /* Assets.xcassets in Resources */,
+				2265D20121EA07740093ABD3 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		46D8A9ACC0A0788181AB0A7E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Hokah-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		612E08B658BF34C44CF6F384 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Hokah/Pods-Hokah-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hokah/Pods-Hokah-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		ED18062121E23AB1006148BE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2265D20321EA08C00093ABD3 /* AddTobaccoViewController.swift in Sources */,
+				EDABF6C321F40E1300C73656 /* AdminTableViewController.swift in Sources */,
+				22404B3621F4DDB600DF041C /* TasteClassForDB.swift in Sources */,
+				22404B3021EA4D6B00DF041C /* TobaccoClassForDB.swift in Sources */,
+				ED18063D21E23E7A006148BE /* SeconViewController.swift in Sources */,
+				ED18064A21E26FE5006148BE /* Tabacoo.swift in Sources */,
+				ED18064D21E29A9F006148BE /* Flavour.swift in Sources */,
+				ED18064321E267BC006148BE /* TabacooTableViewCell.swift in Sources */,
+				ED18064121E24EAB006148BE /* Result.swift in Sources */,
+				ED18062B21E23AB1006148BE /* ViewController.swift in Sources */,
+				22404B3421F4CAED00DF041C /* AddTastesTableViewController.swift in Sources */,
+				22404B3821F60D6B00DF041C /* ChooseTimeViewController.swift in Sources */,
+				ED18064521E267F0006148BE /* FlavourTableViewCell.swift in Sources */,
+				ED18063F21E24772006148BE /* ThirdViewController.swift in Sources */,
+				ED18062921E23AB1006148BE /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		ED18063121E23AB3006148BE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED18063221E23AB3006148BE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		ED18063521E23AB3006148BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		ED18063621E23AB3006148BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		ED18063821E23AB3006148BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1410928FA4C41FB94A139DE /* Pods-Hokah.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CW6J7PGNU5;
+				INFOPLIST_FILE = Hokah/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Ivanoff.K.Hokah;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		ED18063921E23AB3006148BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1FAA80603602E5E19EDF5647 /* Pods-Hokah.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CW6J7PGNU5;
+				INFOPLIST_FILE = Hokah/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Ivanoff.K.Hokah;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		ED18062021E23AB0006148BE /* Build configuration list for PBXProject "Hokah" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED18063521E23AB3006148BE /* Debug */,
+				ED18063621E23AB3006148BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ED18063721E23AB3006148BE /* Build configuration list for PBXNativeTarget "Hokah" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED18063821E23AB3006148BE /* Debug */,
+				ED18063921E23AB3006148BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = ED18061D21E23AB0006148BE /* Project object */;
+}
