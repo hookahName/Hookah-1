@@ -39,7 +39,7 @@
                     <navigationItem key="navigationItem" id="FbX-LR-Nx0">
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="wEF-z2-XGz">
                             <connections>
-                                <segue destination="1O0-yf-her" kind="show" identifier="Admin" id="jH3-j1-5Ci"/>
+                                <segue destination="tMF-Ig-Ibo" kind="show" identifier="Admin" id="feP-Fn-DXZ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -48,6 +48,79 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6NX-bZ-Rxt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="999.20000000000005" y="157.87106446776613"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="IsA-Rd-QFL">
+            <objects>
+                <tableViewController id="ywI-bF-KtT" customClass="ChangeTeaTasteTableViewController" customModule="Hokah" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5Ed-GX-1Bj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TeaTasteCell" id="kqx-mf-gtj">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kqx-mf-gtj" id="azO-MN-3Tk">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ywI-bF-KtT" id="i2P-Kp-09m"/>
+                            <outlet property="delegate" destination="ywI-bF-KtT" id="8B3-GN-edP"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="qur-7z-3hH">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Fjy-bO-kyO">
+                            <connections>
+                                <action selector="AddButtonPressed:" destination="ywI-bF-KtT" id="uJy-Eg-WDz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EX5-Cg-NsK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="999" y="-1288"/>
+        </scene>
+        <!--Admin View Controller-->
+        <scene sceneID="Imm-yK-7Hj">
+            <objects>
+                <viewController id="tMF-Ig-Ibo" customClass="AdminViewController" customModule="Hokah" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oF8-yo-crl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yqc-lS-BZl">
+                                <rect key="frame" x="96" y="240" width="183" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Изменить табаки и вкусы"/>
+                                <connections>
+                                    <segue destination="1O0-yf-her" kind="show" identifier="ChangeTobacco" id="pXb-8h-hT8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VMg-L9-ugT">
+                                <rect key="frame" x="124" y="471" width="126" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Изменить пароль"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iqq-Em-mzY">
+                                <rect key="frame" x="115" y="364" width="145" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Изменить вкусы чая"/>
+                                <connections>
+                                    <segue destination="ywI-bF-KtT" kind="show" identifier="TeaTaste" id="mih-d7-o1g"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="0iU-8w-UYf"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gIo-cN-GQh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="997.60000000000002" y="-550.07496251874068"/>
         </scene>
         <!--Admin Table View Controller-->
         <scene sceneID="Y7f-NV-lKt">

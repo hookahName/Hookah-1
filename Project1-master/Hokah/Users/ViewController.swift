@@ -61,7 +61,7 @@ class ViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Admin" {
-            guard let admin = segue.destination as? AdminTableViewController else {return}
+            guard let admin = segue.destination as? AdminViewController else {return}
             admin.tobaccos = tobaccos
         } else if segue.identifier == "ToTabaco" {
             guard let tobaco = segue.destination as? SeconViewController else {return}
@@ -71,13 +71,6 @@ class ViewController: UITableViewController {
             }
 
             
-        }
-    }
-    
-    @IBAction func unwindToMainScreen(segue: UIStoryboardSegue) {
-        if segue.identifier == "unwindSegue" {
-            guard let controller = segue.source as? AdminTableViewController else {return}
-            self.tobaccos = controller.tobaccos
         }
     }
 }
