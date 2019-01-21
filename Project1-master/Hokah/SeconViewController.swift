@@ -19,14 +19,9 @@ class SeconViewController: UITableViewController, UINavigationControllerDelegate
         super.viewDidLoad()
 
         title = "Choose tabacoo"
+        tableView.tableFooterView = UIView()
     }
     
-    
-    /*
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    */
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tobaccos.count
@@ -51,13 +46,6 @@ class SeconViewController: UITableViewController, UINavigationControllerDelegate
             cell.selectionStyle = .none
         }
             return cell
-//            {
-//            print("ne ok")
-//            cell.textLabel?.isEnabled = false
-//            cell.selectionStyle = .none
-//        }
-        
-        //return cell
     }
     
     
@@ -86,23 +74,9 @@ class SeconViewController: UITableViewController, UINavigationControllerDelegate
             flavourController.table = selectedTable
             if let indexPath = tableView.indexPathForSelectedRow {
                 flavourController.selectedTabacoo = tobaccos[indexPath.row].name
-                print(selectedTable)
-                print(tobaccos[indexPath.row].name)
+                //print(selectedTable)
+                //print(tobaccos[indexPath.row].name)
             }
         }
     }
-    /*
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if let tabacooo = storyboard?.instantiateViewController(withIdentifier: "Flavour") as? ThirdViewController {
-            tabacooo.selectedTabacoo = tabacoos[indexPath.row].name
-            
-            guard let selectedTable = selectedTable else { return }
-            tabacooo.table = selectedTable
-            
-            navigationController?.pushViewController(tabacooo, animated: true)
-            
-        }
-    }
-    */
 }

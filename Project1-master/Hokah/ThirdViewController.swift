@@ -15,10 +15,13 @@ class ThirdViewController: UITableViewController, UINavigationControllerDelegate
     var table: Int?
     var tastes = Array<TasteDB>()
     var ref: DatabaseReference!
+    var selectedTastes = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        guard let selectedTabacoo = selectedTabacoo else { return }
+        title = "\(String(describing: selectedTabacoo))"
+        tableView.tableFooterView = UIView()
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -59,6 +62,20 @@ class ThirdViewController: UITableViewController, UINavigationControllerDelegate
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) {
+            if cell.accessoryType == .checkmark {
+                cell.accessoryType = .none
+                if let index = selectedTastes.firstIndex(of: tastes[indexPath.row].name) {
+                    selectedTastes.remove(at: index)
+                }
+            } else {
+                cell.accessoryType = .checkmark
+                selectedTastes.append(tastes[indexPath.row].name)
+            }
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         guard let cell = tableView.cellForRow(at: indexPath) else {return nil}
         if cell.selectionStyle == .none {
@@ -67,38 +84,14 @@ class ThirdViewController: UITableViewController, UINavigationControllerDelegate
         return indexPath
     }
     
+    @IBAction func ReadyButtonPressed(_ sender: UIBarButtonItem) {
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ToTime" {
             guard let timeController = segue.destination as? ChooseTimeViewController else {return}
-            
-            if let indexPath = tableView.indexPathForSelectedRow {
-                
-                timeController.selectedTable = table
-                timeController.selectedTabacoo = selectedTabacoo
-                timeController.selectedFlavour = tastes[indexPath.row].name
-            }
+            timeController.selectedTable = table
+            timeController.selectedTabacoo = selectedTabacoo
+            timeController.selectedFlavour = selectedTastes
         }
     }
-    
-    /*
-     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-     if let result = storyboard?.instantiateViewController(withIdentifier: "Result") as? Result {
-     
-     guard let table = table else { return }
-     
-     result.selectedTable = table
-     result.selectedTabacoo = selectedTabacoo
-     result.selectedFlavour = flavours[indexPath.row].name
-     
-     navigationController?.pushViewController(result, animated: true)
-     }
-     }
-     */
-    /*
-     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-     return CGFloat(144)
-     }
-     */
-    
-
 }

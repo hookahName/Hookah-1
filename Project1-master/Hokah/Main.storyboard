@@ -156,7 +156,7 @@
             </objects>
             <point key="canvasLocation" x="1916" y="158"/>
         </scene>
-        <!--Third View Controller-->
+        <!--Title-->
         <scene sceneID="uGZ-ZS-HxN">
             <objects>
                 <tableViewController storyboardIdentifier="Flavour" id="rOD-Rh-l5O" customClass="ThirdViewController" customModule="Hokah" customModuleProvider="target" sceneMemberID="viewController">
@@ -172,9 +172,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="143.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="NO8-wy-wIw" kind="show" identifier="ToTime" id="yPq-fQ-tsk"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -182,6 +179,14 @@
                             <outlet property="delegate" destination="rOD-Rh-l5O" id="KBS-nq-m9e"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="Prm-KP-QfO">
+                        <barButtonItem key="rightBarButtonItem" title="Готово" id="CDK-A1-bCf">
+                            <connections>
+                                <action selector="ReadyButtonPressed:" destination="rOD-Rh-l5O" id="sDb-p7-Uuf"/>
+                                <segue destination="NO8-wy-wIw" kind="show" identifier="ToTime" id="k9H-9k-8z3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pk7-2W-KKH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

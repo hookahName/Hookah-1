@@ -106,7 +106,6 @@
 		ED18062721E23AB1006148BE /* Hokah */ = {
 			isa = PBXGroup;
 			children = (
-				22404B3D21F65A4700DF041C /* ChooseTimeViewController.swift */,
 				2265D20021EA07740093ABD3 /* Main.storyboard */,
 				EDABF6C221F40E1300C73656 /* AdminTableViewController.swift */,
 				22404B3321F4CAED00DF041C /* AddTastesTableViewController.swift */,
@@ -114,6 +113,7 @@
 				ED18062A21E23AB1006148BE /* ViewController.swift */,
 				ED18063C21E23E7A006148BE /* SeconViewController.swift */,
 				ED18063E21E24772006148BE /* ThirdViewController.swift */,
+				22404B3D21F65A4700DF041C /* ChooseTimeViewController.swift */,
 				ED18064021E24EAB006148BE /* Result.swift */,
 				ED18064B21E27039006148BE /* Classes */,
 				ED18064621E267F9006148BE /* Cells */,

@@ -18,6 +18,7 @@ class AdminTableViewController: UITableViewController {
         super.viewDidLoad()
         
         title = "Available"
+        tableView.tableFooterView = UIView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,12 +38,6 @@ class AdminTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AdminCell", for: indexPath)
         cell.textLabel?.text = tobaccos[indexPath.row].name
-        //if cell.textLabel?.text == "adalya" {
-//            cell.textLabel?.isEnabled = false
-//            cell.selectionStyle = .gray
-//        }
-       
-
         return cell
     }
 

@@ -16,7 +16,7 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
     var tastes = Array<TasteDB>()
     var selectedTable: Int?
     var selectedTabacoo: String?
-    var selectedFlavour: String?
+    var selectedFlavour: [String]?
     var chosenTime: String = ""
     var chosenTea: String = ""
     @IBOutlet weak var ChooseTimeOutlet: UIDatePicker!
