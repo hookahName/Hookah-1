@@ -12,6 +12,7 @@ class ViewController: UITableViewController {
     var ref: DatabaseReference!
     let tables = ["Table 1", "Table 2", "Table 3"]
     var tobaccos = Array<TobaccoDB>()
+    var password = Array<passDB>()
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,7 +29,16 @@ class ViewController: UITableViewController {
             self?.tableView.reloadData()
         })
         
-        
+        ref = Database.database().reference().child("password")
+        ref.observe(.value, with: { [weak self] (snapshot) in
+            var _password = Array<passDB>()
+            for i in snapshot.children{
+                let password = passDB(snapshot: i as! DataSnapshot)
+                _password.append(password)
+                print(password.password)
+            }
+            self?.password = _password
+        })
     }
     
     override func viewDidLoad() {
@@ -75,11 +85,16 @@ class ViewController: UITableViewController {
     }
     
     @IBAction func EditButtonPressed(_ sender: UIBarButtonItem) {
-        ref = Database.database().reference()
+        
         let alertController = UIAlertController(title: "Password", message: "Enter password", preferredStyle: .alert)
         alertController.addTextField()
         let ok = UIAlertAction(title: "Ok", style: .default) {
-            action in self.performSegue(withIdentifier: "Admin", sender: self)
+            action in
+            let text = alertController.textFields?.first?.text
+            if text == self.password[0].password {
+                self.performSegue(withIdentifier: "Admin", sender: self)
+            }
+            
         }
         let cancel = UIAlertAction(title: "Cancel", style: .default)
         alertController.addAction(ok)

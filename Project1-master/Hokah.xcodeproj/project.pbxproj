@@ -14,6 +14,7 @@
 		22404B3E21F65A4700DF041C /* ChooseTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22404B3D21F65A4700DF041C /* ChooseTimeViewController.swift */; };
 		22404B4221F665CF00DF041C /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22404B4121F665CF00DF041C /* AdminViewController.swift */; };
 		22404B4421F6687D00DF041C /* ChangeTeaTasteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22404B4321F6687D00DF041C /* ChangeTeaTasteTableViewController.swift */; };
+		22404B4621F6804A00DF041C /* passClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22404B4521F6804A00DF041C /* passClass.swift */; };
 		2265D20121EA07740093ABD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2265D20021EA07740093ABD3 /* Main.storyboard */; };
 		2265D20321EA08C00093ABD3 /* AddTobaccoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2265D20221EA08C00093ABD3 /* AddTobaccoViewController.swift */; };
 		7157316790B458B34EA9F430 /* Pods_Hokah.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6278C823D3E93911490742 /* Pods_Hokah.framework */; };
@@ -41,6 +42,7 @@
 		22404B3D21F65A4700DF041C /* ChooseTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseTimeViewController.swift; sourceTree = "<group>"; };
 		22404B4121F665CF00DF041C /* AdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
 		22404B4321F6687D00DF041C /* ChangeTeaTasteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeTeaTasteTableViewController.swift; sourceTree = "<group>"; };
+		22404B4521F6804A00DF041C /* passClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = passClass.swift; sourceTree = "<group>"; };
 		2265D20021EA07740093ABD3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		2265D20221EA08C00093ABD3 /* AddTobaccoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTobaccoViewController.swift; sourceTree = "<group>"; };
 		B1410928FA4C41FB94A139DE /* Pods-Hokah.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hokah.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hokah/Pods-Hokah.debug.xcconfig"; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				22404B2F21EA4D6B00DF041C /* TobaccoClassForDB.swift */,
 				ED18064C21E29A9F006148BE /* Flavour.swift */,
 				22404B3521F4DDB600DF041C /* TasteClassForDB.swift */,
+				22404B4521F6804A00DF041C /* passClass.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				22404B3621F4DDB600DF041C /* TasteClassForDB.swift in Sources */,
 				22404B3021EA4D6B00DF041C /* TobaccoClassForDB.swift in Sources */,
 				ED18063D21E23E7A006148BE /* SeconViewController.swift in Sources */,
+				22404B4621F6804A00DF041C /* passClass.swift in Sources */,
 				ED18064A21E26FE5006148BE /* Tabacoo.swift in Sources */,
 				ED18064D21E29A9F006148BE /* Flavour.swift in Sources */,
 				ED18064321E267BC006148BE /* TabacooTableViewCell.swift in Sources */,

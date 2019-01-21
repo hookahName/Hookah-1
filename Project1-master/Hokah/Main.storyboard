@@ -107,6 +107,9 @@
                                 <rect key="frame" x="124" y="471" width="126" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Изменить пароль"/>
+                                <connections>
+                                    <action selector="changePassButtonPressed:" destination="tMF-Ig-Ibo" eventType="touchUpInside" id="1II-yr-JdD"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iqq-Em-mzY">
                                 <rect key="frame" x="115" y="364" width="145" height="26"/>

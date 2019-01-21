@@ -7,9 +7,9 @@
 //
 
 import UIKit
-
+import Firebase
 class AdminViewController: UIViewController {
-
+    var ref: DatabaseReference!
     var tobaccos: Array<TobaccoDB>!
     
     override func viewDidLoad() {
@@ -24,8 +24,29 @@ class AdminViewController: UIViewController {
             guard let admin = segue.destination as? AdminTableViewController else {return}
             admin.tobaccos = self.tobaccos
         } else if segue.identifier == "TeaTaste" {
-            guard let admin = segue.destination as? ChangeTeaTasteTableViewController else {return}
+            guard segue.destination is ChangeTeaTasteTableViewController else {return}
         }
     }
+    @IBAction func changePassButtonPressed(_ sender: Any) {
+        ref = Database.database().reference()
+        let alertController = UIAlertController(title: "Изменить пароль", message: "Новый пароль", preferredStyle: .alert)
+        alertController.addTextField()
+        let save = UIAlertAction(title: "Save", style: .default) { [ weak self] _ in
+            
+            guard let textField = alertController.textFields?.first, textField.text != "" else {return}
+            let pass = passDB(password: textField.text!)
+            _ = self?.ref.child("password").child("password").updateChildValues(["password": pass?.password as Any])
+            //self?.tobaccos.append(tabaco!)
+            //self?.tableView.reloadData()
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .default)
+        
+        alertController.addAction(save)
+        alertController.addAction(cancel)
+        present(alertController, animated: true)
+    }
+    }
+    
 
-}
+
