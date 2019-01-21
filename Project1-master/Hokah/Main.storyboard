@@ -38,6 +38,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="FbX-LR-Nx0">
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="wEF-z2-XGz">
+                            <color key="tintColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="EditButtonPressed:" destination="cDQ-3p-U6r" id="7cV-wE-CAV"/>
                             </connections>
