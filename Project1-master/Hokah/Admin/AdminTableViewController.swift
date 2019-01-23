@@ -11,9 +11,13 @@ import Firebase
 
 class AdminTableViewController: UITableViewController {
 
+    // MARK: Properties
+    
     var ref: DatabaseReference!
     var tobaccos: Array<TobaccoDB>!
-    //var chosenTaste: String = ""
+    
+    // MARK: View settings
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,11 +25,7 @@ class AdminTableViewController: UITableViewController {
         tableView.tableFooterView = UIView()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        tableView.reloadData()
-    }
+    // MARK: Table view settings
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -38,6 +38,8 @@ class AdminTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AdminCell", for: indexPath)
         cell.textLabel?.text = tobaccos[indexPath.row].name
+        cell.accessoryType = .disclosureIndicator
+        
         return cell
     }
 
@@ -48,24 +50,16 @@ class AdminTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let tabaco = tobaccos[indexPath.row]
-            tabaco.ref?.removeValue()
-            tobaccos.remove(at: indexPath.row)
-            tableView.reloadData()
-            updateDatabase()
+            ref = Database.database().reference().child("tobaccos").child(tabaco.name)
+            ref.setValue(nil)
+            self.tobaccos.remove(at: indexPath.row)
+            self.tableView.beginUpdates()
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.tableView.endUpdates()
         }
     }
-    //override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //    chosenTaste = tobaccos[indexPath.row].name
-    //}
-    
    
-    
-    func updateDatabase() {
-        ref = Database.database().reference()
-        for tobacoo in tobaccos {
-            ref.child("tobaccos").child(tobacoo.name).setValue(["name": tobacoo.name, "isAvailable": tobacoo.isAvailable])
-        }
-    }
+    // MARK: Private functions
     
     @IBAction func add(_ sender: Any) {
         ref = Database.database().reference()

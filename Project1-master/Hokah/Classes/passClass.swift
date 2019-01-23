@@ -8,10 +8,9 @@
 
 import Foundation
 import Firebase
-class passDB {
+class PasswordDB {
     
     var password: String
-    
     var ref: DatabaseReference?
     
     init?(password: String) {
@@ -19,6 +18,7 @@ class passDB {
         self.password = password
         self.ref = nil
     }
+    
     init(snapshot: DataSnapshot){
         let snapshotValue = snapshot.value as! [String: String]
         password = snapshotValue["password"]!

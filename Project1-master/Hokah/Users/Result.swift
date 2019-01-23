@@ -10,6 +10,8 @@ import UIKit
 
 class Result: UIViewController, UINavigationControllerDelegate {
 
+    // MARK: Properties
+    
     var selectedTable: Int?
     var selectedTabacoo: String?
     var selectedFlavour: [String]?
@@ -22,6 +24,8 @@ class Result: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var flavour: UILabel!
     @IBOutlet weak var TimeLabel: UILabel!
     
+    // MARK: View settings
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,12 +33,14 @@ class Result: UIViewController, UINavigationControllerDelegate {
         guard let selectedTabacoo = selectedTabacoo else { return }
         guard let selectedFlavour = selectedFlavour else { return }
         guard let selectedTime = selectedTime else { return }
+        
         if selectedFlavour == [] {
             print("EMPTY")
         } else {
             print("ya tut")
             print(selectedFlavour)
         }
+        
         for i in 0..<selectedFlavour.count {
             if i == selectedFlavour.count - 1 {
                 flavours += selectedFlavour[i]
@@ -42,14 +48,10 @@ class Result: UIViewController, UINavigationControllerDelegate {
                 flavours += selectedFlavour[i] + ", "
             }
         }
+        
         flavour.text = flavours
         tableNumber.text = "Table \(selectedTable+1)"
         tabacoo.text = selectedTabacoo
-        //flavour.text = selectedFlavour
         TimeLabel.text = "Ждем вас в \(String(describing: selectedTime))"
-        print(selectedTea)
     }
-    
-    
-    
 }

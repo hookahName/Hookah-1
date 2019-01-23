@@ -12,7 +12,6 @@ class TobaccoDB {
     
     var name: String
     var isAvailable: Bool = false
-    
     var ref: DatabaseReference?
     
     init?(name: String) {
@@ -20,6 +19,7 @@ class TobaccoDB {
         self.name = name
         self.ref = nil
     }
+    
     init(snapshot: DataSnapshot){
         let snapshotValue = snapshot.value as! [String: AnyObject]
         name = snapshotValue["name"] as! String

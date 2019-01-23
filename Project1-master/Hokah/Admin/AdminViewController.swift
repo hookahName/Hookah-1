@@ -9,8 +9,13 @@
 import UIKit
 import Firebase
 class AdminViewController: UIViewController {
+    
+    // MARK: Properties
+    
     var ref: DatabaseReference!
     var tobaccos: Array<TobaccoDB>!
+    
+    // MARK: View settings
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +23,8 @@ class AdminViewController: UIViewController {
         print(tobaccos.count)
         // Do any additional setup after loading the view.
     }
+    
+    // MARK: Private functions
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ChangeTobacco" {
@@ -27,6 +34,7 @@ class AdminViewController: UIViewController {
             guard segue.destination is ChangeTeaTasteTableViewController else {return}
         }
     }
+    
     @IBAction func changePassButtonPressed(_ sender: Any) {
         ref = Database.database().reference()
         let alertController = UIAlertController(title: "Изменить пароль", message: "Новый пароль", preferredStyle: .alert)
@@ -34,10 +42,8 @@ class AdminViewController: UIViewController {
         let save = UIAlertAction(title: "Save", style: .default) { [ weak self] _ in
             
             guard let textField = alertController.textFields?.first, textField.text != "" else {return}
-            let pass = passDB(password: textField.text!)
-            _ = self?.ref.child("password").child("password").updateChildValues(["password": pass?.password as Any])
-            //self?.tobaccos.append(tabaco!)
-            //self?.tableView.reloadData()
+            let pass = PasswordDB(password: textField.text!)
+            _ = self?.ref.child("password").child("password").updateChildValues(["password": pass?.password as Any]) // Почему _ ?
         }
         
         let cancel = UIAlertAction(title: "Cancel", style: .default)
@@ -46,7 +52,7 @@ class AdminViewController: UIViewController {
         alertController.addAction(cancel)
         present(alertController, animated: true)
     }
-    }
+}
     
 
 

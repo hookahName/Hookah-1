@@ -25,10 +25,6 @@
 		ED18063D21E23E7A006148BE /* SeconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED18063C21E23E7A006148BE /* SeconViewController.swift */; };
 		ED18063F21E24772006148BE /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED18063E21E24772006148BE /* ThirdViewController.swift */; };
 		ED18064121E24EAB006148BE /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED18064021E24EAB006148BE /* Result.swift */; };
-		ED18064321E267BC006148BE /* TabacooTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED18064221E267BC006148BE /* TabacooTableViewCell.swift */; };
-		ED18064521E267F0006148BE /* FlavourTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED18064421E267F0006148BE /* FlavourTableViewCell.swift */; };
-		ED18064A21E26FE5006148BE /* Tabacoo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED18064921E26FE5006148BE /* Tabacoo.swift */; };
-		ED18064D21E29A9F006148BE /* Flavour.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED18064C21E29A9F006148BE /* Flavour.swift */; };
 		EDABF6C321F40E1300C73656 /* AdminTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDABF6C221F40E1300C73656 /* AdminTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,10 +51,6 @@
 		ED18063C21E23E7A006148BE /* SeconViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeconViewController.swift; sourceTree = "<group>"; };
 		ED18063E21E24772006148BE /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		ED18064021E24EAB006148BE /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
-		ED18064221E267BC006148BE /* TabacooTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabacooTableViewCell.swift; sourceTree = "<group>"; };
-		ED18064421E267F0006148BE /* FlavourTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlavourTableViewCell.swift; sourceTree = "<group>"; };
-		ED18064921E26FE5006148BE /* Tabacoo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabacoo.swift; sourceTree = "<group>"; };
-		ED18064C21E29A9F006148BE /* Flavour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flavour.swift; sourceTree = "<group>"; };
 		EDABF6C221F40E1300C73656 /* AdminTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -138,7 +130,6 @@
 				22404B3F21F6653600DF041C /* Admin */,
 				22404B4021F6655900DF041C /* Users */,
 				ED18064B21E27039006148BE /* Classes */,
-				ED18064621E267F9006148BE /* Cells */,
 				ED18062F21E23AB3006148BE /* Assets.xcassets */,
 				ED18063121E23AB3006148BE /* LaunchScreen.storyboard */,
 				2265D20021EA07740093ABD3 /* Main.storyboard */,
@@ -150,21 +141,10 @@
 			path = Hokah;
 			sourceTree = "<group>";
 		};
-		ED18064621E267F9006148BE /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				ED18064221E267BC006148BE /* TabacooTableViewCell.swift */,
-				ED18064421E267F0006148BE /* FlavourTableViewCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
 		ED18064B21E27039006148BE /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				ED18064921E26FE5006148BE /* Tabacoo.swift */,
 				22404B2F21EA4D6B00DF041C /* TobaccoClassForDB.swift */,
-				ED18064C21E29A9F006148BE /* Flavour.swift */,
 				22404B3521F4DDB600DF041C /* TasteClassForDB.swift */,
 				22404B4521F6804A00DF041C /* passClass.swift */,
 			);
@@ -306,16 +286,12 @@
 				22404B3021EA4D6B00DF041C /* TobaccoClassForDB.swift in Sources */,
 				ED18063D21E23E7A006148BE /* SeconViewController.swift in Sources */,
 				22404B4621F6804A00DF041C /* passClass.swift in Sources */,
-				ED18064A21E26FE5006148BE /* Tabacoo.swift in Sources */,
-				ED18064D21E29A9F006148BE /* Flavour.swift in Sources */,
-				ED18064321E267BC006148BE /* TabacooTableViewCell.swift in Sources */,
 				22404B3E21F65A4700DF041C /* ChooseTimeViewController.swift in Sources */,
 				ED18064121E24EAB006148BE /* Result.swift in Sources */,
 				ED18062B21E23AB1006148BE /* ViewController.swift in Sources */,
 				22404B4421F6687D00DF041C /* ChangeTeaTasteTableViewController.swift in Sources */,
 				22404B3421F4CAED00DF041C /* AddTastesTableViewController.swift in Sources */,
 				22404B4221F665CF00DF041C /* AdminViewController.swift in Sources */,
-				ED18064521E267F0006148BE /* FlavourTableViewCell.swift in Sources */,
 				ED18063F21E24772006148BE /* ThirdViewController.swift in Sources */,
 				ED18062921E23AB1006148BE /* AppDelegate.swift in Sources */,
 			);

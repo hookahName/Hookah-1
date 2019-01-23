@@ -10,9 +10,14 @@ import UIKit
 import Firebase
 class AddTastesTableViewController: UITableViewController {
     
+    // MARK: Properies
+    
     var chosenTobacco: TobaccoDB?
     var ref: DatabaseReference!
     var tastes = Array<TasteDB>()
+    
+    // MARK: View settings
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let chosenTobacco = chosenTobacco {
@@ -38,52 +43,60 @@ class AddTastesTableViewController: UITableViewController {
         })
         
     }
-    // MARK: - Table view data source
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         getAvailabilityOfTobacco()
         ref.removeAllObservers()
     }
+    
+    // MARK: - Table view data source
  
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TasteCell", for: indexPath)
         cell.textLabel?.text = tastes[indexPath.row].name
         
         let switchView = UISwitch(frame: .zero)
-        switchView.setOn(tastes[indexPath.row].isAvailable, animated: true)
+        switchView.setOn(tastes[indexPath.row].isAvailable, animated: false)
         switchView.tag = indexPath.row
         switchView.addTarget(self, action: #selector(self.switchChanged(_:)), for: .valueChanged)
         cell.accessoryView = switchView
+        cell.selectionStyle = .none
         
         return cell
     }
     
-    @objc func switchChanged(_ sender: UISwitch!) {
-        tastes[sender.tag].isAvailable = !tastes[sender.tag].isAvailable
-        updateDatabase(tastes[sender.tag])
-    }
-    
-    func updateDatabase(_ taste: TasteDB) {
-        ref = Database.database().reference()
-        ref.child("tobaccos").child(chosenTobacco!.name).child("tastes").child(taste.name).updateChildValues(["name": taste.name, "isAvailable": taste.isAvailable])
-    }
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return tastes.count
     }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let taste = tastes[indexPath.row]
+            ref = Database.database().reference().child("tobaccos").child((chosenTobacco?.name)!).child("tastes").child(taste.name)
+            ref.setValue(nil)
+            self.tastes.remove(at: indexPath.row)
+            self.tableView.beginUpdates()
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.tableView.endUpdates()
+        }
+    }
+    
+    // MARK: Private functions
     
     @IBAction func addButton(_ sender: UIBarButtonItem) {
         ref = Database.database().reference()
         let alertController = UIAlertController(title: "New taste", message: "Add new taste", preferredStyle: .alert)
         alertController.addTextField()
-        let save = UIAlertAction(title: "Save", style: .default) { [ weak self] _ in
+        let save = UIAlertAction(title: "Save", style: .default) { [ weak self ] _ in
             
             guard let textField = alertController.textFields?.first, textField.text != "" else {return}
             let taste = TasteDB(name: textField.text!)
@@ -117,5 +130,15 @@ class AddTastesTableViewController: UITableViewController {
             chosenTobacco?.isAvailable = isAvailable
             ref.child("tobaccos").child(chosenTobacco!.name).updateChildValues(["name":chosenTobacco!.name, "isAvailable": chosenTobacco!.isAvailable])
         }
+    }
+    
+    @objc func switchChanged(_ sender: UISwitch!) {
+        tastes[sender.tag].isAvailable = !tastes[sender.tag].isAvailable
+        updateDatabase(tastes[sender.tag])
+    }
+    
+    private func updateDatabase(_ taste: TasteDB) {
+        ref = Database.database().reference()
+        ref.child("tobaccos").child(chosenTobacco!.name).child("tastes").child(taste.name).updateChildValues(["name": taste.name, "isAvailable": taste.isAvailable])
     }
 }

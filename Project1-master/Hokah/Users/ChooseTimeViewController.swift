@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    
+    // MARK: Properties
     
     var ref: DatabaseReference!
     var tastes = Array<TasteDB>()
@@ -19,13 +19,14 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
     var selectedFlavour: [String]?
     var chosenTime: String = ""
     var chosenTea: String = ""
+
     @IBOutlet weak var ChooseTimeOutlet: UIDatePicker!
     @IBOutlet weak var TeaLabel: UILabel!
     @IBOutlet weak var TeaSwitch: UISwitch!
-    
     @IBOutlet weak var readyBut: UIBarButtonItem!
     
-
+    // MARK: View settings
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         ref = Database.database().reference().child("tea")
@@ -38,7 +39,6 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
                 }
             }
             self?.tastes = _tastes
-            
             }
         )
     }
@@ -48,19 +48,28 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
         
         //DatePicker
         ChooseTimeOutlet.minimumDate = Date()
+        
         let dateString = "23:59" // change to your date format
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "hh:mm"
         dateFormatter.locale = Locale(identifier: "ru_RU")
+        
         let date = dateFormatter.date(from: dateString)
         ChooseTimeOutlet.maximumDate = date
         dateFormatter.dateFormat = "HH:mm"
         chosenTime = dateFormatter.string(from: Date())
-        // Do any additional setup after loading the view.
         
         //Switch
         TeaSwitch.isOn = false
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        ref.removeAllObservers()
+    }
+    
+    // MARK: Picker view settings
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -78,11 +87,13 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
         self.chosenTea = tastes[row].name
     }
     
+    // MARR: Private functions
     
     @IBAction func teaSwitch(_ sender: Any) {
         if TeaSwitch.isOn == true {
-            let alertController = UIAlertController(title: "Чай", message: "Выберите вкус\n\n\n\n\n\n", preferredStyle: .alert)
-            let pickerFrame = UIPickerView(frame: CGRect(x: 5, y: 20, width: 250, height: 140)) // CGRectMake(left, top, width, height) - left and top are like margins
+            // Я убрал описание чтобы поместить UIPickerView, потом разберемся как уместить все
+            let alertController = UIAlertController(title: "Выберите вкус", message: "\n\n\n\n\n\n", preferredStyle: .alert)
+            let pickerFrame = UIPickerView(frame: CGRect(x: 5, y: 30, width: 250, height: 140)) // CGRectMake(left, top, width, height) - left and top are like margins
             pickerFrame.tag = 555
             //set the pickers datasource and delegate
             pickerFrame.delegate = self
@@ -103,7 +114,6 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
             alertController.addAction(save)
             present(alertController, animated: true)
         }
-       
     }
     
     @IBAction func chooseTime(_ sender: UIDatePicker) {
@@ -115,11 +125,9 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
         let dateString = dateFormatter.string(from: currentTime)
         print("Custom date format Sample 1 =  \(dateString)")
         chosenTime = dateString
-        
     }
     
     @IBAction func readyButPressed(_ sender: UIBarButtonItem) {
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -134,19 +142,6 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
             } else {
                 resultController.selectedTea = "Вы не выбрали чай"
             }
-            
         }
     }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

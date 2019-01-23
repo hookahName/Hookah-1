@@ -11,11 +11,15 @@ import os.log
 import Firebase
 class ThirdViewController: UITableViewController, UINavigationControllerDelegate {
 
+    // MARK: Properties
+    
     var selectedTabacoo: String?
     var table: Int?
     var tastes = Array<TasteDB>()
     var ref: DatabaseReference!
     var selectedTastes = [String]()
+    
+    // MARK: View settings
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +28,7 @@ class ThirdViewController: UITableViewController, UINavigationControllerDelegate
         tableView.tableFooterView = UIView()
         
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         ref = Database.database().reference().child("tobaccos").child((self.selectedTabacoo!.lowercased())).child("tastes")
@@ -42,6 +47,14 @@ class ThirdViewController: UITableViewController, UINavigationControllerDelegate
         )
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        ref.removeAllObservers()
+    }
+    
+    // MARK: Table view settings
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -84,8 +97,11 @@ class ThirdViewController: UITableViewController, UINavigationControllerDelegate
         return indexPath
     }
     
+    // MARK: Private functions
+    
     @IBAction func ReadyButtonPressed(_ sender: UIBarButtonItem) {
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ToTime" {
             guard let timeController = segue.destination as? ChooseTimeViewController else {return}

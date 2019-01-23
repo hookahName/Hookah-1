@@ -9,36 +9,19 @@
 import UIKit
 import Firebase
 class ViewController: UITableViewController {
+    
+    // MARK: Properties
+    
     var ref: DatabaseReference!
     let tables = ["Table 1", "Table 2", "Table 3"]
     var tobaccos = Array<TobaccoDB>()
-    var password = Array<passDB>()
+    var password = Array<PasswordDB>()
     
+    // MARK: View settings
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        ref = Database.database().reference().child("tobaccos")
-        ref.observe(.value, with: { [weak self] (snapshot) in
-            var _tobaccos = Array<TobaccoDB>()
-            for i in snapshot.children{
-                let tobacco = TobaccoDB(snapshot: i as! DataSnapshot)
-                _tobaccos.append(tobacco)
-                
-            }
-            self?.tobaccos = _tobaccos
-            self?.tableView.reloadData()
-        })
-        
-        ref = Database.database().reference().child("password")
-        ref.observe(.value, with: { [weak self] (snapshot) in
-            var _password = Array<passDB>()
-            for i in snapshot.children{
-                let password = passDB(snapshot: i as! DataSnapshot)
-                _password.append(password)
-                print(password.password)
-            }
-            self?.password = _password
-        })
+        loadDataBase()
     }
     
     override func viewDidLoad() {
@@ -53,6 +36,8 @@ class ViewController: UITableViewController {
         
         ref.removeAllObservers()
     }
+    
+    // MARK: Table view settings
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -70,6 +55,8 @@ class ViewController: UITableViewController {
         return cell
     }
     
+    // MARK: Private functions
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Admin" {
             
@@ -78,6 +65,7 @@ class ViewController: UITableViewController {
         } else if segue.identifier == "ToTabaco" {
             guard let tobaco = segue.destination as? SeconViewController else {return}
             tobaco.tobaccos = tobaccos
+            print(tobaco.tobaccos)
             if let indexPath = tableView.indexPathForSelectedRow {
                 tobaco.selectedTable = indexPath.row
             }
@@ -90,16 +78,47 @@ class ViewController: UITableViewController {
         alertController.addTextField()
         let ok = UIAlertAction(title: "Ok", style: .default) {
             action in
-            let text = alertController.textFields?.first?.text
+            guard let text = alertController.textFields?.first?.text, text != "" else {return}
             if text == self.password[0].password {
                 self.performSegue(withIdentifier: "Admin", sender: self)
+            } else {
+                let ac = UIAlertController(title: "Wrong password", message: "Try again", preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "Ok", style: .default) { action in
+                    self.EditButtonPressed(sender)
+                })
+                self.present(ac, animated: true)
             }
-            
         }
+        
         let cancel = UIAlertAction(title: "Cancel", style: .default)
         alertController.addAction(ok)
         alertController.addAction(cancel)
         present(alertController, animated: true)
+    }
+    
+    private func loadDataBase() {
+        ref = Database.database().reference().child("tobaccos")
+        ref.observe(.value, with: { [weak self] (snapshot) in
+            var _tobaccos = Array<TobaccoDB>()
+            for i in snapshot.children{
+                let tobacco = TobaccoDB(snapshot: i as! DataSnapshot)
+                _tobaccos.append(tobacco)
+                
+            }
+            self?.tobaccos = _tobaccos
+            self?.tableView.reloadData()
+        })
+        
+        ref = Database.database().reference().child("password")
+        ref.observe(.value, with: { [weak self] (snapshot) in
+            var _password = Array<PasswordDB>()
+            for i in snapshot.children{
+                let password = PasswordDB(snapshot: i as! DataSnapshot)
+                _password.append(password)
+                print(password.password)
+            }
+            self?.password = _password
+        })
     }
 }
 

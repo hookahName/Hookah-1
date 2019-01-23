@@ -9,12 +9,15 @@
 import UIKit
 import Firebase
 class SeconViewController: UITableViewController, UINavigationControllerDelegate {
+    
+    // MARK: Properties
+    
     var ref: DatabaseReference!
-    
     var tobaccos = Array<TobaccoDB>()
-    
     var selectedTable : Int?
 
+    // MARK: View settings
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,6 +25,7 @@ class SeconViewController: UITableViewController, UINavigationControllerDelegate
         tableView.tableFooterView = UIView()
     }
     
+    // MARK: Table view settings
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tobaccos.count
@@ -32,6 +36,7 @@ class SeconViewController: UITableViewController, UINavigationControllerDelegate
         if cell.selectionStyle == .none {
             return nil
         }
+        
         return indexPath
     }
     
@@ -44,11 +49,14 @@ class SeconViewController: UITableViewController, UINavigationControllerDelegate
         if tobaccos[indexPath.row].isAvailable == false {
             cell.textLabel?.isEnabled = false
             cell.selectionStyle = .none
+        } else {
+            cell.accessoryType = .disclosureIndicator
         }
-            return cell
+        
+        return cell
     }
     
-    
+    /*
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         var messageText: String
         
@@ -66,6 +74,9 @@ class SeconViewController: UITableViewController, UINavigationControllerDelegate
         ac.addAction(UIAlertAction(title: "Ok", style: .default))
         present(ac, animated: true)
     }
+    */
+    
+    // MARK: Private functions
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -74,8 +85,6 @@ class SeconViewController: UITableViewController, UINavigationControllerDelegate
             flavourController.table = selectedTable
             if let indexPath = tableView.indexPathForSelectedRow {
                 flavourController.selectedTabacoo = tobaccos[indexPath.row].name
-                //print(selectedTable)
-                //print(tobaccos[indexPath.row].name)
             }
         }
     }
