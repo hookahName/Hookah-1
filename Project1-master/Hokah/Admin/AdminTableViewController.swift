@@ -18,11 +18,33 @@ class AdminTableViewController: UITableViewController {
     
     // MARK: View settings
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        ref = Database.database().reference().child("tobaccos")
+        ref.observe(.value, with: {[weak self] (snapshot) in
+            var _tobaccos = Array<TobaccoDB>()
+            for item in snapshot.children {
+                let tobacco = TobaccoDB(snapshot: item as! DataSnapshot)
+                _tobaccos.append(tobacco)
+            }
+            
+            self?.tobaccos = _tobaccos
+            self?.tableView.reloadData()
+        })
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Available"
         tableView.tableFooterView = UIView()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        ref.removeAllObservers()
     }
     
     // MARK: Table view settings

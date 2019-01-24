@@ -14,7 +14,7 @@ class ViewController: UITableViewController {
     
     var ref: DatabaseReference!
     let tables = ["Table 1", "Table 2", "Table 3"]
-    var tobaccos = Array<TobaccoDB>()
+    //var tobaccos = Array<TobaccoDB>()
     var password = Array<PasswordDB>()
     
     // MARK: View settings
@@ -23,7 +23,7 @@ class ViewController: UITableViewController {
         super.viewWillAppear(animated)
         loadDataBase()
     }
-    
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -61,11 +61,11 @@ class ViewController: UITableViewController {
         if segue.identifier == "Admin" {
             
             guard let admin = segue.destination as? AdminViewController else {return}
-            admin.tobaccos = self.tobaccos
+            //admin.tobaccos = self.tobaccos
         } else if segue.identifier == "ToTabaco" {
             guard let tobaco = segue.destination as? SeconViewController else {return}
-            tobaco.tobaccos = tobaccos
-            print(tobaco.tobaccos)
+            //tobaco.tobaccos = tobaccos
+            //print(tobaco.tobaccos)
             if let indexPath = tableView.indexPathForSelectedRow {
                 tobaco.selectedTable = indexPath.row
             }
@@ -97,6 +97,7 @@ class ViewController: UITableViewController {
     }
     
     private func loadDataBase() {
+        /*
         ref = Database.database().reference().child("tobaccos")
         ref.observe(.value, with: { [weak self] (snapshot) in
             var _tobaccos = Array<TobaccoDB>()
@@ -108,7 +109,7 @@ class ViewController: UITableViewController {
             self?.tobaccos = _tobaccos
             self?.tableView.reloadData()
         })
-        
+        */
         ref = Database.database().reference().child("password")
         ref.observe(.value, with: { [weak self] (snapshot) in
             var _password = Array<PasswordDB>()

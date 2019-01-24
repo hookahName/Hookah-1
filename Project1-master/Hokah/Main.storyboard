@@ -79,7 +79,7 @@
                     <navigationItem key="navigationItem" title="Title" id="qur-7z-3hH">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Fjy-bO-kyO">
                             <connections>
-                                <action selector="AddButtonPressed:" destination="ywI-bF-KtT" id="uJy-Eg-WDz"/>
+                                <action selector="addButtonPressed:" destination="ywI-bF-KtT" id="Vsm-Ti-fz8"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

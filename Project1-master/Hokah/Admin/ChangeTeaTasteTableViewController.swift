@@ -98,7 +98,7 @@ class ChangeTeaTasteTableViewController: UITableViewController {
         ref.child("tea").child(taste.name.lowercased()).updateChildValues(["name": taste.name, "isAvailable": taste.isAvailable])
     }
     
-    @IBAction func AddButtonPressed(_ sender: UIBarButtonItem) {
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         ref = Database.database().reference()
         let alertController = UIAlertController(title: "New taste", message: "Add new taste", preferredStyle: .alert)
         alertController.addTextField()
