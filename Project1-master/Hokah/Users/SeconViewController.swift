@@ -21,24 +21,19 @@ class SeconViewController: UITableViewController, UINavigationControllerDelegate
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        ref = Database.database().reference().child("tobaccos")
-        ref.observe(.value, with: {[weak self] (snapshot) in
-            var _tobaccos = Array<TobaccoDB>()
-            for item in snapshot.children {
-                let tobacco = TobaccoDB(snapshot: item as! DataSnapshot)
-                _tobaccos.append(tobacco)
-            }
-            
-            self?.tobaccos = _tobaccos
-            self?.tableView.reloadData()
-        })
+        loadDatabase()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = "Choose tabacoo"
-        tableView.tableFooterView = UIView()
+        self.tableView.tableFooterView = UIView()
+        
+        self.refreshControl = UIRefreshControl()
+        //self.refreshControl?.attributedTitle = NSAttributedString(string: "Updating...")
+        self.refreshControl?.addTarget(self, action: #selector(refresh(_:)), for: UIControl.Event.valueChanged)
+        //self.tableView.addSubview(refreshControl)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -71,7 +66,10 @@ class SeconViewController: UITableViewController, UINavigationControllerDelegate
         if tobaccos[indexPath.row].isAvailable == false {
             cell.textLabel?.isEnabled = false
             cell.selectionStyle = .none
+            cell.accessoryType = .none
         } else {
+            cell.textLabel?.isEnabled = true
+            cell.selectionStyle = .default
             cell.accessoryType = .disclosureIndicator
         }
         
@@ -99,6 +97,25 @@ class SeconViewController: UITableViewController, UINavigationControllerDelegate
     */
     
     // MARK: Private functions
+    
+    private func loadDatabase() {
+        ref = Database.database().reference().child("tobaccos")
+        ref.observe(.value, with: {[weak self] (snapshot) in
+            var _tobaccos = Array<TobaccoDB>()
+            for item in snapshot.children {
+                let tobacco = TobaccoDB(snapshot: item as! DataSnapshot)
+                _tobaccos.append(tobacco)
+            }
+            
+            self?.tobaccos = _tobaccos
+            self?.tableView.reloadData()
+        })
+    }
+    
+    @objc func refresh(_ sender: AnyObject) {
+        loadDatabase()
+        self.refreshControl?.endRefreshing()
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

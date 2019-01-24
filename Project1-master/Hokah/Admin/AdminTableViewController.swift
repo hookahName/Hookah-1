@@ -9,12 +9,12 @@
 import UIKit
 import Firebase
 
-class AdminTableViewController: UITableViewController {
+class AdminTableViewController: UITableViewController, UINavigationControllerDelegate {
 
     // MARK: Properties
     
     var ref: DatabaseReference!
-    var tobaccos: Array<TobaccoDB>!
+    var tobaccos = Array<TobaccoDB>()
     
     // MARK: View settings
     
@@ -22,7 +22,7 @@ class AdminTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         ref = Database.database().reference().child("tobaccos")
-        ref.observe(.value, with: {[weak self] (snapshot) in
+        ref.observe(.value, with: { [weak self] (snapshot) in
             var _tobaccos = Array<TobaccoDB>()
             for item in snapshot.children {
                 let tobacco = TobaccoDB(snapshot: item as! DataSnapshot)
@@ -48,10 +48,6 @@ class AdminTableViewController: UITableViewController {
     }
     
     // MARK: Table view settings
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tobaccos.count
@@ -103,7 +99,7 @@ class AdminTableViewController: UITableViewController {
         alertController.addAction(cancel)
         present(alertController, animated: true)
     }
-    
+        
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AddTastes" {
             guard let taste = segue.destination as? AddTastesTableViewController else {return}

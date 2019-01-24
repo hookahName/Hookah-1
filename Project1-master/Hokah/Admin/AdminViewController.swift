@@ -13,14 +13,12 @@ class AdminViewController: UIViewController {
     // MARK: Properties
     
     var ref: DatabaseReference!
-    var tobaccos: Array<TobaccoDB>!
     
     // MARK: View settings
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Admin"
-        print(tobaccos.count)
         // Do any additional setup after loading the view.
     }
     
@@ -28,8 +26,7 @@ class AdminViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ChangeTobacco" {
-            guard let admin = segue.destination as? AdminTableViewController else {return}
-            admin.tobaccos = self.tobaccos
+            guard segue.destination is AdminTableViewController else {return}
         } else if segue.identifier == "TeaTaste" {
             guard segue.destination is ChangeTeaTasteTableViewController else {return}
         }

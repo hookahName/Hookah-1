@@ -46,7 +46,7 @@ class AddTastesTableViewController: UITableViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        getAvailabilityOfTobacco()
+        //getAvailabilityOfTobacco()
         ref.removeAllObservers()
     }
     
@@ -135,6 +135,7 @@ class AddTastesTableViewController: UITableViewController {
     @objc func switchChanged(_ sender: UISwitch!) {
         tastes[sender.tag].isAvailable = !tastes[sender.tag].isAvailable
         updateDatabase(tastes[sender.tag])
+        getAvailabilityOfTobacco()
     }
     
     private func updateDatabase(_ taste: TasteDB) {

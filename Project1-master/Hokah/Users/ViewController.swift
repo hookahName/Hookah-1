@@ -60,7 +60,7 @@ class ViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Admin" {
             
-            guard let admin = segue.destination as? AdminViewController else {return}
+            guard segue.destination is AdminViewController else {return}
             //admin.tobaccos = self.tobaccos
         } else if segue.identifier == "ToTabaco" {
             guard let tobaco = segue.destination as? SeconViewController else {return}

@@ -27,24 +27,16 @@ class ThirdViewController: UITableViewController, UINavigationControllerDelegate
         title = "\(String(describing: selectedTabacoo))"
         tableView.tableFooterView = UIView()
         
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl?.bounds = CGRect(x: 0, y: 50, width: (refreshControl?.bounds.size.width)!, height: (refreshControl?.bounds.size.height)!)
+        self.refreshControl?.addTarget(self, action: #selector(refresh(_:)), for: UIControl.Event.valueChanged)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        ref = Database.database().reference().child("tobaccos").child((self.selectedTabacoo!.lowercased())).child("tastes")
-        ref.observe(.value, with: { [weak self] (snapshot) in
-            var _tastes = Array<TasteDB>()
-            for i in snapshot.children{
-                let taste = TasteDB(snapshot: i as! DataSnapshot)
-                if taste.isAvailable == true{
-                    _tastes.append(taste)
-                    print(taste)
-                }
-            }
-            self?.tastes = _tastes
-            self?.tableView.reloadData()
-        }
-        )
+        loadDatabase()
+        self.tableView.reloadData()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -109,5 +101,27 @@ class ThirdViewController: UITableViewController, UINavigationControllerDelegate
             timeController.selectedTabacoo = selectedTabacoo
             timeController.selectedFlavour = selectedTastes
         }
+    }
+    
+    private func loadDatabase() {
+        ref = Database.database().reference().child("tobaccos").child((self.selectedTabacoo!.lowercased())).child("tastes")
+        ref.observe(.value, with: { [weak self] (snapshot) in
+            var _tastes = Array<TasteDB>()
+            for i in snapshot.children{
+                let taste = TasteDB(snapshot: i as! DataSnapshot)
+                if taste.isAvailable == true{
+                    _tastes.append(taste)
+                    print(taste)
+                }
+            }
+            self?.tastes = _tastes
+            }
+        )
+    }
+    
+    @objc func refresh(_ sender: AnyObject) {
+        loadDatabase()
+        self.tableView.reloadData()
+        self.refreshControl?.endRefreshing()
     }
 }
