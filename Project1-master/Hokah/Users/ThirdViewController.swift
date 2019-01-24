@@ -16,9 +16,11 @@ class ThirdViewController: UITableViewController, UINavigationControllerDelegate
     var selectedTabacoo: String?
     var table: Int?
     var tastes = Array<TasteDB>()
+    var teaTastes = Array<TasteDB>()
     var ref: DatabaseReference!
     var selectedTastes = [String]()
     
+    @IBOutlet weak var readyBut: UIBarButtonItem!
     // MARK: View settings
     
     override func viewDidLoad() {
@@ -28,15 +30,28 @@ class ThirdViewController: UITableViewController, UINavigationControllerDelegate
         tableView.tableFooterView = UIView()
         
         self.refreshControl = UIRefreshControl()
-        self.refreshControl?.bounds = CGRect(x: 0, y: 50, width: (refreshControl?.bounds.size.width)!, height: (refreshControl?.bounds.size.height)!)
+        //self.refreshControl?.bounds = CGRect(x: 0, y: 50, width: (refreshControl?.bounds.size.width)!, height: (refreshControl?.bounds.size.height)!)
         self.refreshControl?.addTarget(self, action: #selector(refresh(_:)), for: UIControl.Event.valueChanged)
         
+        ref = Database.database().reference().child("tea")
+        ref.observe(.value, with: { [weak self] (snapshot) in
+            var _tastes = Array<TasteDB>()
+            for i in snapshot.children{
+                let taste = TasteDB(snapshot: i as! DataSnapshot)
+                if taste.isAvailable == true{
+                    _tastes.append(taste)
+                }
+            }
+            self?.teaTastes = _tastes
+            
+            }
+        )
+        self.readyBut.isEnabled = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadDatabase()
-        self.tableView.reloadData()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -79,6 +94,11 @@ class ThirdViewController: UITableViewController, UINavigationControllerDelegate
                 selectedTastes.append(tastes[indexPath.row].name)
             }
         }
+        if selectedTastes.count > 0 {
+            self.readyBut.isEnabled = true
+        } else {
+            self.readyBut.isEnabled = false
+        }
     }
     
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
@@ -100,6 +120,7 @@ class ThirdViewController: UITableViewController, UINavigationControllerDelegate
             timeController.selectedTable = table
             timeController.selectedTabacoo = selectedTabacoo
             timeController.selectedFlavour = selectedTastes
+            timeController.tastes = teaTastes
         }
     }
     
@@ -115,13 +136,15 @@ class ThirdViewController: UITableViewController, UINavigationControllerDelegate
                 }
             }
             self?.tastes = _tastes
+            self?.tableView.reloadData()
             }
+            
         )
+        
     }
     
     @objc func refresh(_ sender: AnyObject) {
         loadDatabase()
-        self.tableView.reloadData()
         self.refreshControl?.endRefreshing()
     }
 }

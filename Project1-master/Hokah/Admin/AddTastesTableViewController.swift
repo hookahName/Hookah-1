@@ -46,7 +46,7 @@ class AddTastesTableViewController: UITableViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        //getAvailabilityOfTobacco()
+        getAvailabilityOfTobacco()
         ref.removeAllObservers()
     }
     

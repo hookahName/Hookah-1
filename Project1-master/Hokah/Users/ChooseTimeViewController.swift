@@ -11,7 +11,7 @@ import Firebase
 class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     // MARK: Properties
-    
+    let TeaSwitch = UISwitch()
     var ref: DatabaseReference!
     var tastes = Array<TasteDB>()
     var selectedTable: Int?
@@ -19,28 +19,17 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
     var selectedFlavour: [String]?
     var chosenTime: String = ""
     var chosenTea: String = ""
-
+    let TeaTastesPicker = UIPickerView()
+    
     @IBOutlet weak var ChooseTimeOutlet: UIDatePicker!
     @IBOutlet weak var TeaLabel: UILabel!
-    @IBOutlet weak var TeaSwitch: UISwitch!
     @IBOutlet weak var readyBut: UIBarButtonItem!
     
     // MARK: View settings
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        ref = Database.database().reference().child("tea")
-        ref.observe(.value, with: { [weak self] (snapshot) in
-            var _tastes = Array<TasteDB>()
-            for i in snapshot.children{
-                let taste = TasteDB(snapshot: i as! DataSnapshot)
-                if taste.isAvailable == true{
-                    _tastes.append(taste)
-                }
-            }
-            self?.tastes = _tastes
-            }
-        )
+        
     }
 
     override func viewDidLoad() {
@@ -61,12 +50,27 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
         
         //Switch
         TeaSwitch.isOn = false
+        self.TeaSwitch.frame = CGRect(x: 196, y: 318, width: 0, height: 0)
+        self.TeaSwitch.setOn(false, animated: true)
+        self.TeaSwitch.addTarget(self, action: #selector(switchChange(paramTarget:)), for: .valueChanged)
+        view.addSubview(self.TeaSwitch)
+        
+        //Picker
+        self.TeaTastesPicker.frame = CGRect(x: 0, y: 426, width: 375, height: 216)
+        self.TeaTastesPicker.tag = 555
+        //set the pickers datasource and delegate
+        self.TeaTastesPicker.delegate = self
+        self.TeaTastesPicker.dataSource = self
+        TeaTastesPicker.isHidden = true
+        view.addSubview(self.TeaTastesPicker)
+        
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        ref.removeAllObservers()
+        
     }
     
     // MARK: Picker view settings
@@ -89,32 +93,7 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
     
     // MARR: Private functions
     
-    @IBAction func teaSwitch(_ sender: Any) {
-        if TeaSwitch.isOn == true {
-            // Я убрал описание чтобы поместить UIPickerView, потом разберемся как уместить все
-            let alertController = UIAlertController(title: "Выберите вкус", message: "\n\n\n\n\n\n", preferredStyle: .alert)
-            let pickerFrame = UIPickerView(frame: CGRect(x: 5, y: 30, width: 250, height: 140)) // CGRectMake(left, top, width, height) - left and top are like margins
-            pickerFrame.tag = 555
-            //set the pickers datasource and delegate
-            pickerFrame.delegate = self
-            pickerFrame.dataSource = self
-            
-            //Add the picker to the alert controller
-            alertController.view.addSubview(pickerFrame)
-            let cancel = UIAlertAction(title: "Cancel", style: .default) {
-                action in
-                self.TeaSwitch.isOn = false
-                return
-            }
-            let save = UIAlertAction(title: "Save", style: .default) {
-                action in
-                self.chosenTea = self.pickerView(pickerFrame, titleForRow: pickerFrame.selectedRow(inComponent: 0), forComponent: 0)!
-            }
-            alertController.addAction(cancel)
-            alertController.addAction(save)
-            present(alertController, animated: true)
-        }
-    }
+
     
     @IBAction func chooseTime(_ sender: UIDatePicker) {
         
@@ -125,6 +104,17 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
         let dateString = dateFormatter.string(from: currentTime)
         print("Custom date format Sample 1 =  \(dateString)")
         chosenTime = dateString
+    }
+    
+    
+    @objc func switchChange(paramTarget: UISwitch) {
+        if paramTarget.isOn {
+            self.TeaTastesPicker.isHidden = false
+            self.chosenTea = self.pickerView(TeaTastesPicker, titleForRow: TeaTastesPicker.selectedRow(inComponent: 0), forComponent: 0)!
+        } else {
+            self.TeaTastesPicker.isHidden = true
+            
+        }
     }
     
     @IBAction func readyButPressed(_ sender: UIBarButtonItem) {
@@ -138,9 +128,9 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
             resultController.selectedFlavour = self.selectedFlavour
             resultController.selectedTime = self.chosenTime
             if TeaSwitch.isOn == true {
-                resultController.selectedTea = self.chosenTea
+                resultController.selectedTea = "Чай: \(self.chosenTea)"
             } else {
-                resultController.selectedTea = "Вы не выбрали чай"
+                resultController.selectedTea = "Чай: не выбран"
             }
         }
     }

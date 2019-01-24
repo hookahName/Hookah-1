@@ -23,6 +23,7 @@ class Result: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var tabacoo: UILabel!
     @IBOutlet weak var flavour: UILabel!
     @IBOutlet weak var TimeLabel: UILabel!
+    @IBOutlet weak var teaTaste: UILabel!
     
     // MARK: View settings
     
@@ -33,13 +34,7 @@ class Result: UIViewController, UINavigationControllerDelegate {
         guard let selectedTabacoo = selectedTabacoo else { return }
         guard let selectedFlavour = selectedFlavour else { return }
         guard let selectedTime = selectedTime else { return }
-        
-        if selectedFlavour == [] {
-            print("EMPTY")
-        } else {
-            print("ya tut")
-            print(selectedFlavour)
-        }
+        guard let selectedTea = selectedTea else {return }
         
         for i in 0..<selectedFlavour.count {
             if i == selectedFlavour.count - 1 {
@@ -49,9 +44,10 @@ class Result: UIViewController, UINavigationControllerDelegate {
             }
         }
         
-        flavour.text = flavours
-        tableNumber.text = "Table \(selectedTable+1)"
-        tabacoo.text = selectedTabacoo
+        flavour.text = "Вкус: \(flavours)"
+        tableNumber.text = "Стол: \(selectedTable+1)"
+        tabacoo.text = "Табак: \(selectedTabacoo)"
         TimeLabel.text = "Ждем вас в \(String(describing: selectedTime))"
+        teaTaste.text = selectedTea
     }
 }
