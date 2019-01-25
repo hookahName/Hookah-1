@@ -392,6 +392,14 @@
                                     <action selector="regButtonPressed:" destination="mnx-Xz-S7e" eventType="touchUpInside" id="nUt-2m-2wT"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nSa-h9-gtw">
+                                <rect key="frame" x="165" y="550" width="45" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Назад"/>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="mnx-Xz-S7e" eventType="touchUpInside" id="B13-f0-4lQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="TRD-pv-NmQ"/>
@@ -567,6 +575,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="KHK-SC-RzL"/>
+        <segue reference="yrL-ht-TRZ"/>
     </inferredMetricsTieBreakers>
 </document>

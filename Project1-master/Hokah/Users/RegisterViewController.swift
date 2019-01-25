@@ -28,8 +28,8 @@ class RegisterViewController: UIViewController {
         lastnameTextfield.text = ""
         emailTextfield.text = ""
         passwordTextfield.text = ""
-        
     }
+    
     @IBAction func regButtonPressed(_ sender: Any) {
         guard let email = emailTextfield.text, let password = passwordTextfield.text, let name = nameTextfield.text, let lastname = lastnameTextfield.text, name != "", lastname != "", email != "", password != "" else {
             
@@ -49,7 +49,12 @@ class RegisterViewController: UIViewController {
             }
         }
     }
-
+    
+    
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     
     
     /*
