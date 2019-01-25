@@ -123,7 +123,7 @@ class SeconViewController: UITableViewController, UINavigationControllerDelegate
             guard let flavourController = segue.destination as? ThirdViewController else {return}
             flavourController.table = selectedTable
             if let indexPath = tableView.indexPathForSelectedRow {
-                flavourController.selectedTabacoo = tobaccos[indexPath.row].name
+                flavourController.selectedTabacoo = tobaccos[indexPath.row]
             }
         }
     }

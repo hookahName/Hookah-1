@@ -13,30 +13,25 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
     // MARK: Properties
     let TeaSwitch = UISwitch()
     var ref: DatabaseReference!
-    var tastes = Array<TasteDB>()
+    var teaTastes = Array<TasteDB>()
     var selectedTable: Int?
-    var selectedTabacoo: String?
-    var selectedFlavour: [String]?
+    var selectedTabacoo: TobaccoDB?
+    var selectedFlavour: [TasteDB]?
     var chosenTime: String = ""
-    var chosenTea: String = ""
-    let TeaTastesPicker = UIPickerView()
+    var chosenTea: TasteDB?
+    let teaTastesPicker = UIPickerView()
     
-    @IBOutlet weak var ChooseTimeOutlet: UIDatePicker!
+    @IBOutlet weak var chooseTimeOutlet: UIDatePicker!
     @IBOutlet weak var TeaLabel: UILabel!
     @IBOutlet weak var readyBut: UIBarButtonItem!
     
     // MARK: View settings
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //DatePicker
-        ChooseTimeOutlet.minimumDate = Date()
+        chooseTimeOutlet.minimumDate = Date()
         
         let dateString = "23:59" // change to your date format
         let dateFormatter = DateFormatter()
@@ -44,7 +39,7 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
         dateFormatter.locale = Locale(identifier: "ru_RU")
         
         let date = dateFormatter.date(from: dateString)
-        ChooseTimeOutlet.maximumDate = date
+        chooseTimeOutlet.maximumDate = date
         dateFormatter.dateFormat = "HH:mm"
         chosenTime = dateFormatter.string(from: Date())
         
@@ -56,20 +51,13 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
         view.addSubview(self.TeaSwitch)
         
         //Picker
-        self.TeaTastesPicker.frame = CGRect(x: 0, y: 426, width: 375, height: 216)
-        self.TeaTastesPicker.tag = 555
+        self.teaTastesPicker.frame = CGRect(x: 0, y: 426, width: 375, height: 216)
+        self.teaTastesPicker.tag = 555
         //set the pickers datasource and delegate
-        self.TeaTastesPicker.delegate = self
-        self.TeaTastesPicker.dataSource = self
-        TeaTastesPicker.isHidden = true
-        view.addSubview(self.TeaTastesPicker)
-        
-        
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
+        self.teaTastesPicker.delegate = self
+        self.teaTastesPicker.dataSource = self
+        teaTastesPicker.isHidden = true
+        view.addSubview(self.teaTastesPicker)
         
     }
     
@@ -80,15 +68,15 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return tastes.count
+        return teaTastes.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return tastes[row].name
+        return teaTastes[row].name
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.chosenTea = tastes[row].name
+        self.chosenTea = teaTastes[row]
     }
     
     // MARR: Private functions
@@ -109,10 +97,11 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
     
     @objc func switchChange(paramTarget: UISwitch) {
         if paramTarget.isOn {
-            self.TeaTastesPicker.isHidden = false
-            self.chosenTea = self.pickerView(TeaTastesPicker, titleForRow: TeaTastesPicker.selectedRow(inComponent: 0), forComponent: 0)!
+            self.teaTastesPicker.isHidden = false
+            let chosenTeaString = self.pickerView(teaTastesPicker, titleForRow: teaTastesPicker.selectedRow(inComponent: 0), forComponent: 0)!
+            self.chosenTea = self.teaTastes.first(where: {$0.name == chosenTeaString})
         } else {
-            self.TeaTastesPicker.isHidden = true
+            self.teaTastesPicker.isHidden = true
             
         }
     }
@@ -128,10 +117,8 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
             resultController.selectedFlavour = self.selectedFlavour
             resultController.selectedTime = self.chosenTime
             if TeaSwitch.isOn == true {
-                resultController.selectedTea = "Чай: \(self.chosenTea)"
-            } else {
-                resultController.selectedTea = "Чай: не выбран"
-            }
+                resultController.selectedTea = self.chosenTea
+            } 
         }
     }
 }

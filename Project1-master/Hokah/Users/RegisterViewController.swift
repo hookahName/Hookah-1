@@ -50,7 +50,7 @@ class RegisterViewController: UIViewController {
                 }
             }
             else{
-                print(error?.localizedDescription)
+                print(error!.localizedDescription)
             }
         }
     }

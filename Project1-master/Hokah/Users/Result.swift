@@ -13,10 +13,10 @@ class Result: UIViewController, UINavigationControllerDelegate {
     // MARK: Properties
     
     var selectedTable: Int?
-    var selectedTabacoo: String?
-    var selectedFlavour: [String]?
+    var selectedTabacoo: TobaccoDB?
+    var selectedFlavour: [TasteDB]?
     var selectedTime: String?
-    var selectedTea: String?
+    var selectedTea: TasteDB?
     var flavours: String = ""
     
     @IBOutlet weak var tableNumber: UILabel!
@@ -34,20 +34,28 @@ class Result: UIViewController, UINavigationControllerDelegate {
         guard let selectedTabacoo = selectedTabacoo else { return }
         guard let selectedFlavour = selectedFlavour else { return }
         guard let selectedTime = selectedTime else { return }
-        guard let selectedTea = selectedTea else {return }
+        if let selectedTea = selectedTea {
+            teaTaste.text = "Чай: \(selectedTea.name)"
+        }
         
         for i in 0..<selectedFlavour.count {
             if i == selectedFlavour.count - 1 {
-                flavours += selectedFlavour[i]
+                flavours += selectedFlavour[i].name
             } else {
-                flavours += selectedFlavour[i] + ", "
+                flavours += selectedFlavour[i].name + ", "
             }
         }
         
         flavour.text = "Вкус: \(flavours)"
         tableNumber.text = "Стол: \(selectedTable+1)"
-        tabacoo.text = "Табак: \(selectedTabacoo)"
+        tabacoo.text = "Табак: \(selectedTabacoo.name)"
         TimeLabel.text = "Ждем вас в \(String(describing: selectedTime))"
-        teaTaste.text = selectedTea
+        if let selectedTea = selectedTea {
+            teaTaste.text = "Чай: \(selectedTea.name)"
+        } else {
+            teaTaste.text = "Чай не выбран"
+        }
+    }
+    @IBAction func makeOrderButton(_ sender: Any) {
     }
 }

@@ -40,7 +40,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Настройки" id="wEF-z2-XGz">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="EditButtonPressed:" destination="cDQ-3p-U6r" id="7cV-wE-CAV"/>
+                                <action selector="editButtonPressed:" destination="cDQ-3p-U6r" id="ivU-cd-yhr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -279,7 +279,7 @@
                     <navigationItem key="navigationItem" title="Title" id="Prm-KP-QfO">
                         <barButtonItem key="rightBarButtonItem" title="Готово" id="CDK-A1-bCf">
                             <connections>
-                                <action selector="ReadyButtonPressed:" destination="rOD-Rh-l5O" id="sDb-p7-Uuf"/>
+                                <action selector="readyButtonPressed:" destination="rOD-Rh-l5O" id="ad3-dc-pK1"/>
                                 <segue destination="NO8-wy-wIw" kind="show" identifier="ToTime" id="k9H-9k-8z3"/>
                             </connections>
                         </barButtonItem>
@@ -337,6 +337,7 @@
                     <connections>
                         <outlet property="ChooseTimeOutlet" destination="NFi-8a-cKH" id="JDo-H5-FGF"/>
                         <outlet property="TeaLabel" destination="cRA-Qc-tZo" id="y6n-hm-rJo"/>
+                        <outlet property="chooseTimeOutlet" destination="NFi-8a-cKH" id="Van-ti-RAT"/>
                         <outlet property="readyBut" destination="Nhs-pj-Fyq" id="IkC-04-MkT"/>
                     </connections>
                 </viewController>
@@ -539,16 +540,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ug-D2-7xF">
+                                <rect key="frame" x="119" y="493" width="103" height="30"/>
+                                <state key="normal" title="Сделать заказ"/>
+                                <connections>
+                                    <action selector="makeOrderButton:" destination="62v-KC-sj4" eventType="touchUpInside" id="q7Q-D3-mKq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="0Ie-Fx-5Ea" firstAttribute="leading" secondItem="yF7-mI-fHY" secondAttribute="leading" constant="56" id="67I-it-on0"/>
+                            <constraint firstItem="yF7-mI-fHY" firstAttribute="bottom" secondItem="6ug-D2-7xF" secondAttribute="bottom" constant="100" id="FDr-lI-6iR"/>
                             <constraint firstItem="aJy-xw-lnh" firstAttribute="leading" secondItem="yF7-mI-fHY" secondAttribute="leading" constant="56" id="FvE-Og-VQO"/>
                             <constraint firstItem="N0d-lQ-ENf" firstAttribute="width" relation="lessThanOrEqual" secondItem="Gi4-ix-Mg8" secondAttribute="width" id="HOz-xj-Ro1"/>
                             <constraint firstItem="Gi4-ix-Mg8" firstAttribute="top" secondItem="0Ie-Fx-5Ea" secondAttribute="bottom" constant="39" id="HaU-IU-VtN"/>
                             <constraint firstItem="aJy-xw-lnh" firstAttribute="top" secondItem="yF7-mI-fHY" secondAttribute="top" constant="126" id="Qfi-W7-haj"/>
                             <constraint firstItem="Gi4-ix-Mg8" firstAttribute="width" secondItem="0Ie-Fx-5Ea" secondAttribute="width" id="RW1-Tz-UZ0"/>
                             <constraint firstItem="0Ie-Fx-5Ea" firstAttribute="width" relation="lessThanOrEqual" secondItem="aJy-xw-lnh" secondAttribute="width" id="SdG-0w-1XU"/>
+                            <constraint firstItem="yF7-mI-fHY" firstAttribute="trailing" secondItem="6ug-D2-7xF" secondAttribute="trailing" constant="153" id="UBf-U4-mrG"/>
+                            <constraint firstItem="6ug-D2-7xF" firstAttribute="leading" secondItem="yF7-mI-fHY" secondAttribute="leading" constant="119" id="WGH-ob-itN"/>
                             <constraint firstItem="Gi4-ix-Mg8" firstAttribute="leading" secondItem="yF7-mI-fHY" secondAttribute="leading" constant="56" id="bDo-U5-WDe"/>
                             <constraint firstItem="N0d-lQ-ENf" firstAttribute="leading" secondItem="yF7-mI-fHY" secondAttribute="leading" constant="56" id="dXq-AG-lQP"/>
                             <constraint firstItem="N0d-lQ-ENf" firstAttribute="top" secondItem="Gi4-ix-Mg8" secondAttribute="bottom" constant="39" id="ffD-Gk-I4d"/>

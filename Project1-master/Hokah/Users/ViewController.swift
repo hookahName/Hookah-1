@@ -72,7 +72,7 @@ class ViewController: UITableViewController {
         }
     }
     
-    @IBAction func EditButtonPressed(_ sender: UIBarButtonItem) {
+    @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
         self.performSegue(withIdentifier: "Admin", sender: self)
     }
 

@@ -13,14 +13,15 @@ class ThirdViewController: UITableViewController, UINavigationControllerDelegate
 
     // MARK: Properties
     
-    var selectedTabacoo: String?
+    var selectedTabacoo: TobaccoDB?
     var table: Int?
     var tastes = Array<TasteDB>()
     var teaTastes = Array<TasteDB>()
     var ref: DatabaseReference!
-    var selectedTastes = [String]()
+    var selectedTastes = [TasteDB]()
     
     @IBOutlet weak var readyBut: UIBarButtonItem!
+    
     // MARK: View settings
     
     override func viewDidLoad() {
@@ -35,14 +36,14 @@ class ThirdViewController: UITableViewController, UINavigationControllerDelegate
         
         ref = Database.database().reference().child("tea")
         ref.observe(.value, with: { [weak self] (snapshot) in
-            var _tastes = Array<TasteDB>()
+            var _teaTastes = Array<TasteDB>()
             for i in snapshot.children{
-                let taste = TasteDB(snapshot: i as! DataSnapshot)
-                if taste.isAvailable == true{
-                    _tastes.append(taste)
+                let teaTaste = TasteDB(snapshot: i as! DataSnapshot)
+                if teaTaste.isAvailable == true{
+                    _teaTastes.append(teaTaste)
                 }
             }
-            self?.teaTastes = _tastes
+            self?.teaTastes = _teaTastes
             
             }
         )
@@ -86,12 +87,12 @@ class ThirdViewController: UITableViewController, UINavigationControllerDelegate
         if let cell = tableView.cellForRow(at: indexPath) {
             if cell.accessoryType == .checkmark {
                 cell.accessoryType = .none
-                if let index = selectedTastes.firstIndex(of: tastes[indexPath.row].name) {
+                if let index = selectedTastes.firstIndex(where: {$0.name == cell.textLabel?.text}) {
                     selectedTastes.remove(at: index)
                 }
             } else {
                 cell.accessoryType = .checkmark
-                selectedTastes.append(tastes[indexPath.row].name)
+                selectedTastes.append(tastes[indexPath.row])
             }
         }
         if selectedTastes.count > 0 {
@@ -111,7 +112,7 @@ class ThirdViewController: UITableViewController, UINavigationControllerDelegate
     
     // MARK: Private functions
     
-    @IBAction func ReadyButtonPressed(_ sender: UIBarButtonItem) {
+    @IBAction func readyButtonPressed(_ sender: UIBarButtonItem) {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -120,12 +121,12 @@ class ThirdViewController: UITableViewController, UINavigationControllerDelegate
             timeController.selectedTable = table
             timeController.selectedTabacoo = selectedTabacoo
             timeController.selectedFlavour = selectedTastes
-            timeController.tastes = teaTastes
+            timeController.teaTastes = teaTastes
         }
     }
     
     private func loadDatabase() {
-        ref = Database.database().reference().child("tobaccos").child((self.selectedTabacoo!.lowercased())).child("tastes")
+        ref = Database.database().reference().child("tobaccos").child((self.selectedTabacoo!.name)).child("tastes")
         ref.observe(.value, with: { [weak self] (snapshot) in
             var _tastes = Array<TasteDB>()
             for i in snapshot.children{
