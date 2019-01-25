@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HMQ-fQ-ybM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xb4-ZY-hFL">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -37,12 +37,20 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="FbX-LR-Nx0">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="wEF-z2-XGz">
-                            <color key="tintColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <action selector="EditButtonPressed:" destination="cDQ-3p-U6r" id="7cV-wE-CAV"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem systemItem="edit" id="wEF-z2-XGz">
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="EditButtonPressed:" destination="cDQ-3p-U6r" id="7cV-wE-CAV"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Выход" id="eCo-Zp-LPM">
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="signoutPressed:" destination="cDQ-3p-U6r" id="e8X-zK-bAn"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -340,6 +348,130 @@
             </objects>
             <point key="canvasLocation" x="3716" y="157.87106446776613"/>
         </scene>
+        <!--Register View Controller-->
+        <scene sceneID="j5p-Sq-Dno">
+            <objects>
+                <viewController id="mnx-Xz-S7e" customClass="RegisterViewController" customModule="Hokah" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GUd-h3-nTs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Имя" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="15c-qC-193">
+                                <rect key="frame" x="102" y="160" width="170" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Фамилия" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="05z-gN-TBs">
+                                <rect key="frame" x="102" y="232" width="170" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Почта" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="myK-s4-PkD">
+                                <rect key="frame" x="102" y="312" width="170" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z6J-fj-fjR">
+                                <rect key="frame" x="102" y="395" width="170" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wrv-aJ-Axv">
+                                <rect key="frame" x="113" y="480" width="149" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Зарегистрироваться"/>
+                                <connections>
+                                    <action selector="regButtonPressed:" destination="mnx-Xz-S7e" eventType="touchUpInside" id="nUt-2m-2wT"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="TRD-pv-NmQ"/>
+                    </view>
+                    <connections>
+                        <outlet property="emailTextfield" destination="myK-s4-PkD" id="HBe-yn-eB9"/>
+                        <outlet property="lastnameTextfield" destination="05z-gN-TBs" id="cYA-dM-5Ya"/>
+                        <outlet property="nameTextfield" destination="15c-qC-193" id="q7L-mH-q7c"/>
+                        <outlet property="passwordTextfield" destination="Z6J-fj-fjR" id="Z0F-S6-eQa"/>
+                        <outlet property="regButton" destination="Wrv-aJ-Axv" id="XzE-oe-dIv"/>
+                        <segue destination="HMQ-fQ-ybM" kind="show" identifier="fromReg" id="KHK-SC-RzL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W6o-fo-oFG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-847.20000000000005" y="-580.65967016491754"/>
+        </scene>
+        <!--Enter View Controller-->
+        <scene sceneID="XGN-I0-l24">
+            <objects>
+                <viewController id="xb4-ZY-hFL" customClass="EnterViewController" customModule="Hokah" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Awj-U6-gcA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fUd-mz-5o0">
+                                <rect key="frame" x="85" y="300" width="204" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m9t-oq-Z5X">
+                                <rect key="frame" x="165" y="364" width="44" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Войти"/>
+                                <connections>
+                                    <action selector="enterButPressed:" destination="xb4-ZY-hFL" eventType="touchUpInside" id="DAo-nZ-klE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YcW-kZ-op2">
+                                <rect key="frame" x="143" y="420" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Регистрация"/>
+                                <connections>
+                                    <action selector="registerButPressed:" destination="xb4-ZY-hFL" eventType="touchUpInside" id="DJW-av-XM0"/>
+                                    <segue destination="mnx-Xz-S7e" kind="show" identifier="Register" id="pk2-Eb-dps"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YC4-nj-FWD">
+                                <rect key="frame" x="85" y="71" width="204" height="93"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Почта" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wOz-tI-Tyj">
+                                <rect key="frame" x="85" y="216" width="204" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="moT-yd-FK9"/>
+                    </view>
+                    <connections>
+                        <outlet property="emailTextfield" destination="wOz-tI-Tyj" id="daB-KM-yc1"/>
+                        <outlet property="enterBut" destination="m9t-oq-Z5X" id="jK9-0l-tte"/>
+                        <outlet property="passTextfield" destination="fUd-mz-5o0" id="IKG-kT-04e"/>
+                        <outlet property="registerBut" destination="YcW-kZ-op2" id="inF-lE-BRB"/>
+                        <outlet property="warningLabel" destination="YC4-nj-FWD" id="MNI-WL-r2u"/>
+                        <segue destination="HMQ-fQ-ybM" kind="show" identifier="Enter" id="yrL-ht-TRZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gp2-jd-Ygg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-839.20000000000005" y="158.77061469265368"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="TqP-4K-Q0W">
             <objects>
@@ -434,4 +566,7 @@
             <point key="canvasLocation" x="4645.6000000000004" y="157.87106446776613"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="KHK-SC-RzL"/>
+    </inferredMetricsTieBreakers>
 </document>

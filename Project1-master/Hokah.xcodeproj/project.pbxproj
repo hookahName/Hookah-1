@@ -17,6 +17,9 @@
 		22404B4621F6804A00DF041C /* passClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22404B4521F6804A00DF041C /* passClass.swift */; };
 		2265D20121EA07740093ABD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2265D20021EA07740093ABD3 /* Main.storyboard */; };
 		2265D20321EA08C00093ABD3 /* AddTobaccoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2265D20221EA08C00093ABD3 /* AddTobaccoViewController.swift */; };
+		22D5ADE121FA7CD300F74ED3 /* UserClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5ADE021FA7CD300F74ED3 /* UserClass.swift */; };
+		22D5ADE321FA7E1E00F74ED3 /* EnterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5ADE221FA7E1E00F74ED3 /* EnterViewController.swift */; };
+		22D5ADE521FA833300F74ED3 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5ADE421FA833300F74ED3 /* RegisterViewController.swift */; };
 		7157316790B458B34EA9F430 /* Pods_Hokah.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6278C823D3E93911490742 /* Pods_Hokah.framework */; };
 		ED18062921E23AB1006148BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED18062821E23AB1006148BE /* AppDelegate.swift */; };
 		ED18062B21E23AB1006148BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED18062A21E23AB1006148BE /* ViewController.swift */; };
@@ -41,6 +44,9 @@
 		22404B4521F6804A00DF041C /* passClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = passClass.swift; sourceTree = "<group>"; };
 		2265D20021EA07740093ABD3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		2265D20221EA08C00093ABD3 /* AddTobaccoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTobaccoViewController.swift; sourceTree = "<group>"; };
+		22D5ADE021FA7CD300F74ED3 /* UserClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserClass.swift; sourceTree = "<group>"; };
+		22D5ADE221FA7E1E00F74ED3 /* EnterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterViewController.swift; sourceTree = "<group>"; };
+		22D5ADE421FA833300F74ED3 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		B1410928FA4C41FB94A139DE /* Pods-Hokah.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hokah.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hokah/Pods-Hokah.debug.xcconfig"; sourceTree = "<group>"; };
 		ED18062521E23AB1006148BE /* Hokah.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hokah.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED18062821E23AB1006148BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +95,8 @@
 		22404B4021F6655900DF041C /* Users */ = {
 			isa = PBXGroup;
 			children = (
+				22D5ADE221FA7E1E00F74ED3 /* EnterViewController.swift */,
+				22D5ADE421FA833300F74ED3 /* RegisterViewController.swift */,
 				ED18062A21E23AB1006148BE /* ViewController.swift */,
 				ED18063C21E23E7A006148BE /* SeconViewController.swift */,
 				ED18063E21E24772006148BE /* ThirdViewController.swift */,
@@ -147,6 +155,7 @@
 				22404B2F21EA4D6B00DF041C /* TobaccoClassForDB.swift */,
 				22404B3521F4DDB600DF041C /* TasteClassForDB.swift */,
 				22404B4521F6804A00DF041C /* passClass.swift */,
+				22D5ADE021FA7CD300F74ED3 /* UserClass.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -281,16 +290,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				2265D20321EA08C00093ABD3 /* AddTobaccoViewController.swift in Sources */,
+				22D5ADE321FA7E1E00F74ED3 /* EnterViewController.swift in Sources */,
 				EDABF6C321F40E1300C73656 /* AdminTableViewController.swift in Sources */,
 				22404B3621F4DDB600DF041C /* TasteClassForDB.swift in Sources */,
 				22404B3021EA4D6B00DF041C /* TobaccoClassForDB.swift in Sources */,
 				ED18063D21E23E7A006148BE /* SeconViewController.swift in Sources */,
+				22D5ADE121FA7CD300F74ED3 /* UserClass.swift in Sources */,
 				22404B4621F6804A00DF041C /* passClass.swift in Sources */,
 				22404B3E21F65A4700DF041C /* ChooseTimeViewController.swift in Sources */,
 				ED18064121E24EAB006148BE /* Result.swift in Sources */,
 				ED18062B21E23AB1006148BE /* ViewController.swift in Sources */,
 				22404B4421F6687D00DF041C /* ChangeTeaTasteTableViewController.swift in Sources */,
 				22404B3421F4CAED00DF041C /* AddTastesTableViewController.swift in Sources */,
+				22D5ADE521FA833300F74ED3 /* RegisterViewController.swift in Sources */,
 				22404B4221F665CF00DF041C /* AdminViewController.swift in Sources */,
 				ED18063F21E24772006148BE /* ThirdViewController.swift in Sources */,
 				ED18062921E23AB1006148BE /* AppDelegate.swift in Sources */,

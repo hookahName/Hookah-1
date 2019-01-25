@@ -97,19 +97,6 @@ class ViewController: UITableViewController {
     }
     
     private func loadDataBase() {
-        /*
-        ref = Database.database().reference().child("tobaccos")
-        ref.observe(.value, with: { [weak self] (snapshot) in
-            var _tobaccos = Array<TobaccoDB>()
-            for i in snapshot.children{
-                let tobacco = TobaccoDB(snapshot: i as! DataSnapshot)
-                _tobaccos.append(tobacco)
-                
-            }
-            self?.tobaccos = _tobaccos
-            self?.tableView.reloadData()
-        })
-        */
         ref = Database.database().reference().child("password")
         ref.observe(.value, with: { [weak self] (snapshot) in
             var _password = Array<PasswordDB>()
@@ -121,5 +108,15 @@ class ViewController: UITableViewController {
             self?.password = _password
         })
     }
+    
+    @IBAction func signoutPressed(_ sender: UIBarButtonItem) {
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            print(error.localizedDescription)
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
 
