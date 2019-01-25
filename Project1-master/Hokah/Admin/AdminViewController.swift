@@ -13,12 +13,21 @@ class AdminViewController: UIViewController {
     // MARK: Properties
     
     var ref: DatabaseReference!
+    @IBOutlet weak var changeTobAndTastesButton: UIButton!
+    @IBOutlet weak var changeTeaTastesButton: UIButton!
     
     // MARK: View settings
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Admin"
+        
+        if Auth.auth().currentUser?.uid != "KosoGzwcysXHrye6pAVXDGJO0yD2" {
+            changeTeaTastesButton.isHidden = true
+            changeTobAndTastesButton.isHidden = true
+        } else {
+            title = "Админ"
+        }
+        
         // Do any additional setup after loading the view.
     }
     
@@ -33,21 +42,12 @@ class AdminViewController: UIViewController {
     }
     
     @IBAction func changePassButtonPressed(_ sender: Any) {
-        ref = Database.database().reference()
-        let alertController = UIAlertController(title: "Изменить пароль", message: "Новый пароль", preferredStyle: .alert)
-        alertController.addTextField()
-        let save = UIAlertAction(title: "Save", style: .default) { [ weak self] _ in
-            
-            guard let textField = alertController.textFields?.first, textField.text != "" else {return}
-            let pass = PasswordDB(password: textField.text!)
-            _ = self?.ref.child("password").child("password").updateChildValues(["password": pass?.password as Any]) // Почему _ ?
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            print(error.localizedDescription)
         }
-        
-        let cancel = UIAlertAction(title: "Cancel", style: .default)
-        
-        alertController.addAction(save)
-        alertController.addAction(cancel)
-        present(alertController, animated: true)
+        dismiss(animated: true, completion: nil)
     }
 }
     

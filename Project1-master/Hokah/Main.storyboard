@@ -37,20 +37,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="FbX-LR-Nx0">
-                        <leftBarButtonItems>
-                            <barButtonItem systemItem="edit" id="wEF-z2-XGz">
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <action selector="EditButtonPressed:" destination="cDQ-3p-U6r" id="7cV-wE-CAV"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Выход" id="eCo-Zp-LPM">
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <action selector="signoutPressed:" destination="cDQ-3p-U6r" id="e8X-zK-bAn"/>
-                                </connections>
-                            </barButtonItem>
-                        </leftBarButtonItems>
+                        <barButtonItem key="leftBarButtonItem" title="Настройки" id="wEF-z2-XGz">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="EditButtonPressed:" destination="cDQ-3p-U6r" id="7cV-wE-CAV"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -113,7 +105,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VMg-L9-ugT">
                                 <rect key="frame" x="124" y="546" width="126" height="30"/>
-                                <state key="normal" title="Изменить пароль"/>
+                                <state key="normal" title="Выход"/>
                                 <connections>
                                     <action selector="changePassButtonPressed:" destination="tMF-Ig-Ibo" eventType="touchUpInside" id="1II-yr-JdD"/>
                                 </connections>
@@ -141,6 +133,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0iU-8w-UYf"/>
                     </view>
+                    <connections>
+                        <outlet property="changeTeaTastesButton" destination="iqq-Em-mzY" id="Ljh-Zg-fSc"/>
+                        <outlet property="changeTobAndTastesButton" destination="Yqc-lS-BZl" id="zW9-aP-Fv0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gIo-cN-GQh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -382,7 +378,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wrv-aJ-Axv">
                                 <rect key="frame" x="113" y="480" width="149" height="30"/>
@@ -430,7 +426,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m9t-oq-Z5X">
                                 <rect key="frame" x="165" y="364" width="44" height="30"/>
@@ -575,6 +571,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="yrL-ht-TRZ"/>
+        <segue reference="KHK-SC-RzL"/>
     </inferredMetricsTieBreakers>
 </document>

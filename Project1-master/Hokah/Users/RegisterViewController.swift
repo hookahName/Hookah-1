@@ -15,6 +15,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var emailTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
     @IBOutlet weak var regButton: UIButton!
+    var ref: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,7 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func regButtonPressed(_ sender: Any) {
+        ref = Database.database().reference()
         guard let email = emailTextfield.text, let password = passwordTextfield.text, let name = nameTextfield.text, let lastname = lastnameTextfield.text, name != "", lastname != "", email != "", password != "" else {
             
             return
@@ -38,6 +40,9 @@ class RegisterViewController: UIViewController {
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] (user, error) in
             if error == nil {
                 if user != nil {
+                    let user = UserDB(name: name, lastname: lastname, email: email, password: password)
+                    let userRef = self?.ref.child("users").child((Auth.auth().currentUser?.uid)!)
+                    userRef?.setValue(user?.convertToDictionary())
                     self?.performSegue(withIdentifier: "fromReg", sender: nil)
                 }
                 else{

@@ -73,28 +73,9 @@ class ViewController: UITableViewController {
     }
     
     @IBAction func EditButtonPressed(_ sender: UIBarButtonItem) {
-        
-        let alertController = UIAlertController(title: "Password", message: "Enter password", preferredStyle: .alert)
-        alertController.addTextField()
-        let ok = UIAlertAction(title: "Ok", style: .default) {
-            action in
-            guard let text = alertController.textFields?.first?.text, text != "" else {return}
-            if text == self.password[0].password {
-                self.performSegue(withIdentifier: "Admin", sender: self)
-            } else {
-                let ac = UIAlertController(title: "Wrong password", message: "Try again", preferredStyle: .alert)
-                ac.addAction(UIAlertAction(title: "Ok", style: .default) { action in
-                    self.EditButtonPressed(sender)
-                })
-                self.present(ac, animated: true)
-            }
-        }
-        
-        let cancel = UIAlertAction(title: "Cancel", style: .default)
-        alertController.addAction(ok)
-        alertController.addAction(cancel)
-        present(alertController, animated: true)
+        self.performSegue(withIdentifier: "Admin", sender: self)
     }
+
     
     private func loadDataBase() {
         ref = Database.database().reference().child("password")
@@ -109,14 +90,7 @@ class ViewController: UITableViewController {
         })
     }
     
-    @IBAction func signoutPressed(_ sender: UIBarButtonItem) {
-        do {
-            try Auth.auth().signOut()
-        } catch {
-            print(error.localizedDescription)
-        }
-        dismiss(animated: true, completion: nil)
-    }
+
     
 }
 
