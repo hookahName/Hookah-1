@@ -9,6 +9,7 @@
 import UIKit
 import os.log
 import Firebase
+
 class ThirdViewController: UITableViewController, UINavigationControllerDelegate {
 
     // MARK: Properties
@@ -16,9 +17,9 @@ class ThirdViewController: UITableViewController, UINavigationControllerDelegate
     var selectedTabacoo: TobaccoDB?
     var table: Int?
     var tastes = Array<TasteDB>()
-    var teaTastes = Array<TasteDB>()
+    var teaTastes = Array<TeaDB>()
     var ref: DatabaseReference!
-    var selectedTastes = [TasteDB]()
+    var selectedTastes = [String]()
     
     @IBOutlet weak var readyBut: UIBarButtonItem!
     
@@ -36,9 +37,9 @@ class ThirdViewController: UITableViewController, UINavigationControllerDelegate
         
         ref = Database.database().reference().child("tea")
         ref.observe(.value, with: { [weak self] (snapshot) in
-            var _teaTastes = Array<TasteDB>()
+            var _teaTastes = Array<TeaDB>()
             for i in snapshot.children{
-                let teaTaste = TasteDB(snapshot: i as! DataSnapshot)
+                let teaTaste = TeaDB(snapshot: i as! DataSnapshot)
                 if teaTaste.isAvailable == true{
                     _teaTastes.append(teaTaste)
                 }
@@ -87,12 +88,12 @@ class ThirdViewController: UITableViewController, UINavigationControllerDelegate
         if let cell = tableView.cellForRow(at: indexPath) {
             if cell.accessoryType == .checkmark {
                 cell.accessoryType = .none
-                if let index = selectedTastes.firstIndex(where: {$0.name == cell.textLabel?.text}) {
+                if let index = selectedTastes.firstIndex(where: {$0 == cell.textLabel?.text}) {
                     selectedTastes.remove(at: index)
                 }
             } else {
                 cell.accessoryType = .checkmark
-                selectedTastes.append(tastes[indexPath.row])
+                selectedTastes.append(tastes[indexPath.row].name)
             }
         }
         if selectedTastes.count > 0 {

@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+
 class EnterViewController: UIViewController {
 
     @IBOutlet weak var emailTextfield: UITextField!

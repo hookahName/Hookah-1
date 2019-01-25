@@ -1,15 +1,15 @@
 //
-//  TobaccoClassForDB.swift
+//  TeaClassForDB.swift
 //  Hokah
 //
-//  Created by Саша Руцман on 12.01.2019.
+//  Created by Кирилл Иванов on 26/01/2019.
 //  Copyright © 2019 Kirill Ivanoff. All rights reserved.
 //
 
 import Foundation
 import Firebase
 
-class TobaccoDB {
+class TeaDB {
     
     var name: String
     var isAvailable: Bool = false

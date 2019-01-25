@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+
 class ViewController: UITableViewController {
     
     // MARK: Properties
@@ -67,7 +68,7 @@ class ViewController: UITableViewController {
             //tobaco.tobaccos = tobaccos
             //print(tobaco.tobaccos)
             if let indexPath = tableView.indexPathForSelectedRow {
-                tobaco.selectedTable = indexPath.row
+                tobaco.selectedTable = indexPath.row + 1
             }
         }
     }

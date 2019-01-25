@@ -29,6 +29,8 @@
 		ED18063F21E24772006148BE /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED18063E21E24772006148BE /* ThirdViewController.swift */; };
 		ED18064121E24EAB006148BE /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED18064021E24EAB006148BE /* Result.swift */; };
 		EDABF6C321F40E1300C73656 /* AdminTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDABF6C221F40E1300C73656 /* AdminTableViewController.swift */; };
+		EDE0784421FBCC3000AAFFE8 /* OrderClassForDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE0784321FBCC3000AAFFE8 /* OrderClassForDB.swift */; };
+		EDE0784621FBCCC700AAFFE8 /* TeaClassForDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE0784521FBCCC700AAFFE8 /* TeaClassForDB.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,8 @@
 		ED18063E21E24772006148BE /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		ED18064021E24EAB006148BE /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		EDABF6C221F40E1300C73656 /* AdminTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTableViewController.swift; sourceTree = "<group>"; };
+		EDE0784321FBCC3000AAFFE8 /* OrderClassForDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderClassForDB.swift; sourceTree = "<group>"; };
+		EDE0784521FBCCC700AAFFE8 /* TeaClassForDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeaClassForDB.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +158,8 @@
 			children = (
 				22404B2F21EA4D6B00DF041C /* TobaccoClassForDB.swift */,
 				22404B3521F4DDB600DF041C /* TasteClassForDB.swift */,
+				EDE0784521FBCCC700AAFFE8 /* TeaClassForDB.swift */,
+				EDE0784321FBCC3000AAFFE8 /* OrderClassForDB.swift */,
 				22404B4521F6804A00DF041C /* PasswordClassForDB.swift */,
 				22D5ADE021FA7CD300F74ED3 /* UserClassForDB.swift */,
 			);
@@ -296,9 +302,11 @@
 				22404B3021EA4D6B00DF041C /* TobaccoClassForDB.swift in Sources */,
 				ED18063D21E23E7A006148BE /* SeconViewController.swift in Sources */,
 				22D5ADE121FA7CD300F74ED3 /* UserClassForDB.swift in Sources */,
+				EDE0784421FBCC3000AAFFE8 /* OrderClassForDB.swift in Sources */,
 				22404B4621F6804A00DF041C /* PasswordClassForDB.swift in Sources */,
 				22404B3E21F65A4700DF041C /* ChooseTimeViewController.swift in Sources */,
 				ED18064121E24EAB006148BE /* Result.swift in Sources */,
+				EDE0784621FBCCC700AAFFE8 /* TeaClassForDB.swift in Sources */,
 				ED18062B21E23AB1006148BE /* ViewController.swift in Sources */,
 				22404B4421F6687D00DF041C /* ChangeTeaTasteTableViewController.swift in Sources */,
 				22404B3421F4CAED00DF041C /* AddTastesTableViewController.swift in Sources */,

@@ -8,12 +8,13 @@
 
 import UIKit
 import Firebase
+
 class ChangeTeaTasteTableViewController: UITableViewController {
 
     // MARK: Properties
     
     var ref: DatabaseReference!
-    var tastes = Array<TasteDB>()
+    var teaTastes = Array<TeaDB>()
     
     // MARK: View settings
     
@@ -21,14 +22,12 @@ class ChangeTeaTasteTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         ref = Database.database().reference().child("tea")
         ref.observe(.value, with: { [weak self] (snapshot) in
-            var _tastes = Array<TasteDB>()
+            var _teaTastes = Array<TeaDB>()
             for i in snapshot.children{
-                let taste = TasteDB(snapshot: i as! DataSnapshot)
-                _tastes.append(taste)
-                print(taste)
-                
+                let tea = TeaDB(snapshot: i as! DataSnapshot)
+                _teaTastes.append(tea)
             }
-            self?.tastes = _tastes
+            self?.teaTastes = _teaTastes
             self?.tableView.reloadData()
         })
         
@@ -53,15 +52,15 @@ class ChangeTeaTasteTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tastes.count
+        return teaTastes.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TeaTasteCell", for: indexPath)
-        cell.textLabel?.text = tastes[indexPath.row].name
+        cell.textLabel?.text = teaTastes[indexPath.row].name
         
         let switchView = UISwitch(frame: .zero)
-        switchView.setOn(tastes[indexPath.row].isAvailable, animated: false)
+        switchView.setOn(teaTastes[indexPath.row].isAvailable, animated: false)
         switchView.tag = indexPath.row
         switchView.addTarget(self, action: #selector(self.switchChanged(_:)), for: .valueChanged)
         cell.accessoryView = switchView
@@ -76,10 +75,10 @@ class ChangeTeaTasteTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let tea = tastes[indexPath.row]
+            let tea = teaTastes[indexPath.row]
             ref = Database.database().reference().child("tea").child(tea.name)
             ref.setValue(nil)
-            self.tastes.remove(at: indexPath.row)
+            self.teaTastes.remove(at: indexPath.row)
             self.tableView.beginUpdates()
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
             self.tableView.endUpdates()
@@ -89,13 +88,13 @@ class ChangeTeaTasteTableViewController: UITableViewController {
     // MARK: Private functions
     
     @objc func switchChanged(_ sender: UISwitch!) {
-        tastes[sender.tag].isAvailable = !tastes[sender.tag].isAvailable
-        updateDatabase(tastes[sender.tag])
+        teaTastes[sender.tag].isAvailable = !teaTastes[sender.tag].isAvailable
+        updateDatabase(teaTastes[sender.tag])
     }
     
-    private func updateDatabase(_ taste: TasteDB) {
+    private func updateDatabase(_ tea: TeaDB) {
         ref = Database.database().reference()
-        ref.child("tea").child(taste.name.lowercased()).updateChildValues(["name": taste.name, "isAvailable": taste.isAvailable])
+        ref.child("tea").child(tea.name.lowercased()).updateChildValues(["name": tea.name, "isAvailable": tea.isAvailable])
     }
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {

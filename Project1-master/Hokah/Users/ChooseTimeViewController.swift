@@ -8,17 +8,18 @@
 
 import UIKit
 import Firebase
+
 class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     // MARK: Properties
     let TeaSwitch = UISwitch()
     var ref: DatabaseReference!
-    var teaTastes = Array<TasteDB>()
+    var teaTastes = Array<TeaDB>()
     var selectedTable: Int?
     var selectedTabacoo: TobaccoDB?
-    var selectedFlavour: [TasteDB]?
+    var selectedFlavour: [String]?
     var chosenTime: String = ""
-    var chosenTea: TasteDB?
+    var chosenTea: TeaDB?
     let teaTastesPicker = UIPickerView()
     
     @IBOutlet weak var chooseTimeOutlet: UIDatePicker!
@@ -113,12 +114,14 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
         if segue.identifier == "ToResult" {
             guard let resultController = segue.destination as? Result else {return}
             resultController.selectedTable = self.selectedTable
-            resultController.selectedTabacoo = self.selectedTabacoo
+            resultController.selectedTabacoo = self.selectedTabacoo?.name
             resultController.selectedFlavour = self.selectedFlavour
             resultController.selectedTime = self.chosenTime
             if TeaSwitch.isOn == true {
-                resultController.selectedTea = self.chosenTea
-            } 
+                resultController.selectedTea = self.chosenTea?.name
+            } else {
+                resultController.selectedTea = "Не выбран"
+            }
         }
     }
 }

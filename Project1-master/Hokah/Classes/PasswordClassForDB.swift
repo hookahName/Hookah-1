@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+
 class PasswordDB {
     
     var password: String

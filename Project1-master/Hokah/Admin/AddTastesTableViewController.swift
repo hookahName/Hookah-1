@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+
 class AddTastesTableViewController: UITableViewController {
     
     // MARK: Properies
