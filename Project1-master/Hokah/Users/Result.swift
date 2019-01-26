@@ -65,7 +65,10 @@ class Result: UIViewController, UINavigationControllerDelegate {
         let orderRef = self.ref.child("orders").child((order?.tobacco)!)
         orderRef.setValue(order?.convertToDictionary())
         let ac = UIAlertController(title: "Готово!", message: "Ваш заказ уже делается", preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "Хорошо", style: .default))
+        let action = UIAlertAction(title: "Хорошо", style: .default) { [weak self] _ in
+            self!.performSegue(withIdentifier: "toMainScreen", sender: nil)
+        }
+        ac.addAction(action)
         present(ac, animated: true)
     }
 }

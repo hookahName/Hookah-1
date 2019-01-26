@@ -90,8 +90,5 @@ class ViewController: UITableViewController {
             self?.password = _password
         })
     }
-    
-
-    
 }
 
