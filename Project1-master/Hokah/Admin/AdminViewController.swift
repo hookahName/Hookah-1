@@ -22,7 +22,7 @@ class AdminViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if Auth.auth().currentUser?.uid != "KosoGzwcysXHrye6pAVXDGJO0yD2" {
+        if Auth.auth().currentUser?.uid != "pmSgjSzPSYVQAAjZJfaQyXzULFt2" {
             changeTeaTastesButton.isHidden = true
             changeTobAndTastesButton.isHidden = true
         } else {

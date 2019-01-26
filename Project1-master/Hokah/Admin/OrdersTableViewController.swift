@@ -52,7 +52,9 @@ class OrdersTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Order", for: indexPath)
         cell.textLabel?.text = "Заказ: \(orders[indexPath.row].tobacco)"
         cell.accessoryType = .disclosureIndicator
-        
+        if orders[indexPath.row].isDone == true {
+            cell.backgroundColor = .gray
+        }
         return cell
     }
     

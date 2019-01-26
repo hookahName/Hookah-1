@@ -17,14 +17,18 @@ class OrderDB {
     var tea: String
     var time: String
     var isDone: Bool = false
+    var identifier: String
+    
     var ref: DatabaseReference?
     
-    init?(tableNumber: Int, tobacco: String, tastes: [String], tea: String, time: String){
+    init?(tableNumber: Int, tobacco: String, tastes: [String], tea: String, time: String, identifier: String){
         self.tableNumber = tableNumber
         self.tobacco = tobacco
         self.tastes = tastes
         self.tea = tea
         self.time = time
+        self.identifier = identifier
+        
         self.ref = nil
     }
     
@@ -36,10 +40,11 @@ class OrderDB {
         tea = snapshotValue["tea"] as! String
         time = snapshotValue["time"] as! String
         isDone = snapshotValue["isDone"] as! Bool
+        identifier = snapshotValue["identifier"] as! String
         ref = snapshot.ref
     }
     
     func convertToDictionary() -> Any {
-        return ["table": tableNumber, "tobacco": tobacco, "tastes": tastes, "tea": tea, "time": time, "isDone": isDone]
+        return ["table": tableNumber, "tobacco": tobacco, "tastes": tastes, "tea": tea, "time": time, "isDone": isDone, "identifier": identifier]
     }
 }

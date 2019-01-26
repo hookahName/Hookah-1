@@ -22,6 +22,9 @@ class OrderDetailsViewController: UIViewController {
     @IBOutlet var tastesLabel: UILabel!
     @IBOutlet var teaTasteLabel: UILabel!
     @IBOutlet var timeLabel: UILabel!
+    @IBOutlet weak var identifierLabel: UILabel!
+    @IBOutlet weak var orderIsDoneButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +44,12 @@ class OrderDetailsViewController: UIViewController {
         tobaccoNameLabel.text = "Табак: \(order.tobacco)"
         tastesLabel.text = "Вкусы: \(tastes)"
         teaTasteLabel.text = "Чай: \(order.tea)"
-        timeLabel.text = "Время: \(String(describing: time))"
+        timeLabel.text = "Время: \(String(describing: order.time))"
+        identifierLabel.text = "Номер заказа: \(order.identifier)"
+        
+        if order.isDone == true {
+            orderIsDoneButton.isEnabled = false
+        }
     }
     
 
@@ -58,7 +66,7 @@ class OrderDetailsViewController: UIViewController {
         if let order = order {
             order.isDone = !order.isDone
             ref = Database.database().reference().child("orders")
-            ref.child(order.tobacco).updateChildValues(["table": order.tableNumber, "tobacco": order.tobacco, "tastes": order.tastes, "tea": order.tea, "time": order.time, "isDone": order.isDone])
+            ref.child(order.identifier).updateChildValues(["table": order.tableNumber, "tobacco": order.tobacco, "tastes": order.tastes, "tea": order.tea, "time": order.time, "isDone": order.isDone, "identifier": order.identifier])
         }
     }
     

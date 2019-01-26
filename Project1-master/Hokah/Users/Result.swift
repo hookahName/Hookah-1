@@ -59,10 +59,12 @@ class Result: UIViewController, UINavigationControllerDelegate {
             teaTaste.text = "Чай не выбран"
         }
     }
+    
     @IBAction func makeOrderButton(_ sender: Any) {
+        let identifier = getUniqueIdentifier()
         ref = Database.database().reference()
-        let order = OrderDB(tableNumber: selectedTable, tobacco: selectedTabacoo, tastes: selectedFlavour, tea: selectedTea, time: selectedTime)
-        let orderRef = self.ref.child("orders").child((order?.tobacco)!)
+        let order = OrderDB(tableNumber: selectedTable, tobacco: selectedTabacoo, tastes: selectedFlavour, tea: selectedTea, time: selectedTime, identifier: identifier)
+        let orderRef = self.ref.child("orders").child(identifier)
         orderRef.setValue(order?.convertToDictionary())
         let ac = UIAlertController(title: "Готово!", message: "Ваш заказ уже делается", preferredStyle: .alert)
         let action = UIAlertAction(title: "Хорошо", style: .default) { [weak self] _ in
@@ -70,5 +72,13 @@ class Result: UIViewController, UINavigationControllerDelegate {
         }
         ac.addAction(action)
         present(ac, animated: true)
+    }
+    
+    private func getUniqueIdentifier() -> String {
+        let curDate = Date()
+        let timeInterval = curDate.timeIntervalSince1970
+        let dateString = String(Int(timeInterval))
+        print(dateString)
+        return dateString
     }
 }

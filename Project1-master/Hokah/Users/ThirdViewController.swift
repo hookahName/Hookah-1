@@ -28,7 +28,7 @@ class ThirdViewController: UITableViewController, UINavigationControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let selectedTabacoo = selectedTabacoo else { return }
-        title = "\(String(describing: selectedTabacoo))"
+        title = "\(String(describing: selectedTabacoo.name))"
         tableView.tableFooterView = UIView()
         
         self.refreshControl = UIRefreshControl()
