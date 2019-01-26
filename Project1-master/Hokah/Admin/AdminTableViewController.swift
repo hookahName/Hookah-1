@@ -83,10 +83,14 @@ class AdminTableViewController: UITableViewController, UINavigationControllerDel
         ref = Database.database().reference()
         let alertController = UIAlertController(title: "New tabacoo", message: "Add new tabacoo", preferredStyle: .alert)
         alertController.addTextField()
+        alertController.addTextField()
         let save = UIAlertAction(title: "Save", style: .default) { [ weak self] _ in
             
-            guard let textField = alertController.textFields?.first, textField.text != "" else {return}
-            let tabaco = TobaccoDB(name: textField.text!)
+            guard let textField = alertController.textFields?[0], textField.text != "" else {return}
+            textField.placeholder = "Название"
+            guard let textFieldPrice = alertController.textFields?[1], textFieldPrice.text != "" else {return}
+            textFieldPrice.placeholder = "Цена"
+            let tabaco = TobaccoDB(name: textField.text!, price: textFieldPrice.text!)
             let tabacoRef = self?.ref.child("tobaccos").child(tabaco!.name.lowercased())
             tabacoRef?.setValue(tabaco?.convertToDictionary())
             self?.tobaccos.append(tabaco!)
