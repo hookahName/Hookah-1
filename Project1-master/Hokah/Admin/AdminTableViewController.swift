@@ -82,14 +82,18 @@ class AdminTableViewController: UITableViewController, UINavigationControllerDel
     @IBAction func add(_ sender: Any) {
         ref = Database.database().reference()
         let alertController = UIAlertController(title: "New tabacoo", message: "Add new tabacoo", preferredStyle: .alert)
-        alertController.addTextField()
-        alertController.addTextField()
+        alertController.addTextField() { (textField) in
+            textField.placeholder = "Название"
+            textField.borderStyle = UITextField.BorderStyle.roundedRect
+        }
+        alertController.addTextField() { (textFieldPrice) in
+            textFieldPrice.placeholder = "Цена"
+            textFieldPrice.borderStyle = UITextField.BorderStyle.roundedRect
+        }
         let save = UIAlertAction(title: "Save", style: .default) { [ weak self] _ in
             
             guard let textField = alertController.textFields?[0], textField.text != "" else {return}
-            textField.placeholder = "Название"
             guard let textFieldPrice = alertController.textFields?[1], textFieldPrice.text != "" else {return}
-            textFieldPrice.placeholder = "Цена"
             let tabaco = TobaccoDB(name: textField.text!, price: textFieldPrice.text!)
             let tabacoRef = self?.ref.child("tobaccos").child(tabaco!.name.lowercased())
             tabacoRef?.setValue(tabaco?.convertToDictionary())
@@ -102,6 +106,16 @@ class AdminTableViewController: UITableViewController, UINavigationControllerDel
         alertController.addAction(save)
         alertController.addAction(cancel)
         present(alertController, animated: true)
+        
+        for textField in alertController
+            .textFields! {
+            let container = textField.superview
+            let effectView = container?.superview?.subviews[0]
+            if (effectView != nil) {
+                container?.backgroundColor = UIColor.clear
+                effectView?.removeFromSuperview()
+            }
+        }
     }
         
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

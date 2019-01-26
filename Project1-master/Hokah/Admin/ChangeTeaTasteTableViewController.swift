@@ -100,7 +100,11 @@ class ChangeTeaTasteTableViewController: UITableViewController {
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         ref = Database.database().reference()
         let alertController = UIAlertController(title: "New taste", message: "Add new taste", preferredStyle: .alert)
-        alertController.addTextField()
+        alertController.addTextField() { (textField) in
+            textField.placeholder = "Вкус"
+            textField.borderStyle = UITextField.BorderStyle.roundedRect
+            
+        }
         let save = UIAlertAction(title: "Save", style: .default) { [ weak self] _ in
             
             guard let textField = alertController.textFields?.first, textField.text != "" else {return}
