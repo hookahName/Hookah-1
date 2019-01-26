@@ -31,6 +31,8 @@
 		EDABF6C321F40E1300C73656 /* AdminTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDABF6C221F40E1300C73656 /* AdminTableViewController.swift */; };
 		EDE0784421FBCC3000AAFFE8 /* OrderClassForDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE0784321FBCC3000AAFFE8 /* OrderClassForDB.swift */; };
 		EDE0784621FBCCC700AAFFE8 /* TeaClassForDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE0784521FBCCC700AAFFE8 /* TeaClassForDB.swift */; };
+		EDE0784821FBDFFE00AAFFE8 /* OrdersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE0784721FBDFFE00AAFFE8 /* OrdersTableViewController.swift */; };
+		EDE0784A21FBE3BC00AAFFE8 /* OrderDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE0784921FBE3BC00AAFFE8 /* OrderDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +64,8 @@
 		EDABF6C221F40E1300C73656 /* AdminTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTableViewController.swift; sourceTree = "<group>"; };
 		EDE0784321FBCC3000AAFFE8 /* OrderClassForDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderClassForDB.swift; sourceTree = "<group>"; };
 		EDE0784521FBCCC700AAFFE8 /* TeaClassForDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeaClassForDB.swift; sourceTree = "<group>"; };
+		EDE0784721FBDFFE00AAFFE8 /* OrdersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTableViewController.swift; sourceTree = "<group>"; };
+		EDE0784921FBE3BC00AAFFE8 /* OrderDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +96,8 @@
 				EDABF6C221F40E1300C73656 /* AdminTableViewController.swift */,
 				22404B3321F4CAED00DF041C /* AddTastesTableViewController.swift */,
 				22404B4321F6687D00DF041C /* ChangeTeaTasteTableViewController.swift */,
+				EDE0784721FBDFFE00AAFFE8 /* OrdersTableViewController.swift */,
+				EDE0784921FBE3BC00AAFFE8 /* OrderDetailsViewController.swift */,
 			);
 			path = Admin;
 			sourceTree = "<group>";
@@ -295,6 +301,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDE0784821FBDFFE00AAFFE8 /* OrdersTableViewController.swift in Sources */,
 				2265D20321EA08C00093ABD3 /* AddTobaccoViewController.swift in Sources */,
 				22D5ADE321FA7E1E00F74ED3 /* EnterViewController.swift in Sources */,
 				EDABF6C321F40E1300C73656 /* AdminTableViewController.swift in Sources */,
@@ -305,6 +312,7 @@
 				EDE0784421FBCC3000AAFFE8 /* OrderClassForDB.swift in Sources */,
 				22404B4621F6804A00DF041C /* PasswordClassForDB.swift in Sources */,
 				22404B3E21F65A4700DF041C /* ChooseTimeViewController.swift in Sources */,
+				EDE0784A21FBE3BC00AAFFE8 /* OrderDetailsViewController.swift in Sources */,
 				ED18064121E24EAB006148BE /* Result.swift in Sources */,
 				EDE0784621FBCCC700AAFFE8 /* TeaClassForDB.swift in Sources */,
 				ED18062B21E23AB1006148BE /* ViewController.swift in Sources */,

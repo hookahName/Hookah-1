@@ -64,5 +64,8 @@ class Result: UIViewController, UINavigationControllerDelegate {
         let order = OrderDB(tableNumber: selectedTable, tobacco: selectedTabacoo, tastes: selectedFlavour, tea: selectedTea, time: selectedTime)
         let orderRef = self.ref.child("orders").child((order?.tobacco)!)
         orderRef.setValue(order?.convertToDictionary())
+        let ac = UIAlertController(title: "Готово!", message: "Ваш заказ уже делается", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Хорошо", style: .default))
+        present(ac, animated: true)
     }
 }

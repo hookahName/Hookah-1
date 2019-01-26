@@ -39,6 +39,8 @@ class AdminViewController: UIViewController {
             guard segue.destination is AdminTableViewController else {return}
         } else if segue.identifier == "TeaTaste" {
             guard segue.destination is ChangeTeaTasteTableViewController else {return}
+        } else if segue.identifier == "toOrders" {
+            guard segue.destination is OrdersTableViewController else {return}
         }
     }
     
@@ -49,6 +51,9 @@ class AdminViewController: UIViewController {
             print(error.localizedDescription)
         }
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func ordersButtonPressed(_ sender: Any) {
     }
 }
     

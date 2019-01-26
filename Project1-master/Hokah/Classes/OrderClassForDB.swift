@@ -32,7 +32,7 @@ class OrderDB {
         let snapshotValue = snapshot.value as! [String: AnyObject]
         tableNumber = snapshotValue["table"] as! Int
         tobacco = snapshotValue["tobacco"] as! String
-        tastes = snapshotValue["taste"] as! [String]
+        tastes = snapshotValue["tastes"] as! [String]
         tea = snapshotValue["tea"] as! String
         time = snapshotValue["time"] as! String
         isDone = snapshotValue["isDone"] as! Bool
