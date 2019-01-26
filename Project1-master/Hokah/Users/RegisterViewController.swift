@@ -41,7 +41,7 @@ class RegisterViewController: UIViewController {
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] (user, error) in
             if error == nil {
                 if user != nil {
-                    let user = UserDB(name: name, lastname: lastname, email: email, password: password)
+                    let user = UserDB(name: name, lastname: lastname, email: email, password: password, userId: (Auth.auth().currentUser?.uid)!)
                     let userRef = self?.ref.child("users").child((Auth.auth().currentUser?.uid)!)
                     userRef?.setValue(user?.convertToDictionary())
                     self?.performSegue(withIdentifier: "fromReg", sender: nil)

@@ -12,7 +12,7 @@ import Firebase
 class AdminViewController: UIViewController {
     
     // MARK: Properties
-    
+    var users = Array<UserDB>()
     var ref: DatabaseReference!
     @IBOutlet weak var changeTobAndTastesButton: UIButton!
     @IBOutlet weak var changeTeaTastesButton: UIButton!
@@ -22,7 +22,9 @@ class AdminViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if Auth.auth().currentUser?.uid != "pmSgjSzPSYVQAAjZJfaQyXzULFt2" {
+        loadUsers()
+        
+        if Auth.auth().currentUser?.uid != "gHPSmMsKb0PNsLgQHYh35l4tJWj1" {
             changeTeaTastesButton.isHidden = true
             changeTobAndTastesButton.isHidden = true
         } else {
@@ -40,7 +42,8 @@ class AdminViewController: UIViewController {
         } else if segue.identifier == "TeaTaste" {
             guard segue.destination is ChangeTeaTasteTableViewController else {return}
         } else if segue.identifier == "toOrders" {
-            guard segue.destination is OrdersTableViewController else {return}
+            guard let users = segue.destination as? OrdersTableViewController else {return}
+            users.users = self.users
         }
     }
     
@@ -54,6 +57,18 @@ class AdminViewController: UIViewController {
     }
     
     @IBAction func ordersButtonPressed(_ sender: Any) {
+    }
+    
+    private func loadUsers() {
+        ref = Database.database().reference().child("users")
+        ref.observe(.value, with: { [weak self] (snapshot) in
+            var _users = Array<UserDB>()
+            for item in snapshot.children {
+                let user = UserDB(snapshot: item as! DataSnapshot)
+                _users.append(user)
+            }
+            self?.users = _users
+        })
     }
 }
     

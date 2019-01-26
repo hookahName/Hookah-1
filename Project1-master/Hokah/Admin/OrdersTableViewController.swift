@@ -12,20 +12,23 @@ import Firebase
 class OrdersTableViewController: UITableViewController {
     
     // MARK: Properties
-    
+    var users = Array<UserDB>()
     var orders = Array<OrderDB>()
+    
     var ref: DatabaseReference!
-
+    
     // MARK: View settings
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         loadDatabase()
+        print("Count of users = \(users.count)")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.title = "Orders"
         self.tableView.tableFooterView = UIView()
         self.refreshControl = UIRefreshControl()
@@ -37,17 +40,16 @@ class OrdersTableViewController: UITableViewController {
         super.viewWillDisappear(animated)
         ref.removeAllObservers()
     }
-
+    
     // MARK: Table view settings
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return orders.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Order", for: indexPath)
         cell.textLabel?.text = "Заказ: \(orders[indexPath.row].tobacco)"
@@ -58,17 +60,23 @@ class OrdersTableViewController: UITableViewController {
         return cell
     }
     
+    
+    
     private func loadDatabase() {
-        ref = Database.database().reference().child("orders")
-        ref.observe(.value, with: { [weak self] (snapshot) in
-            var _orders = Array<OrderDB>()
-            for item in snapshot.children {
-                let order = OrderDB(snapshot: item as! DataSnapshot)
-                _orders.append(order)
-            }
-            self?.orders = _orders
-            self?.tableView.reloadData()
-        })
+        for user in users {
+            ref = Database.database().reference().child("users").child(user.userId).child("orders")
+            ref.observe(.value, with: { [weak self] (snapshot) in
+                //var _orders = Array<OrderDB>()
+                for item in snapshot.children {
+                    let order = OrderDB(snapshot: item as! DataSnapshot)
+                    print(order.tobacco)
+                    self?.orders.append(order)
+                }
+                //self?.orders = _orders
+                self?.tableView.reloadData()
+            })
+        }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

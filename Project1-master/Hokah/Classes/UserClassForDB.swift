@@ -15,14 +15,16 @@ class UserDB {
     var lastname: String
     var email: String
     var password: String
+    var userId: String
     var ref: DatabaseReference?
     
-    init?(name: String, lastname: String, email: String, password: String) {
+    init?(name: String, lastname: String, email: String, password: String, userId: String) {
         
         self.name = name
         self.lastname = lastname
         self.email = email
         self.password = password
+        self.userId = userId
         self.ref = nil
     }
     
@@ -32,10 +34,11 @@ class UserDB {
         lastname = snapshotValue["lastname"] as! String
         email = snapshotValue["email"] as! String
         password = snapshotValue["password"] as! String
+        userId = snapshotValue["userId"] as! String
         ref = snapshot.ref
     }
     
     func convertToDictionary() -> Any {
-        return ["name": name, "lastname": lastname, "email": email, "password": password]
+        return ["name": name, "lastname": lastname, "email": email, "password": password, "userId": userId]
     }
 }
