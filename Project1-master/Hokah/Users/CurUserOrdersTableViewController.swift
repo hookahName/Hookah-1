@@ -1,18 +1,15 @@
 //
-//  OrdersTableViewController.swift
+//  CurUserOrdersTableViewController.swift
 //  Hokah
 //
-//  Created by Кирилл Иванов on 26/01/2019.
+//  Created by Саша Руцман on 27.01.2019.
 //  Copyright © 2019 Kirill Ivanoff. All rights reserved.
 //
 
 import UIKit
 import Firebase
+class CurUserOrdersTableViewController: UITableViewController {
 
-class OrdersTableViewController: UITableViewController {
-    
-    // MARK: Properties
-    var users = Array<UserDB>()
     var orders = Array<OrderDB>()
     
     var ref: DatabaseReference!
@@ -23,13 +20,12 @@ class OrdersTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         loadDatabase()
-        print("Count of users = \(users.count)")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Orders"
+        self.title = "Ваши заказы"
         self.tableView.tableFooterView = UIView()
         self.refreshControl = UIRefreshControl()
         //self.refreshControl?.attributedTitle = NSAttributedString(string: "Updating...")
@@ -51,7 +47,7 @@ class OrdersTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Order", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserOrder", for: indexPath)
         cell.textLabel?.text = "Заказ: \(orders[indexPath.row].identifier)"
         cell.accessoryType = .disclosureIndicator
         if orders[indexPath.row].isDone == true {
@@ -62,40 +58,22 @@ class OrdersTableViewController: UITableViewController {
     
     
     
+
+    
     private func loadDatabase() {
-        var _orders = Array<OrderDB>()
-        for user in users {
-            ref = Database.database().reference().child("users").child(user.userId).child("orders")
-            ref.observe(.value, with: { [weak self] (snapshot) in
-                //var _orders = Array<OrderDB>()
-                for item in snapshot.children {
-                    let order = OrderDB(snapshot: item as! DataSnapshot)
-                    _orders.append(order)
-
-                }
-                self?.orders = _orders
-                self?.tableView.reloadData()
-            })
-        }
-        
-    }
-    
-
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "orderDetails" {
-            if let indexPath = tableView.indexPathForSelectedRow {
-                guard let dvc = segue.destination as? OrderDetailsViewController else {return}
-                dvc.order = self.orders[indexPath.row]
+        ref = Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).child("orders")
+        ref.observe(.value, with: { [weak self] (snapshot) in
+            //var _orders = Array<OrderDB>()
+            for item in snapshot.children {
+                let order = OrderDB(snapshot: item as! DataSnapshot)
+                print(order.tobacco)
+                self?.orders.append(order)
             }
-        }
+            //self?.orders = _orders
+            self?.tableView.reloadData()
+        })
     }
     
-    @IBAction func unwindToOrders(segue: UIStoryboardSegue) {
-        if segue.identifier == "backToOrders" {
-            guard segue.source is OrderDetailsViewController else {return}
-        }
-    }
     
     @objc func refresh(_ sender: AnyObject) {
         loadDatabase()

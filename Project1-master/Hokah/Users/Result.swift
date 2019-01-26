@@ -67,7 +67,7 @@ class Result: UIViewController, UINavigationControllerDelegate {
     @IBAction func makeOrderButton(_ sender: Any) {
         let identifier = getUniqueIdentifier()
         ref = Database.database().reference()
-        let order = OrderDB(tableNumber: selectedTable, tobacco: (selectedTabacoo?.name)!, tastes: selectedFlavour, tea: selectedTea, time: selectedTime, identifier: identifier, price: (selectedTabacoo?.price)!)
+        let order = OrderDB(tableNumber: selectedTable, tobacco: (selectedTabacoo?.name)!, tastes: selectedFlavour, tea: selectedTea, time: selectedTime, identifier: identifier, price: (selectedTabacoo?.price)!, userId: (Auth.auth().currentUser?.uid)!)
         let orderRef = self.ref.child("users").child((Auth.auth().currentUser?.uid)!).child("orders").child(identifier)
         orderRef.setValue(order?.convertToDictionary())
         let ac = UIAlertController(title: "Готово!", message: "Номер вашего заказа: \(identifier)", preferredStyle: .alert)

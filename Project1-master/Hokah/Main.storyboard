@@ -246,6 +246,14 @@
                                     <segue destination="Ec2-KM-4hN" kind="show" identifier="toOrders" id="YPn-l2-Eir"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zqJ-xW-i8P">
+                                <rect key="frame" x="142" y="253" width="85" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Мои заказы"/>
+                                <connections>
+                                    <action selector="curUserOrdersButtonPressed:" destination="tMF-Ig-Ibo" eventType="touchUpInside" id="qod-um-dx6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -265,8 +273,11 @@
                         <viewLayoutGuide key="safeArea" id="0iU-8w-UYf"/>
                     </view>
                     <connections>
+                        <outlet property="allOrdersButton" destination="xCa-9h-sDP" id="QD1-ml-PFF"/>
                         <outlet property="changeTeaTastesButton" destination="iqq-Em-mzY" id="Ljh-Zg-fSc"/>
                         <outlet property="changeTobAndTastesButton" destination="Yqc-lS-BZl" id="zW9-aP-Fv0"/>
+                        <outlet property="curUserOrdersButton" destination="zqJ-xW-i8P" id="sB8-UO-468"/>
+                        <segue destination="Bcm-ix-oSe" kind="show" identifier="CurUserOrders" id="AO2-bm-ZNG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gIo-cN-GQh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -588,6 +599,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W6o-fo-oFG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-847.20000000000005" y="-580.65967016491754"/>
+        </scene>
+        <!--Cur User Orders Table View Controller-->
+        <scene sceneID="bbm-bV-Jwv">
+            <objects>
+                <tableViewController id="Bcm-ix-oSe" customClass="CurUserOrdersTableViewController" customModule="Hokah" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="i0A-la-XXj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserOrder" id="H2n-hL-Thl">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="H2n-hL-Thl" id="sb0-NI-FDy">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Bcm-ix-oSe" id="pJ7-Sv-SiR"/>
+                            <outlet property="delegate" destination="Bcm-ix-oSe" id="htZ-NR-Wfb"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yj0-Wc-b1v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="60" y="-550"/>
         </scene>
         <!--Enter View Controller-->
         <scene sceneID="XGN-I0-l24">

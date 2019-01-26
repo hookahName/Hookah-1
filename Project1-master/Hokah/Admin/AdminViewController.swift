@@ -16,6 +16,8 @@ class AdminViewController: UIViewController {
     var ref: DatabaseReference!
     @IBOutlet weak var changeTobAndTastesButton: UIButton!
     @IBOutlet weak var changeTeaTastesButton: UIButton!
+    @IBOutlet weak var allOrdersButton: UIButton!
+    @IBOutlet weak var curUserOrdersButton: UIButton!
     
     // MARK: View settings
     
@@ -27,6 +29,7 @@ class AdminViewController: UIViewController {
         if Auth.auth().currentUser?.uid != "gHPSmMsKb0PNsLgQHYh35l4tJWj1" {
             changeTeaTastesButton.isHidden = true
             changeTobAndTastesButton.isHidden = true
+            allOrdersButton.isHidden = true
         } else {
             title = "Админ"
         }
@@ -44,6 +47,8 @@ class AdminViewController: UIViewController {
         } else if segue.identifier == "toOrders" {
             guard let users = segue.destination as? OrdersTableViewController else {return}
             users.users = self.users
+        } else if segue.identifier == "CurUserOrders" {
+            guard segue.destination is CurUserOrdersTableViewController else { return }
         }
     }
     
@@ -70,6 +75,11 @@ class AdminViewController: UIViewController {
             self?.users = _users
         })
     }
+    
+    @IBAction func curUserOrdersButtonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "CurUserOrders", sender: nil)
+    }
+    
 }
     
 

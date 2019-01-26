@@ -16,13 +16,11 @@ class ViewController: UITableViewController {
     var ref: DatabaseReference!
     let tables = ["Table 1", "Table 2", "Table 3"]
     //var tobaccos = Array<TobaccoDB>()
-    var password = Array<PasswordDB>()
     
     // MARK: View settings
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadDataBase()
     }
  
     override func viewDidLoad() {
@@ -35,7 +33,6 @@ class ViewController: UITableViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        ref.removeAllObservers()
     }
     
     // MARK: Table view settings
@@ -75,20 +72,6 @@ class ViewController: UITableViewController {
     
     @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
         self.performSegue(withIdentifier: "Admin", sender: self)
-    }
-
-    
-    private func loadDataBase() {
-        ref = Database.database().reference().child("password")
-        ref.observe(.value, with: { [weak self] (snapshot) in
-            var _password = Array<PasswordDB>()
-            for i in snapshot.children{
-                let password = PasswordDB(snapshot: i as! DataSnapshot)
-                _password.append(password)
-                print(password.password)
-            }
-            self?.password = _password
-        })
     }
 }
 
