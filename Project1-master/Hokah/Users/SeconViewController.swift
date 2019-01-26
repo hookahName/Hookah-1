@@ -73,7 +73,7 @@ class SeconViewController: UITableViewController, UINavigationControllerDelegate
             cell.selectionStyle = .default
             cell.accessoryType = .disclosureIndicator
         }
-        
+        cell.detailTextLabel?.text = "500р"
         return cell
     }
     
