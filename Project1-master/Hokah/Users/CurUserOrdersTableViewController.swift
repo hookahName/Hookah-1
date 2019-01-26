@@ -63,13 +63,12 @@ class CurUserOrdersTableViewController: UITableViewController {
     private func loadDatabase() {
         ref = Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).child("orders")
         ref.observe(.value, with: { [weak self] (snapshot) in
-            //var _orders = Array<OrderDB>()
+            var _orders = Array<OrderDB>()
             for item in snapshot.children {
                 let order = OrderDB(snapshot: item as! DataSnapshot)
-                print(order.tobacco)
-                self?.orders.append(order)
+                _orders.append(order)
             }
-            //self?.orders = _orders
+            self?.orders = _orders
             self?.tableView.reloadData()
         })
     }
@@ -79,4 +78,14 @@ class CurUserOrdersTableViewController: UITableViewController {
         loadDatabase()
         self.refreshControl?.endRefreshing()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toCurUserOrder" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                guard let dvc = segue.destination as? CurUserOrderDetailViewController else {return}
+                dvc.order = self.orders[indexPath.row]
+            }
+        }
+    }
+
 }

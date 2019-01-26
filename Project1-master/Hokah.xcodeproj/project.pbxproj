@@ -15,6 +15,7 @@
 		22404B4221F665CF00DF041C /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22404B4121F665CF00DF041C /* AdminViewController.swift */; };
 		22404B4421F6687D00DF041C /* ChangeTeaTasteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22404B4321F6687D00DF041C /* ChangeTeaTasteTableViewController.swift */; };
 		2253B1E821FD048A00444D44 /* CurUserOrdersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2253B1E721FD048A00444D44 /* CurUserOrdersTableViewController.swift */; };
+		2253B1EA21FD0FD600444D44 /* CurUserOrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2253B1E921FD0FD600444D44 /* CurUserOrderDetailViewController.swift */; };
 		2265D20121EA07740093ABD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2265D20021EA07740093ABD3 /* Main.storyboard */; };
 		2265D20321EA08C00093ABD3 /* AddTobaccoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2265D20221EA08C00093ABD3 /* AddTobaccoViewController.swift */; };
 		22D5ADE121FA7CD300F74ED3 /* UserClassForDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5ADE021FA7CD300F74ED3 /* UserClassForDB.swift */; };
@@ -46,6 +47,7 @@
 		22404B4121F665CF00DF041C /* AdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
 		22404B4321F6687D00DF041C /* ChangeTeaTasteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeTeaTasteTableViewController.swift; sourceTree = "<group>"; };
 		2253B1E721FD048A00444D44 /* CurUserOrdersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurUserOrdersTableViewController.swift; sourceTree = "<group>"; };
+		2253B1E921FD0FD600444D44 /* CurUserOrderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurUserOrderDetailViewController.swift; sourceTree = "<group>"; };
 		2265D20021EA07740093ABD3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		2265D20221EA08C00093ABD3 /* AddTobaccoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTobaccoViewController.swift; sourceTree = "<group>"; };
 		22D5ADE021FA7CD300F74ED3 /* UserClassForDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserClassForDB.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				22404B3D21F65A4700DF041C /* ChooseTimeViewController.swift */,
 				ED18064021E24EAB006148BE /* Result.swift */,
 				2253B1E721FD048A00444D44 /* CurUserOrdersTableViewController.swift */,
+				2253B1E921FD0FD600444D44 /* CurUserOrderDetailViewController.swift */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2253B1EA21FD0FD600444D44 /* CurUserOrderDetailViewController.swift in Sources */,
 				EDE0784821FBDFFE00AAFFE8 /* OrdersTableViewController.swift in Sources */,
 				2265D20321EA08C00093ABD3 /* AddTobaccoViewController.swift in Sources */,
 				22D5ADE321FA7E1E00F74ED3 /* EnterViewController.swift in Sources */,
