@@ -182,6 +182,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j62-ov-ZtS">
+                                <rect key="frame" x="16" y="152" width="343" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="yGR-6I-pfG"/>
@@ -189,6 +196,7 @@
                     <connections>
                         <outlet property="identifierLabel" destination="b4q-Lh-LK8" id="MEX-WU-jzu"/>
                         <outlet property="orderIsDoneButton" destination="ndT-oP-hcJ" id="yE9-VA-HIy"/>
+                        <outlet property="priceLabel" destination="j62-ov-ZtS" id="96a-vO-TJl"/>
                         <outlet property="tableNumberLabel" destination="5F7-qG-rHS" id="plg-fY-H8r"/>
                         <outlet property="tastesLabel" destination="TC0-us-zIZ" id="aGF-dq-reX"/>
                         <outlet property="teaTasteLabel" destination="xeN-bB-G12" id="nZu-qb-uVR"/>
@@ -769,6 +777,13 @@
                                     <constraint firstItem="75w-iX-Nej" firstAttribute="leading" secondItem="PKN-9v-Xra" secondAttribute="leading" constant="40" id="k4j-Cv-9e5"/>
                                 </constraints>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wSJ-xe-H0W">
+                                <rect key="frame" x="16" y="124" width="343" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -782,6 +797,7 @@
                     <connections>
                         <outlet property="TimeLabel" destination="N0d-lQ-ENf" id="PGd-9U-xaE"/>
                         <outlet property="flavour" destination="Gi4-ix-Mg8" id="479-Xn-IaO"/>
+                        <outlet property="priceLabel" destination="wSJ-xe-H0W" id="C77-AQ-XOu"/>
                         <outlet property="tabacoo" destination="0Ie-Fx-5Ea" id="seW-QL-Q3J"/>
                         <outlet property="tableNumber" destination="aJy-xw-lnh" id="kxY-fn-vha"/>
                         <outlet property="teaTaste" destination="ywV-FH-eWE" id="J4v-Lc-7zj"/>
@@ -793,6 +809,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="yrL-ht-TRZ"/>
+        <segue reference="7KR-yc-jZi"/>
     </inferredMetricsTieBreakers>
 </document>

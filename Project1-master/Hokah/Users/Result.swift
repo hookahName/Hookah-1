@@ -14,7 +14,7 @@ class Result: UIViewController, UINavigationControllerDelegate {
     // MARK: Properties
     
     var selectedTable: Int!
-    var selectedTabacoo: String!
+    var selectedTabacoo: TobaccoDB?
     var selectedFlavour: [String]!
     var selectedTime: String!
     var selectedTea: String!
@@ -26,6 +26,8 @@ class Result: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var flavour: UILabel!
     @IBOutlet weak var TimeLabel: UILabel!
     @IBOutlet weak var teaTaste: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    
     
     // MARK: View settings
     
@@ -51,22 +53,24 @@ class Result: UIViewController, UINavigationControllerDelegate {
         
         flavour.text = "Вкус: \(flavours)"
         tableNumber.text = "Стол: \(selectedTable)"
-        tabacoo.text = "Табак: \(selectedTabacoo)"
+        tabacoo.text = "Табак: \(selectedTabacoo.name)"
         TimeLabel.text = "Ждем вас в \(String(describing: selectedTime))"
         if let selectedTea = selectedTea {
             teaTaste.text = "Чай: \(selectedTea)"
         } else {
             teaTaste.text = "Чай не выбран"
         }
+        priceLabel.text = "Цена: \(selectedTabacoo.price)"
+        
     }
     
     @IBAction func makeOrderButton(_ sender: Any) {
         let identifier = getUniqueIdentifier()
         ref = Database.database().reference()
-        let order = OrderDB(tableNumber: selectedTable, tobacco: selectedTabacoo, tastes: selectedFlavour, tea: selectedTea, time: selectedTime, identifier: identifier)
+        let order = OrderDB(tableNumber: selectedTable, tobacco: (selectedTabacoo?.name)!, tastes: selectedFlavour, tea: selectedTea, time: selectedTime, identifier: identifier, price: (selectedTabacoo?.price)!)
         let orderRef = self.ref.child("orders").child(identifier)
         orderRef.setValue(order?.convertToDictionary())
-        let ac = UIAlertController(title: "Готово!", message: "Ваш заказ уже делается", preferredStyle: .alert)
+        let ac = UIAlertController(title: "Готово!", message: "Номер вашего заказа: \(identifier)", preferredStyle: .alert)
         let action = UIAlertAction(title: "Хорошо", style: .default) { [weak self] _ in
             self!.performSegue(withIdentifier: "toMainScreen", sender: nil)
         }

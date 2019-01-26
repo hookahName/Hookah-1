@@ -24,6 +24,7 @@ class OrderDetailsViewController: UIViewController {
     @IBOutlet var timeLabel: UILabel!
     @IBOutlet weak var identifierLabel: UILabel!
     @IBOutlet weak var orderIsDoneButton: UIButton!
+    @IBOutlet weak var priceLabel: UILabel!
     
     
     override func viewDidLoad() {
@@ -50,6 +51,7 @@ class OrderDetailsViewController: UIViewController {
         if order.isDone == true {
             orderIsDoneButton.isEnabled = false
         }
+        priceLabel.text = "Цена: \(order.price)"
     }
     
 

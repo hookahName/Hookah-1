@@ -114,7 +114,7 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
         if segue.identifier == "ToResult" {
             guard let resultController = segue.destination as? Result else {return}
             resultController.selectedTable = self.selectedTable
-            resultController.selectedTabacoo = self.selectedTabacoo?.name
+            resultController.selectedTabacoo = self.selectedTabacoo
             resultController.selectedFlavour = self.selectedFlavour
             resultController.selectedTime = self.chosenTime
             if TeaSwitch.isOn == true {
