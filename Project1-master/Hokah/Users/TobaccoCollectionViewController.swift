@@ -48,7 +48,7 @@ class TobaccoCollectionViewController: UICollectionViewController, UINavigationC
         
         cell.tobaccoNameLabel.text = tobaccos[indexPath.row].name
         cell.tobaccoPriceLabel.text = tobaccos[indexPath.row].price
-        cell.tobaccoViewImage.image = UIImage(named: "defaultImage")
+        //cell.tobaccoViewImage.image = UIImage(named: "defaultTobacco")
         
         cell.layer.borderWidth = CGFloat(1)
         cell.layer.borderColor = UIColor.gray.cgColor
