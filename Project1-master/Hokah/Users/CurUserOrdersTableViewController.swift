@@ -61,7 +61,6 @@ class CurUserOrdersTableViewController: UITableViewController {
 
     
     private func loadDatabase() {
-        
         ref = Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).child("orders")
         ref.observe(.value, with: { [weak self] (snapshot) in
             var _orders = Array<OrderDB>()

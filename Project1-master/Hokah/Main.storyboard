@@ -709,7 +709,7 @@
         <!--Enter View Controller-->
         <scene sceneID="XGN-I0-l24">
             <objects>
-                <viewController storyboardIdentifier="login" id="xb4-ZY-hFL" customClass="EnterViewController" customModule="Hokah" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xb4-ZY-hFL" customClass="EnterViewController" customModule="Hokah" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Awj-U6-gcA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -805,7 +805,7 @@
         <!--Navigation Controller-->
         <scene sceneID="TqP-4K-Q0W">
             <objects>
-                <navigationController storyboardIdentifier="navVC" automaticallyAdjustsScrollViewInsets="NO" id="HMQ-fQ-ybM" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HMQ-fQ-ybM" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xWc-YR-AfG">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -926,6 +926,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="yrL-ht-TRZ"/>
+        <segue reference="7KR-yc-jZi"/>
     </inferredMetricsTieBreakers>
 </document>

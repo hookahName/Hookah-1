@@ -34,7 +34,6 @@ class AdminViewController: UIViewController {
             title = "Админ"
         }
         
-
         // Do any additional setup after loading the view.
     }
     
@@ -59,10 +58,7 @@ class AdminViewController: UIViewController {
         } catch {
             print(error.localizedDescription)
         }
-        if let storyboard = self.storyboard {
-            let vc = storyboard.instantiateViewController(withIdentifier: "login") as! EnterViewController
-            self.present(vc, animated: false, completion: nil)
-        }
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func ordersButtonPressed(_ sender: Any) {
