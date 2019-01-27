@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class ViewController: UITableViewController {
+class ViewController: UITableViewController, UINavigationBarDelegate {
     
     // MARK: Properties
     
@@ -60,8 +60,8 @@ class ViewController: UITableViewController {
             
             guard segue.destination is AdminViewController else {return}
             //admin.tobaccos = self.tobaccos
-        } else if segue.identifier == "ToTabaco" {
-            guard let tobaco = segue.destination as? SeconViewController else {return}
+        } else if segue.identifier == "tobacco" {
+            guard let tobaco = segue.destination as? TobaccoCollectionViewController else {return}
             //tobaco.tobaccos = tobaccos
             //print(tobaco.tobaccos)
             if let indexPath = tableView.indexPathForSelectedRow {

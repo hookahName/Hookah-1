@@ -27,7 +27,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Pvx-mJ-LES" kind="show" identifier="ToTabaco" id="s5p-Cq-jhM"/>
+                                    <segue destination="hIE-v2-zpO" kind="show" identifier="tobacco" id="feB-B2-s4l"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -435,56 +435,75 @@
             </objects>
             <point key="canvasLocation" x="2793" y="-550"/>
         </scene>
-        <!--Secon View Controller-->
-        <scene sceneID="mkq-wr-LLw">
+        <!--Tobacco Collection View Controller-->
+        <scene sceneID="ZQb-zo-YEh">
             <objects>
-                <tableViewController id="Pvx-mJ-LES" customClass="SeconViewController" customModule="Hokah" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="auf-WI-qP8">
+                <collectionViewController id="hIE-v2-zpO" customClass="TobaccoCollectionViewController" customModule="Hokah" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="C83-44-viJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TabacoCell" textLabel="JLF-eD-OKP" detailTextLabel="vtx-C5-noD" rowHeight="44" style="IBUITableViewCellStyleSubtitle" id="YeX-Fr-FKb">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="35" minimumInteritemSpacing="0.0" id="JEU-dd-O1I">
+                            <size key="itemSize" width="150" height="150"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="36" minY="40" maxX="25" maxY="40"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="Tobacco" id="TZU-CC-dgx" customClass="TobaccoCellClass" customModule="Hokah" customModuleProvider="target">
+                                <rect key="frame" x="36" y="40" width="157" height="157"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YeX-Fr-FKb" id="cR4-gq-F41">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="157" height="157"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JLF-eD-OKP">
-                                            <rect key="frame" x="16" y="5" width="33.5" height="20.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="defaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="iWK-bZ-Zlm">
+                                            <rect key="frame" x="25" y="0.0" width="107" height="102"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAI-ta-kfC">
+                                            <rect key="frame" x="20" y="111" width="117" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vtx-C5-noD">
-                                            <rect key="frame" x="16" y="25.5" width="44" height="14.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dII-mS-UvP">
+                                            <rect key="frame" x="20" y="140" width="117" height="12"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                </tableViewCellContentView>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="FAI-ta-kfC" firstAttribute="top" secondItem="iWK-bZ-Zlm" secondAttribute="bottom" constant="9" id="0tJ-RJ-D4J"/>
+                                    <constraint firstItem="dII-mS-UvP" firstAttribute="top" secondItem="FAI-ta-kfC" secondAttribute="bottom" constant="8" id="86Z-3D-E4y"/>
+                                    <constraint firstItem="iWK-bZ-Zlm" firstAttribute="top" secondItem="TZU-CC-dgx" secondAttribute="top" id="BjL-pX-bFE"/>
+                                    <constraint firstItem="FAI-ta-kfC" firstAttribute="leading" secondItem="TZU-CC-dgx" secondAttribute="leadingMargin" constant="12" id="DQL-8X-VP1"/>
+                                    <constraint firstAttribute="bottom" secondItem="dII-mS-UvP" secondAttribute="bottom" constant="5" id="JYp-RA-fBm"/>
+                                    <constraint firstAttribute="trailing" secondItem="iWK-bZ-Zlm" secondAttribute="trailing" constant="25" id="MCd-dj-aTA"/>
+                                    <constraint firstItem="dII-mS-UvP" firstAttribute="leading" secondItem="TZU-CC-dgx" secondAttribute="leading" constant="20" id="cY0-Uy-NT9"/>
+                                    <constraint firstItem="iWK-bZ-Zlm" firstAttribute="leading" secondItem="TZU-CC-dgx" secondAttribute="leading" constant="25" id="iBp-z4-8Jb"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="FAI-ta-kfC" secondAttribute="trailing" constant="12" id="kMr-XQ-w7G"/>
+                                    <constraint firstAttribute="trailing" secondItem="dII-mS-UvP" secondAttribute="trailing" constant="20" id="yhG-du-WXk"/>
+                                </constraints>
+                                <size key="customSize" width="157" height="157"/>
                                 <connections>
-                                    <segue destination="rOD-Rh-l5O" kind="show" identifier="ToFlavour" id="i28-nU-Mk1"/>
+                                    <outlet property="tobaccoNameLabel" destination="FAI-ta-kfC" id="HOF-GW-hTT"/>
+                                    <outlet property="tobaccoPriceLabel" destination="dII-mS-UvP" id="BGX-a7-fvT"/>
+                                    <outlet property="tobaccoViewImage" destination="iWK-bZ-Zlm" id="Zm5-ND-kw7"/>
+                                    <segue destination="rOD-Rh-l5O" kind="show" identifier="toTobaccoTastes" id="GWG-Jg-6gF"/>
                                 </connections>
-                            </tableViewCell>
-                        </prototypes>
+                            </collectionViewCell>
+                        </cells>
                         <connections>
-                            <outlet property="dataSource" destination="Pvx-mJ-LES" id="HTl-5u-A1t"/>
-                            <outlet property="delegate" destination="Pvx-mJ-LES" id="h7v-aY-PRd"/>
+                            <outlet property="dataSource" destination="hIE-v2-zpO" id="Ee1-nk-V29"/>
+                            <outlet property="delegate" destination="hIE-v2-zpO" id="Qdd-vC-I9I"/>
                         </connections>
-                    </tableView>
-                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="128-Kh-DmB">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </refreshControl>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4eg-GX-Ola" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="umb-40-aFn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1916" y="158"/>
+            <point key="canvasLocation" x="1951" y="158"/>
         </scene>
         <!--Title-->
         <scene sceneID="uGZ-ZS-HxN">
@@ -925,7 +944,11 @@
             <point key="canvasLocation" x="4645.6000000000004" y="157.87106446776613"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="defaultImage" width="1024" height="1024"/>
+    </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="k9H-9k-8z3"/>
         <segue reference="7KR-yc-jZi"/>
     </inferredMetricsTieBreakers>
 </document>
