@@ -19,7 +19,7 @@ class TobaccoCollectionViewController: UICollectionViewController, UINavigationC
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadDatabase()
+        //loadDatabase()
     }
     
     override func viewDidLoad() {
@@ -29,7 +29,7 @@ class TobaccoCollectionViewController: UICollectionViewController, UINavigationC
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        ref.removeAllObservers()
+        //ref.removeAllObservers()
     }
     
     // MARK: UICollectionViewDataSource
@@ -59,6 +59,10 @@ class TobaccoCollectionViewController: UICollectionViewController, UINavigationC
             cell.tobaccoPriceLabel.isEnabled = false
             cell.tobaccoViewImage.alpha = 0.25
         }
+        
+        cell.layer.borderWidth = CGFloat(1)
+        cell.layer.borderColor = UIColor.gray.cgColor
+        cell.layer.cornerRadius = 8
         
         return cell
     }
@@ -107,6 +111,7 @@ class TobaccoCollectionViewController: UICollectionViewController, UINavigationC
     
     }
     */
+    /*
     private func loadDatabase() {
         ref = Database.database().reference().child("tobaccos")
         ref.observe(.value, with: {[weak self] (snapshot) in
@@ -119,4 +124,5 @@ class TobaccoCollectionViewController: UICollectionViewController, UINavigationC
             self?.collectionView.reloadData()
         })
     }
+ */
 }

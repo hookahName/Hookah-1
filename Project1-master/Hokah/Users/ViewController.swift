@@ -15,12 +15,22 @@ class ViewController: UITableViewController, UINavigationBarDelegate {
     
     var ref: DatabaseReference!
     let tables = ["Table 1", "Table 2", "Table 3"]
+    var tobaccos = Array<TobaccoDB>()
     //var tobaccos = Array<TobaccoDB>()
     
     // MARK: View settings
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        ref = Database.database().reference().child("tobaccos")
+        ref.observe(.value, with: {[weak self] (snapshot) in
+            var _tobaccos = Array<TobaccoDB>()
+            for item in snapshot.children {
+                let tobacco = TobaccoDB(snapshot: item as! DataSnapshot)
+                _tobaccos.append(tobacco)
+            }
+            self?.tobaccos = _tobaccos
+        })
     }
  
     override func viewDidLoad() {
@@ -32,7 +42,7 @@ class ViewController: UITableViewController, UINavigationBarDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+        ref.removeAllObservers()
     }
     
     // MARK: Table view settings
@@ -64,6 +74,7 @@ class ViewController: UITableViewController, UINavigationBarDelegate {
             guard let tobaco = segue.destination as? TobaccoCollectionViewController else {return}
             //tobaco.tobaccos = tobaccos
             //print(tobaco.tobaccos)
+            tobaco.tobaccos = tobaccos
             if let indexPath = tableView.indexPathForSelectedRow {
                 tobaco.selectedTable = indexPath.row + 1
             }
