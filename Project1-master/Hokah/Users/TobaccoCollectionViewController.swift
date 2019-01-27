@@ -19,7 +19,7 @@ class TobaccoCollectionViewController: UICollectionViewController, UINavigationC
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //loadDatabase()
+        loadDatabase()
     }
     
     override func viewDidLoad() {
@@ -60,48 +60,13 @@ class TobaccoCollectionViewController: UICollectionViewController, UINavigationC
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toTobaccoTastes" {
             guard let indexPath = collectionView.indexPath(for: sender as! UICollectionViewCell) else {return}
-            guard let dvc = segue.destination as? ThirdViewController else {return}
+            guard let dvc = segue.destination as? TastesCollectionViewController else {return}
             dvc.table = selectedTable
-            dvc.selectedTabacoo = tobaccos[indexPath.row]
+            dvc.selectedTobacco = tobaccos[indexPath.row]
         }
     }
- 
-    /*
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "toTobaccoTastes", sender: self)
-    }
- */
-    // MARK: UICollectionViewDelegate
 
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
-    }
-    */
-    /*
     private func loadDatabase() {
         ref = Database.database().reference().child("tobaccos")
         ref.observe(.value, with: {[weak self] (snapshot) in
@@ -114,5 +79,4 @@ class TobaccoCollectionViewController: UICollectionViewController, UINavigationC
             self?.collectionView.reloadData()
         })
     }
- */
 }

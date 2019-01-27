@@ -26,7 +26,6 @@
 		ED18062B21E23AB1006148BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED18062A21E23AB1006148BE /* ViewController.swift */; };
 		ED18063021E23AB3006148BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED18062F21E23AB3006148BE /* Assets.xcassets */; };
 		ED18063321E23AB3006148BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED18063121E23AB3006148BE /* LaunchScreen.storyboard */; };
-		ED18063F21E24772006148BE /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED18063E21E24772006148BE /* ThirdViewController.swift */; };
 		ED18064121E24EAB006148BE /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED18064021E24EAB006148BE /* Result.swift */; };
 		EDABF6C321F40E1300C73656 /* AdminTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDABF6C221F40E1300C73656 /* AdminTableViewController.swift */; };
 		EDB5C8FC21FD175500610596 /* TobaccoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB5C8FB21FD175500610596 /* TobaccoCollectionViewController.swift */; };
@@ -35,6 +34,8 @@
 		EDE0784621FBCCC700AAFFE8 /* TeaClassForDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE0784521FBCCC700AAFFE8 /* TeaClassForDB.swift */; };
 		EDE0784821FBDFFE00AAFFE8 /* OrdersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE0784721FBDFFE00AAFFE8 /* OrdersTableViewController.swift */; };
 		EDE0784A21FBE3BC00AAFFE8 /* OrderDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE0784921FBE3BC00AAFFE8 /* OrderDetailsViewController.swift */; };
+		EDF9D72021FDDEE100E03FD7 /* TasteCellClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF9D71F21FDDEE100E03FD7 /* TasteCellClass.swift */; };
+		EDF9D72221FDDF1000E03FD7 /* TastesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF9D72121FDDF1000E03FD7 /* TastesCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,7 +62,6 @@
 		ED18062F21E23AB3006148BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED18063221E23AB3006148BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED18063421E23AB3006148BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ED18063E21E24772006148BE /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		ED18064021E24EAB006148BE /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		EDABF6C221F40E1300C73656 /* AdminTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTableViewController.swift; sourceTree = "<group>"; };
 		EDB5C8FB21FD175500610596 /* TobaccoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TobaccoCollectionViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +70,8 @@
 		EDE0784521FBCCC700AAFFE8 /* TeaClassForDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeaClassForDB.swift; sourceTree = "<group>"; };
 		EDE0784721FBDFFE00AAFFE8 /* OrdersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTableViewController.swift; sourceTree = "<group>"; };
 		EDE0784921FBE3BC00AAFFE8 /* OrderDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsViewController.swift; sourceTree = "<group>"; };
+		EDF9D71F21FDDEE100E03FD7 /* TasteCellClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasteCellClass.swift; sourceTree = "<group>"; };
+		EDF9D72121FDDF1000E03FD7 /* TastesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastesCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +115,7 @@
 				22D5ADE421FA833300F74ED3 /* RegisterViewController.swift */,
 				ED18062A21E23AB1006148BE /* ViewController.swift */,
 				EDB5C8FB21FD175500610596 /* TobaccoCollectionViewController.swift */,
-				ED18063E21E24772006148BE /* ThirdViewController.swift */,
+				EDF9D72121FDDF1000E03FD7 /* TastesCollectionViewController.swift */,
 				22404B3D21F65A4700DF041C /* ChooseTimeViewController.swift */,
 				ED18064021E24EAB006148BE /* Result.swift */,
 				2253B1E721FD048A00444D44 /* CurUserOrdersTableViewController.swift */,
@@ -168,6 +170,7 @@
 		ED18064B21E27039006148BE /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				EDF9D71F21FDDEE100E03FD7 /* TasteCellClass.swift */,
 				22404B2F21EA4D6B00DF041C /* TobaccoClassForDB.swift */,
 				EDB5C8FD21FD17A200610596 /* TobaccoCellClass.swift */,
 				22404B3521F4DDB600DF041C /* TasteClassForDB.swift */,
@@ -328,8 +331,9 @@
 				22D5ADE521FA833300F74ED3 /* RegisterViewController.swift in Sources */,
 				EDB5C8FC21FD175500610596 /* TobaccoCollectionViewController.swift in Sources */,
 				22404B4221F665CF00DF041C /* AdminViewController.swift in Sources */,
-				ED18063F21E24772006148BE /* ThirdViewController.swift in Sources */,
+				EDF9D72021FDDEE100E03FD7 /* TasteCellClass.swift in Sources */,
 				ED18062921E23AB1006148BE /* AppDelegate.swift in Sources */,
+				EDF9D72221FDDF1000E03FD7 /* TastesCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

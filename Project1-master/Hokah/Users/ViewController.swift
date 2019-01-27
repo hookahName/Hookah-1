@@ -77,7 +77,7 @@ class ViewController: UITableViewController, UINavigationBarDelegate {
             guard let tobaco = segue.destination as? TobaccoCollectionViewController else {return}
             //tobaco.tobaccos = tobaccos
             //print(tobaco.tobaccos)
-            tobaco.tobaccos = tobaccos
+            //tobaco.tobaccos = tobaccos
             if let indexPath = tableView.indexPathForSelectedRow {
                 tobaco.selectedTable = indexPath.row + 1
             }
