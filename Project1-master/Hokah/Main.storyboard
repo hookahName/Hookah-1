@@ -367,29 +367,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="defaultTobacco" translatesAutoresizingMaskIntoConstraints="NO" id="oHy-hV-ozu">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="defaultTobacco" translatesAutoresizingMaskIntoConstraints="NO" id="oHy-hV-ozu">
                                 <rect key="frame" x="87" y="64" width="200" height="199"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lg6-Lj-glb">
-                                <rect key="frame" x="67" y="271" width="240" height="30"/>
+                                <rect key="frame" x="112" y="271" width="175" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="textFieldDidChanged:" destination="ltB-Ni-FMt" eventType="editingChanged" id="hhK-Vb-DVU"/>
+                                    <action selector="textFieldDidChanged:" destination="ltB-Ni-FMt" eventType="editingChanged" id="soz-Vj-5Xo"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ifh-BA-Tan">
-                                <rect key="frame" x="67" y="318" width="122" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ifh-BA-Tan">
+                                <rect key="frame" x="112" y="318" width="114.5" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <connections>
-                                    <action selector="textFieldDidChanged:" destination="ltB-Ni-FMt" eventType="editingDidEnd" id="ST5-na-5g2"/>
+                                    <action selector="textFieldDidChanged:" destination="ltB-Ni-FMt" eventType="editingChanged" id="0bk-b7-e60"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Руб." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qar-QP-AhB">
-                                <rect key="frame" x="197" y="323" width="34" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Руб." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xI-hC-K9O">
+                                <rect key="frame" x="234.5" y="323" width="33.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -397,20 +397,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="uPc-bS-Rhz" firstAttribute="trailing" secondItem="Qar-QP-AhB" secondAttribute="trailing" constant="144" id="0cn-ET-oT3"/>
-                            <constraint firstItem="lg6-Lj-glb" firstAttribute="leading" secondItem="uPc-bS-Rhz" secondAttribute="leading" constant="67" id="0qP-hu-EWn"/>
+                            <constraint firstItem="uPc-bS-Rhz" firstAttribute="trailing" secondItem="lg6-Lj-glb" secondAttribute="trailing" constant="88" id="0Xh-M1-5SQ"/>
+                            <constraint firstItem="8xI-hC-K9O" firstAttribute="top" secondItem="lg6-Lj-glb" secondAttribute="bottom" constant="22" id="3J4-1j-Lgz"/>
                             <constraint firstItem="uPc-bS-Rhz" firstAttribute="trailing" secondItem="oHy-hV-ozu" secondAttribute="trailing" constant="88" id="7DB-YG-H3I"/>
+                            <constraint firstItem="uPc-bS-Rhz" firstAttribute="bottom" secondItem="8xI-hC-K9O" secondAttribute="bottom" constant="279" id="QMm-5X-VNC"/>
                             <constraint firstItem="uPc-bS-Rhz" firstAttribute="bottom" secondItem="Ifh-BA-Tan" secondAttribute="bottom" constant="275" id="TNH-SY-g9w"/>
-                            <constraint firstItem="Qar-QP-AhB" firstAttribute="leading" secondItem="Ifh-BA-Tan" secondAttribute="trailing" constant="8" id="UC6-7J-YKi"/>
-                            <constraint firstItem="Ifh-BA-Tan" firstAttribute="leading" secondItem="uPc-bS-Rhz" secondAttribute="leading" constant="67" id="Zle-BE-08r"/>
-                            <constraint firstItem="Qar-QP-AhB" firstAttribute="top" secondItem="lg6-Lj-glb" secondAttribute="bottom" constant="22" id="aqS-lJ-Ww1"/>
+                            <constraint firstItem="uPc-bS-Rhz" firstAttribute="trailing" secondItem="8xI-hC-K9O" secondAttribute="trailing" constant="107" id="Trg-7T-REB"/>
+                            <constraint firstItem="lg6-Lj-glb" firstAttribute="leading" secondItem="uPc-bS-Rhz" secondAttribute="leading" constant="112" id="bOX-vH-5bt"/>
+                            <constraint firstItem="Ifh-BA-Tan" firstAttribute="leading" secondItem="uPc-bS-Rhz" secondAttribute="leading" constant="112" id="h5y-jI-BRh"/>
                             <constraint firstItem="oHy-hV-ozu" firstAttribute="top" secondItem="uPc-bS-Rhz" secondAttribute="top" id="jXg-gm-a7L"/>
-                            <constraint firstItem="Qar-QP-AhB" firstAttribute="leading" secondItem="Ifh-BA-Tan" secondAttribute="trailing" constant="8" id="lpk-gY-Wi3"/>
-                            <constraint firstItem="uPc-bS-Rhz" firstAttribute="bottom" secondItem="Qar-QP-AhB" secondAttribute="bottom" constant="279" id="mEW-tu-DJV"/>
+                            <constraint firstItem="8xI-hC-K9O" firstAttribute="leading" secondItem="Ifh-BA-Tan" secondAttribute="trailing" constant="8" id="mKO-Zp-iba"/>
                             <constraint firstItem="oHy-hV-ozu" firstAttribute="leading" secondItem="uPc-bS-Rhz" secondAttribute="leading" constant="87" id="nma-VX-dN8"/>
                             <constraint firstItem="lg6-Lj-glb" firstAttribute="top" secondItem="oHy-hV-ozu" secondAttribute="bottom" constant="8" id="yfs-fm-uV9"/>
                             <constraint firstItem="Ifh-BA-Tan" firstAttribute="top" secondItem="lg6-Lj-glb" secondAttribute="bottom" constant="17" id="yqk-df-YKI"/>
-                            <constraint firstItem="uPc-bS-Rhz" firstAttribute="trailing" secondItem="lg6-Lj-glb" secondAttribute="trailing" constant="68" id="ytC-Kj-6tY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uPc-bS-Rhz"/>
                     </view>
@@ -418,6 +417,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Сохранить" id="avE-Er-to5">
                             <connections>
                                 <action selector="saveButtonPressed:" destination="ltB-Ni-FMt" id="iJX-p1-Hng"/>
+                                <segue destination="MTH-qU-RYN" kind="unwind" unwindAction="unwindSegueToAdmin:" id="Ccy-SZ-Nfi"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -429,6 +429,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pJ5-gB-DOd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="MTH-qU-RYN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1916" y="-1245.4272863568217"/>
         </scene>

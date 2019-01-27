@@ -24,7 +24,8 @@ class DetailTobaccoInfo: UIViewController {
         super.viewDidLoad()
         
         if let tobacco = tobacco {
-            tobaccoNameText.text = tobacco.name
+            tobaccoNameText.text = tobacco.name.capitalized
+            tobaccoNameText.isEnabled = false
             
             tobaccoPriceText.text = tobacco.price
         } else {
@@ -39,15 +40,12 @@ class DetailTobaccoInfo: UIViewController {
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {
-        if let tobacco = tobacco {
-            ref = Database.database().reference()
-            
-        }
+        guard let newPrice = tobaccoPriceText.text, newPrice != "" else {return}
+        ref = Database.database().reference()
+        ref.child("tobaccos").child(tobacco!.name.lowercased()).updateChildValues(["name": tobacco!.name.lowercased(), "price": newPrice, "isAvailable": tobacco!.isAvailable])
     }
     
     @IBAction func textFieldDidChanged(_ sender: UITextField) {
         saveButton.isEnabled = true
     }
-    
-    
 }

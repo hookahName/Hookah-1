@@ -51,7 +51,7 @@ class OrderDetailsViewController: UIViewController {
         if order.isDone == true {
             orderIsDoneButton.isEnabled = false
         }
-        priceLabel.text = "Цена: \(order.price)"
+        priceLabel.text = "Цена: \(order.price) Руб."
     }
     
 

@@ -35,7 +35,7 @@ class TobaccoDB {
     }
     
     func convertToDictionary() -> Any {
-        return ["name": name, "price": price + " Руб.", "isAvailable": isAvailable]
+        return ["name": name, "price": price, "isAvailable": isAvailable]
 
         //return ["name": name, "price": price + " Руб.", "tobaccoImageURL": tobaccoImageURL, "isAvailable": isAvailable]
     }

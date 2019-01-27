@@ -60,7 +60,7 @@ class Result: UIViewController, UINavigationControllerDelegate {
         } else {
             teaTaste.text = "Чай не выбран"
         }
-        priceLabel.text = "Цена: \(selectedTabacoo.price)"
+        priceLabel.text = "Цена: \(selectedTabacoo.price) Руб."
         
     }
     
