@@ -72,7 +72,10 @@ class Result: UIViewController, UINavigationControllerDelegate {
         orderRef.setValue(order?.convertToDictionary())
         let ac = UIAlertController(title: "Готово!", message: "Номер вашего заказа: \(identifier)", preferredStyle: .alert)
         let action = UIAlertAction(title: "Хорошо", style: .default) { [weak self] _ in
-            self!.performSegue(withIdentifier: "toMainScreen", sender: nil)
+            if let storyboard = self!.storyboard {
+                let vc = storyboard.instantiateViewController(withIdentifier: "navVC") as! UINavigationController
+                self!.present(vc, animated: false, completion: nil)
+            }
         }
         ac.addAction(action)
         present(ac, animated: true)

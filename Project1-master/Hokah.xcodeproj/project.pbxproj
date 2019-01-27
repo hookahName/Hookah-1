@@ -107,8 +107,6 @@
 		22404B4021F6655900DF041C /* Users */ = {
 			isa = PBXGroup;
 			children = (
-				22D5ADE221FA7E1E00F74ED3 /* EnterViewController.swift */,
-				22D5ADE421FA833300F74ED3 /* RegisterViewController.swift */,
 				ED18062A21E23AB1006148BE /* ViewController.swift */,
 				ED18063C21E23E7A006148BE /* SeconViewController.swift */,
 				ED18063E21E24772006148BE /* ThirdViewController.swift */,
@@ -118,6 +116,15 @@
 				2253B1E921FD0FD600444D44 /* CurUserOrderDetailViewController.swift */,
 			);
 			path = Users;
+			sourceTree = "<group>";
+		};
+		2253B1EC21FD152A00444D44 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				22D5ADE221FA7E1E00F74ED3 /* EnterViewController.swift */,
+				22D5ADE421FA833300F74ED3 /* RegisterViewController.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 		BC2EB5DB9CB1A2B636AA1D2F /* Frameworks */ = {
@@ -149,6 +156,7 @@
 		ED18062721E23AB1006148BE /* Hokah */ = {
 			isa = PBXGroup;
 			children = (
+				2253B1EC21FD152A00444D44 /* Authentication */,
 				22404B3F21F6653600DF041C /* Admin */,
 				22404B4021F6655900DF041C /* Users */,
 				ED18064B21E27039006148BE /* Classes */,
