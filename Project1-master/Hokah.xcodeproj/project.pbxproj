@@ -27,6 +27,7 @@
 		ED18063021E23AB3006148BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED18062F21E23AB3006148BE /* Assets.xcassets */; };
 		ED18063321E23AB3006148BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED18063121E23AB3006148BE /* LaunchScreen.storyboard */; };
 		ED18064121E24EAB006148BE /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED18064021E24EAB006148BE /* Result.swift */; };
+		ED1FF1EB21FE412A000573F8 /* DetailTobaccoInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1FF1EA21FE412A000573F8 /* DetailTobaccoInfo.swift */; };
 		EDABF6C321F40E1300C73656 /* AdminTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDABF6C221F40E1300C73656 /* AdminTableViewController.swift */; };
 		EDB5C8FC21FD175500610596 /* TobaccoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB5C8FB21FD175500610596 /* TobaccoCollectionViewController.swift */; };
 		EDB5C8FE21FD17A200610596 /* TobaccoCellClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB5C8FD21FD17A200610596 /* TobaccoCellClass.swift */; };
@@ -63,6 +64,7 @@
 		ED18063221E23AB3006148BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED18063421E23AB3006148BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED18064021E24EAB006148BE /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		ED1FF1EA21FE412A000573F8 /* DetailTobaccoInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTobaccoInfo.swift; sourceTree = "<group>"; };
 		EDABF6C221F40E1300C73656 /* AdminTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTableViewController.swift; sourceTree = "<group>"; };
 		EDB5C8FB21FD175500610596 /* TobaccoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TobaccoCollectionViewController.swift; sourceTree = "<group>"; };
 		EDB5C8FD21FD17A200610596 /* TobaccoCellClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TobaccoCellClass.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			children = (
 				22404B4121F665CF00DF041C /* AdminViewController.swift */,
 				EDABF6C221F40E1300C73656 /* AdminTableViewController.swift */,
+				ED1FF1EA21FE412A000573F8 /* DetailTobaccoInfo.swift */,
 				22404B3321F4CAED00DF041C /* AddTastesTableViewController.swift */,
 				22404B4321F6687D00DF041C /* ChangeTeaTasteTableViewController.swift */,
 				EDE0784721FBDFFE00AAFFE8 /* OrdersTableViewController.swift */,
@@ -327,6 +330,7 @@
 				2253B1E821FD048A00444D44 /* CurUserOrdersTableViewController.swift in Sources */,
 				ED18062B21E23AB1006148BE /* ViewController.swift in Sources */,
 				22404B4421F6687D00DF041C /* ChangeTeaTasteTableViewController.swift in Sources */,
+				ED1FF1EB21FE412A000573F8 /* DetailTobaccoInfo.swift in Sources */,
 				22404B3421F4CAED00DF041C /* AddTastesTableViewController.swift in Sources */,
 				22D5ADE521FA833300F74ED3 /* RegisterViewController.swift in Sources */,
 				EDB5C8FC21FD175500610596 /* TobaccoCollectionViewController.swift in Sources */,

@@ -64,7 +64,7 @@ class AdminTableViewController: UITableViewController, UINavigationControllerDel
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    
+    /*
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let tabaco = tobaccos[indexPath.row]
@@ -76,8 +76,31 @@ class AdminTableViewController: UITableViewController, UINavigationControllerDel
             self.tableView.endUpdates()
         }
     }
-   
+   */
     // MARK: Private functions
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let edit = UITableViewRowAction(style: .default, title: "Изменить") { (action, indexPath) in
+            self.performSegue(withIdentifier: "toDetails", sender: indexPath)
+        }
+        
+        let delete = UITableViewRowAction(style: .default, title: "Удалить") { (action, indexPath) in
+            let tobacco = self.tobaccos[indexPath.row]
+            self.ref = Database.database().reference().child("tobaccos").child(tobacco.name)
+            self.ref.setValue(nil)
+            self.tobaccos.remove(at: indexPath.row)
+            self.tableView.beginUpdates()
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.tableView.endUpdates()
+        }
+        
+        edit.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        delete.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+        return [delete, edit]
+    }
+    
+    
     
     @IBAction func add(_ sender: Any) {
         ref = Database.database().reference()
@@ -119,11 +142,19 @@ class AdminTableViewController: UITableViewController, UINavigationControllerDel
     }
         
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddTastes" {
+        if segue.identifier == "toDetails" {
+            guard let detail = segue.destination as? DetailTobaccoInfo else {return}
+            if let indexPath = sender as? IndexPath {
+                detail.tobacco = tobaccos[indexPath.row]
+            }
+        } else if segue.identifier == "AddTastes" {
             guard let taste = segue.destination as? AddTastesTableViewController else {return}
             if let indexPath = tableView.indexPathForSelectedRow {
                 taste.chosenTobacco = tobaccos[indexPath.row]
             }
         }
+    }
+    
+    @IBAction func unwindSegueToAdmin(_ sender: UIStoryboardSegue) {
     }
 }
