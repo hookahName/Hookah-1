@@ -750,7 +750,7 @@
         <!--Enter View Controller-->
         <scene sceneID="XGN-I0-l24">
             <objects>
-                <viewController id="xb4-ZY-hFL" customClass="EnterViewController" customModule="Hokah" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="login" id="xb4-ZY-hFL" customClass="EnterViewController" customModule="Hokah" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Awj-U6-gcA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -970,7 +970,6 @@
         <image name="defaultImage" width="1024" height="1024"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="C2K-bH-9kn"/>
-        <segue reference="7KR-yc-jZi"/>
+        <segue reference="yrL-ht-TRZ"/>
     </inferredMetricsTieBreakers>
 </document>

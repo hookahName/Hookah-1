@@ -73,7 +73,7 @@ class OrdersTableViewController: UITableViewController {
                     _orders.append(order)
 
                 }
-                self?.orders = _orders
+                self?.orders = _orders.sorted(by: { $0.identifier > $1.identifier })
                 self?.tableView.reloadData()
             })
         }

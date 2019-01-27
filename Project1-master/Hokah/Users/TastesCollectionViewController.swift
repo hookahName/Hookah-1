@@ -70,7 +70,7 @@ class TastesCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! TasteCellClass
         cell.layer.borderWidth = CGFloat(1)
         cell.layer.cornerRadius = 8
-        //cell.tasteImageView.image = UIImage(named: "defaultTaste")
+        cell.tasteImageView.image = UIImage(named: "defaultTaste")
         cell.tasteNameLabel.text = tastes[indexPath.row].name
         
         if selectedTastes.contains(tastes[indexPath.row].name) {
