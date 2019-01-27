@@ -50,16 +50,6 @@ class TobaccoCollectionViewController: UICollectionViewController, UINavigationC
         cell.tobaccoPriceLabel.text = tobaccos[indexPath.row].price
         cell.tobaccoViewImage.image = UIImage(named: "defaultImage")
         
-        if tobaccos[indexPath.row].isAvailable {
-            cell.tobaccoNameLabel.isEnabled = true
-            cell.tobaccoPriceLabel.isEnabled = true
-            cell.tobaccoViewImage.alpha = 1
-        } else {
-            cell.tobaccoNameLabel.isEnabled = false
-            cell.tobaccoPriceLabel.isEnabled = false
-            cell.tobaccoViewImage.alpha = 0.25
-        }
-        
         cell.layer.borderWidth = CGFloat(1)
         cell.layer.borderColor = UIColor.gray.cgColor
         cell.layer.cornerRadius = 8
