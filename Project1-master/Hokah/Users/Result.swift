@@ -63,6 +63,8 @@ class Result: UIViewController, UINavigationControllerDelegate {
         priceLabel.text = "Цена: \(selectedTabacoo.price) Руб."
         
     }
+    @IBAction func oneMoreHookah(_ sender: Any) {
+    }
     
     @IBAction func makeOrderButton(_ sender: Any) {
         let identifier = getUniqueIdentifier()

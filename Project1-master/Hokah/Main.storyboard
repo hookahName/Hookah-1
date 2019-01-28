@@ -947,10 +947,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="44" translatesAutoresizingMaskIntoConstraints="NO" id="PKN-9v-Xra">
-                                <rect key="frame" x="40" y="135.5" width="295" height="332.5"/>
+                                <rect key="frame" x="40" y="68.5" width="295" height="466"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="39" translatesAutoresizingMaskIntoConstraints="NO" id="75w-iX-Nej">
-                                        <rect key="frame" x="40" y="0.0" width="215" height="258.5"/>
+                                        <rect key="frame" x="40" y="0.0" width="215" height="318"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJy-xw-lnh">
                                                 <rect key="frame" x="0.0" y="0.0" width="215" height="20.5"/>
@@ -982,6 +982,12 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wSJ-xe-H0W">
+                                                <rect key="frame" x="86.5" y="297.5" width="42" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="ywV-FH-eWE" secondAttribute="trailing" id="JHl-qg-1Wa"/>
@@ -996,8 +1002,15 @@
                                             <constraint firstItem="N0d-lQ-ENf" firstAttribute="leading" secondItem="75w-iX-Nej" secondAttribute="leading" id="udo-BJ-bDm"/>
                                         </constraints>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hPf-28-7Ps">
+                                        <rect key="frame" x="61" y="362" width="173" height="30"/>
+                                        <state key="normal" title="Закать еще один кальян"/>
+                                        <connections>
+                                            <action selector="oneMoreHookah:" destination="62v-KC-sj4" eventType="touchUpInside" id="H4n-mq-EgG"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ug-D2-7xF">
-                                        <rect key="frame" x="40" y="302.5" width="215" height="30"/>
+                                        <rect key="frame" x="96" y="436" width="103" height="30"/>
                                         <state key="normal" title="Сделать заказ"/>
                                         <connections>
                                             <action selector="makeOrderButton:" destination="62v-KC-sj4" eventType="touchUpInside" id="q7Q-D3-mKq"/>
@@ -1006,19 +1019,14 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="6ug-D2-7xF" firstAttribute="leading" secondItem="PKN-9v-Xra" secondAttribute="leading" constant="40" id="9lc-kb-d02"/>
+                                    <constraint firstItem="hPf-28-7Ps" firstAttribute="leading" secondItem="PKN-9v-Xra" secondAttribute="leading" constant="61" id="AnD-7g-TJG"/>
                                     <constraint firstAttribute="trailing" secondItem="75w-iX-Nej" secondAttribute="trailing" constant="40" id="FdE-Ye-uwB"/>
-                                    <constraint firstAttribute="trailing" secondItem="6ug-D2-7xF" secondAttribute="trailing" constant="40" id="Poc-cs-mJX"/>
+                                    <constraint firstAttribute="trailing" secondItem="hPf-28-7Ps" secondAttribute="trailing" constant="61" id="MSo-PL-CWK"/>
+                                    <constraint firstItem="6ug-D2-7xF" firstAttribute="leading" secondItem="PKN-9v-Xra" secondAttribute="leading" constant="96" id="YSS-Lv-ggu"/>
                                     <constraint firstItem="75w-iX-Nej" firstAttribute="leading" secondItem="PKN-9v-Xra" secondAttribute="leading" constant="40" id="k4j-Cv-9e5"/>
+                                    <constraint firstAttribute="trailing" secondItem="6ug-D2-7xF" secondAttribute="trailing" constant="96" id="mCU-mq-G91"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wSJ-xe-H0W">
-                                <rect key="frame" x="16" y="124" width="343" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1045,7 +1053,7 @@
     </scenes>
     <resources>
         <image name="defaultImage" width="1024" height="1024"/>
-        <image name="defaultTobacco" width="512" height="512"/>
+        <image name="defaultTobacco" width="1024" height="1024"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7KR-yc-jZi"/>
