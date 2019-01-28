@@ -12,7 +12,6 @@ import Firebase
 class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     // MARK: Properties
-    let TeaSwitch = UISwitch()
     var ref: DatabaseReference!
     var teaTastes = Array<TeaDB>()
     var selectedTable: Int?
@@ -20,8 +19,13 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
     var selectedFlavour: [String]?
     var chosenTime: String = ""
     var chosenTea: TeaDB?
-    let teaTastesPicker = UIPickerView()
+    var orders = Array<OrderDB>()
+    var order: OrderDB?
     
+    
+    let teaTastesPicker = UIPickerView()
+    let TeaSwitch = UISwitch()
+
     @IBOutlet weak var chooseTimeOutlet: UIDatePicker!
     @IBOutlet weak var TeaLabel: UILabel!
     @IBOutlet weak var readyBut: UIBarButtonItem!
@@ -107,6 +111,14 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
         }
     }
     
+    private func getUniqueIdentifier() -> String {
+        let curDate = Date()
+        let timeInterval = curDate.timeIntervalSince1970
+        let dateString = String(Int(timeInterval))
+        print(dateString)
+        return dateString
+    }
+    
     @IBAction func readyButPressed(_ sender: UIBarButtonItem) {
     }
     
@@ -122,6 +134,7 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
             } else {
                 resultController.selectedTea = "Не выбран"
             }
+            resultController.orders = orders
         }
     }
 }

@@ -20,15 +20,18 @@ class TastesCollectionViewController: UICollectionViewController {
     var selectedTobacco: TobaccoDB?
     var teaTastes = Array<TeaDB>()
     var readyButton = UIBarButtonItem()
+    var orders = Array<OrderDB>()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        ref = Database.database().reference().child("tobaccos").child((selectedTobacco?.name)!).child("tastes")
+        ref = Database.database().reference().child("tobaccos").child((selectedTobacco?.name)!.lowercased()).child("tastes")
         ref.observe(.value, with: {[weak self] (snapshot) in
             var _tastes = Array<TasteDB>()
             for item in snapshot.children{
                 let taste = TasteDB(snapshot: item as! DataSnapshot)
-                _tastes.append(taste)
+                if taste.isAvailable {
+                    _tastes.append(taste)
+                }
             }
             self?.tastes = _tastes
             self?.collectionView.reloadData()
@@ -42,13 +45,13 @@ class TastesCollectionViewController: UICollectionViewController {
         readyButton.isEnabled = false
         self.navigationItem.rightBarButtonItem = readyButton
         
-        title = selectedTobacco?.name
+        title = selectedTobacco?.name.capitalized
         ref = Database.database().reference().child("tea")
         ref.observe(.value, with: { [weak self] (snapshot) in
             var _teaTastes = Array<TeaDB>()
             for i in snapshot.children{
                 let teaTaste = TeaDB(snapshot: i as! DataSnapshot)
-                if teaTaste.isAvailable == true{
+                if teaTaste.isAvailable == true {
                     _teaTastes.append(teaTaste)
                 }
             }
@@ -71,7 +74,7 @@ class TastesCollectionViewController: UICollectionViewController {
         cell.layer.borderWidth = CGFloat(1)
         cell.layer.cornerRadius = 8
         cell.tasteImageView.image = UIImage(named: "defaultTaste")
-        cell.tasteNameLabel.text = tastes[indexPath.row].name
+        cell.tasteNameLabel.text = tastes[indexPath.row].name.capitalized
         
         if selectedTastes.contains(tastes[indexPath.row].name) {
             cell.layer.borderColor = UIColor.blue.cgColor
@@ -111,6 +114,7 @@ class TastesCollectionViewController: UICollectionViewController {
             dvc.selectedTabacoo = selectedTobacco
             dvc.selectedFlavour = selectedTastes
             dvc.teaTastes = teaTastes
+            dvc.orders = orders
         }
     }
 }

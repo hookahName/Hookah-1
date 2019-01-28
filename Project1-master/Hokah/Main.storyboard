@@ -464,7 +464,6 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="R9r-Wd-QqP">
                             <connections>
                                 <action selector="add:" destination="1O0-yf-her" id="GqQ-Tq-nx5"/>
-                                <segue destination="ltB-Ni-FMt" kind="show" identifier="addTobacco" id="uFa-2l-liG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1008,6 +1007,7 @@
                                         <state key="normal" title="Закать еще один кальян"/>
                                         <connections>
                                             <action selector="oneMoreHookah:" destination="62v-KC-sj4" eventType="touchUpInside" id="H4n-mq-EgG"/>
+                                            <segue destination="b0w-LM-ys4" kind="unwind" unwindAction="unwindSegueToExtraHookah:" id="ZEZ-Ox-Hfk"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ug-D2-7xF">
@@ -1028,19 +1028,38 @@
                                     <constraint firstAttribute="trailing" secondItem="6ug-D2-7xF" secondAttribute="trailing" constant="96" id="mCU-mq-G91"/>
                                 </constraints>
                             </stackView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="AZF-BY-LkU">
+                                <rect key="frame" x="16" y="20" width="343" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="AZF-BY-LkU" secondAttribute="height" multiplier="49:4" id="bgW-b8-F7q"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <connections>
+                                    <action selector="segmentChanged:" destination="62v-KC-sj4" eventType="valueChanged" id="RJQ-k1-pCI"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="PKN-9v-Xra" firstAttribute="centerY" secondItem="YsI-vq-lYw" secondAttribute="centerY" id="2Ih-u1-AT8"/>
                             <constraint firstItem="PKN-9v-Xra" firstAttribute="centerX" secondItem="YsI-vq-lYw" secondAttribute="centerX" id="3Ig-VT-Foa"/>
+                            <constraint firstItem="AZF-BY-LkU" firstAttribute="top" secondItem="yF7-mI-fHY" secondAttribute="top" constant="20" id="QZ4-KK-Vm6"/>
+                            <constraint firstItem="AZF-BY-LkU" firstAttribute="leading" secondItem="yF7-mI-fHY" secondAttribute="leading" constant="16" id="R52-oh-hAY"/>
                             <constraint firstItem="PKN-9v-Xra" firstAttribute="leading" secondItem="yF7-mI-fHY" secondAttribute="leading" constant="40" id="TAw-8d-6an"/>
                             <constraint firstItem="yF7-mI-fHY" firstAttribute="trailing" secondItem="PKN-9v-Xra" secondAttribute="trailing" constant="40" id="s1Z-PU-Fba"/>
+                            <constraint firstItem="yF7-mI-fHY" firstAttribute="trailing" secondItem="AZF-BY-LkU" secondAttribute="trailing" constant="16" id="yBp-Ug-LLO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yF7-mI-fHY"/>
                     </view>
                     <connections>
                         <outlet property="TimeLabel" destination="N0d-lQ-ENf" id="PGd-9U-xaE"/>
                         <outlet property="flavour" destination="Gi4-ix-Mg8" id="479-Xn-IaO"/>
+                        <outlet property="hookahsSegmented" destination="AZF-BY-LkU" id="Mcz-FZ-thb"/>
+                        <outlet property="orderDetailsView" destination="75w-iX-Nej" id="c1a-UM-VRP"/>
                         <outlet property="priceLabel" destination="wSJ-xe-H0W" id="C77-AQ-XOu"/>
                         <outlet property="tabacoo" destination="0Ie-Fx-5Ea" id="seW-QL-Q3J"/>
                         <outlet property="tableNumber" destination="aJy-xw-lnh" id="kxY-fn-vha"/>
@@ -1048,16 +1067,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ab9-Hg-sDE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="b0w-LM-ys4" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4645.6000000000004" y="157.87106446776613"/>
         </scene>
     </scenes>
     <resources>
         <image name="defaultImage" width="1024" height="1024"/>
-        <image name="defaultTobacco" width="512" height="512"/>
+        <image name="defaultTobacco" width="1024" height="1024"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7KR-yc-jZi"/>
-        <segue reference="uFa-2l-liG"/>
     </inferredMetricsTieBreakers>
 </document>

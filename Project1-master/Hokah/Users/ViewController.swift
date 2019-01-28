@@ -19,7 +19,7 @@ class ViewController: UITableViewController, UINavigationBarDelegate {
     //var tobaccos = Array<TobaccoDB>()
     
     // MARK: View settings
-    
+    /*
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         ref = Database.database().reference().child("tobaccos")
@@ -35,17 +35,12 @@ class ViewController: UITableViewController, UINavigationBarDelegate {
             self?.tobaccos = _tobaccos
         })
     }
- 
+ */
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Choose table"
         tableView.tableFooterView = UIView()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        ref.removeAllObservers()
     }
     
     // MARK: Table view settings
