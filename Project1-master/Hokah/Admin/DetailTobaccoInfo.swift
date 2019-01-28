@@ -34,9 +34,19 @@ class DetailTobaccoInfo: UIViewController, UIImagePickerControllerDelegate, UINa
         if let tobacco = tobacco {
             tobaccoNameText.text = tobacco.name.capitalized
             tobaccoNameText.isEnabled = false
-            tobaccoImageView.image = UIImage(named: "defaultTobacco")
-            
             tobaccoPriceText.text = tobacco.price
+            let reference = Storage.storage().reference(withPath: "tobaccosImage/\(tobacco.imageName).png")
+            reference.getData(maxSize: (1 * 1772 * 2362)) { (data, error) in
+                if let _error = error{
+                    print("ОШИБКА")
+                    print(_error)
+                } else {
+                    print("Загружено")
+                    if let _data  = data {
+                        self.tobaccoImageView.image = UIImage(data: _data)
+                    }
+                }
+            }
         } else {
             tobaccoNameText.placeholder = "Name"
             tobaccoPriceText.placeholder = "Price"
@@ -44,10 +54,16 @@ class DetailTobaccoInfo: UIViewController, UIImagePickerControllerDelegate, UINa
         }
         
         
+        
         title = "Tobacco Detail"
         saveButton.isEnabled = false
     }
 
+    
+    
+
+    
+            
     
     @objc func presentImagePicker() {
         present(imagePicker, animated: true, completion: nil)
@@ -55,14 +71,57 @@ class DetailTobaccoInfo: UIViewController, UIImagePickerControllerDelegate, UINa
     
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
         if let tobacco = tobacco {
+            if let deleteImageName = self.tobacco?.imageName {
+                let deleteRef = Storage.storage().reference().child("infoImage").child("\(deleteImageName).png")
+                deleteRef.delete { (error) in
+                    if error != nil {
+                        print("Error")
+                    } else {
+                        print("deleted succesfully")
+                    }
+                }
+            }
             guard let newPrice = tobaccoPriceText.text, newPrice != "" else {return}
-            ref = Database.database().reference()
-            ref.child("tobaccos").child(tobacco.name.lowercased()).updateChildValues(["name": tobacco.name.lowercased(), "price": newPrice, "isAvailable": tobacco.isAvailable])
-        } else {
+            let imageName = NSUUID().uuidString
+            let storageRef = Storage.storage().reference().child("tobaccosImage").child("\(imageName).png")
+            if let uploadData = self.tobaccoImageView.image!.pngData() {
+                storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
+                    if error != nil {
+                        print(error)
+                        return
+                    }
+                    storageRef.downloadURL { (url, error) in
+                        if (url?.absoluteString) != nil {
+                            
+                            self.ref = Database.database().reference()
+                            self.ref.child("tobaccos").child(tobacco.name.lowercased()).updateChildValues(["name": tobacco.name.lowercased(), "price": newPrice, "isAvailable": tobacco.isAvailable, "imageName": imageName])
+                        }
+                    }
+                }
+            }
+            
+        }
+        else {
             guard let newPrice = tobaccoPriceText.text, let newTobacco = tobaccoNameText.text, newPrice != "", newTobacco != "" else {return}
-            let tobaccoDB = TobaccoDB(name: newTobacco, price: newPrice)
-            ref = Database.database().reference()
-            ref.child("tobaccos").child(tobaccoDB!.name.lowercased()).setValue(tobaccoDB?.convertToDictionary())
+            let imageName = NSUUID().uuidString
+            let storageRef = Storage.storage().reference().child("tobaccosImage").child("\(imageName).png")
+            if let uploadData = self.tobaccoImageView.image!.pngData() {
+                storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
+                    if error != nil {
+                        print(error)
+                        return
+                    }
+                    storageRef.downloadURL { (url, error) in
+                        if (url?.absoluteString) != nil {
+                            
+                            self.ref = Database.database().reference()
+                            let tobaccoDB = TobaccoDB(name: newTobacco, price: newPrice, imageName: imageName)
+                            self.ref.child("tobaccos").child(tobaccoDB!.name.lowercased()).setValue(tobaccoDB?.convertToDictionary())
+                        }
+                    }
+                }
+            }
+            
             
         }
         performSegue(withIdentifier: "unwindSegueToAdmin", sender: self)
@@ -82,4 +141,5 @@ class DetailTobaccoInfo: UIViewController, UIImagePickerControllerDelegate, UINa
         self.tobaccoImageView.image = image
     }
 }
+
 
