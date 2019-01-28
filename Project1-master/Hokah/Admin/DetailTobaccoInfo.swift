@@ -15,6 +15,7 @@ class DetailTobaccoInfo: UIViewController, UIImagePickerControllerDelegate, UINa
     var imagePicker = UIImagePickerController()
     var choosenImage : UIImage?
 
+
     @IBOutlet weak var tobaccoImageView: UIImageView!
     @IBOutlet weak var tobaccoNameText: UITextField!
     @IBOutlet weak var tobaccoPriceText: UITextField!

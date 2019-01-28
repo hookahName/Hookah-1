@@ -22,7 +22,6 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        hookahImageView.image = UIImage(named: "aboutus")
         if infoDB.count > 0 {
             contactsTextView.text = infoDB[0].contacts
             locationTextView.text = infoDB[0].location
@@ -31,6 +30,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
             contactsTextView.text = "Кальянная: ..."
         }
         locationTextView.isEditable = false
+
         
         contactsTextView.isEditable = false
         
@@ -38,13 +38,30 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
         changeInfoButton.title = nil
         
         imagePicker.delegate = self
-        //imagePicker.allowsEditing = true
-        imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = false
         
         if Auth.auth().currentUser?.uid == "gHPSmMsKb0PNsLgQHYh35l4tJWj1" {
             changeInfoButton.isEnabled = true
             changeInfoButton.title = "Изменить"
         }
+        
+        let reference = Storage.storage().reference(withPath: "infoImage/\(infoDB[0].imageName).png")
+        
+        reference.getData(maxSize: (1 * 1772 * 2362)) { (data, error) in
+            if let _error = error{
+                print("ОШИБКА")
+                print(_error)
+            } else {
+                print("Загружено")
+                if let _data  = data {
+                    self.hookahImageView.image = UIImage(data: _data)
+                }
+            }
+        }
+        
+        
+        
+        
         // Do any additional setup after loading the view.
         
     }
@@ -55,19 +72,49 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
         if changeInfoButton.title == "Изменить" {
             changeInfoButton.title = "Сохранить"
             locationTextView.isEditable = true
-            
+            hookahImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(presentImagePicker)))
+            hookahImageView.isUserInteractionEnabled = true
             contactsTextView.isEditable = true
             
-            hookahImageView.addGestureRecognizer(tap)
+            
         } else {
+            let deleteImageName = self.infoDB[0].imageName
+            let deleteRef = Storage.storage().reference().child("infoImage").child("\(deleteImageName).png")
+            deleteRef.delete { (error) in
+                if let error = error {
+                    print("Error")
+                } else {
+                    print("deleted succesfully")
+                }
+            }
             guard let contactsText = contactsTextView.text, let locationText = locationTextView.text, contactsText != "", locationText != "" else { return }
-            ref = Database.database().reference().child("info").child("information")
-            ref.updateChildValues(["Contacts" : contactsTextView.text, "Location": locationTextView.text])
+            let imageName = NSUUID().uuidString
+            let storageRef = Storage.storage().reference().child("infoImage").child("\(imageName).png")
+            if let uploadData = self.hookahImageView.image!.pngData() {
+                storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
+                    if error != nil {
+                        print(error)
+                        return
+                    }
+                    
+                    storageRef.downloadURL { (url, error) in
+                        if let downloadURL = url?.absoluteString {
+                            self.ref = Database.database().reference().child("info").child("information")
+                            self.ref.updateChildValues(["Contacts" : self.contactsTextView.text, "Location": self.locationTextView.text, "Url": downloadURL, "imageName": imageName])
+                        }
+                        
+                        
+                    }
+                }
+            }
+            
+            
+            
             changeInfoButton.title = "Изменить"
             locationTextView.isEditable = false
             
             contactsTextView.isEditable = false
-            hookahImageView.removeGestureRecognizer(tap)
+            
             
         }
         
@@ -80,11 +127,13 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+        if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            self.hookahImageView.image = originalImage
+        } else if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            self.hookahImageView.image = editedImage
             
-            return
         }
-        self.hookahImageView.image = image
     }
+    
     
 }

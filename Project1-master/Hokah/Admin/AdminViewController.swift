@@ -39,7 +39,6 @@ class AdminViewController: UIViewController {
         ref = Database.database().reference().child("info")
         ref.observe(.value, with: { [weak self] (snapshot) in
             var _infoDB = Array<InfoDB>()
-            print("ee")
             for item in snapshot.children {
                 print("qq")
                 let information = InfoDB(snapshot: item as! DataSnapshot)
@@ -47,7 +46,7 @@ class AdminViewController: UIViewController {
             }
             self?.infoDB = _infoDB
         })
-        
+
         // Do any additional setup after loading the view.
     }
     
@@ -64,12 +63,6 @@ class AdminViewController: UIViewController {
         } else if segue.identifier == "CurUserOrders" {
             guard segue.destination is CurUserOrdersTableViewController else { return }
         } else if segue.identifier == "toInfo" {
-            if infoDB.count == 0 {
-                print("=0")
-                
-            } else {
-                print("SUKA")
-            }
             guard let infoVC = segue.destination as? InformationViewController else { return }
             infoVC.infoDB = infoDB
         }

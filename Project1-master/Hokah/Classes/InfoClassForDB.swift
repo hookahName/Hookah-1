@@ -13,12 +13,17 @@ class InfoDB {
     
     var location: String
     var contacts: String
+    var url: String
+    var imageName: String
     var ref: DatabaseReference?
     
-    init?(location: String, contacts: String) {
+    init?(location: String, contacts: String, url: String, imageName: String) {
         
         self.contacts = contacts
         self.location = location
+        self.url = url
+        self.imageName = imageName
+        
         self.ref = nil
     }
     
@@ -26,10 +31,12 @@ class InfoDB {
         let snapshotValue = snapshot.value as! [String: AnyObject]
         location = snapshotValue["Location"] as! String
         contacts = snapshotValue["Contacts"] as! String
+        url = snapshotValue["Url"] as! String
+        imageName = snapshotValue["imageName"] as! String
         ref = snapshot.ref
     }
     
     func convertToDictionary() -> Any {
-        return ["Location": location, "Contacts": contacts]
+        return ["Location": location, "Contacts": contacts, "Url": url, "imageName": imageName]
     }
 }
