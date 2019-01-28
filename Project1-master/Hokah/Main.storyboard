@@ -1045,7 +1045,7 @@
     </scenes>
     <resources>
         <image name="defaultImage" width="1024" height="1024"/>
-        <image name="defaultTobacco" width="1024" height="1024"/>
+        <image name="defaultTobacco" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7KR-yc-jZi"/>

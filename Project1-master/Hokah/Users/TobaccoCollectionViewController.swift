@@ -47,7 +47,7 @@ class TobaccoCollectionViewController: UICollectionViewController, UINavigationC
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! TobaccoCellClass
         
         cell.tobaccoNameLabel.text = tobaccos[indexPath.row].name
-        cell.tobaccoPriceLabel.text = tobaccos[indexPath.row].price
+        cell.tobaccoPriceLabel.text = tobaccos[indexPath.row].price  + "Руб."
         cell.tobaccoViewImage.image = UIImage(named: "defaultTobacco")
         
         cell.layer.borderWidth = CGFloat(1)

@@ -8,12 +8,13 @@
 
 import UIKit
 import Firebase
-
-class DetailTobaccoInfo: UIViewController {
+class DetailTobaccoInfo: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     var tobacco: TobaccoDB?
     var ref: DatabaseReference!
-    
+    var imagePicker = UIImagePickerController()
+    var choosenImage : UIImage?
+
     @IBOutlet weak var tobaccoImageView: UIImageView!
     @IBOutlet weak var tobaccoNameText: UITextField!
     @IBOutlet weak var tobaccoPriceText: UITextField!
@@ -23,6 +24,12 @@ class DetailTobaccoInfo: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tobaccoImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(presentImagePicker)))
+        
+        imagePicker.delegate = self
+        //imagePicker.allowsEditing = true
+        imagePicker.sourceType = .photoLibrary
+    
         if let tobacco = tobacco {
             tobaccoNameText.text = tobacco.name.capitalized
             tobaccoNameText.isEnabled = false
@@ -38,7 +45,13 @@ class DetailTobaccoInfo: UIViewController {
         title = "Tobacco Detail"
         saveButton.isEnabled = false
     }
+
     
+    @objc func presentImagePicker() {
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+
     @IBAction func saveButtonPressed(_ sender: Any) {
         guard let newPrice = tobaccoPriceText.text, newPrice != "" else {return}
         ref = Database.database().reference()
@@ -48,4 +61,14 @@ class DetailTobaccoInfo: UIViewController {
     @IBAction func textFieldDidChanged(_ sender: UITextField) {
         saveButton.isEnabled = true
     }
+
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+            
+            return
+        }
+        self.tobaccoImageView.image = image
+    }
 }
+
