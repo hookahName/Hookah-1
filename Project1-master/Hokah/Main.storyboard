@@ -464,6 +464,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="R9r-Wd-QqP">
                             <connections>
                                 <action selector="add:" destination="1O0-yf-her" id="GqQ-Tq-nx5"/>
+                                <segue destination="ltB-Ni-FMt" kind="show" identifier="addTobacco" id="uFa-2l-liG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1053,9 +1054,10 @@
     </scenes>
     <resources>
         <image name="defaultImage" width="1024" height="1024"/>
-        <image name="defaultTobacco" width="1024" height="1024"/>
+        <image name="defaultTobacco" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7KR-yc-jZi"/>
+        <segue reference="uFa-2l-liG"/>
     </inferredMetricsTieBreakers>
 </document>
