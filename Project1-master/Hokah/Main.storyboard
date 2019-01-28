@@ -391,7 +391,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Информация о нас"/>
                                 <connections>
-                                    <segue destination="ND2-Q4-d0L" kind="show" identifier="toInfo" id="oyU-M0-XQZ"/>
+                                    <action selector="infoButtonPressed:" destination="tMF-Ig-Ibo" eventType="touchUpInside" id="YHP-ee-Aec"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -417,7 +417,9 @@
                         <outlet property="changeTeaTastesButton" destination="iqq-Em-mzY" id="Ljh-Zg-fSc"/>
                         <outlet property="changeTobAndTastesButton" destination="Yqc-lS-BZl" id="zW9-aP-Fv0"/>
                         <outlet property="curUserOrdersButton" destination="zqJ-xW-i8P" id="sB8-UO-468"/>
+                        <outlet property="infoButton" destination="CTW-Uk-2jc" id="myy-zK-0xx"/>
                         <segue destination="Bcm-ix-oSe" kind="show" identifier="CurUserOrders" id="AO2-bm-ZNG"/>
+                        <segue destination="ND2-Q4-d0L" kind="show" identifier="toInfo" id="jSL-ua-KJt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gIo-cN-GQh" userLabel="First Responder" sceneMemberID="firstResponder"/>

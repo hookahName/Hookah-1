@@ -12,18 +12,20 @@ import Firebase
 class AdminViewController: UIViewController {
     
     // MARK: Properties
+    var infoDB = Array<InfoDB>()
     var users = Array<UserDB>()
     var ref: DatabaseReference!
     @IBOutlet weak var changeTobAndTastesButton: UIButton!
     @IBOutlet weak var changeTeaTastesButton: UIButton!
     @IBOutlet weak var allOrdersButton: UIButton!
     @IBOutlet weak var curUserOrdersButton: UIButton!
+    @IBOutlet weak var infoButton: UIButton!
     
     // MARK: View settings
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         loadUsers()
         
         if Auth.auth().currentUser?.uid != "gHPSmMsKb0PNsLgQHYh35l4tJWj1" {
@@ -33,6 +35,18 @@ class AdminViewController: UIViewController {
         } else {
             title = "Админ"
         }
+        
+        ref = Database.database().reference().child("info")
+        ref.observe(.value, with: { [weak self] (snapshot) in
+            var _infoDB = Array<InfoDB>()
+            print("ee")
+            for item in snapshot.children {
+                print("qq")
+                let information = InfoDB(snapshot: item as! DataSnapshot)
+                _infoDB.append(information)
+            }
+            self?.infoDB = _infoDB
+        })
         
         // Do any additional setup after loading the view.
     }
@@ -49,6 +63,15 @@ class AdminViewController: UIViewController {
             users.users = self.users
         } else if segue.identifier == "CurUserOrders" {
             guard segue.destination is CurUserOrdersTableViewController else { return }
+        } else if segue.identifier == "toInfo" {
+            if infoDB.count == 0 {
+                print("=0")
+                
+            } else {
+                print("SUKA")
+            }
+            guard let infoVC = segue.destination as? InformationViewController else { return }
+            infoVC.infoDB = infoDB
         }
     }
     
@@ -81,6 +104,11 @@ class AdminViewController: UIViewController {
     
     @IBAction func curUserOrdersButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "CurUserOrders", sender: nil)
+    }
+    
+    
+    @IBAction func infoButtonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "toInfo", sender: nil)
     }
     
 }

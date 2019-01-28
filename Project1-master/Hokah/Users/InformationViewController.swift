@@ -16,25 +16,37 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var contactsTextView: UITextView!
     
     var imagePicker = UIImagePickerController()
+    let tap = UITapGestureRecognizer(target: self, action: #selector(presentImagePicker))
+    var ref: DatabaseReference!
+    var infoDB = Array<InfoDB>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         hookahImageView.image = UIImage(named: "aboutus")
-        
+        if infoDB.count > 0 {
+            contactsTextView.text = infoDB[0].contacts
+            locationTextView.text = infoDB[0].location
+        } else {
+            locationTextView.text = "Мы находимся по адресу: ..."
+            contactsTextView.text = "Кальянная: ..."
+        }
         locationTextView.isEditable = false
-        locationTextView.text = "Вы можете найти нас по адресу: ул. Ботаническая, д. 6"
         
         contactsTextView.isEditable = false
-        contactsTextView.text = "<Кальянная>: 8-(921)-123-321-12"
         
         changeInfoButton.isEnabled = false
         changeInfoButton.title = nil
+        
+        imagePicker.delegate = self
+        //imagePicker.allowsEditing = true
+        imagePicker.sourceType = .photoLibrary
+        
         if Auth.auth().currentUser?.uid == "gHPSmMsKb0PNsLgQHYh35l4tJWj1" {
             changeInfoButton.isEnabled = true
             changeInfoButton.title = "Изменить"
         }
         // Do any additional setup after loading the view.
-        //var gestureRecognizer = UITapGestureRecognizer(target: hookahImageView, action: #selector(presentImagePicker))
+        
     }
     
     
@@ -46,17 +58,17 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
             
             contactsTextView.isEditable = true
             
-            imagePicker.delegate = self
-            //imagePicker.allowsEditing = true
-            imagePicker.sourceType = .photoLibrary
-            
-            //hookahImageView.addGestureRecognizer
+            hookahImageView.addGestureRecognizer(tap)
         } else {
+            guard let contactsText = contactsTextView.text, let locationText = locationTextView.text, contactsText != "", locationText != "" else { return }
+            ref = Database.database().reference().child("info").child("information")
+            ref.updateChildValues(["Contacts" : contactsTextView.text, "Location": locationTextView.text])
             changeInfoButton.title = "Изменить"
             locationTextView.isEditable = false
             
             contactsTextView.isEditable = false
-            //hookahImageView.removeGestureRecognizer(gestureRecognizer)
+            hookahImageView.removeGestureRecognizer(tap)
+            
         }
         
         
