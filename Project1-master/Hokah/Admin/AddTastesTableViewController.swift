@@ -121,7 +121,7 @@ class AddTastesTableViewController: UITableViewController {
     private func getAvailabilityOfTobacco() {
         ref = Database.database().reference()
         var isAvailable: Bool = false
-        
+        guard let chosenTobacco = chosenTobacco else { return }
         if tastes.count > 0 {
             for taste in tastes {
                 if taste.isAvailable {
@@ -129,11 +129,11 @@ class AddTastesTableViewController: UITableViewController {
                     break
                 }
             }
-            chosenTobacco?.isAvailable = isAvailable
-            ref.child("tobaccos").child(chosenTobacco!.name.lowercased()).updateChildValues(["name":chosenTobacco!.name, "isAvailable": chosenTobacco!.isAvailable, "price": chosenTobacco?.price])
+            chosenTobacco.isAvailable = isAvailable
+            ref.child("tobaccos").child(chosenTobacco.name.lowercased()).updateChildValues(["name":chosenTobacco.name, "isAvailable": chosenTobacco.isAvailable, "price": chosenTobacco.price])
         } else {
-            chosenTobacco?.isAvailable = isAvailable
-            ref.child("tobaccos").child(chosenTobacco!.name).updateChildValues(["name":chosenTobacco!.name, "isAvailable": chosenTobacco!.isAvailable, "price": chosenTobacco?.price])
+            chosenTobacco.isAvailable = isAvailable
+            ref.child("tobaccos").child(chosenTobacco.name).updateChildValues(["name":chosenTobacco.name, "isAvailable": chosenTobacco.isAvailable, "price": chosenTobacco.price])
         }
     }
     
