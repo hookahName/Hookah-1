@@ -38,30 +38,12 @@ class Result: UIViewController, UINavigationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        order = OrderDB(tableNumber: selectedTable, tobacco: (selectedTabacoo?.name)!, tastes: selectedFlavour, tea: selectedTea, time: selectedTime, price: (selectedTabacoo?.price)!, userId: (Auth.auth().currentUser?.uid)!)
-        self.orders.insert(order!, at: 0)
-        
-        print(orders.count)
         guard let selectedTable = selectedTable else { return }
         guard let selectedTabacoo = selectedTabacoo else { return }
         guard let selectedFlavour = selectedFlavour else { return }
         guard let selectedTime = selectedTime else { return }
         
-        if let selectedTea = selectedTea {
-            teaTaste.text = "Чай: \(selectedTea)"
-        }
-        
-        var arraySegmentString = Array<String>()
-        
-        if orders.count < 2 {
-            hookahsSegmented.isHidden = true
-        } else {
-            for index in 0..<orders.count {
-                let orderString = "Заказ \(index + 1)"
-                arraySegmentString.append(orderString)
-            }
-            hookahsSegmented.replaceSegments(segments: arraySegmentString)
-        }
+        segmentedControlSettings()
         
         for i in 0..<selectedFlavour.count {
             if i == selectedFlavour.count - 1 {
@@ -76,7 +58,7 @@ class Result: UIViewController, UINavigationControllerDelegate {
         }
         
         flavour.text = "Вкус: \(flavours)"
-        tableNumber.text = "Стол: \(selectedTable)"
+        tableNumber.text = "Стол: \(String(describing: selectedTable))"
         tabacoo.text = "Табак: \(selectedTabacoo.name)"
         TimeLabel.text = "Ждем вас в \(String(describing: selectedTime))"
         if let selectedTea = selectedTea {
@@ -91,12 +73,16 @@ class Result: UIViewController, UINavigationControllerDelegate {
     }
     
     @IBAction func makeOrderButton(_ sender: Any) {
-        let identifier = getUniqueIdentifier()
+        let identifier = orders[0].identifier
         ref = Database.database().reference()
-        let order = OrderDB(tableNumber: selectedTable, tobacco: (selectedTabacoo?.name)!, tastes: selectedFlavour, tea: selectedTea, time: selectedTime, identifier: identifier, price: (selectedTabacoo?.price)!, userId: (Auth.auth().currentUser?.uid)!)
-        let orderRef = self.ref.child("users").child((Auth.auth().currentUser?.uid)!).child("orders").child(identifier)
-        orderRef.setValue(order?.convertToDictionary())
-        let ac = UIAlertController(title: "Готово!", message: "Номер вашего заказа: \(identifier)", preferredStyle: .alert)
+        for index in 0..<orders.count {
+            let order = orders[index]
+            let orderRef = ref.child("users").child((Auth.auth().currentUser?.uid)!).child("orders").child(identifier).child("hookahs").child("hookah" + String(index+1))
+            orderRef.setValue(order.convertToDictionary())
+        }
+        //let orderRef = self.ref.child("users").child((Auth.auth().currentUser?.uid)!).child("orders").child(identifier)
+        //orderRef.setValue(order?.convertToDictionary())
+        let ac = UIAlertController(title: "Готово!", message: "Номер вашего заказа: \(1)", preferredStyle: .alert)
         let action = UIAlertAction(title: "Хорошо", style: .default) { [weak self] _ in
             self!.performSegue(withIdentifier: "toMainScreen", sender: nil)
         }
@@ -122,7 +108,6 @@ class Result: UIViewController, UINavigationControllerDelegate {
         tabacoo.text = "Табак: \(order.tobacco)"
         TimeLabel.text = "Ждем вас в \(String(describing: order.time))"
         teaTaste.text = "Чай: \(order.tea)"
-        //priceLabel.text = "Цена: \(order.price) Руб."
     }
  
     private func getUniqueIdentifier() -> String {
@@ -131,6 +116,39 @@ class Result: UIViewController, UINavigationControllerDelegate {
         let dateString = String(Int(timeInterval))
         print(dateString)
         return dateString
+    }
+    
+    private func segmentedControlSettings() {
+        guard let selectedTable = selectedTable else { return }
+        guard let selectedTabacoo = selectedTabacoo else { return }
+        guard let selectedFlavour = selectedFlavour else { return }
+        guard let selectedTime = selectedTime else { return }
+        if orders.count > 0 {
+            order = OrderDB(tableNumber: selectedTable, tobacco: selectedTabacoo.name, tastes: selectedFlavour, tea: selectedTea, time: selectedTime, identifier: orders[0].identifier, price: selectedTabacoo.price, userId: (Auth.auth().currentUser?.uid)!)
+        } else {
+            order = OrderDB(tableNumber: selectedTable, tobacco: selectedTabacoo.name, tastes: selectedFlavour, tea: selectedTea, time: selectedTime, identifier: getUniqueIdentifier(), price: selectedTabacoo.price, userId: (Auth.auth().currentUser?.uid)!)
+        }
+        
+        self.orders.insert(order!, at: 0)
+        
+        if let selectedTea = selectedTea {
+            teaTaste.text = "Чай: \(selectedTea)"
+        }
+        
+        var arraySegmentString = Array<String>()
+        
+        if orders.count < 2 {
+            hookahsSegmented.isHidden = true
+        } else {
+            for index in 0..<orders.count {
+                let orderString = "Заказ \(index + 1)"
+                arraySegmentString.append(orderString)
+            }
+            hookahsSegmented.replaceSegments(segments: arraySegmentString)
+            
+        }
+        
+        hookahsSegmented.selectedSegmentIndex = 0
     }
 }
 

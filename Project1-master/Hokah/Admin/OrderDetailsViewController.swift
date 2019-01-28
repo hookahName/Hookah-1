@@ -68,7 +68,7 @@ class OrderDetailsViewController: UIViewController {
         if let order = order {
             order.isDone = !order.isDone
             ref = Database.database().reference().child("users").child(order.userId).child("orders")
-            ref.child(order.identifier!).updateChildValues(["table": order.tableNumber, "tobacco": order.tobacco, "tastes": order.tastes, "tea": order.tea, "time": order.time, "isDone": order.isDone, "identifier": order.identifier!])
+            ref.child(order.identifier).updateChildValues(["table": order.tableNumber, "tobacco": order.tobacco, "tastes": order.tastes, "tea": order.tea, "time": order.time, "isDone": order.isDone, "identifier": order.identifier])
         }
     }
     
