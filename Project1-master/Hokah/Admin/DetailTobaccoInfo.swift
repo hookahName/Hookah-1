@@ -33,14 +33,15 @@ class DetailTobaccoInfo: UIViewController, UIImagePickerControllerDelegate, UINa
         if let tobacco = tobacco {
             tobaccoNameText.text = tobacco.name.capitalized
             tobaccoNameText.isEnabled = false
+            tobaccoImageView.image = UIImage(named: "defaultTobacco")
             
             tobaccoPriceText.text = tobacco.price
         } else {
             tobaccoNameText.placeholder = "Name"
             tobaccoPriceText.placeholder = "Price"
+            tobaccoImageView.image = UIImage(named: "addPhoto")
         }
         
-        tobaccoImageView.image = UIImage(named: "defaultTobacco")
         
         title = "Tobacco Detail"
         saveButton.isEnabled = false
