@@ -130,10 +130,10 @@ class AddTastesTableViewController: UITableViewController {
                 }
             }
             chosenTobacco?.isAvailable = isAvailable
-            ref.child("tobaccos").child(chosenTobacco!.name).updateChildValues(["name":chosenTobacco!.name, "isAvailable": chosenTobacco!.isAvailable])
+            ref.child("tobaccos").child(chosenTobacco!.name.lowercased()).updateChildValues(["name":chosenTobacco!.name, "isAvailable": chosenTobacco!.isAvailable, "price": chosenTobacco?.price])
         } else {
             chosenTobacco?.isAvailable = isAvailable
-            ref.child("tobaccos").child(chosenTobacco!.name).updateChildValues(["name":chosenTobacco!.name, "isAvailable": chosenTobacco!.isAvailable])
+            ref.child("tobaccos").child(chosenTobacco!.name).updateChildValues(["name":chosenTobacco!.name, "isAvailable": chosenTobacco!.isAvailable, "price": chosenTobacco?.price])
         }
     }
     
@@ -145,6 +145,6 @@ class AddTastesTableViewController: UITableViewController {
     
     private func updateDatabase(_ taste: TasteDB) {
         ref = Database.database().reference()
-        ref.child("tobaccos").child(chosenTobacco!.name).child("tastes").child(taste.name).updateChildValues(["name": taste.name, "isAvailable": taste.isAvailable])
+        ref.child("tobaccos").child(chosenTobacco!.name.lowercased()).child("tastes").child(taste.name.lowercased()).updateChildValues(["name": taste.name, "isAvailable": taste.isAvailable])
     }
 }
