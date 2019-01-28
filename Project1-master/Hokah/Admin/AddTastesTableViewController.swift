@@ -82,7 +82,7 @@ class AddTastesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let taste = tastes[indexPath.row]
-            ref = Database.database().reference().child("tobaccos").child((chosenTobacco?.name)!).child("tastes").child(taste.name)
+            ref = Database.database().reference().child("tobaccos").child((chosenTobacco?.name.lowercased())!).child("tastes").child(taste.name)
             ref.setValue(nil)
             self.tastes.remove(at: indexPath.row)
             self.tableView.beginUpdates()
@@ -133,7 +133,7 @@ class AddTastesTableViewController: UITableViewController {
             ref.child("tobaccos").child(chosenTobacco.name.lowercased()).updateChildValues(["name":chosenTobacco.name, "isAvailable": chosenTobacco.isAvailable, "price": chosenTobacco.price])
         } else {
             chosenTobacco.isAvailable = isAvailable
-            ref.child("tobaccos").child(chosenTobacco.name).updateChildValues(["name":chosenTobacco.name, "isAvailable": chosenTobacco.isAvailable, "price": chosenTobacco.price])
+            ref.child("tobaccos").child(chosenTobacco.name.lowercased()).updateChildValues(["name":chosenTobacco.name, "isAvailable": chosenTobacco.isAvailable, "price": chosenTobacco.price])
         }
     }
     

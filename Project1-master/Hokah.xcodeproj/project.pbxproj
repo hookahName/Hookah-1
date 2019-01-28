@@ -19,6 +19,7 @@
 		2253B1EE21FE81DE00444D44 /* addPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 2253B1ED21FE81DE00444D44 /* addPhoto.png */; };
 		2265D20121EA07740093ABD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2265D20021EA07740093ABD3 /* Main.storyboard */; };
 		2265D20321EA08C00093ABD3 /* AddTobaccoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2265D20221EA08C00093ABD3 /* AddTobaccoViewController.swift */; };
+		22A1C43921FF600100803FD3 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A1C43821FF600100803FD3 /* InformationViewController.swift */; };
 		22D5ADE121FA7CD300F74ED3 /* UserClassForDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5ADE021FA7CD300F74ED3 /* UserClassForDB.swift */; };
 		22D5ADE321FA7E1E00F74ED3 /* EnterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5ADE221FA7E1E00F74ED3 /* EnterViewController.swift */; };
 		22D5ADE521FA833300F74ED3 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5ADE421FA833300F74ED3 /* RegisterViewController.swift */; };
@@ -55,6 +56,7 @@
 		2253B1ED21FE81DE00444D44 /* addPhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addPhoto.png; sourceTree = "<group>"; };
 		2265D20021EA07740093ABD3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		2265D20221EA08C00093ABD3 /* AddTobaccoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTobaccoViewController.swift; sourceTree = "<group>"; };
+		22A1C43821FF600100803FD3 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		22D5ADE021FA7CD300F74ED3 /* UserClassForDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserClassForDB.swift; sourceTree = "<group>"; };
 		22D5ADE221FA7E1E00F74ED3 /* EnterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterViewController.swift; sourceTree = "<group>"; };
 		22D5ADE421FA833300F74ED3 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				ED18064021E24EAB006148BE /* Result.swift */,
 				2253B1E721FD048A00444D44 /* CurUserOrdersTableViewController.swift */,
 				2253B1E921FD0FD600444D44 /* CurUserOrderDetailViewController.swift */,
+				22A1C43821FF600100803FD3 /* InformationViewController.swift */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				22404B3E21F65A4700DF041C /* ChooseTimeViewController.swift in Sources */,
 				EDE0784A21FBE3BC00AAFFE8 /* OrderDetailsViewController.swift in Sources */,
 				ED18064121E24EAB006148BE /* Result.swift in Sources */,
+				22A1C43921FF600100803FD3 /* InformationViewController.swift in Sources */,
 				EDE0784621FBCCC700AAFFE8 /* TeaClassForDB.swift in Sources */,
 				2253B1E821FD048A00444D44 /* CurUserOrdersTableViewController.swift in Sources */,
 				ED18062B21E23AB1006148BE /* ViewController.swift in Sources */,

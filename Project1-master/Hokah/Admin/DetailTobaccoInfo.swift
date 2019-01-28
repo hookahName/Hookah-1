@@ -52,12 +52,21 @@ class DetailTobaccoInfo: UIViewController, UIImagePickerControllerDelegate, UINa
         present(imagePicker, animated: true, completion: nil)
     }
     
-
-    @IBAction func saveButtonPressed(_ sender: Any) {
-        guard let newPrice = tobaccoPriceText.text, newPrice != "" else {return}
-        ref = Database.database().reference()
-        ref.child("tobaccos").child(tobacco!.name.lowercased()).updateChildValues(["name": tobacco!.name.lowercased(), "price": newPrice, "isAvailable": tobacco!.isAvailable])
+    @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
+        if let tobacco = tobacco {
+            guard let newPrice = tobaccoPriceText.text, newPrice != "" else {return}
+            ref = Database.database().reference()
+            ref.child("tobaccos").child(tobacco.name.lowercased()).updateChildValues(["name": tobacco.name.lowercased(), "price": newPrice, "isAvailable": tobacco.isAvailable])
+        } else {
+            guard let newPrice = tobaccoPriceText.text, let newTobacco = tobaccoNameText.text, newPrice != "", newTobacco != "" else {return}
+            let tobaccoDB = TobaccoDB(name: newTobacco, price: newPrice)
+            ref = Database.database().reference()
+            ref.child("tobaccos").child(tobaccoDB!.name.lowercased()).setValue(tobaccoDB?.convertToDictionary())
+            
+        }
+        performSegue(withIdentifier: "unwindSegueToAdmin", sender: self)
     }
+
     
     @IBAction func textFieldDidChanged(_ sender: UITextField) {
         saveButton.isEnabled = true

@@ -103,6 +103,7 @@ class AdminTableViewController: UITableViewController, UINavigationControllerDel
     
     
     @IBAction func add(_ sender: Any) {
+        /*
         ref = Database.database().reference()
         let alertController = UIAlertController(title: "New tabacoo", message: "Add new tabacoo", preferredStyle: .alert)
         alertController.addTextField() { (textField) in
@@ -139,6 +140,7 @@ class AdminTableViewController: UITableViewController, UINavigationControllerDel
                 effectView?.removeFromSuperview()
             }
         }
+ */
     }
         
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -152,9 +154,11 @@ class AdminTableViewController: UITableViewController, UINavigationControllerDel
             if let indexPath = tableView.indexPathForSelectedRow {
                 taste.chosenTobacco = tobaccos[indexPath.row]
             }
+        } else if segue.identifier == "addTobacco" {
+            guard segue.destination is DetailTobaccoInfo else {return}
         }
     }
-    
     @IBAction func unwindSegueToAdmin(_ sender: UIStoryboardSegue) {
+        
     }
 }
