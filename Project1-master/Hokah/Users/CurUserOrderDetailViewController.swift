@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class CurUserOrderDetailViewController: UIViewController {
     
@@ -17,12 +18,18 @@ class CurUserOrderDetailViewController: UIViewController {
     @IBOutlet weak var teaTastesLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var identifierLabel: UILabel!
-    var order: OrderDB?
+    
+    var orderID: String?
+    var ref: DatabaseReference!
+    var orders = Array<OrderDB>()
     var tastes = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        print(orders.count)
+/*
         guard let order = order else { return }
         
         for i in 0..<order.tastes.count {
@@ -40,7 +47,7 @@ class CurUserOrderDetailViewController: UIViewController {
         teaTastesLabel.text = "Вкусы чая: \(order.tea)"
         timeLabel.text = "Время: \(order.time)"
         identifierLabel.text = "Номер заказа: \(order.identifier)"
-        // Do any additional setup after loading the view.
+        // Do any additional setup after loading the view.*/
     }
     
 

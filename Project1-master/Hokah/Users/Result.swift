@@ -77,12 +77,12 @@ class Result: UIViewController, UINavigationControllerDelegate {
         ref = Database.database().reference()
         for index in 0..<orders.count {
             let order = orders[index]
-            let orderRef = ref.child("users").child((Auth.auth().currentUser?.uid)!).child("orders").child(identifier).child("hookahs").child("hookah" + String(index+1))
+            let orderRef = ref.child("users").child((Auth.auth().currentUser?.uid)!).child("orders").child(identifier).child("hookah" + String(index+1))
             orderRef.setValue(order.convertToDictionary())
         }
         //let orderRef = self.ref.child("users").child((Auth.auth().currentUser?.uid)!).child("orders").child(identifier)
         //orderRef.setValue(order?.convertToDictionary())
-        let ac = UIAlertController(title: "Готово!", message: "Номер вашего заказа: \(1)", preferredStyle: .alert)
+        let ac = UIAlertController(title: "Готово!", message: "Номер вашего заказа: \(identifier)", preferredStyle: .alert)
         let action = UIAlertAction(title: "Хорошо", style: .default) { [weak self] _ in
             self!.performSegue(withIdentifier: "toMainScreen", sender: nil)
         }

@@ -10,8 +10,11 @@ import UIKit
 import Firebase
 class CurUserOrdersTableViewController: UITableViewController {
 
+    var users = Array<UserDB>()
     var orders = Array<OrderDB>()
-    
+    var ordersID = NSDictionary()
+    var keyValues = [String]()
+    var currentUser = Auth.auth().currentUser?.uid
     var ref: DatabaseReference!
     
     // MARK: View settings
@@ -43,26 +46,47 @@ class CurUserOrdersTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return orders.count
+        return keyValues.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserOrder", for: indexPath)
-        cell.textLabel?.text = "Заказ: \(orders[indexPath.row].identifier)"
-        cell.accessoryType = .disclosureIndicator
+        
+        cell.textLabel?.text = "Заказ: \(keyValues[indexPath.row])"
+        cell.accessoryType = .disclosureIndicator/*
         if orders[indexPath.row].isDone == true {
             cell.backgroundColor = .gray
-        }
+        }*/
         return cell
     }
     
+    func loadDatabase() {
+        ref = Database.database().reference().child("users").child(currentUser!)
+        ref.observeSingleEvent(of: .value) { [weak self] (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            let _ordersID = value?["orders"] as? NSDictionary
+            
+            self?.ordersID = _ordersID!
+            let enumer = _ordersID?.keyEnumerator()
+            var _keyVal = Array<String>()
+            while let key = enumer?.nextObject() {
+                let keyStr = key as! String
+                print(keyStr)
+                _keyVal.append(keyStr)
+            }
+            self?.keyValues = _keyVal
+            self?.tableView.reloadData()
+        }
+    }
     
+    @objc func refresh(_ sender: AnyObject) {
+        loadDatabase()
+        self.refreshControl?.endRefreshing()
+    }
     
-
-    
-    private func loadDatabase() {
-        ref = Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).child("orders")
-        ref.observe(.value, with: { [weak self] (snapshot) in
+    func loadOrders(orderID: String) {
+        ref = Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).child("orders").child(orderID)
+        ref.observe(.value) { [weak self] (snapshot) in
             var _orders = Array<OrderDB>()
             for item in snapshot.children {
                 let order = OrderDB(snapshot: item as! DataSnapshot)
@@ -70,20 +94,17 @@ class CurUserOrdersTableViewController: UITableViewController {
             }
             self?.orders = _orders
             self?.tableView.reloadData()
-        })
-    }
-    
-    
-    @objc func refresh(_ sender: AnyObject) {
-        loadDatabase()
-        self.refreshControl?.endRefreshing()
+            print(self?.orders)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toCurUserOrder" {
             if let indexPath = tableView.indexPathForSelectedRow {
+                print(loadOrders(orderID: keyValues[indexPath.row]))
                 guard let dvc = segue.destination as? CurUserOrderDetailViewController else {return}
-                dvc.order = self.orders[indexPath.row]
+                print(orders)
+                dvc.orders = orders
             }
         }
     }
