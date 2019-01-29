@@ -174,6 +174,10 @@ class AddTastesTableViewController: UITableViewController {
                 newTasteVC.chosenTobacco = chosenTobacco
         }
     }
+    
+    @IBAction func unwindSegueToTastes(_ sender: UIStoryboardSegue) {
+        
+    }
 }
     
 

@@ -587,6 +587,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="RQR-Be-xOf">
                             <connections>
                                 <action selector="addButton:" destination="Il6-Wh-sWZ" id="YhI-HU-mst"/>
+                                <segue destination="T6g-uJ-2mJ" kind="show" identifier="addTobaccoTaste" id="U7j-gE-nYX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1155,10 +1156,55 @@
             </objects>
             <point key="canvasLocation" x="4645.6000000000004" y="157.87106446776613"/>
         </scene>
+        <!--Title-->
+        <scene sceneID="BDN-u3-plC">
+            <objects>
+                <viewController id="T6g-uJ-2mJ" customClass="TastesDetailViewController" customModule="Hokah" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Th3-K6-9fE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fT5-6e-9E9">
+                                <rect key="frame" x="70" y="57" width="234" height="174"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AjJ-QS-QLL">
+                                <rect key="frame" x="70" y="279" width="234" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="tastesTextfieldWasChanged:" destination="T6g-uJ-2mJ" eventType="editingDidEndOnExit" id="CPK-C8-ngw"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="cfc-Ve-a0c"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="6WO-jJ-6hk">
+                        <barButtonItem key="rightBarButtonItem" title="Сохранить" id="mjl-gh-0nZ">
+                            <connections>
+                                <action selector="saveButtonPressed:" destination="T6g-uJ-2mJ" id="uEq-Kn-giz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="saveButton" destination="mjl-gh-0nZ" id="YdB-Wp-FWI"/>
+                        <outlet property="tasteImage" destination="fT5-6e-9E9" id="2C2-eu-Rvk"/>
+                        <outlet property="tasteTextfield" destination="AjJ-QS-QLL" id="6xQ-Ec-EaF"/>
+                        <segue destination="8rt-OV-VYF" kind="unwind" identifier="unwindSegueToTastes" unwindAction="unwindSegueToTastes:" id="mnS-B2-jOU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3eF-R5-T0K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="8rt-OV-VYF" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3716" y="-550.07496251874068"/>
+        </scene>
     </scenes>
     <resources>
         <image name="defaultImage" width="1024" height="1024"/>
-        <image name="defaultTobacco" width="1024" height="1024"/>
+        <image name="defaultTobacco" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7KR-yc-jZi"/>
