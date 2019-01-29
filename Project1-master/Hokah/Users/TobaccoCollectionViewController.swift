@@ -87,7 +87,10 @@ class TobaccoCollectionViewController: UICollectionViewController, UINavigationC
             var _tobaccos = Array<TobaccoDB>()
             for item in snapshot.children {
                 let tobacco = TobaccoDB(snapshot: item as! DataSnapshot)
-                _tobaccos.append(tobacco)
+                if tobacco.isAvailable {
+                    _tobaccos.append(tobacco)
+                }
+                
             }
             self?.tobaccos = _tobaccos
             self?.collectionView.reloadData()

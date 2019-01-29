@@ -93,6 +93,16 @@ class AdminTableViewController: UITableViewController, UINavigationControllerDel
             self.tableView.beginUpdates()
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
             self.tableView.endUpdates()
+            
+            let deleteImageName = tobacco.imageName
+            let deleteRef = Storage.storage().reference().child("tobaccosImage").child("\(deleteImageName).png")
+            deleteRef.delete { (error) in
+                if let error = error {
+                    print("Error")
+                } else {
+                    print("deleted succesfully")
+                }
+            }
         }
         
         edit.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)

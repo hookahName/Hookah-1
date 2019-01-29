@@ -13,11 +13,13 @@ class TasteDB {
     
     var name: String
     var isAvailable: Bool = false
+    var imageName: String
     var ref: DatabaseReference?
     
-    init?(name: String) {
+    init?(name: String, imageName: String) {
         
         self.name = name
+        self.imageName = imageName
         self.ref = nil
     }
     
@@ -25,10 +27,11 @@ class TasteDB {
         let snapshotValue = snapshot.value as! [String: AnyObject]
         name = snapshotValue["name"] as! String
         isAvailable = snapshotValue["isAvailable"] as! Bool
+        imageName = snapshotValue["imageName"] as! String
         ref = snapshot.ref
     }
     
     func convertToDictionary() -> Any {
-        return ["name": name, "isAvailable": isAvailable]
+        return ["name": name, "isAvailable": isAvailable, "imageName": imageName]
     }
 }

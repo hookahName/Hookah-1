@@ -66,6 +66,7 @@ class DetailTobaccoInfo: UIViewController, UIImagePickerControllerDelegate, UINa
             
     
     @objc func presentImagePicker() {
+        print("222")
         present(imagePicker, animated: true, completion: nil)
     }
     

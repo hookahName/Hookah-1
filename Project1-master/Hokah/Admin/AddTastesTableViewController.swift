@@ -88,12 +88,22 @@ class AddTastesTableViewController: UITableViewController {
             self.tableView.beginUpdates()
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
             self.tableView.endUpdates()
+            
+            let deleteImageName = taste.imageName
+            let deleteRef = Storage.storage().reference().child("tastesImage").child("\(deleteImageName).png")
+            deleteRef.delete { (error) in
+                if let error = error {
+                    print("Error")
+                } else {
+                    print("deleted succesfully")
+                }
+            }
         }
     }
     
     // MARK: Private functions
     
-    @IBAction func addButton(_ sender: UIBarButtonItem) {
+    @IBAction func addButton(_ sender: UIBarButtonItem) { /*
         ref = Database.database().reference()
         let alertController = UIAlertController(title: "New taste", message: "Add new taste", preferredStyle: .alert)
         alertController.addTextField() { (textField) in
@@ -104,7 +114,7 @@ class AddTastesTableViewController: UITableViewController {
         let save = UIAlertAction(title: "Save", style: .default) { [ weak self ] _ in
             
             guard let textField = alertController.textFields?.first, textField.text != "" else {return}
-            let taste = TasteDB(name: textField.text!)
+            let taste = TasteDB(name: textField.text!, imageName: "")
             let tasteRef = self?.ref.child("tobaccos").child(((self?.chosenTobacco!.name.lowercased())!)).child("tastes").child((taste?.name.lowercased())!)
             tasteRef?.setValue(taste!.convertToDictionary())
             //self?.tobaccos.append(tabaco!)
@@ -115,7 +125,10 @@ class AddTastesTableViewController: UITableViewController {
         
         alertController.addAction(save)
         alertController.addAction(cancel)
-        present(alertController, animated: true)
+        present(alertController, animated: true) */
+        
+        performSegue(withIdentifier: "addTobaccoTaste", sender: nil)
+        
     }
     
     private func getAvailabilityOfTobacco() {
@@ -130,10 +143,10 @@ class AddTastesTableViewController: UITableViewController {
                 }
             }
             chosenTobacco.isAvailable = isAvailable
-            ref.child("tobaccos").child(chosenTobacco.name.lowercased()).updateChildValues(["name":chosenTobacco.name, "isAvailable": chosenTobacco.isAvailable, "price": chosenTobacco.price])
+            ref.child("tobaccos").child(chosenTobacco.name.lowercased()).updateChildValues(["name":chosenTobacco.name, "isAvailable": chosenTobacco.isAvailable, "price": chosenTobacco.price, "imageName": chosenTobacco.imageName])
         } else {
             chosenTobacco.isAvailable = isAvailable
-            ref.child("tobaccos").child(chosenTobacco.name.lowercased()).updateChildValues(["name":chosenTobacco.name, "isAvailable": chosenTobacco.isAvailable, "price": chosenTobacco.price])
+            ref.child("tobaccos").child(chosenTobacco.name.lowercased()).updateChildValues(["name":chosenTobacco.name, "isAvailable": chosenTobacco.isAvailable, "price": chosenTobacco.price, "imageName": chosenTobacco.imageName])
         }
     }
     
@@ -145,6 +158,23 @@ class AddTastesTableViewController: UITableViewController {
     
     private func updateDatabase(_ taste: TasteDB) {
         ref = Database.database().reference()
-        ref.child("tobaccos").child(chosenTobacco!.name.lowercased()).child("tastes").child(taste.name.lowercased()).updateChildValues(["name": taste.name, "isAvailable": taste.isAvailable])
+        ref.child("tobaccos").child(chosenTobacco!.name.lowercased()).child("tastes").child(taste.name.lowercased()).updateChildValues(["name": taste.name, "isAvailable": taste.isAvailable, "imageName": taste.imageName])
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toTasteDetail" {
+            guard let tasteDetailVC = segue.destination as? TastesDetailViewController else { return }
+            
+            if let indexPath = tableView.indexPathForSelectedRow {
+            tasteDetailVC.chosenTobacco = chosenTobacco
+            tasteDetailVC.chosenTaste = tastes[indexPath.row]
+            }
+        }else if segue.identifier == "addTobaccoTaste" {
+                guard let newTasteVC = segue.destination as? TastesDetailViewController else { return }
+                newTasteVC.chosenTobacco = chosenTobacco
+        }
     }
 }
+    
+
+

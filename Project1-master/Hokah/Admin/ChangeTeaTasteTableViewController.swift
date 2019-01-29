@@ -108,7 +108,7 @@ class ChangeTeaTasteTableViewController: UITableViewController {
         let save = UIAlertAction(title: "Save", style: .default) { [ weak self] _ in
             
             guard let textField = alertController.textFields?.first, textField.text != "" else {return}
-            let taste = TasteDB(name: textField.text!)
+            let taste = TasteDB(name: textField.text!, imageName: "")
             let tasteRef = self?.ref.child("tea").child((taste?.name.lowercased())!)
             tasteRef?.setValue(taste!.convertToDictionary())
         }

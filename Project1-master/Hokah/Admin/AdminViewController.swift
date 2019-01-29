@@ -40,7 +40,6 @@ class AdminViewController: UIViewController {
         ref.observe(.value, with: { [weak self] (snapshot) in
             var _infoDB = Array<InfoDB>()
             for item in snapshot.children {
-                print("qq")
                 let information = InfoDB(snapshot: item as! DataSnapshot)
                 _infoDB.append(information)
             }
