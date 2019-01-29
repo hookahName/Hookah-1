@@ -18,12 +18,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var regButton: UIButton!
     var ref: DatabaseReference!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-    }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         nameTextfield.text = ""

@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+
 class InformationViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var hookahImageView: UIImageView!
@@ -134,6 +135,4 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
             
         }
     }
-    
-    
 }

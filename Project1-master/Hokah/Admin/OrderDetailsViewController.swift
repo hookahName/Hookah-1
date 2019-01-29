@@ -13,7 +13,8 @@ class OrderDetailsViewController: UIViewController {
 
     //  MARK: Properties
     
-    var order: OrderDB?
+    var orderID: String?
+    var orders = Array<OrderDB>()
     var ref: DatabaseReference!
     var tastes = ""
     
@@ -26,7 +27,7 @@ class OrderDetailsViewController: UIViewController {
     @IBOutlet weak var orderIsDoneButton: UIButton!
     @IBOutlet weak var priceLabel: UILabel!
     
-    
+    /*
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let order = order else {
@@ -54,7 +55,13 @@ class OrderDetailsViewController: UIViewController {
         priceLabel.text = "Цена: \(order.price) Руб."
     }
     
-
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        //ref.removeAllObservers()
+    }
+ 
+ 
     /*
     // MARK: - Navigation
 
@@ -71,5 +78,5 @@ class OrderDetailsViewController: UIViewController {
             ref.child(order.identifier).updateChildValues(["table": order.tableNumber, "tobacco": order.tobacco, "tastes": order.tastes, "tea": order.tea, "time": order.time, "isDone": order.isDone, "identifier": order.identifier])
         }
     }
-    
+    */
 }

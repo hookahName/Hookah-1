@@ -7,13 +7,11 @@
 //
 
 import UIKit
-import Firebase
 
 class ViewController: UITableViewController, UINavigationBarDelegate {
     
     // MARK: Properties
     
-    var ref: DatabaseReference!
     let tables = ["Table 1", "Table 2", "Table 3"]
     var tobaccos = Array<TobaccoDB>()
     //var tobaccos = Array<TobaccoDB>()

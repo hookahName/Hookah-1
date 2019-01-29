@@ -10,9 +10,7 @@ import UIKit
 import Firebase
 class CurUserOrdersTableViewController: UITableViewController {
 
-    var users = Array<UserDB>()
     var orders = Array<OrderDB>()
-    var ordersID = NSDictionary()
     var keyValues = [String]()
     var currentUser = Auth.auth().currentUser?.uid
     var ref: DatabaseReference!
@@ -66,12 +64,10 @@ class CurUserOrdersTableViewController: UITableViewController {
             let value = snapshot.value as? NSDictionary
             let _ordersID = value?["orders"] as? NSDictionary
             
-            self?.ordersID = _ordersID!
             let enumer = _ordersID?.keyEnumerator()
             var _keyVal = Array<String>()
             while let key = enumer?.nextObject() {
                 let keyStr = key as! String
-                print(keyStr)
                 _keyVal.append(keyStr)
             }
             self?.keyValues = _keyVal
@@ -83,28 +79,25 @@ class CurUserOrdersTableViewController: UITableViewController {
         loadDatabase()
         self.refreshControl?.endRefreshing()
     }
-    
+    /*
     func loadOrders(orderID: String) {
         ref = Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).child("orders").child(orderID)
-        ref.observe(.value) { [weak self] (snapshot) in
+        ref.observeSingleEvent(of: .value, with: { [weak self] (snapshot) in
             var _orders = Array<OrderDB>()
             for item in snapshot.children {
                 let order = OrderDB(snapshot: item as! DataSnapshot)
                 _orders.append(order)
             }
             self?.orders = _orders
-            self?.tableView.reloadData()
-            print(self?.orders)
         }
+        )
     }
-    
+    */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toCurUserOrder" {
-            if let indexPath = tableView.indexPathForSelectedRow {
-                print(loadOrders(orderID: keyValues[indexPath.row]))
+        if let indexPath = tableView.indexPathForSelectedRow {
+            if segue.identifier == "toCurUserOrder" {
                 guard let dvc = segue.destination as? CurUserOrderDetailViewController else {return}
-                print(orders)
-                dvc.orders = orders
+                dvc.orderID = keyValues[indexPath.row]
             }
         }
     }
