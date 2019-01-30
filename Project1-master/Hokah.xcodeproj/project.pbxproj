@@ -22,6 +22,7 @@
 		22A1C43921FF600100803FD3 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A1C43821FF600100803FD3 /* InformationViewController.swift */; };
 		22A1C43B21FF827700803FD3 /* InfoClassForDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A1C43A21FF827700803FD3 /* InfoClassForDB.swift */; };
 		22A1C43D21FFCAD400803FD3 /* TastesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A1C43C21FFCAD400803FD3 /* TastesDetailViewController.swift */; };
+		22A1C443220123C200803FD3 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A1C442220123C200803FD3 /* FirstViewController.swift */; };
 		22D5ADE121FA7CD300F74ED3 /* UserClassForDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5ADE021FA7CD300F74ED3 /* UserClassForDB.swift */; };
 		22D5ADE321FA7E1E00F74ED3 /* EnterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5ADE221FA7E1E00F74ED3 /* EnterViewController.swift */; };
 		22D5ADE521FA833300F74ED3 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5ADE421FA833300F74ED3 /* RegisterViewController.swift */; };
@@ -62,6 +63,7 @@
 		22A1C43821FF600100803FD3 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		22A1C43A21FF827700803FD3 /* InfoClassForDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoClassForDB.swift; sourceTree = "<group>"; };
 		22A1C43C21FFCAD400803FD3 /* TastesDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastesDetailViewController.swift; sourceTree = "<group>"; };
+		22A1C442220123C200803FD3 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		22D5ADE021FA7CD300F74ED3 /* UserClassForDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserClassForDB.swift; sourceTree = "<group>"; };
 		22D5ADE221FA7E1E00F74ED3 /* EnterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterViewController.swift; sourceTree = "<group>"; };
 		22D5ADE421FA833300F74ED3 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			children = (
 				22D5ADE221FA7E1E00F74ED3 /* EnterViewController.swift */,
 				22D5ADE421FA833300F74ED3 /* RegisterViewController.swift */,
+				22A1C442220123C200803FD3 /* FirstViewController.swift */,
 				ED18062A21E23AB1006148BE /* ViewController.swift */,
 				EDB5C8FB21FD175500610596 /* TobaccoCollectionViewController.swift */,
 				EDF9D72121FDDF1000E03FD7 /* TastesCollectionViewController.swift */,
@@ -344,6 +347,7 @@
 				22404B3E21F65A4700DF041C /* ChooseTimeViewController.swift in Sources */,
 				EDE0784A21FBE3BC00AAFFE8 /* OrderDetailsViewController.swift in Sources */,
 				ED18064121E24EAB006148BE /* Result.swift in Sources */,
+				22A1C443220123C200803FD3 /* FirstViewController.swift in Sources */,
 				22A1C43921FF600100803FD3 /* InformationViewController.swift in Sources */,
 				EDE0784621FBCCC700AAFFE8 /* TeaClassForDB.swift in Sources */,
 				2253B1E821FD048A00444D44 /* CurUserOrdersTableViewController.swift in Sources */,

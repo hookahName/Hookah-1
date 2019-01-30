@@ -15,25 +15,10 @@ class ViewController: UITableViewController, UINavigationBarDelegate {
     let tables = ["Table 1", "Table 2", "Table 3"]
     var tobaccos = Array<TobaccoDB>()
     //var tobaccos = Array<TobaccoDB>()
+    var tobaccoPhotos: [String: UIImage] = [:]
     
     // MARK: View settings
-    /*
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        ref = Database.database().reference().child("tobaccos")
-        ref.observe(.value, with: {[weak self] (snapshot) in
-            var _tobaccos = Array<TobaccoDB>()
-            for item in snapshot.children {
-                let tobacco = TobaccoDB(snapshot: item as! DataSnapshot)
-                if tobacco.isAvailable == true {
-                    _tobaccos.append(tobacco)
-                }
-                
-            }
-            self?.tobaccos = _tobaccos
-        })
-    }
- */
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -62,15 +47,12 @@ class ViewController: UITableViewController, UINavigationBarDelegate {
     // MARK: Private functions
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "Admin" {
-            
-            guard segue.destination is AdminViewController else {return}
-            //admin.tobaccos = self.tobaccos
-        } else if segue.identifier == "tobacco" {
+        if segue.identifier == "tobacco" {
             guard let tobaco = segue.destination as? TobaccoCollectionViewController else {return}
             //tobaco.tobaccos = tobaccos
             //print(tobaco.tobaccos)
-            //tobaco.tobaccos = tobaccos
+            tobaco.tobaccoPhotos = tobaccoPhotos
+            tobaco.tobaccos = tobaccos
             if let indexPath = tableView.indexPathForSelectedRow {
                 tobaco.selectedTable = indexPath.row + 1
             }

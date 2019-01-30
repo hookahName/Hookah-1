@@ -14,6 +14,7 @@ class DetailTobaccoInfo: UIViewController, UIImagePickerControllerDelegate, UINa
     var ref: DatabaseReference!
     var imagePicker = UIImagePickerController()
     var choosenImage : UIImage?
+    var tobaccoImage: UIImage?
 
 
     @IBOutlet weak var tobaccoImageView: UIImageView!
@@ -35,18 +36,19 @@ class DetailTobaccoInfo: UIViewController, UIImagePickerControllerDelegate, UINa
             tobaccoNameText.text = tobacco.name.capitalized
             tobaccoNameText.isEnabled = false
             tobaccoPriceText.text = tobacco.price
-            let reference = Storage.storage().reference(withPath: "tobaccosImage/\(tobacco.imageName).png")
-            reference.getData(maxSize: (1 * 1772 * 2362)) { (data, error) in
-                if let _error = error{
-                    print("ОШИБКА")
-                    print(_error)
-                } else {
-                    print("Загружено")
-                    if let _data  = data {
-                        self.tobaccoImageView.image = UIImage(data: _data)
-                    }
-                }
-            }
+            tobaccoImageView.image = tobaccoImage
+//            let reference = Storage.storage().reference(withPath: "tobaccosImage/\(tobacco.imageName).png")
+//            reference.getData(maxSize: (1 * 1772 * 2362)) { (data, error) in
+//                if let _error = error{
+//                    print("ОШИБКА")
+//                    print(_error)
+//                } else {
+//                    print("Загружено")
+//                    if let _data  = data {
+//
+//                    }
+//                }
+//            }
         } else {
             tobaccoNameText.placeholder = "Name"
             tobaccoPriceText.placeholder = "Price"

@@ -15,23 +15,14 @@ class AdminTableViewController: UITableViewController, UINavigationControllerDel
     
     var ref: DatabaseReference!
     var tobaccos = Array<TobaccoDB>()
+    var tobaccoPhotos: [String: UIImage]?
     
     // MARK: View settings
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        ref = Database.database().reference().child("tobaccos")
-        ref.observe(.value, with: { [weak self] (snapshot) in
-            var _tobaccos = Array<TobaccoDB>()
-            for item in snapshot.children {
-                let tobacco = TobaccoDB(snapshot: item as! DataSnapshot)
-                _tobaccos.append(tobacco)
-            }
-            
-            self?.tobaccos = _tobaccos
-            self?.tableView.reloadData()
-        })
+
     }
     
     override func viewDidLoad() {
@@ -44,7 +35,6 @@ class AdminTableViewController: UITableViewController, UINavigationControllerDel
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        ref.removeAllObservers()
     }
     
     // MARK: Table view settings
@@ -158,6 +148,8 @@ class AdminTableViewController: UITableViewController, UINavigationControllerDel
             guard let detail = segue.destination as? DetailTobaccoInfo else {return}
             if let indexPath = sender as? IndexPath {
                 detail.tobacco = tobaccos[indexPath.row]
+                print("имя табака: \(tobaccos[indexPath.row].name)")
+                detail.tobaccoImage = tobaccoPhotos![tobaccos[indexPath.row].name]
             }
         } else if segue.identifier == "AddTastes" {
             guard let taste = segue.destination as? AddTastesTableViewController else {return}
@@ -168,6 +160,21 @@ class AdminTableViewController: UITableViewController, UINavigationControllerDel
             guard segue.destination is DetailTobaccoInfo else {return}
         }
     }
+    
+    private func loadTobaccos() {
+        ref = Database.database().reference().child("tobaccos")
+        ref.observe(.value, with: { [weak self] (snapshot) in
+            var _tobaccos = Array<TobaccoDB>()
+            for item in snapshot.children {
+                let tobacco = TobaccoDB(snapshot: item as! DataSnapshot)
+                _tobaccos.append(tobacco)
+            }
+            
+            self?.tobaccos = _tobaccos
+            self?.tableView.reloadData()
+        })
+    }
+    
     @IBAction func unwindSegueToAdmin(_ sender: UIStoryboardSegue) {
         
     }

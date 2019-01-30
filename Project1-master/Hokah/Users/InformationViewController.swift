@@ -20,12 +20,16 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     let tap = UITapGestureRecognizer(target: self, action: #selector(presentImagePicker))
     var ref: DatabaseReference!
     var infoDB = Array<InfoDB>()
+    var users = Array<UserDB>()
+    var infoPhoto: UIImage?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if infoDB.count > 0 {
             contactsTextView.text = infoDB[0].contacts
             locationTextView.text = infoDB[0].location
+            hookahImageView.image = infoPhoto
         } else {
             locationTextView.text = "Мы находимся по адресу: ..."
             contactsTextView.text = "Кальянная: ..."
@@ -46,19 +50,6 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
             changeInfoButton.title = "Изменить"
         }
         
-        let reference = Storage.storage().reference(withPath: "infoImage/\(infoDB[0].imageName).png")
-        
-        reference.getData(maxSize: (1 * 1772 * 2362)) { (data, error) in
-            if let _error = error{
-                print("ОШИБКА")
-                print(_error)
-            } else {
-                print("Загружено")
-                if let _data  = data {
-                    self.hookahImageView.image = UIImage(data: _data)
-                }
-            }
-        }
         
         
         

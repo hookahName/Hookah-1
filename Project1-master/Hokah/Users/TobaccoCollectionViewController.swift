@@ -17,6 +17,7 @@ class TobaccoCollectionViewController: UICollectionViewController, UINavigationC
     var tobaccos = Array<TobaccoDB>()
     var selectedTable: Int?
     var hookahs = Array<HookahDB>()
+    var tobaccoPhotos: [String: UIImage] = [:]
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -47,22 +48,22 @@ class TobaccoCollectionViewController: UICollectionViewController, UINavigationC
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! TobaccoCellClass
         
-        let reference = Storage.storage().reference(withPath: "tobaccosImage/\(tobaccos[indexPath.row].imageName).png")
-        reference.getData(maxSize: (1 * 1772 * 2362)) { (data, error) in
-            if let _error = error{
-                print("ОШИБКА")
-                print(_error)
-            } else {
-                print("Загружено")
-                if let _data  = data {
-                    cell.tobaccoViewImage.image = UIImage(data: _data)
-                }
-            }
-        }
+//        let reference = Storage.storage().reference(withPath: "tobaccosImage/\(tobaccos[indexPath.row].imageName).png")
+//        reference.getData(maxSize: (1 * 1772 * 2362)) { (data, error) in
+//            if let _error = error{
+//                print("ОШИБКА")
+//                print(_error)
+//            } else {
+//                print("Загружено")
+//                if let _data  = data {
+//                    cell.tobaccoViewImage.image = UIImage(data: _data)
+//                }
+//            }
+//        }
         
         cell.tobaccoNameLabel.text = tobaccos[indexPath.row].name
         cell.tobaccoPriceLabel.text = tobaccos[indexPath.row].price  + "Руб."
-        
+        cell.tobaccoViewImage.image = tobaccoPhotos[tobaccos[indexPath.row].name]
         cell.layer.borderWidth = CGFloat(1)
         cell.layer.borderColor = UIColor.gray.cgColor
         cell.layer.cornerRadius = 8

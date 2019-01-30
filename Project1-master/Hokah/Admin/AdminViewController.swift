@@ -14,7 +14,10 @@ class AdminViewController: UIViewController {
     // MARK: Properties
     var infoDB = Array<InfoDB>()
     var users = Array<UserDB>()
+    var tobaccos = Array<TobaccoDB>()
     var ref: DatabaseReference!
+    var infoPhoto: UIImage?
+    var tobaccoPhotos: [String: UIImage]?
     @IBOutlet weak var changeTobAndTastesButton: UIButton!
     @IBOutlet weak var changeTeaTastesButton: UIButton!
     @IBOutlet weak var allOrdersButton: UIButton!
@@ -25,14 +28,13 @@ class AdminViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadUsers()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         
-        if Auth.auth().currentUser?.uid != "Qc8qhjxUr4QMTkAVBXCdGBBo2Lu1" {
+        if Auth.auth().currentUser?.uid != "9v3ziIPm9hWZW3IvasRw904xd2d2" {
             changeTeaTastesButton.isHidden = true
             changeTobAndTastesButton.isHidden = true
             allOrdersButton.isHidden = true
@@ -40,15 +42,6 @@ class AdminViewController: UIViewController {
             title = "Админ"
         }
         
-        ref = Database.database().reference().child("info")
-        ref.observe(.value, with: { [weak self] (snapshot) in
-            var _infoDB = Array<InfoDB>()
-            for item in snapshot.children {
-                let information = InfoDB(snapshot: item as! DataSnapshot)
-                _infoDB.append(information)
-            }
-            self?.infoDB = _infoDB
-        })
 
         // Do any additional setup after loading the view.
     }
@@ -56,14 +49,15 @@ class AdminViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        ref.removeAllObservers()
     }
     
     // MARK: Private functions
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ChangeTobacco" {
-            guard segue.destination is AdminTableViewController else {return}
+            guard let changeTobacco = segue.destination as? AdminTableViewController else {return}
+            changeTobacco.tobaccos = tobaccos
+            changeTobacco.tobaccoPhotos = tobaccoPhotos
         } else if segue.identifier == "TeaTaste" {
             guard segue.destination is ChangeTeaTasteTableViewController else {return}
         } else if segue.identifier == "toOrders" {
@@ -74,6 +68,8 @@ class AdminViewController: UIViewController {
         } else if segue.identifier == "toInfo" {
             guard let infoVC = segue.destination as? InformationViewController else { return }
             infoVC.infoDB = infoDB
+            infoVC.infoPhoto = infoPhoto
+            infoVC.users = users
         }
     }
     
@@ -92,17 +88,6 @@ class AdminViewController: UIViewController {
     @IBAction func ordersButtonPressed(_ sender: Any) {
     }
     
-    private func loadUsers() {
-        ref = Database.database().reference().child("users")
-        ref.observe(.value, with: { [weak self] (snapshot) in
-            var _users = Array<UserDB>()
-            for item in snapshot.children {
-                let user = UserDB(snapshot: item as! DataSnapshot)
-                _users.append(user)
-            }
-            self?.users = _users
-        })
-    }
     
     @IBAction func curUserOrdersButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "CurUserOrders", sender: nil)
