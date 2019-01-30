@@ -12,16 +12,14 @@ import Firebase
 class UserDB {
     
     var name: String
-    var lastname: String
     var email: String
     var password: String
     var userId: String
     var ref: DatabaseReference?
     
-    init?(name: String, lastname: String, email: String, password: String, userId: String) {
+    init?(name: String, email: String, password: String, userId: String) {
         
         self.name = name
-        self.lastname = lastname
         self.email = email
         self.password = password
         self.userId = userId
@@ -31,7 +29,6 @@ class UserDB {
     init(snapshot: DataSnapshot){
         let snapshotValue = snapshot.value as! [String: AnyObject]
         name = snapshotValue["name"] as! String
-        lastname = snapshotValue["lastname"] as! String
         email = snapshotValue["email"] as! String
         password = snapshotValue["password"] as! String
         userId = snapshotValue["userId"] as! String
@@ -39,6 +36,6 @@ class UserDB {
     }
     
     func convertToDictionary() -> Any {
-        return ["name": name, "lastname": lastname, "email": email, "password": password, "userId": userId]
+        return ["name": name, "email": email, "password": password, "userId": userId]
     }
 }

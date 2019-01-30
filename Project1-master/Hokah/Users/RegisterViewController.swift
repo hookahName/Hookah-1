@@ -22,21 +22,20 @@ class RegisterViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         nameTextfield.text = ""
-        lastnameTextfield.text = ""
         emailTextfield.text = ""
         passwordTextfield.text = ""
     }
     
     @IBAction func regButtonPressed(_ sender: Any) {
         ref = Database.database().reference()
-        guard let email = emailTextfield.text, let password = passwordTextfield.text, let name = nameTextfield.text, let lastname = lastnameTextfield.text, name != "", lastname != "", email != "", password != "" else {
+        guard let email = emailTextfield.text, let password = passwordTextfield.text, let name = nameTextfield.text, name != "", email != "", password != "" else {
             
             return
         }
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] (user, error) in
             if error == nil {
                 if user != nil {
-                    let user = UserDB(name: name, lastname: lastname, email: email, password: password, userId: (Auth.auth().currentUser?.uid)!)
+                    let user = UserDB(name: name, email: email, password: password, userId: (Auth.auth().currentUser?.uid)!)
                     let userRef = self?.ref.child("users").child((Auth.auth().currentUser?.uid)!)
                     userRef?.setValue(user?.convertToDictionary())
                     self?.performSegue(withIdentifier: "fromReg", sender: nil)

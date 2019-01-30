@@ -799,10 +799,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="64" translatesAutoresizingMaskIntoConstraints="NO" id="Lbr-C6-XyQ">
-                                <rect key="frame" x="40" y="171.5" width="295" height="324"/>
+                                <rect key="frame" x="40" y="196.5" width="295" height="274"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="vZu-gn-1he">
-                                        <rect key="frame" x="40" y="0.0" width="215" height="180"/>
+                                        <rect key="frame" x="40" y="0.0" width="215" height="130"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Имя" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="15c-qC-193">
                                                 <rect key="frame" x="0.0" y="0.0" width="215" height="30"/>
@@ -810,20 +810,14 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Фамилия" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="05z-gN-TBs">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Почта" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="myK-s4-PkD">
                                                 <rect key="frame" x="0.0" y="50" width="215" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Почта" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="myK-s4-PkD">
-                                                <rect key="frame" x="0.0" y="100" width="215" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z6J-fj-fjR">
-                                                <rect key="frame" x="0.0" y="150" width="215" height="30"/>
+                                                <rect key="frame" x="0.0" y="100" width="215" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -831,7 +825,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="FML-Gc-Zrk">
-                                        <rect key="frame" x="40" y="244" width="215" height="80"/>
+                                        <rect key="frame" x="40" y="194" width="215" height="80"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wrv-aJ-Axv">
                                                 <rect key="frame" x="30" y="0.0" width="155" height="30"/>
@@ -876,7 +870,6 @@
                     </view>
                     <connections>
                         <outlet property="emailTextfield" destination="myK-s4-PkD" id="HBe-yn-eB9"/>
-                        <outlet property="lastnameTextfield" destination="05z-gN-TBs" id="cYA-dM-5Ya"/>
                         <outlet property="nameTextfield" destination="15c-qC-193" id="q7L-mH-q7c"/>
                         <outlet property="passwordTextfield" destination="Z6J-fj-fjR" id="Z0F-S6-eQa"/>
                         <outlet property="regButton" destination="Wrv-aJ-Axv" id="XzE-oe-dIv"/>
@@ -1273,7 +1266,7 @@
         <image name="defaultTobacco" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yrL-ht-TRZ"/>
+        <segue reference="KHK-SC-RzL"/>
         <segue reference="uaU-fm-qDL"/>
     </inferredMetricsTieBreakers>
 </document>
