@@ -13,15 +13,19 @@ class TastesDetailViewController: UIViewController, UIImagePickerControllerDeleg
     @IBOutlet weak var tasteImage: UIImageView!
     @IBOutlet weak var tasteTextfield: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var imagePicker = UIImagePickerController()
     var chosenTobacco: TobaccoDB?
     var chosenTaste: TasteDB?
     var ref: DatabaseReference!
+    let container: UIView = UIView()
+    let loadingView: UIView = UIView()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicator.isHidden = true
         saveButton.isEnabled = false
         tasteImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(presentImagePicker)))
         imagePicker.delegate = self
@@ -29,10 +33,9 @@ class TastesDetailViewController: UIViewController, UIImagePickerControllerDeleg
         imagePicker.sourceType = .photoLibrary
         tasteImage.isUserInteractionEnabled = true
         // Do any additional setup after loading the view.
-        print("Название табака: \(chosenTobacco?.name)")
         tasteTextfield.placeholder = "Вкус"
         
-        if let taste = chosenTaste {
+        if chosenTaste != nil {
             tasteTextfield.text = chosenTaste?.name
         } else {
             
@@ -48,9 +51,10 @@ class TastesDetailViewController: UIViewController, UIImagePickerControllerDeleg
     
     @IBAction func saveButtonPressed(_ sender: Any) {
         //guard let chosenTobacco = chosenTobacco else { return }
-        if let chosenTaste = chosenTaste {
+        if chosenTaste != nil {
             
         } else {
+            activityIndicatorSettings()
             guard let newTaste = tasteTextfield.text, newTaste != "" else {return}
             let imageName = NSUUID().uuidString
             print("имя картинки создано")
@@ -61,6 +65,8 @@ class TastesDetailViewController: UIViewController, UIImagePickerControllerDeleg
                         print(error)
                         return
                     }
+
+                    
                     storageRef.downloadURL { (url, error) in
                         if (url?.absoluteString) != nil {
                             
@@ -70,12 +76,14 @@ class TastesDetailViewController: UIViewController, UIImagePickerControllerDeleg
                             self.ref.child("tobaccos").child(self.chosenTobacco!.name.lowercased()).child("tastes").child((tasteDB?.name.lowercased())!).setValue(tasteDB?.convertToDictionary())
                         }
                     }
+                    self.activityIndicatorStopped()
+                    self.performSegue(withIdentifier: "unwindSegueToTastes", sender: nil)
                 }
             }
             
             
         }
-        performSegue(withIdentifier: "unwindSegueToTastes", sender: nil)
+        
     }
     
     @objc func presentImagePicker() {
@@ -96,6 +104,39 @@ class TastesDetailViewController: UIViewController, UIImagePickerControllerDeleg
         if segue.identifier == "toTastes" {
             guard segue.destination is AddTastesTableViewController else { return }
         }
+    }
+    
+    private func activityIndicatorSettings() {
+        
+        container.frame = view.frame
+        container.center = view.center
+        
+        loadingView.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        loadingView.center = view.center
+        loadingView.layer.cornerRadius = 10
+        loadingView.backgroundColor =  #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        
+        activityIndicator.isHidden = false
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        activityIndicator.style =
+            UIActivityIndicatorView.Style.whiteLarge
+        activityIndicator.center = CGPoint(x: loadingView.frame.size.width / 2, y: loadingView.frame.size.height / 2)
+        loadingView.addSubview(activityIndicator)
+        container.addSubview(loadingView)
+        view.addSubview(container)
+        
+        activityIndicator.isHidden = false
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.color =  #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        activityIndicator.startAnimating()
+        
+    }
+    
+    private func activityIndicatorStopped() {
+        activityIndicator.stopAnimating()
+        container.removeFromSuperview()
+        loadingView.removeFromSuperview()
+        activityIndicator.isHidden = true
     }
             
     /*

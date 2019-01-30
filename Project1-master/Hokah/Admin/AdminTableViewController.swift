@@ -15,6 +15,7 @@ class AdminTableViewController: UITableViewController, UINavigationControllerDel
     
     var ref: DatabaseReference!
     var tobaccos = Array<TobaccoDB>()
+    var tastes = Array<TasteDB>()
     var tobaccoPhotos: [String: UIImage]?
     var tastePhotos: [String: UIImage] = [:]
     
@@ -31,6 +32,9 @@ class AdminTableViewController: UITableViewController, UINavigationControllerDel
         
         title = "Available"
         tableView.tableFooterView = UIView()
+        
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl?.addTarget(self, action: #selector(refresh(_:)), for: UIControl.Event.valueChanged)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -38,6 +42,10 @@ class AdminTableViewController: UITableViewController, UINavigationControllerDel
         
     }
     
+    @objc func refresh(_ sender: AnyObject) {
+        loadTobaccos()
+        self.refreshControl?.endRefreshing()
+    }
     // MARK: Table view settings
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -78,7 +86,7 @@ class AdminTableViewController: UITableViewController, UINavigationControllerDel
         
         let delete = UITableViewRowAction(style: .default, title: "Удалить") { (action, indexPath) in
             let tobacco = self.tobaccos[indexPath.row]
-            self.ref = Database.database().reference().child("tobaccos").child(tobacco.name)
+            self.ref = Database.database().reference().child("tobaccos").child(tobacco.name.lowercased())
             self.ref.setValue(nil)
             self.tobaccos.remove(at: indexPath.row)
             self.tableView.beginUpdates()
@@ -157,6 +165,7 @@ class AdminTableViewController: UITableViewController, UINavigationControllerDel
             taste.tastePhotos = tastePhotos
             if let indexPath = tableView.indexPathForSelectedRow {
                 taste.chosenTobacco = tobaccos[indexPath.row]
+                
                 
             }
         } else if segue.identifier == "addTobacco" {

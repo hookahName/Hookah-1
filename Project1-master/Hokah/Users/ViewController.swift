@@ -55,6 +55,7 @@ class ViewController: UITableViewController, UINavigationBarDelegate {
             tobaco.tobaccoPhotos = tobaccoPhotos
             tobaco.tobaccos = tobaccos
             tobaco.tastePhotos = tastePhotos
+            
             if let indexPath = tableView.indexPathForSelectedRow {
                 tobaco.selectedTable = indexPath.row + 1
             }

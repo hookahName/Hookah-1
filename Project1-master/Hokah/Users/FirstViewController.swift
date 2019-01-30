@@ -98,10 +98,9 @@ class FirstViewController: UIViewController {
                     let reference = Storage.storage().reference(withPath: "tobaccosImage/\(tobacco.imageName).png")
                     reference.getData(maxSize: (1 * 1772 * 2362)) { (data, error) in
                         if let _error = error{
-                            print("ОШИБКА")
+                            print("ОШИБКА табаки")
                             print(_error)
                         } else {
-                            print("Загружено")
                             if let _data  = data {
                                 self!.tobaccoPhotos.updateValue(UIImage(data: _data)!, forKey: tobacco.name)
                                 print("фото табака загружены")
@@ -122,7 +121,7 @@ class FirstViewController: UIViewController {
                             let reference = Storage.storage().reference(withPath: "tastesImage/\(taste.imageName).png")
                             reference.getData(maxSize: (1 * 1772 * 2362)) { (data, error) in
                                 if let _error = error{
-                                    print("ОШИБКА")
+                                    print("ОШИБКА вкусы")
                                     print(_error)
                                 } else {
                                     
@@ -159,6 +158,7 @@ class FirstViewController: UIViewController {
             admin.tobaccoPhotos = tobaccoPhotos
             admin.tobaccos = tobaccos
             admin.tastePhotos = tastePhotos
+            admin.tastes = tastes
             
         } else if segue.identifier == "chooseHookah" {
             guard let hookah = segue.destination as? ViewController else { return }

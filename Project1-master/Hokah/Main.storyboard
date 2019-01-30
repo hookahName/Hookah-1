@@ -204,6 +204,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="2Xz-v9-cQq">
+                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="4hA-wj-g9S"/>
@@ -216,6 +220,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIindicator" destination="2Xz-v9-cQq" id="pIX-FG-M93"/>
                         <outlet property="changeInfoButton" destination="stI-Qa-Lwj" id="RDw-xt-jR9"/>
                         <outlet property="contactsTextView" destination="fGh-dU-xaX" id="ON3-rf-lGR"/>
                         <outlet property="hookahImageView" destination="cmQ-fQ-ciD" id="ItS-IM-9lp"/>
@@ -487,6 +492,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="CmP-Wu-fEr">
+                                <rect key="frame" x="177" y="324" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -514,6 +523,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="CmP-Wu-fEr" id="CCH-ja-X9I"/>
                         <outlet property="saveButton" destination="avE-Er-to5" id="q9I-3F-WP8"/>
                         <outlet property="tobaccoImageView" destination="oHy-hV-ozu" id="aBU-IZ-pAP"/>
                         <outlet property="tobaccoNameText" destination="lg6-Lj-glb" id="YZ6-7w-fIT"/>
@@ -1239,6 +1249,10 @@
                                     <action selector="tastesTextfieldWasChanged:" destination="T6g-uJ-2mJ" eventType="editingDidEndOnExit" id="CPK-C8-ngw"/>
                                 </connections>
                             </textField>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="cD2-63-f7a">
+                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="cfc-Ve-a0c"/>
@@ -1251,6 +1265,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="cD2-63-f7a" id="okh-Qb-Y8M"/>
                         <outlet property="saveButton" destination="mjl-gh-0nZ" id="YdB-Wp-FWI"/>
                         <outlet property="tasteImage" destination="fT5-6e-9E9" id="2C2-eu-Rvk"/>
                         <outlet property="tasteTextfield" destination="AjJ-QS-QLL" id="6xQ-Ec-EaF"/>

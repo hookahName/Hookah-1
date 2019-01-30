@@ -15,6 +15,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var changeInfoButton: UIBarButtonItem!
     @IBOutlet weak var locationTextView: UITextView!
     @IBOutlet weak var contactsTextView: UITextView!
+    @IBOutlet weak var activityIindicator: UIActivityIndicatorView!
     
     var imagePicker = UIImagePickerController()
     let tap = UITapGestureRecognizer(target: self, action: #selector(presentImagePicker))
@@ -22,6 +23,8 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     var infoDB = Array<InfoDB>()
     var users = Array<UserDB>()
     var infoPhoto: UIImage?
+    let container: UIView = UIView()
+    let loadingView: UIView = UIView()
     
     
     override func viewDidLoad() {
@@ -45,12 +48,12 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
         
-        if Auth.auth().currentUser?.uid == "gHPSmMsKb0PNsLgQHYh35l4tJWj1" {
+        if Auth.auth().currentUser?.uid == "9v3ziIPm9hWZW3IvasRw904xd2d2" {
             changeInfoButton.isEnabled = true
             changeInfoButton.title = "Изменить"
         }
         
-        
+        activityIindicator.isHidden = true
         
         
         
@@ -70,6 +73,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
             
             
         } else {
+            activityIndicatorSettings()
             let deleteImageName = self.infoDB[0].imageName
             let deleteRef = Storage.storage().reference().child("infoImage").child("\(deleteImageName).png")
             deleteRef.delete { (error) in
@@ -97,6 +101,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
                         
                         
                     }
+                    self.activityIndicatorStopped()
                 }
             }
             
@@ -125,5 +130,36 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
             self.hookahImageView.image = editedImage
             
         }
+    }
+    
+    private func activityIndicatorSettings() {
+        
+        container.frame = view.frame
+        container.center = view.center
+        
+        loadingView.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        loadingView.center = view.center
+        loadingView.layer.cornerRadius = 10
+        loadingView.backgroundColor =  #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        
+        activityIindicator.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        activityIindicator.style =
+            UIActivityIndicatorView.Style.whiteLarge
+        activityIindicator.center = CGPoint(x: loadingView.frame.size.width / 2, y: loadingView.frame.size.height / 2)
+        loadingView.addSubview(activityIindicator)
+        container.addSubview(loadingView)
+        view.addSubview(container)
+        
+        activityIindicator.isHidden = false
+        activityIindicator.hidesWhenStopped = true
+        activityIindicator.color =  #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        activityIindicator.startAnimating()
+        
+    }
+    
+    private func activityIndicatorStopped() {
+        activityIindicator.stopAnimating()
+        container.removeFromSuperview()
+        loadingView.removeFromSuperview()
     }
 }

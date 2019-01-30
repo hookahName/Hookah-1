@@ -25,7 +25,10 @@ class AddTastesTableViewController: UITableViewController {
         if let chosenTobacco = chosenTobacco {
             title = chosenTobacco.name
         }
+        loadTastes()
         tableView.tableFooterView = UIView()
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl?.addTarget(self, action: #selector(refresh(_:)), for: UIControl.Event.valueChanged)
     }
   
     override func viewWillAppear(_ animated: Bool) {
@@ -38,6 +41,11 @@ class AddTastesTableViewController: UITableViewController {
         super.viewWillDisappear(animated)
         getAvailabilityOfTobacco()
         ref.removeAllObservers()
+    }
+    
+    @objc func refresh(_ sender: AnyObject) {
+        loadTastes()
+        self.refreshControl?.endRefreshing()
     }
     
     // MARK: - Table view data source
@@ -81,7 +89,7 @@ class AddTastesTableViewController: UITableViewController {
             let deleteImageName = taste.imageName
             let deleteRef = Storage.storage().reference().child("tastesImage").child("\(deleteImageName).png")
             deleteRef.delete { (error) in
-                if let error = error {
+                if error != nil {
                     print("Error")
                 } else {
                     print("deleted succesfully")

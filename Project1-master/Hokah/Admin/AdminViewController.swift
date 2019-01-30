@@ -15,6 +15,7 @@ class AdminViewController: UIViewController {
     var infoDB = Array<InfoDB>()
     var users = Array<UserDB>()
     var tobaccos = Array<TobaccoDB>()
+    var tastes = Array<TasteDB>()
     var ref: DatabaseReference!
     var infoPhoto: UIImage?
     var tobaccoPhotos: [String: UIImage]?
@@ -60,6 +61,7 @@ class AdminViewController: UIViewController {
             changeTobacco.tobaccos = tobaccos
             changeTobacco.tobaccoPhotos = tobaccoPhotos
             changeTobacco.tastePhotos = tastePhotos
+            changeTobacco.tastes = tastes
         } else if segue.identifier == "TeaTaste" {
             guard segue.destination is ChangeTeaTasteTableViewController else {return}
         } else if segue.identifier == "toOrders" {
