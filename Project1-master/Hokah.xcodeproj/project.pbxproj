@@ -35,6 +35,7 @@
 		EDABF6C321F40E1300C73656 /* AdminTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDABF6C221F40E1300C73656 /* AdminTableViewController.swift */; };
 		EDB5C8FC21FD175500610596 /* TobaccoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB5C8FB21FD175500610596 /* TobaccoCollectionViewController.swift */; };
 		EDB5C8FE21FD17A200610596 /* TobaccoCellClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB5C8FD21FD17A200610596 /* TobaccoCellClass.swift */; };
+		EDB5FCB72200F49C00CAB594 /* HookahClassForDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB5FCB62200F49C00CAB594 /* HookahClassForDB.swift */; };
 		EDE0784421FBCC3000AAFFE8 /* OrderClassForDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE0784321FBCC3000AAFFE8 /* OrderClassForDB.swift */; };
 		EDE0784621FBCCC700AAFFE8 /* TeaClassForDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE0784521FBCCC700AAFFE8 /* TeaClassForDB.swift */; };
 		EDE0784821FBDFFE00AAFFE8 /* OrdersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE0784721FBDFFE00AAFFE8 /* OrdersTableViewController.swift */; };
@@ -76,6 +77,7 @@
 		EDABF6C221F40E1300C73656 /* AdminTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTableViewController.swift; sourceTree = "<group>"; };
 		EDB5C8FB21FD175500610596 /* TobaccoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TobaccoCollectionViewController.swift; sourceTree = "<group>"; };
 		EDB5C8FD21FD17A200610596 /* TobaccoCellClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TobaccoCellClass.swift; sourceTree = "<group>"; };
+		EDB5FCB62200F49C00CAB594 /* HookahClassForDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HookahClassForDB.swift; sourceTree = "<group>"; };
 		EDE0784321FBCC3000AAFFE8 /* OrderClassForDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderClassForDB.swift; sourceTree = "<group>"; };
 		EDE0784521FBCCC700AAFFE8 /* TeaClassForDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeaClassForDB.swift; sourceTree = "<group>"; };
 		EDE0784721FBDFFE00AAFFE8 /* OrdersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTableViewController.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				EDF9D71F21FDDEE100E03FD7 /* TasteCellClass.swift */,
 				22404B2F21EA4D6B00DF041C /* TobaccoClassForDB.swift */,
 				EDB5C8FD21FD17A200610596 /* TobaccoCellClass.swift */,
+				EDB5FCB62200F49C00CAB594 /* HookahClassForDB.swift */,
 				22404B3521F4DDB600DF041C /* TasteClassForDB.swift */,
 				EDE0784521FBCCC700AAFFE8 /* TeaClassForDB.swift */,
 				EDE0784321FBCC3000AAFFE8 /* OrderClassForDB.swift */,
@@ -331,6 +334,7 @@
 				2265D20321EA08C00093ABD3 /* AddTobaccoViewController.swift in Sources */,
 				22D5ADE321FA7E1E00F74ED3 /* EnterViewController.swift in Sources */,
 				EDABF6C321F40E1300C73656 /* AdminTableViewController.swift in Sources */,
+				EDB5FCB72200F49C00CAB594 /* HookahClassForDB.swift in Sources */,
 				22404B3621F4DDB600DF041C /* TasteClassForDB.swift in Sources */,
 				22404B3021EA4D6B00DF041C /* TobaccoClassForDB.swift in Sources */,
 				22D5ADE121FA7CD300F74ED3 /* UserClassForDB.swift in Sources */,

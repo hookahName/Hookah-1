@@ -20,22 +20,21 @@ class CurUserOrderDetailViewController: UIViewController {
     @IBOutlet weak var identifierLabel: UILabel!
     @IBOutlet weak var hookahSegmented: UISegmentedControl!
     
-    var orderID: String?
     var ref: DatabaseReference!
-    var orders = Array<OrderDB>()
+    var hookahs = Array<HookahDB>()
+    var order: OrderDB?
     var tastes = ""
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        ref = Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).child("orders").child(orderID!)
+        ref = Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).child("orders").child(order!.identifier).child(order!.identifier)
         ref.observe(.value) { [weak self] (snapshot) in
-            var _orders = Array<OrderDB>()
+            var _hookahs = Array<HookahDB>()
             for item in snapshot.children {
-                let order = OrderDB(snapshot: item as! DataSnapshot)
-                _orders.append(order)
+                let hookah = HookahDB(snapshot: item as! DataSnapshot)
+                _hookahs.append(hookah)
             }
-            self?.orders = _orders
+            self?.hookahs = _hookahs
         }
     }
     
@@ -49,53 +48,56 @@ class CurUserOrderDetailViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        guard let order = order else {return}
+        
         segmentedControlSettings()
         
         changeHidden()
-        
-        if !orders.isEmpty {
+        print(hookahs.count)
+        if !hookahs.isEmpty {
             var finalPrice = 0
-            for i in 0..<orders[0].tastes.count {
-                if i == orders[0].tastes.count - 1 {
-                    tastes += orders[0].tastes[i]
+            for i in 0..<hookahs[0].tastes.count {
+                if i == hookahs[0].tastes.count - 1 {
+                    tastes += hookahs[0].tastes[i]
                 } else {
-                    tastes += orders[0].tastes[i] + ", "
+                    tastes += hookahs[0].tastes[i] + ", "
                 }
             }
-            
-            for order in orders {
-                finalPrice += Int(order.price)!
+            /*
+            for hookah in hookahs {
+                finalPrice += Int(hookah.price)!
             }
-            
-            PriceLabel.text = "Цена: \(finalPrice)"
-            tableLabel.text = "Стол: \(orders[0].tableNumber)"
-            tobaccoLabel.text = "Табак: \(orders[0].tobacco)"
+*/
+            PriceLabel.text = "Цена: \(hookahs[0].price)"
+            tableLabel.text = "Стол: \(order.tableNumber)"
+            tobaccoLabel.text = "Табак: \(hookahs[0].tobacco)"
             tobaccoTasteLabel.text = "Вкусы табака: \(tastes)"
-            teaTastesLabel.text = "Чай: \(orders[0].tea)"
-            timeLabel.text = "Время: \(orders[0].time)"
-            //identifierLabel.text = "Номер заказа: \(orders[0].identifier)"
-            // Do any additional setup after loading the view.*/
+            teaTastesLabel.text = "Чай: \(hookahs[0].tea)"
+            timeLabel.text = "Время: \(hookahs[0].time)"
+            identifierLabel.text = "Номер заказа: \(order.identifier)"
+            // Do any additional setup after loading the view.
         }
     }
     
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
-        let order = orders[hookahSegmented.selectedSegmentIndex]
+        let hookah = hookahs[hookahSegmented.selectedSegmentIndex]
         
         var flavours = ""
         
-        for i in 0..<order.tastes.count {
-            if i == order.tastes.count - 1 {
-                flavours += order.tastes[i]
+        for i in 0..<hookah.tastes.count {
+            if i == hookah.tastes.count - 1 {
+                flavours += hookah.tastes[i]
             } else {
-                flavours += order.tastes[i] + ", "
+                flavours += hookah.tastes[i] + ", "
             }
         }
         
+        PriceLabel.text = "Цена: \(hookah.price)"
         tobaccoTasteLabel.text = "Вкусы табака: \(flavours)"
-        tableLabel.text = "Стол: \(order.tableNumber)"
-        tobaccoLabel.text = "Табак: \(order.tobacco)"
-        timeLabel.text = "Время: \(String(describing: order.time))"
-        teaTastesLabel.text = "Чай: \(order.tea)"
+        tableLabel.text = "Стол: \(order!.tableNumber)"
+        tobaccoLabel.text = "Табак: \(hookah.tobacco)"
+        timeLabel.text = "Время: \(String(describing: hookah.time))"
+        teaTastesLabel.text = "Чай: \(hookah.tea)"
     }
     
     func changeHidden() {
@@ -106,16 +108,16 @@ class CurUserOrderDetailViewController: UIViewController {
         teaTastesLabel.isHidden = !teaTastesLabel.isHidden
         timeLabel.isHidden = !timeLabel.isHidden
     }
-    
+
     private func segmentedControlSettings() {
         
         var arraySegmentString = Array<String>()
         
-        if orders.count < 2 {
+        if hookahs.count < 2 {
             hookahSegmented.isHidden = true
         } else {
             hookahSegmented.isHidden = false
-            for index in 0..<orders.count {
+            for index in 0..<hookahs.count {
                 let orderString = "Заказ \(index + 1)"
                 arraySegmentString.append(orderString)
         }

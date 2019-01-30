@@ -20,7 +20,7 @@ class TastesCollectionViewController: UICollectionViewController {
     var selectedTobacco: TobaccoDB?
     var teaTastes = Array<TeaDB>()
     var readyButton = UIBarButtonItem()
-    var orders = Array<OrderDB>()
+    var hookahs = Array<HookahDB>()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -128,7 +128,7 @@ class TastesCollectionViewController: UICollectionViewController {
             dvc.selectedTabacoo = selectedTobacco
             dvc.selectedFlavour = selectedTastes
             dvc.teaTastes = teaTastes
-            dvc.orders = orders
+            dvc.hookahs = hookahs
         }
     }
 }

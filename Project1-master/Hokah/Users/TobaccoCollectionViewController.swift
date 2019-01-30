@@ -16,7 +16,7 @@ class TobaccoCollectionViewController: UICollectionViewController, UINavigationC
     var ref: DatabaseReference!
     var tobaccos = Array<TobaccoDB>()
     var selectedTable: Int?
-    var orders = Array<OrderDB>()
+    var hookahs = Array<HookahDB>()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -76,7 +76,9 @@ class TobaccoCollectionViewController: UICollectionViewController, UINavigationC
             guard let dvc = segue.destination as? TastesCollectionViewController else {return}
             dvc.table = selectedTable
             dvc.selectedTobacco = tobaccos[indexPath.row]
-            dvc.orders = orders
+            dvc.hookahs = hookahs
+            print(" TOBACCO = \(hookahs.count)")
+
         }
     }
 
@@ -99,7 +101,6 @@ class TobaccoCollectionViewController: UICollectionViewController, UINavigationC
     
     @IBAction func unwindSegueToExtraHookah(_ segue: UIStoryboardSegue) {
         guard let svc = segue.source as? Result else {return}
-        orders = svc.orders
-        selectedTable = svc.orders[0].tableNumber
+        hookahs = svc.hookahs
     }
 }

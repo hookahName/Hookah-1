@@ -23,12 +23,16 @@ class AdminViewController: UIViewController {
     
     // MARK: View settings
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadUsers()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        loadUsers()
         
-        if Auth.auth().currentUser?.uid != "gHPSmMsKb0PNsLgQHYh35l4tJWj1" {
+        if Auth.auth().currentUser?.uid != "Qc8qhjxUr4QMTkAVBXCdGBBo2Lu1" {
             changeTeaTastesButton.isHidden = true
             changeTobAndTastesButton.isHidden = true
             allOrdersButton.isHidden = true
@@ -47,6 +51,12 @@ class AdminViewController: UIViewController {
         })
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        ref.removeAllObservers()
     }
     
     // MARK: Private functions

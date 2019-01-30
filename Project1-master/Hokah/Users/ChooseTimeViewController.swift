@@ -19,9 +19,7 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
     var selectedFlavour: [String]?
     var chosenTime: String = ""
     var chosenTea: TeaDB?
-    var orders = Array<OrderDB>()
-    var order: OrderDB?
-    
+    var hookahs = Array<HookahDB>()
     
     let teaTastesPicker = UIPickerView()
     let TeaSwitch = UISwitch()
@@ -134,7 +132,7 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
             } else {
                 resultController.selectedTea = "Не выбран"
             }
-            resultController.orders = orders
+            resultController.hookahs = hookahs
         }
     }
 }

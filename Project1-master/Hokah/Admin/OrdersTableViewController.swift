@@ -13,29 +13,14 @@ class OrdersTableViewController: UITableViewController {
     
     // MARK: Properties
     var users: Array<UserDB>!
-    var keyValues = Array<String>()
-    
+    var orders = Array<OrderDB>()
     var ref: DatabaseReference!
     
     // MARK: View settings
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        ref = Database.database().reference()
-        var _keyValues = Array<String>()
-        for user in users{
-            ref.child("users").child(user.userId).observeSingleEvent(of: .value) { [weak self] (snapshot) in
-                let value = snapshot.value as? NSDictionary
-                let ordersID = value?["orders"] as? NSDictionary
-                let enumerated = ordersID?.keyEnumerator()
-                while let key = enumerated?.nextObject() {
-                    let keyStr = key as! String
-                    _keyValues.append(keyStr)
-                }
-                self?.keyValues = _keyValues
-                self?.tableView.reloadData()
-            }
-        }
+        loadDatabase()
     }
     
     override func viewDidLoad() {
@@ -53,12 +38,12 @@ class OrdersTableViewController: UITableViewController {
     // MARK: Table view settings
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return keyValues.count
+        return orders.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Order", for: indexPath)
-        cell.textLabel?.text = "Заказ: \(keyValues[indexPath.row])"
+        cell.textLabel?.text = "Заказ: \(orders[indexPath.row].identifier)"
         cell.accessoryType = .disclosureIndicator
         /*
         if orders[indexPath.row].isDone == true {
@@ -66,37 +51,31 @@ class OrdersTableViewController: UITableViewController {
         }*/
         return cell
     }
-    /*
+    
     func loadDatabase() {
-        ref = Database.database().reference()
+        ref = Database.database().reference().child("users")
+        var _orders = Array<OrderDB>()
         if let users = users {
             for user in users {
-                ref.child("users").child(user.userId).observe(.value, with: {[weak self] (snapshot) in
-                    let value = snapshot.value as? NSDictionary
-                    let ordersID = value?["orders"] as? NSDictionary
-                    let enumer = ordersID?.keyEnumerator()
-                    var _keyValues = Array<String>()
-                    while let key = enumer?.nextObject() {
-                        let keyStr = key as! String
-                        _keyValues.append(keyStr)
+                ref.child(user.userId).child("orders").observe(.value, with: {[weak self] (snapshot) in
+                    for item in snapshot.children {
+                        let order = OrderDB(snapshot: item as! DataSnapshot)
+                        _orders.append(order)
                     }
-                    self?.keyValues += _keyValues
+                    self?.orders = _orders
                     self?.tableView.reloadData()
                 })
             }
-        } else {
-            print("Something wrong")
+            //orders = _orders
+            //tableView.reloadData()
         }
-    }*/
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "orderDetails" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 guard let dvc = segue.destination as? OrderDetailsViewController else {return}
-                dvc.orderID = keyValues[indexPath.row]
-                for user in users {
-                     print()
-                }
+                dvc.order = orders[indexPath.row]
             }
         }
     }

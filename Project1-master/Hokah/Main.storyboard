@@ -150,6 +150,7 @@
                                     <segment title="First"/>
                                     <segment title="Second"/>
                                 </segments>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <connections>
                                     <action selector="segmentChanged:" destination="Axk-o3-glG" eventType="valueChanged" id="aLc-1L-bkx"/>
                                 </connections>
@@ -336,11 +337,31 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Lb1-Kr-Adf">
+                                <rect key="frame" x="16" y="64" width="343" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Lb1-Kr-Adf" secondAttribute="height" multiplier="49:4" id="J8Q-oG-O8h"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <connections>
+                                    <action selector="segmentChanged:" destination="snj-hc-mIU" eventType="valueChanged" id="Og9-9F-mr4"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="yGR-6I-pfG" firstAttribute="trailing" secondItem="Lb1-Kr-Adf" secondAttribute="trailing" constant="16" id="B8b-yi-4UY"/>
+                            <constraint firstItem="Lb1-Kr-Adf" firstAttribute="leading" secondItem="yGR-6I-pfG" secondAttribute="leading" constant="16" id="UyD-hu-uZl"/>
+                            <constraint firstItem="Lb1-Kr-Adf" firstAttribute="top" secondItem="yGR-6I-pfG" secondAttribute="top" id="War-Da-DqN"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="yGR-6I-pfG"/>
                     </view>
                     <connections>
+                        <outlet property="hookahsSegmented" destination="Lb1-Kr-Adf" id="gVf-C9-goG"/>
                         <outlet property="identifierLabel" destination="b4q-Lh-LK8" id="MEX-WU-jzu"/>
                         <outlet property="orderIsDoneButton" destination="ndT-oP-hcJ" id="yE9-VA-HIy"/>
                         <outlet property="priceLabel" destination="j62-ov-ZtS" id="96a-vO-TJl"/>
@@ -354,7 +375,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GXt-fu-2ir" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="VJ0-5v-kPe" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2793" y="-1952"/>
+            <point key="canvasLocation" x="2792.8000000000002" y="-1952.473763118441"/>
         </scene>
         <!--Admin View Controller-->
         <scene sceneID="Imm-yK-7Hj">
@@ -1204,7 +1225,7 @@
     </scenes>
     <resources>
         <image name="defaultImage" width="1024" height="1024"/>
-        <image name="defaultTobacco" width="512" height="512"/>
+        <image name="defaultTobacco" width="1024" height="1024"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7KR-yc-jZi"/>
