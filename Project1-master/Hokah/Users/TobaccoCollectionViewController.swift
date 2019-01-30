@@ -18,6 +18,7 @@ class TobaccoCollectionViewController: UICollectionViewController, UINavigationC
     var selectedTable: Int?
     var hookahs = Array<HookahDB>()
     var tobaccoPhotos: [String: UIImage] = [:]
+    var tastePhotos: [String: UIImage] = [:]
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -78,6 +79,7 @@ class TobaccoCollectionViewController: UICollectionViewController, UINavigationC
             dvc.table = selectedTable
             dvc.selectedTobacco = tobaccos[indexPath.row]
             dvc.hookahs = hookahs
+            dvc.tastePhotos = tastePhotos
             print(" TOBACCO = \(hookahs.count)")
 
         }

@@ -16,6 +16,7 @@ class ViewController: UITableViewController, UINavigationBarDelegate {
     var tobaccos = Array<TobaccoDB>()
     //var tobaccos = Array<TobaccoDB>()
     var tobaccoPhotos: [String: UIImage] = [:]
+    var tastePhotos: [String: UIImage] = [:]
     
     // MARK: View settings
 
@@ -53,6 +54,7 @@ class ViewController: UITableViewController, UINavigationBarDelegate {
             //print(tobaco.tobaccos)
             tobaco.tobaccoPhotos = tobaccoPhotos
             tobaco.tobaccos = tobaccos
+            tobaco.tastePhotos = tastePhotos
             if let indexPath = tableView.indexPathForSelectedRow {
                 tobaco.selectedTable = indexPath.row + 1
             }

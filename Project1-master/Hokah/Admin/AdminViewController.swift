@@ -18,6 +18,7 @@ class AdminViewController: UIViewController {
     var ref: DatabaseReference!
     var infoPhoto: UIImage?
     var tobaccoPhotos: [String: UIImage]?
+    var tastePhotos: [String: UIImage] = [:]
     @IBOutlet weak var changeTobAndTastesButton: UIButton!
     @IBOutlet weak var changeTeaTastesButton: UIButton!
     @IBOutlet weak var allOrdersButton: UIButton!
@@ -58,6 +59,7 @@ class AdminViewController: UIViewController {
             guard let changeTobacco = segue.destination as? AdminTableViewController else {return}
             changeTobacco.tobaccos = tobaccos
             changeTobacco.tobaccoPhotos = tobaccoPhotos
+            changeTobacco.tastePhotos = tastePhotos
         } else if segue.identifier == "TeaTaste" {
             guard segue.destination is ChangeTeaTasteTableViewController else {return}
         } else if segue.identifier == "toOrders" {

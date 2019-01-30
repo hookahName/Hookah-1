@@ -21,6 +21,7 @@ class TastesCollectionViewController: UICollectionViewController {
     var teaTastes = Array<TeaDB>()
     var readyButton = UIBarButtonItem()
     var hookahs = Array<HookahDB>()
+    var tastePhotos: [String: UIImage] = [:]
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -72,24 +73,25 @@ class TastesCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! TasteCellClass
         
-        let reference = Storage.storage().reference(withPath: "tastesImage/\(tastes[indexPath.row].imageName).png")
-        reference.getData(maxSize: (1 * 1772 * 2362)) { (data, error) in
-            if let _error = error{
-                print("ОШИБКА")
-                print(_error)
-                cell.tasteImageView.image = UIImage(named: "defaultTaste")
-            } else {
-                print("Загружено")
-                if let _data  = data {
-                    cell.tasteImageView.image = UIImage(data: _data)
-                }
-            }
-        }
+//        let reference = Storage.storage().reference(withPath: "tastesImage/\(tastes[indexPath.row].imageName).png")
+//        reference.getData(maxSize: (1 * 1772 * 2362)) { (data, error) in
+//            if let _error = error{
+//                print("ОШИБКА")
+//                print(_error)
+//                cell.tasteImageView.image = UIImage(named: "defaultTaste")
+//            } else {
+//                print("Загружено")
+//                if let _data  = data {
+//                    cell.tasteImageView.image = UIImage(data: _data)
+//                }
+//            }
+//        }
         
         cell.layer.borderWidth = CGFloat(1)
         cell.layer.cornerRadius = 8
         cell.tasteNameLabel.text = tastes[indexPath.row].name.capitalized
-        
+        print("\(String(describing: selectedTobacco!.name))+\(tastes[indexPath.row].name)")
+        cell.tasteImageView.image = tastePhotos["\(String(describing: selectedTobacco!.name))+\(tastes[indexPath.row].name)"]
         if selectedTastes.contains(tastes[indexPath.row].name) {
             cell.layer.borderColor = UIColor.blue.cgColor
         } else {

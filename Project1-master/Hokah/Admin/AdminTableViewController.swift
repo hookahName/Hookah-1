@@ -16,6 +16,7 @@ class AdminTableViewController: UITableViewController, UINavigationControllerDel
     var ref: DatabaseReference!
     var tobaccos = Array<TobaccoDB>()
     var tobaccoPhotos: [String: UIImage]?
+    var tastePhotos: [String: UIImage] = [:]
     
     // MARK: View settings
     
@@ -153,8 +154,10 @@ class AdminTableViewController: UITableViewController, UINavigationControllerDel
             }
         } else if segue.identifier == "AddTastes" {
             guard let taste = segue.destination as? AddTastesTableViewController else {return}
+            taste.tastePhotos = tastePhotos
             if let indexPath = tableView.indexPathForSelectedRow {
                 taste.chosenTobacco = tobaccos[indexPath.row]
+                
             }
         } else if segue.identifier == "addTobacco" {
             guard segue.destination is DetailTobaccoInfo else {return}

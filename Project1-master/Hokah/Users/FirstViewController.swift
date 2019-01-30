@@ -13,11 +13,13 @@ class FirstViewController: UIViewController {
     var infoDB = Array<InfoDB>()
     var users = Array<UserDB>()
     var tobaccos = Array<TobaccoDB>()
+    var tastes = Array<TasteDB>()
     var ref: DatabaseReference!
     let container: UIView = UIView()
     let loadingView: UIView = UIView()
     var infoPhoto: UIImage?
     var tobaccoPhotos: [String: UIImage] = [:]
+    var tastePhotos: [String: UIImage] = [:]
 
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -106,7 +108,36 @@ class FirstViewController: UIViewController {
                             }
                         }
                     }
+                    self!.ref = Database.database().reference().child("tobaccos").child((tobacco.name.lowercased())).child("tastes")
+                    self!.ref.observe(.value, with: { [weak self] (snapshot) in
+                        var _tastes = Array<TasteDB>()
+                        for i in snapshot.children{
+                            let taste = TasteDB(snapshot: i as! DataSnapshot)
+                            _tastes.append(taste)
+                            print(taste)
+                            
+                        }
+                        self?.tastes = _tastes
+                        for taste in (self?.tastes)! {
+                            let reference = Storage.storage().reference(withPath: "tastesImage/\(taste.imageName).png")
+                            reference.getData(maxSize: (1 * 1772 * 2362)) { (data, error) in
+                                if let _error = error{
+                                    print("ОШИБКА")
+                                    print(_error)
+                                } else {
+                                    
+                                    if let _data  = data {
+                                        self!.tastePhotos.updateValue(UIImage(data: _data)!, forKey: "\(tobacco.name)+\(taste.name)")
+                                        print(Array((self?.tastePhotos)!)[0].key)
+                                        print("Загружено фото вкусов")
+                                    }
+                                }
+                            }
+                        }
+                        
+                    })
                 }
+                
                 
                 //print(Array((self?.tobaccoPhotos!)!)[0].key)
             } else {
@@ -127,11 +158,13 @@ class FirstViewController: UIViewController {
             admin.infoPhoto = infoPhoto
             admin.tobaccoPhotos = tobaccoPhotos
             admin.tobaccos = tobaccos
+            admin.tastePhotos = tastePhotos
             
         } else if segue.identifier == "chooseHookah" {
             guard let hookah = segue.destination as? ViewController else { return }
             hookah.tobaccos = tobaccos
             hookah.tobaccoPhotos = tobaccoPhotos
+            hookah.tastePhotos = tastePhotos
         }
     }
     

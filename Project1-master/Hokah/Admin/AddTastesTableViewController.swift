@@ -16,6 +16,7 @@ class AddTastesTableViewController: UITableViewController {
     var chosenTobacco: TobaccoDB?
     var ref: DatabaseReference!
     var tastes = Array<TasteDB>()
+    var tastePhotos: [String: UIImage] = [:]
     
     // MARK: View settings
     
@@ -29,19 +30,7 @@ class AddTastesTableViewController: UITableViewController {
   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        guard let chosenTobacco = chosenTobacco else {return}
-        ref = Database.database().reference().child("tobaccos").child((chosenTobacco.name.lowercased())).child("tastes")
-        ref.observe(.value, with: { [weak self] (snapshot) in
-            var _tastes = Array<TasteDB>()
-            for i in snapshot.children{
-                let taste = TasteDB(snapshot: i as! DataSnapshot)
-                _tastes.append(taste)
-                print(taste)
-                
-            }
-            self?.tastes = _tastes
-            self?.tableView.reloadData()
-        })
+        
         
     }
     
@@ -173,6 +162,22 @@ class AddTastesTableViewController: UITableViewController {
                 guard let newTasteVC = segue.destination as? TastesDetailViewController else { return }
                 newTasteVC.chosenTobacco = chosenTobacco
         }
+    }
+    
+    private func loadTastes() {
+        guard let chosenTobacco = chosenTobacco else {return}
+        ref = Database.database().reference().child("tobaccos").child((chosenTobacco.name.lowercased())).child("tastes")
+        ref.observe(.value, with: { [weak self] (snapshot) in
+            var _tastes = Array<TasteDB>()
+            for i in snapshot.children{
+                let taste = TasteDB(snapshot: i as! DataSnapshot)
+                _tastes.append(taste)
+                print(taste)
+                
+            }
+            self?.tastes = _tastes
+            self?.tableView.reloadData()
+        })
     }
     
     @IBAction func unwindSegueToTastes(_ sender: UIStoryboardSegue) {
