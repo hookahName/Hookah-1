@@ -380,28 +380,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yqc-lS-BZl">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yqc-lS-BZl">
                                 <rect key="frame" x="96" y="314" width="183" height="30"/>
                                 <state key="normal" title="Изменить табаки и вкусы"/>
                                 <connections>
                                     <segue destination="1O0-yf-her" kind="show" identifier="ChangeTobacco" id="pXb-8h-hT8"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VMg-L9-ugT">
-                                <rect key="frame" x="124" y="546" width="126" height="30"/>
-                                <state key="normal" title="Выход"/>
-                                <connections>
-                                    <action selector="changePassButtonPressed:" destination="tMF-Ig-Ibo" eventType="touchUpInside" id="1II-yr-JdD"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iqq-Em-mzY">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iqq-Em-mzY">
                                 <rect key="frame" x="115" y="428" width="145" height="30"/>
                                 <state key="normal" title="Изменить вкусы чая"/>
                                 <connections>
                                     <segue destination="ywI-bF-KtT" kind="show" identifier="TeaTaste" id="mih-d7-o1g"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xCa-9h-sDP">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xCa-9h-sDP">
                                 <rect key="frame" x="161" y="200" width="52" height="30"/>
                                 <state key="normal" title="Заказы"/>
                                 <connections>
@@ -429,16 +422,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Yqc-lS-BZl" firstAttribute="leading" secondItem="0iU-8w-UYf" secondAttribute="leading" constant="96" id="7VX-eI-4By"/>
-                            <constraint firstItem="VMg-L9-ugT" firstAttribute="leading" secondItem="0iU-8w-UYf" secondAttribute="leading" constant="124" id="Gec-Zh-wsY"/>
                             <constraint firstItem="xCa-9h-sDP" firstAttribute="leading" secondItem="0iU-8w-UYf" secondAttribute="leading" constant="161" id="HOC-Kp-Uvd"/>
                             <constraint firstItem="iqq-Em-mzY" firstAttribute="top" secondItem="Yqc-lS-BZl" secondAttribute="bottom" constant="84" id="LCw-qj-PhV"/>
-                            <constraint firstItem="VMg-L9-ugT" firstAttribute="top" secondItem="iqq-Em-mzY" secondAttribute="bottom" constant="88" id="WVg-Jw-9fO"/>
                             <constraint firstItem="Yqc-lS-BZl" firstAttribute="top" secondItem="xCa-9h-sDP" secondAttribute="bottom" constant="84" id="XHN-Gj-6NY"/>
-                            <constraint firstItem="0iU-8w-UYf" firstAttribute="bottom" secondItem="VMg-L9-ugT" secondAttribute="bottom" constant="47" id="Zih-aK-ag6"/>
                             <constraint firstItem="xCa-9h-sDP" firstAttribute="top" secondItem="0iU-8w-UYf" secondAttribute="top" constant="136" id="hyS-PC-4fh"/>
                             <constraint firstItem="0iU-8w-UYf" firstAttribute="trailing" secondItem="Yqc-lS-BZl" secondAttribute="trailing" constant="96" id="iMZ-xf-u9R"/>
                             <constraint firstItem="iqq-Em-mzY" firstAttribute="leading" secondItem="0iU-8w-UYf" secondAttribute="leading" constant="115" id="izm-Vf-jwc"/>
-                            <constraint firstItem="0iU-8w-UYf" firstAttribute="trailing" secondItem="VMg-L9-ugT" secondAttribute="trailing" constant="125" id="mh1-6l-g0a"/>
                             <constraint firstItem="0iU-8w-UYf" firstAttribute="trailing" secondItem="iqq-Em-mzY" secondAttribute="trailing" constant="115" id="zvK-rc-YOB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0iU-8w-UYf"/>

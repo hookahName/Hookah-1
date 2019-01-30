@@ -20,7 +20,9 @@ class OrdersTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadDatabase()
+        //loadDatabase()
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl?.addTarget(self, action: #selector(refresh(_:)), for: UIControl.Event.valueChanged)
     }
     
     override func viewDidLoad() {
@@ -32,9 +34,14 @@ class OrdersTableViewController: UITableViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        ref.removeAllObservers()
+        
     }
     
+    @objc func refresh(_ sender: AnyObject) {
+        loadDatabase()
+        self.refreshControl?.endRefreshing()
+        ref.removeAllObservers()
+    }
     // MARK: Table view settings
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

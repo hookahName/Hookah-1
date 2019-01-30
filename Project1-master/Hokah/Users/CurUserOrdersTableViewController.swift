@@ -19,7 +19,7 @@ class CurUserOrdersTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        loadDatabase()
+        //loadDatabase()
     }
     
     override func viewDidLoad() {
@@ -32,7 +32,7 @@ class CurUserOrdersTableViewController: UITableViewController {
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        ref.removeAllObservers()
+        
     }
     
     // MARK: Table view settings
@@ -71,6 +71,7 @@ class CurUserOrdersTableViewController: UITableViewController {
     @objc func refresh(_ sender: AnyObject) {
         loadDatabase()
         self.refreshControl?.endRefreshing()
+        ref.removeAllObservers()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

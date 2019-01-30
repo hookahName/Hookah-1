@@ -16,6 +16,8 @@ class AdminViewController: UIViewController {
     var users = Array<UserDB>()
     var tobaccos = Array<TobaccoDB>()
     var tastes = Array<TasteDB>()
+    var curUserOrders = Array<OrderDB>()
+    var allOrders = Array<OrderDB>()
     var ref: DatabaseReference!
     var infoPhoto: UIImage?
     var tobaccoPhotos: [String: UIImage]?
@@ -65,10 +67,13 @@ class AdminViewController: UIViewController {
         } else if segue.identifier == "TeaTaste" {
             guard segue.destination is ChangeTeaTasteTableViewController else {return}
         } else if segue.identifier == "toOrders" {
-            guard let users = segue.destination as? OrdersTableViewController else {return}
-            users.users = self.users
+            guard let orders = segue.destination as? OrdersTableViewController else {return}
+            
+            orders.users = self.users
+            orders.orders = allOrders
         } else if segue.identifier == "CurUserOrders" {
-            guard segue.destination is CurUserOrdersTableViewController else { return }
+            guard let curUserOrd = segue.destination as? CurUserOrdersTableViewController else { return }
+            curUserOrd.orders = curUserOrders
         } else if segue.identifier == "toInfo" {
             guard let infoVC = segue.destination as? InformationViewController else { return }
             infoVC.infoDB = infoDB
@@ -77,17 +82,6 @@ class AdminViewController: UIViewController {
         }
     }
     
-    @IBAction func changePassButtonPressed(_ sender: Any) {
-        do {
-            try Auth.auth().signOut()
-        } catch {
-            print(error.localizedDescription)
-        }
-        if let storyboard = self.storyboard {
-            let vc = storyboard.instantiateViewController(withIdentifier: "login") as! EnterViewController
-            self.present(vc, animated: false, completion: nil)
-        }
-    }
     
     @IBAction func ordersButtonPressed(_ sender: Any) {
     }

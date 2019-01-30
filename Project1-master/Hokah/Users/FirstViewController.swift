@@ -12,6 +12,7 @@ class FirstViewController: UIViewController {
     
     var infoDB = Array<InfoDB>()
     var users = Array<UserDB>()
+    var users1: Array<UserDB>!
     var tobaccos = Array<TobaccoDB>()
     var tastes = Array<TasteDB>()
     var ref: DatabaseReference!
@@ -20,6 +21,9 @@ class FirstViewController: UIViewController {
     var infoPhoto: UIImage?
     var tobaccoPhotos: [String: UIImage] = [:]
     var tastePhotos: [String: UIImage] = [:]
+    var hookahs = Array<HookahDB>()
+    var curUserOrders = Array<OrderDB>()
+    var allOrders = Array<OrderDB>()
 
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -31,8 +35,9 @@ class FirstViewController: UIViewController {
         super.viewDidLoad()
         activityIndicatorSettings()
         getInfo()
-        loadUsers()
+        loadUsersAndAllOrders()
         loadTobaccos()
+        loadOrders()
         // Do any additional setup after loading the view.
     }
     
@@ -66,7 +71,7 @@ class FirstViewController: UIViewController {
         
     }
     
-    private func loadUsers() {
+    private func loadUsersAndAllOrders() {
         
         ref = Database.database().reference().child("users")
         ref.observe(.value, with: { [weak self] (snapshot) in
@@ -77,10 +82,39 @@ class FirstViewController: UIViewController {
                 _users.append(user)
             }
             self?.users = _users
-            
             print("Юзеры загружены")
+            self!.ref = Database.database().reference().child("users")
+            var _orders = Array<OrderDB>()
+            for user in self!.users {
+                self!.ref.child(user.userId).child("orders").observe(.value, with: {[weak self] (snapshot) in
+                        for item in snapshot.children {
+                            let order = OrderDB(snapshot: item as! DataSnapshot)
+                            _orders.append(order)
+                        }
+                        self?.allOrders = _orders
+                    })
+                
+                //orders = _orders
+                //tableView.reloadData()
+            }
+            
         })
     }
+    
+    private func loadOrders() {
+        ref = Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).child("orders")
+        ref.observe(.value) { [weak self] (snapshot) in
+            var _orders = Array<OrderDB>()
+            for item in snapshot.children {
+                let order = OrderDB(snapshot: item as! DataSnapshot)
+                _orders.append(order)
+            }
+            self?.curUserOrders = _orders
+        print("Заказы загружены")
+        }
+    }
+    
+
     
     private func loadTobaccos() {
         ref = Database.database().reference().child("tobaccos")
@@ -159,6 +193,8 @@ class FirstViewController: UIViewController {
             admin.tobaccos = tobaccos
             admin.tastePhotos = tastePhotos
             admin.tastes = tastes
+            admin.curUserOrders = curUserOrders
+            admin.allOrders = allOrders
             
         } else if segue.identifier == "chooseHookah" {
             guard let hookah = segue.destination as? ViewController else { return }

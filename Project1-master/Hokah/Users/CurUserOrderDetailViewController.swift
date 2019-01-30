@@ -27,15 +27,7 @@ class CurUserOrderDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        ref = Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).child("orders").child(order!.identifier).child(order!.identifier)
-        ref.observe(.value) { [weak self] (snapshot) in
-            var _hookahs = Array<HookahDB>()
-            for item in snapshot.children {
-                let hookah = HookahDB(snapshot: item as! DataSnapshot)
-                _hookahs.append(hookah)
-            }
-            self?.hookahs = _hookahs
-        }
+        
     }
     
     override func viewDidLoad() {
@@ -43,6 +35,7 @@ class CurUserOrderDetailViewController: UIViewController {
         identifierLabel.isHidden = true
         changeHidden()
         hookahSegmented.isHidden = true
+        loadOrders()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -126,5 +119,17 @@ class CurUserOrderDetailViewController: UIViewController {
         }
         
         hookahSegmented.selectedSegmentIndex = 0
+    }
+    
+    private func loadOrders() {
+        ref = Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).child("orders").child(order!.identifier).child(order!.identifier)
+        ref.observe(.value) { [weak self] (snapshot) in
+            var _hookahs = Array<HookahDB>()
+            for item in snapshot.children {
+                let hookah = HookahDB(snapshot: item as! DataSnapshot)
+                _hookahs.append(hookah)
+            }
+            self?.hookahs = _hookahs
+        }
     }
 }
