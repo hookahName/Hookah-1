@@ -29,6 +29,7 @@ class FirstViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var settingsButton: UIButton!
     
+    @IBOutlet weak var signOutButton: UIBarButtonItem!
     @IBOutlet weak var chooseHookahButton: UIButton!
     
     override func viewDidLoad() {
@@ -205,6 +206,12 @@ class FirstViewController: UIViewController {
     }
     
     private func activityIndicatorSettings() {
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "smoke.jpg")!)
+        chooseHookahButton.isHidden = true
+        settingsButton.isHidden = true
+        signOutButton.title = ""
+        signOutButton.isEnabled = false
+        self.navigationController?.isNavigationBarHidden = true
         
         container.frame = view.frame
         container.center = view.center
@@ -230,9 +237,15 @@ class FirstViewController: UIViewController {
     }
     
     private func activityIndicatorStopped() {
+        signOutButton.title = "Выйти"
+        signOutButton.isEnabled = true
+        self.view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         activityIndicator.stopAnimating()
         container.removeFromSuperview()
         loadingView.removeFromSuperview()
+        chooseHookahButton.isHidden = false
+        settingsButton.isHidden = false
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     

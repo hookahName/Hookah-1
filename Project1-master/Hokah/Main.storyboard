@@ -1076,6 +1076,7 @@
                         <outlet property="activityIndicator" destination="6Tu-vA-61h" id="kQg-ZA-b1a"/>
                         <outlet property="chooseHookahButton" destination="0Fw-lj-4RI" id="hB3-yx-od2"/>
                         <outlet property="settingsButton" destination="8wc-lF-djE" id="594-IY-iIW"/>
+                        <outlet property="signOutButton" destination="gD2-Uc-JnX" id="LQv-hO-z79"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kOa-i3-wcn" userLabel="First Responder" sceneMemberID="firstResponder"/>
