@@ -18,15 +18,13 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var activityIindicator: UIActivityIndicatorView!
     
     var imagePicker = UIImagePickerController()
-    let tap = UITapGestureRecognizer(target: self, action: #selector(presentImagePicker))
     var ref: DatabaseReference!
     var infoDB = Array<InfoDB>()
     var users = Array<UserDB>()
     var infoPhoto: UIImage?
     let container: UIView = UIView()
     let loadingView: UIView = UIView()
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         if infoDB.count > 0 {
@@ -64,6 +62,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     
 
     @IBAction func changeInfoButtonPressed(_ sender: UIBarButtonItem) {
+        
         if changeInfoButton.title == "Изменить" {
             changeInfoButton.title = "Сохранить"
             locationTextView.isEditable = true
@@ -77,8 +76,8 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
             let deleteImageName = self.infoDB[0].imageName
             let deleteRef = Storage.storage().reference().child("infoImage").child("\(deleteImageName).png")
             deleteRef.delete { (error) in
-                if let error = error {
-                    print("Error")
+                if error != nil {
+                    print("Error deleting")
                 } else {
                     print("deleted succesfully")
                 }
@@ -89,7 +88,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
             if let uploadData = self.hookahImageView.image!.pngData() {
                 storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
                     if error != nil {
-                        print(error)
+                        print("Error")
                         return
                     }
                     
@@ -111,7 +110,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
             locationTextView.isEditable = false
             
             contactsTextView.isEditable = false
-            
+            hookahImageView.isUserInteractionEnabled = false
             
         }
         
