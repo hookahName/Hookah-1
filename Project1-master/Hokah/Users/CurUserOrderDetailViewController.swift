@@ -17,6 +17,7 @@ class CurUserOrderDetailViewController: UIViewController {
     @IBOutlet weak var tobaccoTasteLabel: UILabel!
     @IBOutlet weak var teaTastesLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var fortressLabel: UILabel!
     @IBOutlet weak var identifierLabel: UILabel!
     @IBOutlet weak var hookahSegmented: UISegmentedControl!
     
@@ -68,6 +69,7 @@ class CurUserOrderDetailViewController: UIViewController {
             teaTastesLabel.text = "Чай: \(hookahs[0].tea)"
             timeLabel.text = "Время: \(hookahs[0].time)"
             identifierLabel.text = "Номер заказа: \(order.identifier)"
+            fortressLabel.text = "Крепость: \(hookahs[0].fortress)"
             // Do any additional setup after loading the view.
         }
     }
@@ -91,6 +93,7 @@ class CurUserOrderDetailViewController: UIViewController {
         tobaccoLabel.text = "Табак: \(hookah.tobacco)"
         timeLabel.text = "Время: \(String(describing: hookah.time))"
         teaTastesLabel.text = "Чай: \(hookah.tea)"
+        fortressLabel.text = "Крепость: \(hookah.fortress)"
     }
     
     func changeHidden() {

@@ -21,6 +21,7 @@ class Result: UIViewController, UINavigationControllerDelegate {
     var flavours: String = ""
     var ref: DatabaseReference!
     var hookahs = Array<HookahDB>()
+    var selectedFortress: String!
     
     var finalPrice = 0
 
@@ -46,8 +47,9 @@ class Result: UIViewController, UINavigationControllerDelegate {
         guard let selectedTabacoo = selectedTabacoo else { return }
         guard let selectedFlavour = selectedFlavour else { return }
         guard let selectedTime = selectedTime else { return }
+        guard let selectedFortress = selectedFortress else { return }
         
-        let hookah = HookahDB(tobacco: selectedTabacoo.name, tastes: selectedFlavour, tea: selectedTea, time: selectedTime, price: selectedTabacoo.price)
+        let hookah = HookahDB(tobacco: selectedTabacoo.name, tastes: selectedFlavour, tea: selectedTea, time: selectedTime, price: selectedTabacoo.price, fortress: selectedFortress)
         
         hookahs.insert(hookah!, at: 0)
         print(" RESULT = \(hookahs.count)")
@@ -73,8 +75,9 @@ class Result: UIViewController, UINavigationControllerDelegate {
         } else {
             teaTaste.text = "Чай не выбран"
         }
-        priceLabel.text = "Цена: \(finalPrice) Руб."
-        
+        priceLabel.text = "Итого: \(finalPrice) Руб."
+        fortressLabel.text = "Крепость: \(selectedFortress)"
+        thisHookahPriceLabel.text = "Цена: \(hookah?.price)"
         if Auth.auth().currentUser!.uid == "9v3ziIPm9hWZW3IvasRw904xd2d2" {
             makeOrderBUTTON.isHidden = true
             getMoreHookahsButton.isHidden = true

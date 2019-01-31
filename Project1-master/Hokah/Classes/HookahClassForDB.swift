@@ -16,15 +16,17 @@ class HookahDB {
     var tea: String
     var time: String
     var price: String
+    var fortress: String
     
     var ref: DatabaseReference?
     
-    init?(tobacco: String, tastes: [String], tea: String, time: String, price: String) {
+    init?(tobacco: String, tastes: [String], tea: String, time: String, price: String, fortress: String) {
         self.tobacco = tobacco
         self.tastes = tastes
         self.tea = tea
         self.time = time
         self.price = price
+        self.fortress = fortress
         self.ref = nil
     }
     
@@ -35,9 +37,10 @@ class HookahDB {
         tea = snapshotValue["tea"] as! String
         time = snapshotValue["time"] as! String
         price = snapshotValue["price"] as! String
+        fortress = snapshotValue["fortress"] as! String
     }
     
     func convertToDict() -> Any {
-        return ["tobacco": tobacco, "tastes": tastes, "tea": tea, "time": time, "price": price]
+        return ["tobacco": tobacco, "tastes": tastes, "tea": tea, "time": time, "price": price, "fortress": fortress]
     }
 }

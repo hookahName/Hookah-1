@@ -15,6 +15,7 @@ class FirstViewController: UIViewController {
     var users1: Array<UserDB>!
     var tobaccos = Array<TobaccoDB>()
     var tastes = Array<TasteDB>()
+    var teaTastes = Array<TeaDB>()
     var ref: DatabaseReference!
     let container: UIView = UIView()
     let loadingView: UIView = UIView()
@@ -25,6 +26,7 @@ class FirstViewController: UIViewController {
     var curUserOrders = Array<OrderDB>()
     var allOrders = Array<OrderDB>()
     var menuBarIsVisible = false
+    
 
     @IBOutlet var leadingC: NSLayoutConstraint!
     
@@ -49,6 +51,7 @@ class FirstViewController: UIViewController {
         getInfo()
         loadTobaccos()
         loadOrders()
+        loadTeaTastes()
         swipesObserves()
         
     }
@@ -152,7 +155,7 @@ class FirstViewController: UIViewController {
                         } else {
                             if let _data  = data {
                                 self!.tobaccoPhotos.updateValue(UIImage(data: _data)!, forKey: tobacco.name)
-                                //print("фото табака загружены")
+                                print("фото табака загружены")
                             }
                         }
                     }
@@ -177,7 +180,7 @@ class FirstViewController: UIViewController {
                                     if let _data  = data {
                                         self!.tastePhotos.updateValue(UIImage(data: _data)!, forKey: "\(tobacco.name)+\(taste.name)")
                                         //print(Array((self?.tastePhotos)!)[0].key)
-                                        //print("Загружено фото вкусов")
+                                        print("Загружено фото вкусов")
                                     }
                                 }
                             }
@@ -197,6 +200,21 @@ class FirstViewController: UIViewController {
         })
     }
     
+    private func loadTeaTastes() {
+        ref = Database.database().reference().child("tea")
+        ref.observe(.value, with: { [weak self] (snapshot) in
+            var _teaTastes = Array<TeaDB>()
+            for i in snapshot.children{
+                let teaTaste = TeaDB(snapshot: i as! DataSnapshot)
+                if teaTaste.isAvailable == true {
+                    _teaTastes.append(teaTaste)
+                }
+            }
+            self?.teaTastes = _teaTastes
+            }
+        )
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toSettings" {
             
@@ -210,12 +228,15 @@ class FirstViewController: UIViewController {
             admin.tastes = tastes
             admin.curUserOrders = curUserOrders
             admin.allOrders = allOrders
+            admin.teaTastes = teaTastes
             
         } else if segue.identifier == "chooseHookah" {
             guard let hookah = segue.destination as? ViewController else { return }
             hookah.tobaccos = tobaccos
             hookah.tobaccoPhotos = tobaccoPhotos
             hookah.tastePhotos = tastePhotos
+            hookah.teaTastes = teaTastes
+            hookah.tastes = tastes
             
         } else if segue.identifier == "currentUserOrders" {
             guard let orders = segue.destination as? CurUserOrdersTableViewController else {return}

@@ -17,6 +17,8 @@ class TobaccoCollectionViewController: UICollectionViewController, UINavigationC
     var tobaccos = Array<TobaccoDB>()
     var selectedTable: Int?
     var hookahs = Array<HookahDB>()
+    var teaTastes = Array<TeaDB>()
+    var tastes = Array<TasteDB>()
     var tobaccoPhotos: [String: UIImage] = [:]
     var tastePhotos: [String: UIImage] = [:]
     
@@ -92,6 +94,8 @@ class TobaccoCollectionViewController: UICollectionViewController, UINavigationC
             dvc.selectedTobacco = tobaccos[indexPath.row]
             dvc.hookahs = hookahs
             dvc.tastePhotos = tastePhotos
+            dvc.teaTastes = teaTastes
+            dvc.tastes = tastes
             print(" TOBACCO = \(hookahs.count)")
 
         }

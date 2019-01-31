@@ -20,6 +20,7 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
     var chosenTime: String = ""
     var chosenTea: TeaDB?
     var hookahs = Array<HookahDB>()
+    var selectedFortress: String = "5"
     
 
     @IBOutlet weak var TeaSwitch: UISwitch!
@@ -128,6 +129,7 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
             resultController.selectedTabacoo = self.selectedTabacoo
             resultController.selectedFlavour = self.selectedFlavour
             resultController.selectedTime = self.chosenTime
+            resultController.selectedFortress = self.selectedFortress
             if TeaSwitch.isOn == true {
                 resultController.selectedTea = self.chosenTea?.name
             } else {
@@ -140,5 +142,6 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
     
     @IBAction func sliderAction(_ sender: UISlider) {
         fortressLabel.text = "Выбранная крепость: \(String(Int(fortressSlider.value)))"
+        self.selectedFortress = String(Int(fortressSlider.value))
     }
 }

@@ -20,16 +20,10 @@ class ChangeTeaTasteTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        ref = Database.database().reference().child("tea")
-        ref.observe(.value, with: { [weak self] (snapshot) in
-            var _teaTastes = Array<TeaDB>()
-            for i in snapshot.children{
-                let tea = TeaDB(snapshot: i as! DataSnapshot)
-                _teaTastes.append(tea)
-            }
-            self?.teaTastes = _teaTastes
-            self?.tableView.reloadData()
-        })
+        
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl?.addTarget(self, action: #selector(refresh(_:)), for: UIControl.Event.valueChanged)
+        
         
     }
     
@@ -42,9 +36,14 @@ class ChangeTeaTasteTableViewController: UITableViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        ref.removeAllObservers()
+        
     }
     
+    @objc func refresh(_ sender: AnyObject) {
+        loadTeaTastes()
+        self.refreshControl?.endRefreshing()
+        ref.removeAllObservers()
+    }
     // MARK: Table view settings
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -118,5 +117,18 @@ class ChangeTeaTasteTableViewController: UITableViewController {
         alertController.addAction(save)
         alertController.addAction(cancel)
         present(alertController, animated: true)
+    }
+    
+    private func loadTeaTastes() {
+        ref = Database.database().reference().child("tea")
+        ref.observe(.value, with: { [weak self] (snapshot) in
+            var _teaTastes = Array<TeaDB>()
+            for i in snapshot.children{
+                let tea = TeaDB(snapshot: i as! DataSnapshot)
+                _teaTastes.append(tea)
+            }
+            self?.teaTastes = _teaTastes
+            self?.tableView.reloadData()
+        })
     }
 }
