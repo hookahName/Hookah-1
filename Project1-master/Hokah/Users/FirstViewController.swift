@@ -29,27 +29,28 @@ class FirstViewController: UIViewController {
     @IBOutlet var leadingC: NSLayoutConstraint!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var settingsButton: UIButton!
     
-    @IBOutlet weak var signOutButton: UIBarButtonItem!
+    @IBOutlet weak var signOutButton: UIView!
     @IBOutlet weak var chooseHookahButton: UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        signOutButton.isEnabled = false
-        settingsButton.isHidden = true
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if Auth.auth().currentUser!.uid == "9v3ziIPm9hWZW3IvasRw904xd2d2" {
+            loadUsersAndAllOrders()
+        }
+        
         activityIndicatorSettings()
         getInfo()
-        loadUsersAndAllOrders()
         loadTobaccos()
         loadOrders()
-        
         swipesObserves()
-        // Do any additional setup after loading the view.
+        
     }
     
     private func getInfo() {
@@ -73,6 +74,9 @@ class FirstViewController: UIViewController {
                     if let _data  = data {
                         self!.infoPhoto = UIImage(data: _data)
                         self?.activityIndicatorStopped()
+                        if Auth.auth().currentUser!.uid == "9v3ziIPm9hWZW3IvasRw904xd2d2" {
+                            self!.performSegue(withIdentifier: "toSettings", sender: nil)
+                        }
                         //print("фото инфы загружено")
                     }
                 }
@@ -216,15 +220,16 @@ class FirstViewController: UIViewController {
         } else if segue.identifier == "currentUserOrders" {
             guard let orders = segue.destination as? CurUserOrdersTableViewController else {return}
             orders.orders = curUserOrders
+        } else if segue.identifier == "getInfo" {
+            guard let info = segue.destination as? InformationViewController else { return }
+            info.infoDB = infoDB
+            info.infoPhoto = infoPhoto
         }
     }
     
     private func activityIndicatorSettings() {
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "smoke.jpg")!)
         chooseHookahButton.isHidden = true
-        settingsButton.isHidden = true
-        signOutButton.title = ""
-        signOutButton.isEnabled = false
         self.navigationController?.isNavigationBarHidden = true
         
         container.frame = view.frame
@@ -251,14 +256,11 @@ class FirstViewController: UIViewController {
     }
     
     private func activityIndicatorStopped() {
-        signOutButton.title = "Выйти"
-        //signOutButton.isEnabled = true
         self.view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         activityIndicator.stopAnimating()
         container.removeFromSuperview()
         loadingView.removeFromSuperview()
         chooseHookahButton.isHidden = false
-        //settingsButton.isHidden = false
         self.navigationController?.isNavigationBarHidden = false
     }
     
@@ -271,7 +273,10 @@ class FirstViewController: UIViewController {
     
     
 
-    @IBAction func signOutPressed(_ sender: Any) {
+
+    
+
+    @IBAction func signOutPressed(_ sender: UIButton) {
         do {
             try Auth.auth().signOut()
         } catch {
@@ -282,8 +287,6 @@ class FirstViewController: UIViewController {
             self.present(vc, animated: false, completion: nil)
         }
     }
-    
-
     /*
      // MARK: - Navigation
      
@@ -353,6 +356,10 @@ class FirstViewController: UIViewController {
             self.view.layoutIfNeeded()
         })
     }
+    
+    
+    
+    
     
 }
 

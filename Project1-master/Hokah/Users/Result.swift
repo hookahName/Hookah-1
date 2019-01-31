@@ -32,6 +32,10 @@ class Result: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var TimeLabel: UILabel!
     @IBOutlet weak var teaTaste: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var makeOrderBUTTON: UIButton!
+    @IBOutlet weak var getMoreHookahsButton: UIButton!
+    @IBOutlet weak var fortressLabel: UILabel!
+    @IBOutlet weak var thisHookahPriceLabel: UILabel!
     
     // MARK: View settings
     
@@ -71,6 +75,10 @@ class Result: UIViewController, UINavigationControllerDelegate {
         }
         priceLabel.text = "Цена: \(finalPrice) Руб."
         
+        if Auth.auth().currentUser!.uid == "9v3ziIPm9hWZW3IvasRw904xd2d2" {
+            makeOrderBUTTON.isHidden = true
+            getMoreHookahsButton.isHidden = true
+        }
     }
     @IBAction func oneMoreHookah(_ sender: Any) {
     }

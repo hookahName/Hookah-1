@@ -21,12 +21,15 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
     var chosenTea: TeaDB?
     var hookahs = Array<HookahDB>()
     
-    let teaTastesPicker = UIPickerView()
-    let TeaSwitch = UISwitch()
 
+    @IBOutlet weak var TeaSwitch: UISwitch!
+    @IBOutlet weak var teaTastesPicker: UIPickerView!
     @IBOutlet weak var chooseTimeOutlet: UIDatePicker!
     @IBOutlet weak var TeaLabel: UILabel!
     @IBOutlet weak var readyBut: UIBarButtonItem!
+    @IBOutlet weak var fortressSlider: UISlider!
+    @IBOutlet weak var fortressLabel: UILabel!
+    @IBOutlet weak var chooseTeaLabel: UILabel!
     
     // MARK: View settings
 
@@ -48,20 +51,16 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
         
         //Switch
         TeaSwitch.isOn = false
-        self.TeaSwitch.frame = CGRect(x: 196, y: 318, width: 0, height: 0)
         self.TeaSwitch.setOn(false, animated: true)
         self.TeaSwitch.addTarget(self, action: #selector(switchChange(paramTarget:)), for: .valueChanged)
-        view.addSubview(self.TeaSwitch)
         
         //Picker
-        self.teaTastesPicker.frame = CGRect(x: 0, y: 426, width: 375, height: 216)
         self.teaTastesPicker.tag = 555
         //set the pickers datasource and delegate
         self.teaTastesPicker.delegate = self
         self.teaTastesPicker.dataSource = self
-        teaTastesPicker.isHidden = true
-        view.addSubview(self.teaTastesPicker)
-        
+        self.teaTastesPicker.isUserInteractionEnabled = false
+        self.teaTastesPicker.alpha = 0.6
     }
     
     // MARK: Picker view settings
@@ -100,11 +99,13 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
     
     @objc func switchChange(paramTarget: UISwitch) {
         if paramTarget.isOn {
-            self.teaTastesPicker.isHidden = false
+            self.teaTastesPicker.alpha = 1
+            self.teaTastesPicker.isUserInteractionEnabled = true
             let chosenTeaString = self.pickerView(teaTastesPicker, titleForRow: teaTastesPicker.selectedRow(inComponent: 0), forComponent: 0)!
             self.chosenTea = self.teaTastes.first(where: {$0.name == chosenTeaString})
         } else {
-            self.teaTastesPicker.isHidden = true
+            self.teaTastesPicker.isUserInteractionEnabled = false
+            self.teaTastesPicker.alpha = 0.6
             
         }
     }
@@ -134,5 +135,10 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
             }
             resultController.hookahs = hookahs
         }
+    }
+    
+    
+    @IBAction func sliderAction(_ sender: UISlider) {
+        fortressLabel.text = "Выбранная крепость: \(String(Int(fortressSlider.value)))"
     }
 }

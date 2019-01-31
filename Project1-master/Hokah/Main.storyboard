@@ -333,7 +333,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Lb1-Kr-Adf">
-                                <rect key="frame" x="16" y="64" width="343" height="29"/>
+                                <rect key="frame" x="16" y="20" width="343" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Lb1-Kr-Adf" secondAttribute="height" multiplier="49:4" id="J8Q-oG-O8h"/>
                                 </constraints>
@@ -381,33 +381,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yqc-lS-BZl">
-                                <rect key="frame" x="96" y="314" width="183" height="30"/>
+                                <rect key="frame" x="96" y="270" width="183" height="30"/>
                                 <state key="normal" title="Изменить табаки и вкусы"/>
                                 <connections>
                                     <segue destination="1O0-yf-her" kind="show" identifier="ChangeTobacco" id="pXb-8h-hT8"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iqq-Em-mzY">
-                                <rect key="frame" x="115" y="428" width="145" height="30"/>
+                                <rect key="frame" x="115" y="384" width="145" height="30"/>
                                 <state key="normal" title="Изменить вкусы чая"/>
                                 <connections>
                                     <segue destination="ywI-bF-KtT" kind="show" identifier="TeaTaste" id="mih-d7-o1g"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xCa-9h-sDP">
-                                <rect key="frame" x="161" y="200" width="52" height="30"/>
+                                <rect key="frame" x="161" y="156" width="52" height="30"/>
                                 <state key="normal" title="Заказы"/>
                                 <connections>
                                     <action selector="ordersButtonPressed:" destination="tMF-Ig-Ibo" eventType="touchUpInside" id="k4G-Xy-fYP"/>
                                     <segue destination="Ec2-KM-4hN" kind="show" identifier="toOrders" id="SG1-yE-lt6"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zqJ-xW-i8P">
-                                <rect key="frame" x="142" y="253" width="85" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Мои заказы"/>
-                                <connections>
-                                    <action selector="curUserOrdersButtonPressed:" destination="tMF-Ig-Ibo" eventType="touchUpInside" id="qod-um-dx6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CTW-Uk-2jc">
@@ -416,6 +408,23 @@
                                 <state key="normal" title="Информация о нас"/>
                                 <connections>
                                     <action selector="infoButtonPressed:" destination="tMF-Ig-Ibo" eventType="touchUpInside" id="YHP-ee-Aec"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kEs-0f-DVd">
+                                <rect key="frame" x="164" y="547" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Выход"/>
+                                <connections>
+                                    <action selector="signOut:" destination="tMF-Ig-Ibo" eventType="touchUpInside" id="OXq-l2-qhh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qIx-du-DCf">
+                                <rect key="frame" x="145" y="254" width="90" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Вид клиента"/>
+                                <connections>
+                                    <action selector="clientViewPressed:" destination="tMF-Ig-Ibo" eventType="touchUpInside" id="afs-Jb-hhM"/>
+                                    <segue destination="cDQ-3p-U6r" kind="show" identifier="toClient" id="R4H-80-VrB"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -436,7 +445,6 @@
                         <outlet property="allOrdersButton" destination="xCa-9h-sDP" id="QD1-ml-PFF"/>
                         <outlet property="changeTeaTastesButton" destination="iqq-Em-mzY" id="Ljh-Zg-fSc"/>
                         <outlet property="changeTobAndTastesButton" destination="Yqc-lS-BZl" id="zW9-aP-Fv0"/>
-                        <outlet property="curUserOrdersButton" destination="zqJ-xW-i8P" id="sB8-UO-468"/>
                         <outlet property="infoButton" destination="CTW-Uk-2jc" id="myy-zK-0xx"/>
                         <segue destination="Bcm-ix-oSe" kind="show" identifier="CurUserOrders" id="AO2-bm-ZNG"/>
                         <segue destination="ND2-Q4-d0L" kind="show" identifier="toInfo" id="jSL-ua-KJt"/>
@@ -750,7 +758,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="NFi-8a-cKH">
-                                <rect key="frame" x="27" y="64" width="320" height="216"/>
+                                <rect key="frame" x="27" y="123" width="152" height="216"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <date key="date" timeIntervalSinceReferenceDate="569773795.66890597">
                                     <!--2019-01-21 14:29:55 +0000-->
@@ -761,7 +769,43 @@
                                 </connections>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Чай" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRA-Qc-tZo">
-                                <rect key="frame" x="132" y="323" width="30.5" height="20.5"/>
+                                <rect key="frame" x="70" y="377" width="30.5" height="20.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Erx-Jz-dL2">
+                                <rect key="frame" x="258" y="372" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rfs-as-agS">
+                                <rect key="frame" x="187" y="123" width="187" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="y0f-Nk-nx7">
+                                <rect key="frame" x="68" y="472" width="239" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="sliderAction:" destination="NO8-wy-wIw" eventType="valueChanged" id="XeI-ww-NWr"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Выберите крепость" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BSv-1I-757">
+                                <rect key="frame" x="70" y="427" width="235" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Выберите вкус" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qKp-X4-jgv">
+                                <rect key="frame" x="220" y="74" width="120" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Выберите время" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SgT-IW-3jq">
+                                <rect key="frame" x="36" y="74" width="134" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -782,13 +826,18 @@
                     <connections>
                         <outlet property="ChooseTimeOutlet" destination="NFi-8a-cKH" id="JDo-H5-FGF"/>
                         <outlet property="TeaLabel" destination="cRA-Qc-tZo" id="y6n-hm-rJo"/>
+                        <outlet property="TeaSwitch" destination="Erx-Jz-dL2" id="0ex-8y-oMa"/>
+                        <outlet property="chooseTeaLabel" destination="qKp-X4-jgv" id="rz3-Oi-kMb"/>
                         <outlet property="chooseTimeOutlet" destination="NFi-8a-cKH" id="Van-ti-RAT"/>
+                        <outlet property="fortressLabel" destination="BSv-1I-757" id="yJp-1W-mTe"/>
+                        <outlet property="fortressSlider" destination="y0f-Nk-nx7" id="1Xb-Dn-B1q"/>
                         <outlet property="readyBut" destination="Nhs-pj-Fyq" id="IkC-04-MkT"/>
+                        <outlet property="teaTastesPicker" destination="rfs-as-agS" id="evT-q3-oMo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YO8-rV-P5g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3716" y="158"/>
+            <point key="canvasLocation" x="3716" y="157.87106446776613"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="j5p-Sq-Dno">
@@ -1041,7 +1090,7 @@
                                         <state key="normal" title="Информация о нас"/>
                                         <connections>
                                             <action selector="sideMenuButtonTapped:" destination="1k4-R5-tfT" eventType="touchUpInside" id="dM9-go-lkl"/>
-                                            <segue destination="ND2-Q4-d0L" kind="show" id="7FN-N2-ftS"/>
+                                            <segue destination="ND2-Q4-d0L" kind="show" identifier="getInfo" id="7FN-N2-ftS"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b1c-Dw-Oll">
@@ -1049,7 +1098,7 @@
                                         <state key="normal" title="Выход"/>
                                         <connections>
                                             <action selector="sideMenuButtonTapped:" destination="1k4-R5-tfT" eventType="touchUpInside" id="q43-Vv-Pkh"/>
-                                            <action selector="signOutPressed:" destination="1k4-R5-tfT" eventType="touchUpInside" id="lsX-Do-ujF"/>
+                                            <action selector="signOutPressed:" destination="1k4-R5-tfT" eventType="touchUpInside" id="jki-20-P1W"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hgr-iN-qMy">
@@ -1060,9 +1109,9 @@
                                             <segue destination="Bcm-ix-oSe" kind="show" identifier="currentUserOrders" id="PgY-DI-q0w"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F27-MU-bLN">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F27-MU-bLN" userLabel="Акции">
                                         <rect key="frame" x="58" y="121" width="125" height="30"/>
-                                        <state key="normal" title="Моя информация"/>
+                                        <state key="normal" title="Акции"/>
                                         <connections>
                                             <action selector="sideMenuButtonTapped:" destination="1k4-R5-tfT" eventType="touchUpInside" id="AuR-ne-WjD"/>
                                         </connections>
@@ -1098,14 +1147,6 @@
                                             <segue destination="cDQ-3p-U6r" kind="show" identifier="chooseHookah" id="bLJ-rg-hew"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8wc-lF-djE">
-                                        <rect key="frame" x="148" y="478" width="78" height="30"/>
-                                        <state key="normal" title="Настройки"/>
-                                        <connections>
-                                            <action selector="settingsButtonPressed:" destination="1k4-R5-tfT" eventType="touchUpInside" id="e0G-xY-oZ6"/>
-                                            <segue destination="tMF-Ig-Ibo" kind="show" identifier="toSettings" id="zsT-8A-mud"/>
-                                        </connections>
-                                    </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultTobacco" translatesAutoresizingMaskIntoConstraints="NO" id="5YH-AS-B1w">
                                         <rect key="frame" x="39" y="8" width="297" height="307"/>
                                         <constraints>
@@ -1120,10 +1161,7 @@
                                     <constraint firstItem="5YH-AS-B1w" firstAttribute="leading" secondItem="dB7-Fe-Yha" secondAttribute="leading" constant="39" id="6kj-iF-aqg"/>
                                     <constraint firstItem="0Fw-lj-4RI" firstAttribute="top" secondItem="5YH-AS-B1w" secondAttribute="bottom" constant="84" id="7Ki-gl-wsy"/>
                                     <constraint firstItem="0Fw-lj-4RI" firstAttribute="leading" secondItem="dB7-Fe-Yha" secondAttribute="leading" constant="129" id="PcD-2U-ypp"/>
-                                    <constraint firstAttribute="bottom" secondItem="8wc-lF-djE" secondAttribute="bottom" constant="95" id="UVE-oY-HKC"/>
                                     <constraint firstItem="5YH-AS-B1w" firstAttribute="top" secondItem="dB7-Fe-Yha" secondAttribute="top" constant="8" id="bbe-oC-cOb"/>
-                                    <constraint firstItem="8wc-lF-djE" firstAttribute="leading" secondItem="dB7-Fe-Yha" secondAttribute="leading" constant="148" id="uxj-O6-zXT"/>
-                                    <constraint firstItem="8wc-lF-djE" firstAttribute="top" secondItem="0Fw-lj-4RI" secondAttribute="bottom" constant="49" id="y57-n7-07p"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1147,18 +1185,12 @@
                                 <action selector="sideMenuTapped:" destination="1k4-R5-tfT" id="Fjk-P8-PMM"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Выйти" id="gD2-Uc-JnX">
-                            <connections>
-                                <action selector="signOutPressed:" destination="1k4-R5-tfT" id="BGg-oc-jEn"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="6Tu-vA-61h" id="kQg-ZA-b1a"/>
                         <outlet property="chooseHookahButton" destination="0Fw-lj-4RI" id="hB3-yx-od2"/>
                         <outlet property="leadingC" destination="JkH-lg-mO3" id="4mY-PT-ivl"/>
-                        <outlet property="settingsButton" destination="8wc-lF-djE" id="594-IY-iIW"/>
-                        <outlet property="signOutButton" destination="gD2-Uc-JnX" id="LQv-hO-z79"/>
+                        <outlet property="signOutButton" destination="dB7-Fe-Yha" id="v3K-sL-T22"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kOa-i3-wcn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1173,11 +1205,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="AZF-BY-LkU">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="AZF-BY-LkU">
                                 <rect key="frame" x="16" y="20" width="343" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="AZF-BY-LkU" secondAttribute="height" multiplier="49:4" id="bgW-b8-F7q"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="First"/>
                                     <segment title="Second"/>
@@ -1187,117 +1217,102 @@
                                     <action selector="segmentChanged:" destination="62v-KC-sj4" eventType="valueChanged" id="RJQ-k1-pCI"/>
                                 </connections>
                             </segmentedControl>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="44" translatesAutoresizingMaskIntoConstraints="NO" id="PKN-9v-Xra">
-                                <rect key="frame" x="40" y="78" width="295" height="466"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="39" translatesAutoresizingMaskIntoConstraints="NO" id="75w-iX-Nej">
-                                        <rect key="frame" x="40" y="0.0" width="215" height="318"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJy-xw-lnh">
-                                                <rect key="frame" x="0.0" y="0.0" width="215" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ie-Fx-5Ea">
-                                                <rect key="frame" x="0.0" y="59.5" width="215" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gi4-ix-Mg8">
-                                                <rect key="frame" x="0.0" y="119" width="215" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N0d-lQ-ENf">
-                                                <rect key="frame" x="0.0" y="178.5" width="215" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ywV-FH-eWE">
-                                                <rect key="frame" x="0.0" y="238" width="215" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wSJ-xe-H0W">
-                                                <rect key="frame" x="86.5" y="297.5" width="42" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="ywV-FH-eWE" secondAttribute="trailing" id="JHl-qg-1Wa"/>
-                                            <constraint firstItem="aJy-xw-lnh" firstAttribute="leading" secondItem="75w-iX-Nej" secondAttribute="leading" id="LW4-MA-ZmT"/>
-                                            <constraint firstAttribute="trailing" secondItem="aJy-xw-lnh" secondAttribute="trailing" id="Mow-wT-qVo"/>
-                                            <constraint firstItem="0Ie-Fx-5Ea" firstAttribute="leading" secondItem="75w-iX-Nej" secondAttribute="leading" id="OAa-AE-hQN"/>
-                                            <constraint firstAttribute="trailing" secondItem="0Ie-Fx-5Ea" secondAttribute="trailing" id="WKd-G4-ed1"/>
-                                            <constraint firstItem="Gi4-ix-Mg8" firstAttribute="leading" secondItem="75w-iX-Nej" secondAttribute="leading" id="ZG5-r3-R79"/>
-                                            <constraint firstItem="ywV-FH-eWE" firstAttribute="leading" secondItem="75w-iX-Nej" secondAttribute="leading" id="bR4-hC-9Oh"/>
-                                            <constraint firstAttribute="trailing" secondItem="N0d-lQ-ENf" secondAttribute="trailing" id="bfg-0c-Qgb"/>
-                                            <constraint firstAttribute="trailing" secondItem="Gi4-ix-Mg8" secondAttribute="trailing" id="rqI-bv-kI4"/>
-                                            <constraint firstItem="N0d-lQ-ENf" firstAttribute="leading" secondItem="75w-iX-Nej" secondAttribute="leading" id="udo-BJ-bDm"/>
-                                        </constraints>
-                                    </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hPf-28-7Ps">
-                                        <rect key="frame" x="61" y="362" width="173" height="30"/>
-                                        <state key="normal" title="Закать еще один кальян"/>
-                                        <connections>
-                                            <action selector="oneMoreHookah:" destination="62v-KC-sj4" eventType="touchUpInside" id="H4n-mq-EgG"/>
-                                            <segue destination="b0w-LM-ys4" kind="unwind" unwindAction="unwindSegueToExtraHookah:" id="ZEZ-Ox-Hfk"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ug-D2-7xF">
-                                        <rect key="frame" x="96" y="436" width="103" height="30"/>
-                                        <state key="normal" title="Сделать заказ"/>
-                                        <connections>
-                                            <action selector="makeOrderButton:" destination="62v-KC-sj4" eventType="touchUpInside" id="q7Q-D3-mKq"/>
-                                            <segue destination="HMQ-fQ-ybM" kind="show" identifier="toMainScreen" id="7KR-yc-jZi"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="hPf-28-7Ps" firstAttribute="leading" secondItem="PKN-9v-Xra" secondAttribute="leading" constant="61" id="AnD-7g-TJG"/>
-                                    <constraint firstAttribute="trailing" secondItem="75w-iX-Nej" secondAttribute="trailing" constant="40" id="FdE-Ye-uwB"/>
-                                    <constraint firstAttribute="trailing" secondItem="hPf-28-7Ps" secondAttribute="trailing" constant="61" id="MSo-PL-CWK"/>
-                                    <constraint firstItem="6ug-D2-7xF" firstAttribute="leading" secondItem="PKN-9v-Xra" secondAttribute="leading" constant="96" id="YSS-Lv-ggu"/>
-                                    <constraint firstItem="75w-iX-Nej" firstAttribute="leading" secondItem="PKN-9v-Xra" secondAttribute="leading" constant="40" id="k4j-Cv-9e5"/>
-                                    <constraint firstAttribute="trailing" secondItem="6ug-D2-7xF" secondAttribute="trailing" constant="96" id="mCU-mq-G91"/>
-                                </constraints>
-                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hPf-28-7Ps">
+                                <rect key="frame" x="101" y="445" width="173" height="5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Закать еще один кальян"/>
+                                <connections>
+                                    <action selector="oneMoreHookah:" destination="62v-KC-sj4" eventType="touchUpInside" id="H4n-mq-EgG"/>
+                                    <segue destination="b0w-LM-ys4" kind="unwind" unwindAction="unwindSegueToExtraHookah:" id="ZEZ-Ox-Hfk"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJy-xw-lnh">
+                                <rect key="frame" x="166" y="95" width="42" height="20.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ie-Fx-5Ea">
+                                <rect key="frame" x="166" y="139" width="42" height="20.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gi4-ix-Mg8">
+                                <rect key="frame" x="166" y="183" width="42" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N0d-lQ-ENf">
+                                <rect key="frame" x="166" y="230" width="42" height="20.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ywV-FH-eWE">
+                                <rect key="frame" x="166" y="277" width="42" height="20.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ug-D2-7xF">
+                                <rect key="frame" x="136" y="485" width="103" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Сделать заказ"/>
+                                <connections>
+                                    <action selector="makeOrderButton:" destination="62v-KC-sj4" eventType="touchUpInside" id="q7Q-D3-mKq"/>
+                                    <segue destination="HMQ-fQ-ybM" kind="show" identifier="toMainScreen" id="7KR-yc-jZi"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BOE-LH-F2R">
+                                <rect key="frame" x="166" y="323" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HiH-M9-dzs">
+                                <rect key="frame" x="166" y="364" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wSJ-xe-H0W">
+                                <rect key="frame" x="166" y="393" width="42" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="PKN-9v-Xra" firstAttribute="centerX" secondItem="YsI-vq-lYw" secondAttribute="centerX" id="3Ig-VT-Foa"/>
-                            <constraint firstItem="AZF-BY-LkU" firstAttribute="top" secondItem="yF7-mI-fHY" secondAttribute="top" constant="20" id="QZ4-KK-Vm6"/>
-                            <constraint firstItem="AZF-BY-LkU" firstAttribute="leading" secondItem="yF7-mI-fHY" secondAttribute="leading" constant="16" id="R52-oh-hAY"/>
-                            <constraint firstItem="PKN-9v-Xra" firstAttribute="leading" secondItem="yF7-mI-fHY" secondAttribute="leading" constant="40" id="TAw-8d-6an"/>
-                            <constraint firstItem="PKN-9v-Xra" firstAttribute="top" secondItem="AZF-BY-LkU" secondAttribute="bottom" constant="30" id="fAb-a8-sIv"/>
-                            <constraint firstItem="yF7-mI-fHY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="PKN-9v-Xra" secondAttribute="bottom" constant="15" id="oax-R4-xir"/>
-                            <constraint firstItem="yF7-mI-fHY" firstAttribute="trailing" secondItem="PKN-9v-Xra" secondAttribute="trailing" constant="40" id="s1Z-PU-Fba"/>
-                            <constraint firstItem="yF7-mI-fHY" firstAttribute="trailing" secondItem="AZF-BY-LkU" secondAttribute="trailing" constant="16" id="yBp-Ug-LLO"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="yF7-mI-fHY"/>
                     </view>
                     <connections>
                         <outlet property="TimeLabel" destination="N0d-lQ-ENf" id="PGd-9U-xaE"/>
                         <outlet property="flavour" destination="Gi4-ix-Mg8" id="479-Xn-IaO"/>
+                        <outlet property="fortressLabel" destination="BOE-LH-F2R" id="5Jc-2i-wNT"/>
+                        <outlet property="getMoreHookahsButton" destination="hPf-28-7Ps" id="zq1-Ap-l9S"/>
                         <outlet property="hookahsSegmented" destination="AZF-BY-LkU" id="Mcz-FZ-thb"/>
-                        <outlet property="orderDetailsView" destination="75w-iX-Nej" id="c1a-UM-VRP"/>
+                        <outlet property="makeOrderBUTTON" destination="6ug-D2-7xF" id="Qfa-Aj-Di6"/>
                         <outlet property="priceLabel" destination="wSJ-xe-H0W" id="C77-AQ-XOu"/>
                         <outlet property="tabacoo" destination="0Ie-Fx-5Ea" id="seW-QL-Q3J"/>
                         <outlet property="tableNumber" destination="aJy-xw-lnh" id="kxY-fn-vha"/>
                         <outlet property="teaTaste" destination="ywV-FH-eWE" id="J4v-Lc-7zj"/>
+                        <outlet property="thisHookahPriceLabel" destination="HiH-M9-dzs" id="cAT-8a-m1Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ab9-Hg-sDE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="b0w-LM-ys4" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4583" y="158"/>
+            <point key="canvasLocation" x="4581.6000000000004" y="157.87106446776613"/>
         </scene>
         <!--Title-->
         <scene sceneID="BDN-u3-plC">
@@ -1352,13 +1367,14 @@
     </scenes>
     <resources>
         <image name="defaultImage" width="1024" height="1024"/>
-        <image name="defaultTobacco" width="1024" height="1024"/>
-        <image name="hamburger" width="37.5" height="37.5"/>
+        <image name="defaultTobacco" width="512" height="512"/>
+        <image name="hamburger" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yrL-ht-TRZ"/>
+        <segue reference="7KR-yc-jZi"/>
         <segue reference="PgY-DI-q0w"/>
         <segue reference="uaU-fm-qDL"/>
         <segue reference="7FN-N2-ftS"/>
+        <segue reference="bLJ-rg-hew"/>
     </inferredMetricsTieBreakers>
 </document>

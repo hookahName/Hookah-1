@@ -37,17 +37,9 @@ class AdminViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        if Auth.auth().currentUser?.uid != "9v3ziIPm9hWZW3IvasRw904xd2d2" {
-            changeTeaTastesButton.isHidden = true
-            changeTobAndTastesButton.isHidden = true
-            allOrdersButton.isHidden = true
-        } else {
-            title = "Админ"
-        }
-        
-
-        // Do any additional setup after loading the view.
+        let backBtn = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: navigationController, action: nil)
+        navigationItem.leftBarButtonItem = backBtn
+        title = "Админ"
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -79,6 +71,11 @@ class AdminViewController: UIViewController {
             infoVC.infoDB = infoDB
             infoVC.infoPhoto = infoPhoto
             infoVC.users = users
+        } else if segue.identifier == "toClient" {
+            guard let client = segue.destination as? ViewController else { return }
+            client.tobaccos = tobaccos
+            client.tobaccoPhotos = tobaccoPhotos!
+            client.tastePhotos = tastePhotos
         }
     }
     
@@ -94,6 +91,23 @@ class AdminViewController: UIViewController {
     
     @IBAction func infoButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "toInfo", sender: nil)
+    }
+    
+    
+    @IBAction func signOut(_ sender: UIButton) {
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            print(error.localizedDescription)
+        }
+        if let storyboard = self.storyboard {
+            let vc = storyboard.instantiateViewController(withIdentifier: "login") as! EnterViewController
+            self.present(vc, animated: false, completion: nil)
+        }
+    }
+    
+    @IBAction func clientViewPressed(_ sender: UIButton) {
+        
     }
     
 }
