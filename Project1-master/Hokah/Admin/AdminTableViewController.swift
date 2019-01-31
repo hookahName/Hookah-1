@@ -97,7 +97,7 @@ class AdminTableViewController: UITableViewController, UINavigationControllerDel
             let deleteRef = Storage.storage().reference().child("tobaccosImage").child("\(deleteImageName).png")
             deleteRef.delete { (error) in
                 if let error = error {
-                    print("Error")
+                    print(error)
                 } else {
                     print("deleted succesfully")
                 }

@@ -48,7 +48,7 @@ class CurUserOrderDetailViewController: UIViewController {
         changeHidden()
         print(hookahs.count)
         if !hookahs.isEmpty {
-            var finalPrice = 0
+            //var finalPrice = 0
             for i in 0..<hookahs[0].tastes.count {
                 if i == hookahs[0].tastes.count - 1 {
                     tastes += hookahs[0].tastes[i]

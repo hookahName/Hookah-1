@@ -24,13 +24,21 @@ class FirstViewController: UIViewController {
     var hookahs = Array<HookahDB>()
     var curUserOrders = Array<OrderDB>()
     var allOrders = Array<OrderDB>()
+    var menuBarIsVisible = false
 
+    @IBOutlet var leadingC: NSLayoutConstraint!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var settingsButton: UIButton!
     
     @IBOutlet weak var signOutButton: UIBarButtonItem!
     @IBOutlet weak var chooseHookahButton: UIButton!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        signOutButton.isEnabled = false
+        settingsButton.isHidden = true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +47,8 @@ class FirstViewController: UIViewController {
         loadUsersAndAllOrders()
         loadTobaccos()
         loadOrders()
+        
+        swipesObserves()
         // Do any additional setup after loading the view.
     }
     
@@ -53,17 +63,17 @@ class FirstViewController: UIViewController {
                 _infoDB.append(information)
             }
             self?.infoDB = _infoDB
-            print("инфа загружена")
+            //print("инфа загружена")
             let reference = Storage.storage().reference(withPath: "infoImage/\(self!.infoDB[0].imageName).png")
             reference.getData(maxSize: (1 * 1772 * 2362)) { (data, error) in
                 if let _error = error{
-                    print("ОШИБКА")
-                    print(_error)
+                    //print("ОШИБКА")
+                    //print(_error)
                 } else {
                     if let _data  = data {
                         self!.infoPhoto = UIImage(data: _data)
                         self?.activityIndicatorStopped()
-                        print("фото инфы загружено")
+                        //print("фото инфы загружено")
                     }
                 }
             }
@@ -83,7 +93,7 @@ class FirstViewController: UIViewController {
                 _users.append(user)
             }
             self?.users = _users
-            print("Юзеры загружены")
+            //print("Юзеры загружены")
             self!.ref = Database.database().reference().child("users")
             var _orders = Array<OrderDB>()
             for user in self!.users {
@@ -111,7 +121,7 @@ class FirstViewController: UIViewController {
                 _orders.append(order)
             }
             self?.curUserOrders = _orders
-        print("Заказы загружены")
+        //print("Заказы загружены")
         }
     }
     
@@ -129,16 +139,16 @@ class FirstViewController: UIViewController {
             self?.tobaccos = _tobaccos
             if (self?.tobaccos.count)! > 0 {
                 for tobacco in (self?.tobaccos)! {
-                    print(tobacco.name)
+                    //print(tobacco.name)
                     let reference = Storage.storage().reference(withPath: "tobaccosImage/\(tobacco.imageName).png")
                     reference.getData(maxSize: (1 * 1772 * 2362)) { (data, error) in
                         if let _error = error{
-                            print("ОШИБКА табаки")
-                            print(_error)
+                            //print("ОШИБКА табаки")
+                            //print(_error)
                         } else {
                             if let _data  = data {
                                 self!.tobaccoPhotos.updateValue(UIImage(data: _data)!, forKey: tobacco.name)
-                                print("фото табака загружены")
+                                //print("фото табака загружены")
                             }
                         }
                     }
@@ -148,7 +158,7 @@ class FirstViewController: UIViewController {
                         for i in snapshot.children{
                             let taste = TasteDB(snapshot: i as! DataSnapshot)
                             _tastes.append(taste)
-                            print(taste)
+                            //print(taste)
                             
                         }
                         self?.tastes = _tastes
@@ -156,14 +166,14 @@ class FirstViewController: UIViewController {
                             let reference = Storage.storage().reference(withPath: "tastesImage/\(taste.imageName).png")
                             reference.getData(maxSize: (1 * 1772 * 2362)) { (data, error) in
                                 if let _error = error{
-                                    print("ОШИБКА вкусы")
-                                    print(_error)
+                                    //print("ОШИБКА вкусы")
+                                    //print(_error)
                                 } else {
                                     
                                     if let _data  = data {
                                         self!.tastePhotos.updateValue(UIImage(data: _data)!, forKey: "\(tobacco.name)+\(taste.name)")
-                                        print(Array((self?.tastePhotos)!)[0].key)
-                                        print("Загружено фото вкусов")
+                                        //print(Array((self?.tastePhotos)!)[0].key)
+                                        //print("Загружено фото вкусов")
                                     }
                                 }
                             }
@@ -202,6 +212,10 @@ class FirstViewController: UIViewController {
             hookah.tobaccos = tobaccos
             hookah.tobaccoPhotos = tobaccoPhotos
             hookah.tastePhotos = tastePhotos
+            
+        } else if segue.identifier == "currentUserOrders" {
+            guard let orders = segue.destination as? CurUserOrdersTableViewController else {return}
+            orders.orders = curUserOrders
         }
     }
     
@@ -238,13 +252,13 @@ class FirstViewController: UIViewController {
     
     private func activityIndicatorStopped() {
         signOutButton.title = "Выйти"
-        signOutButton.isEnabled = true
+        //signOutButton.isEnabled = true
         self.view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         activityIndicator.stopAnimating()
         container.removeFromSuperview()
         loadingView.removeFromSuperview()
         chooseHookahButton.isHidden = false
-        settingsButton.isHidden = false
+        //settingsButton.isHidden = false
         self.navigationController?.isNavigationBarHidden = false
     }
     
@@ -280,6 +294,65 @@ class FirstViewController: UIViewController {
      }
      */
     
+    func swipesObserves() {
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(sideMenuSwipped(gesture:)))
+        swipeRight.direction = .right
+        self.view.addGestureRecognizer(swipeRight)
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(sideMenuSwipped(gesture:)))
+        swipeLeft.direction = .left
+        self.view.addGestureRecognizer(swipeLeft)
+    }
+    
+    @objc func sideMenuSwipped(gesture: UISwipeGestureRecognizer) {
+        switch gesture.direction {
+        case .right:
+            if !menuBarIsVisible {
+                leadingC.constant = 250
+                menuBarIsVisible = true
+                UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseInOut, animations: {
+                    self.view.layoutIfNeeded()
+                })
+            }
+        case .left:
+            if menuBarIsVisible {
+                leadingC.constant = 0
+                menuBarIsVisible = false
+                UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseInOut, animations: {
+                    self.view.layoutIfNeeded()
+                })
+            }
+        default:
+            return
+        }
+    }
+    
+    @IBAction func sideMenuButtonTapped(_ sender: Any) {
+        if menuBarIsVisible {
+            leadingC.constant = 0
+            menuBarIsVisible = false
+            UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseInOut, animations: {
+                self.view.layoutIfNeeded()
+            })
+        }
+    }
+    
+    
+    @IBAction func sideMenuTapped(_ sender: Any) {
+        if !menuBarIsVisible {
+            leadingC.constant = 250
+            
+            menuBarIsVisible = true
+        } else {
+            leadingC.constant = 0
+            
+            menuBarIsVisible = false
+        }
+        
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseInOut, animations: {
+            self.view.layoutIfNeeded()
+        })
+    }
     
 }
 

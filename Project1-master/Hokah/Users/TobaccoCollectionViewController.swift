@@ -46,6 +46,18 @@ class TobaccoCollectionViewController: UICollectionViewController, UINavigationC
         return tobaccos.count
     }
 
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) {
+            cell.layer.borderColor = UIColor.blue.cgColor
+        }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) {
+            cell.layer.borderColor = UIColor.lightGray.cgColor
+        }
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! TobaccoCellClass
         
@@ -66,7 +78,7 @@ class TobaccoCollectionViewController: UICollectionViewController, UINavigationC
         cell.tobaccoPriceLabel.text = tobaccos[indexPath.row].price  + "Руб."
         cell.tobaccoViewImage.image = tobaccoPhotos[tobaccos[indexPath.row].name]
         cell.layer.borderWidth = CGFloat(1)
-        cell.layer.borderColor = UIColor.gray.cgColor
+        cell.layer.borderColor = UIColor.lightGray.cgColor
         cell.layer.cornerRadius = 8
         
         return cell

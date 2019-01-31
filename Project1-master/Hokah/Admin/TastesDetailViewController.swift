@@ -62,7 +62,7 @@ class TastesDetailViewController: UIViewController, UIImagePickerControllerDeleg
             if let uploadData = self.tasteImage.image!.pngData() {
                 storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
                     if error != nil {
-                        print(error)
+                        print(error!)
                         return
                     }
 

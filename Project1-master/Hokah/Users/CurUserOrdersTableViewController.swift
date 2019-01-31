@@ -48,10 +48,12 @@ class CurUserOrdersTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserOrder", for: indexPath)
         
         cell.textLabel?.text = "Заказ: \(orders[indexPath.row].identifier)"
-        cell.accessoryType = .disclosureIndicator/*
-        if orders[indexPath.row].isDone == true {
-            cell.backgroundColor = .gray
-        }*/
+        cell.accessoryType = .disclosureIndicator
+        
+        if orders[indexPath.row].isDone {
+            cell.textLabel?.textColor = .green
+            cell.backgroundColor = .lightGray
+        }
         return cell
     }
     

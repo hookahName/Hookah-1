@@ -29,6 +29,7 @@ class OrdersTableViewController: UITableViewController {
         super.viewDidLoad()
 
         self.tableView.tableFooterView = UIView()
+        title = "Заказы"
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -52,10 +53,12 @@ class OrdersTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Order", for: indexPath)
         cell.textLabel?.text = "Заказ: \(orders[indexPath.row].identifier)"
         cell.accessoryType = .disclosureIndicator
-        /*
-        if orders[indexPath.row].isDone == true {
-            cell.backgroundColor = .gray
-        }*/
+        
+        if orders[indexPath.row].isDone {
+            cell.textLabel?.textColor = .green
+            cell.backgroundColor = .lightGray
+        }
+        
         return cell
     }
     
@@ -73,8 +76,6 @@ class OrdersTableViewController: UITableViewController {
                     self?.tableView.reloadData()
                 })
             }
-            //orders = _orders
-            //tableView.reloadData()
         }
     }
     

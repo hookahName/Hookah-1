@@ -18,7 +18,6 @@
 		2253B1EA21FD0FD600444D44 /* CurUserOrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2253B1E921FD0FD600444D44 /* CurUserOrderDetailViewController.swift */; };
 		2253B1EE21FE81DE00444D44 /* addPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 2253B1ED21FE81DE00444D44 /* addPhoto.png */; };
 		2265D20121EA07740093ABD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2265D20021EA07740093ABD3 /* Main.storyboard */; };
-		2265D20321EA08C00093ABD3 /* AddTobaccoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2265D20221EA08C00093ABD3 /* AddTobaccoViewController.swift */; };
 		22A1C43921FF600100803FD3 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A1C43821FF600100803FD3 /* InformationViewController.swift */; };
 		22A1C43B21FF827700803FD3 /* InfoClassForDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A1C43A21FF827700803FD3 /* InfoClassForDB.swift */; };
 		22A1C43D21FFCAD400803FD3 /* TastesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A1C43C21FFCAD400803FD3 /* TastesDetailViewController.swift */; };
@@ -37,6 +36,8 @@
 		EDB5C8FC21FD175500610596 /* TobaccoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB5C8FB21FD175500610596 /* TobaccoCollectionViewController.swift */; };
 		EDB5C8FE21FD17A200610596 /* TobaccoCellClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB5C8FD21FD17A200610596 /* TobaccoCellClass.swift */; };
 		EDB5FCB72200F49C00CAB594 /* HookahClassForDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB5FCB62200F49C00CAB594 /* HookahClassForDB.swift */; };
+		EDB5FCBF2202537000CAB594 /* HokahTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB5FCBE2202537000CAB594 /* HokahTests.swift */; };
+		EDB5FCCD2202537A00CAB594 /* HokahUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB5FCCC2202537A00CAB594 /* HokahUITests.swift */; };
 		EDE0784421FBCC3000AAFFE8 /* OrderClassForDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE0784321FBCC3000AAFFE8 /* OrderClassForDB.swift */; };
 		EDE0784621FBCCC700AAFFE8 /* TeaClassForDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE0784521FBCCC700AAFFE8 /* TeaClassForDB.swift */; };
 		EDE0784821FBDFFE00AAFFE8 /* OrdersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE0784721FBDFFE00AAFFE8 /* OrdersTableViewController.swift */; };
@@ -44,6 +45,23 @@
 		EDF9D72021FDDEE100E03FD7 /* TasteCellClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF9D71F21FDDEE100E03FD7 /* TasteCellClass.swift */; };
 		EDF9D72221FDDF1000E03FD7 /* TastesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF9D72121FDDF1000E03FD7 /* TastesCollectionViewController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EDB5FCC12202537000CAB594 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ED18061D21E23AB0006148BE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ED18062421E23AB1006148BE;
+			remoteInfo = Hokah;
+		};
+		EDB5FCCF2202537A00CAB594 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ED18061D21E23AB0006148BE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ED18062421E23AB1006148BE;
+			remoteInfo = Hokah;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0B6278C823D3E93911490742 /* Pods_Hokah.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hokah.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,7 +77,6 @@
 		2253B1E921FD0FD600444D44 /* CurUserOrderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurUserOrderDetailViewController.swift; sourceTree = "<group>"; };
 		2253B1ED21FE81DE00444D44 /* addPhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addPhoto.png; sourceTree = "<group>"; };
 		2265D20021EA07740093ABD3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		2265D20221EA08C00093ABD3 /* AddTobaccoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTobaccoViewController.swift; sourceTree = "<group>"; };
 		22A1C43821FF600100803FD3 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		22A1C43A21FF827700803FD3 /* InfoClassForDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoClassForDB.swift; sourceTree = "<group>"; };
 		22A1C43C21FFCAD400803FD3 /* TastesDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastesDetailViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +97,12 @@
 		EDB5C8FB21FD175500610596 /* TobaccoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TobaccoCollectionViewController.swift; sourceTree = "<group>"; };
 		EDB5C8FD21FD17A200610596 /* TobaccoCellClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TobaccoCellClass.swift; sourceTree = "<group>"; };
 		EDB5FCB62200F49C00CAB594 /* HookahClassForDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HookahClassForDB.swift; sourceTree = "<group>"; };
+		EDB5FCBC2202537000CAB594 /* HokahTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HokahTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDB5FCBE2202537000CAB594 /* HokahTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HokahTests.swift; sourceTree = "<group>"; };
+		EDB5FCC02202537000CAB594 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDB5FCCA2202537A00CAB594 /* HokahUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HokahUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDB5FCCC2202537A00CAB594 /* HokahUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HokahUITests.swift; sourceTree = "<group>"; };
+		EDB5FCCE2202537A00CAB594 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDE0784321FBCC3000AAFFE8 /* OrderClassForDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderClassForDB.swift; sourceTree = "<group>"; };
 		EDE0784521FBCCC700AAFFE8 /* TeaClassForDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeaClassForDB.swift; sourceTree = "<group>"; };
 		EDE0784721FBDFFE00AAFFE8 /* OrdersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTableViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +117,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				7157316790B458B34EA9F430 /* Pods_Hokah.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDB5FCB92202537000CAB594 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDB5FCC72202537A00CAB594 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,6 +191,8 @@
 			isa = PBXGroup;
 			children = (
 				ED18062721E23AB1006148BE /* Hokah */,
+				EDB5FCBD2202537000CAB594 /* HokahTests */,
+				EDB5FCCB2202537A00CAB594 /* HokahUITests */,
 				ED18062621E23AB1006148BE /* Products */,
 				0D74FEC33137F7D6F8EC3364 /* Pods */,
 				BC2EB5DB9CB1A2B636AA1D2F /* Frameworks */,
@@ -164,6 +203,8 @@
 			isa = PBXGroup;
 			children = (
 				ED18062521E23AB1006148BE /* Hokah.app */,
+				EDB5FCBC2202537000CAB594 /* HokahTests.xctest */,
+				EDB5FCCA2202537A00CAB594 /* HokahUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -179,7 +220,6 @@
 				2265D20021EA07740093ABD3 /* Main.storyboard */,
 				ED18063421E23AB3006148BE /* Info.plist */,
 				222B8DB621E9F8A300CF4431 /* GoogleService-Info.plist */,
-				2265D20221EA08C00093ABD3 /* AddTobaccoViewController.swift */,
 				2253B1ED21FE81DE00444D44 /* addPhoto.png */,
 				ED18062821E23AB1006148BE /* AppDelegate.swift */,
 			);
@@ -200,6 +240,24 @@
 				22A1C43A21FF827700803FD3 /* InfoClassForDB.swift */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		EDB5FCBD2202537000CAB594 /* HokahTests */ = {
+			isa = PBXGroup;
+			children = (
+				EDB5FCBE2202537000CAB594 /* HokahTests.swift */,
+				EDB5FCC02202537000CAB594 /* Info.plist */,
+			);
+			path = HokahTests;
+			sourceTree = "<group>";
+		};
+		EDB5FCCB2202537A00CAB594 /* HokahUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EDB5FCCC2202537A00CAB594 /* HokahUITests.swift */,
+				EDB5FCCE2202537A00CAB594 /* Info.plist */,
+			);
+			path = HokahUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,6 +282,42 @@
 			productReference = ED18062521E23AB1006148BE /* Hokah.app */;
 			productType = "com.apple.product-type.application";
 		};
+		EDB5FCBB2202537000CAB594 /* HokahTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDB5FCC52202537000CAB594 /* Build configuration list for PBXNativeTarget "HokahTests" */;
+			buildPhases = (
+				EDB5FCB82202537000CAB594 /* Sources */,
+				EDB5FCB92202537000CAB594 /* Frameworks */,
+				EDB5FCBA2202537000CAB594 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EDB5FCC22202537000CAB594 /* PBXTargetDependency */,
+			);
+			name = HokahTests;
+			productName = HokahTests;
+			productReference = EDB5FCBC2202537000CAB594 /* HokahTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EDB5FCC92202537A00CAB594 /* HokahUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDB5FCD12202537A00CAB594 /* Build configuration list for PBXNativeTarget "HokahUITests" */;
+			buildPhases = (
+				EDB5FCC62202537A00CAB594 /* Sources */,
+				EDB5FCC72202537A00CAB594 /* Frameworks */,
+				EDB5FCC82202537A00CAB594 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EDB5FCD02202537A00CAB594 /* PBXTargetDependency */,
+			);
+			name = HokahUITests;
+			productName = HokahUITests;
+			productReference = EDB5FCCA2202537A00CAB594 /* HokahUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -236,6 +330,14 @@
 				TargetAttributes = {
 					ED18062421E23AB1006148BE = {
 						CreatedOnToolsVersion = 10.1;
+					};
+					EDB5FCBB2202537000CAB594 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = ED18062421E23AB1006148BE;
+					};
+					EDB5FCC92202537A00CAB594 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = ED18062421E23AB1006148BE;
 					};
 				};
 			};
@@ -253,6 +355,8 @@
 			projectRoot = "";
 			targets = (
 				ED18062421E23AB1006148BE /* Hokah */,
+				EDB5FCBB2202537000CAB594 /* HokahTests */,
+				EDB5FCC92202537A00CAB594 /* HokahUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -267,6 +371,20 @@
 				ED18063021E23AB3006148BE /* Assets.xcassets in Resources */,
 				2253B1EE21FE81DE00444D44 /* addPhoto.png in Resources */,
 				2265D20121EA07740093ABD3 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDB5FCBA2202537000CAB594 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDB5FCC82202537A00CAB594 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,7 +452,6 @@
 			files = (
 				2253B1EA21FD0FD600444D44 /* CurUserOrderDetailViewController.swift in Sources */,
 				EDE0784821FBDFFE00AAFFE8 /* OrdersTableViewController.swift in Sources */,
-				2265D20321EA08C00093ABD3 /* AddTobaccoViewController.swift in Sources */,
 				22D5ADE321FA7E1E00F74ED3 /* EnterViewController.swift in Sources */,
 				EDABF6C321F40E1300C73656 /* AdminTableViewController.swift in Sources */,
 				EDB5FCB72200F49C00CAB594 /* HookahClassForDB.swift in Sources */,
@@ -365,7 +482,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EDB5FCB82202537000CAB594 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDB5FCBF2202537000CAB594 /* HokahTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDB5FCC62202537A00CAB594 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDB5FCCD2202537A00CAB594 /* HokahUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EDB5FCC22202537000CAB594 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ED18062421E23AB1006148BE /* Hokah */;
+			targetProxy = EDB5FCC12202537000CAB594 /* PBXContainerItemProxy */;
+		};
+		EDB5FCD02202537A00CAB594 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ED18062421E23AB1006148BE /* Hokah */;
+			targetProxy = EDB5FCCF2202537A00CAB594 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		ED18063121E23AB3006148BE /* LaunchScreen.storyboard */ = {
@@ -535,6 +681,84 @@
 			};
 			name = Release;
 		};
+		EDB5FCC32202537000CAB594 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CW6J7PGNU5;
+				INFOPLIST_FILE = HokahTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Ivanoff.K.HokahTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hokah.app/Hokah";
+			};
+			name = Debug;
+		};
+		EDB5FCC42202537000CAB594 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CW6J7PGNU5;
+				INFOPLIST_FILE = HokahTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Ivanoff.K.HokahTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hokah.app/Hokah";
+			};
+			name = Release;
+		};
+		EDB5FCD22202537A00CAB594 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CW6J7PGNU5;
+				INFOPLIST_FILE = HokahUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Ivanoff.K.HokahUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Hokah;
+			};
+			name = Debug;
+		};
+		EDB5FCD32202537A00CAB594 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CW6J7PGNU5;
+				INFOPLIST_FILE = HokahUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Ivanoff.K.HokahUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Hokah;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -552,6 +776,24 @@
 			buildConfigurations = (
 				ED18063821E23AB3006148BE /* Debug */,
 				ED18063921E23AB3006148BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDB5FCC52202537000CAB594 /* Build configuration list for PBXNativeTarget "HokahTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDB5FCC32202537000CAB594 /* Debug */,
+				EDB5FCC42202537000CAB594 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDB5FCD12202537A00CAB594 /* Build configuration list for PBXNativeTarget "HokahUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDB5FCD22202537A00CAB594 /* Debug */,
+				EDB5FCD32202537A00CAB594 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

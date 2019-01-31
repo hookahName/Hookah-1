@@ -41,7 +41,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6NX-bZ-Rxt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="999.20000000000005" y="157.87106446776613"/>
+            <point key="canvasLocation" x="998" y="158"/>
         </scene>
         <!--Orders Table View Controller-->
         <scene sceneID="UFq-5U-5W9">
@@ -229,7 +229,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gir-Oc-bA8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="60" y="-1952.473763118441"/>
+            <point key="canvasLocation" x="998" y="-1952"/>
         </scene>
         <!--Title-->
         <scene sceneID="IsA-Rd-QFL">
@@ -264,7 +264,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EX5-Cg-NsK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="999" y="-1951"/>
+            <point key="canvasLocation" x="998" y="-1245"/>
         </scene>
         <!--Order Details View Controller-->
         <scene sceneID="CjQ-jK-JxQ">
@@ -788,7 +788,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YO8-rV-P5g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3716" y="157.87106446776613"/>
+            <point key="canvasLocation" x="3716" y="158"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="j5p-Sq-Dno">
@@ -1018,7 +1018,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="1k4-R5-tfT" kind="relationship" relationship="rootViewController" id="enP-Uh-vrW"/>
+                        <segue destination="1k4-R5-tfT" kind="relationship" relationship="rootViewController" id="gGS-ew-Hl4"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lOg-ba-D1d" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1033,32 +1033,120 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8wc-lF-djE">
-                                <rect key="frame" x="148" y="229" width="78" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Настройки"/>
-                                <connections>
-                                    <action selector="settingsButtonPressed:" destination="1k4-R5-tfT" eventType="touchUpInside" id="e0G-xY-oZ6"/>
-                                    <segue destination="tMF-Ig-Ibo" kind="show" identifier="toSettings" id="zsT-8A-mud"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Fw-lj-4RI">
-                                <rect key="frame" x="129" y="365" width="117" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Заказать кальян"/>
-                                <connections>
-                                    <segue destination="cDQ-3p-U6r" kind="show" identifier="chooseHookah" id="bLJ-rg-hew"/>
-                                </connections>
-                            </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="6Tu-vA-61h">
-                                <rect key="frame" x="177" y="323" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="klt-Ac-Gug">
+                                <rect key="frame" x="0.0" y="64" width="240" height="603"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zfl-hK-V6b">
+                                        <rect key="frame" x="52" y="202" width="136" height="30"/>
+                                        <state key="normal" title="Информация о нас"/>
+                                        <connections>
+                                            <action selector="sideMenuButtonTapped:" destination="1k4-R5-tfT" eventType="touchUpInside" id="dM9-go-lkl"/>
+                                            <segue destination="ND2-Q4-d0L" kind="show" id="7FN-N2-ftS"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b1c-Dw-Oll">
+                                        <rect key="frame" x="97" y="540" width="46" height="30"/>
+                                        <state key="normal" title="Выход"/>
+                                        <connections>
+                                            <action selector="sideMenuButtonTapped:" destination="1k4-R5-tfT" eventType="touchUpInside" id="q43-Vv-Pkh"/>
+                                            <action selector="signOutPressed:" destination="1k4-R5-tfT" eventType="touchUpInside" id="lsX-Do-ujF"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hgr-iN-qMy">
+                                        <rect key="frame" x="78" y="40" width="85" height="30"/>
+                                        <state key="normal" title="Мои заказы"/>
+                                        <connections>
+                                            <action selector="sideMenuButtonTapped:" destination="1k4-R5-tfT" eventType="touchUpInside" id="PwV-zH-aIb"/>
+                                            <segue destination="Bcm-ix-oSe" kind="show" identifier="currentUserOrders" id="PgY-DI-q0w"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F27-MU-bLN">
+                                        <rect key="frame" x="58" y="121" width="125" height="30"/>
+                                        <state key="normal" title="Моя информация"/>
+                                        <connections>
+                                            <action selector="sideMenuButtonTapped:" destination="1k4-R5-tfT" eventType="touchUpInside" id="AuR-ne-WjD"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="b1c-Dw-Oll" secondAttribute="bottom" constant="33" id="5aj-QP-zhy"/>
+                                    <constraint firstAttribute="trailing" secondItem="b1c-Dw-Oll" secondAttribute="trailing" constant="97" id="Arf-bD-t0I"/>
+                                    <constraint firstItem="zfl-hK-V6b" firstAttribute="top" secondItem="F27-MU-bLN" secondAttribute="bottom" constant="51" id="C86-aZ-wqo"/>
+                                    <constraint firstAttribute="trailing" secondItem="Hgr-iN-qMy" secondAttribute="trailing" constant="77" id="EsQ-Ph-psi"/>
+                                    <constraint firstItem="Hgr-iN-qMy" firstAttribute="leading" secondItem="klt-Ac-Gug" secondAttribute="leading" constant="78" id="LI6-nR-iKb"/>
+                                    <constraint firstItem="F27-MU-bLN" firstAttribute="leading" secondItem="klt-Ac-Gug" secondAttribute="leading" constant="58" id="Lhe-jH-15F"/>
+                                    <constraint firstItem="F27-MU-bLN" firstAttribute="top" secondItem="Hgr-iN-qMy" secondAttribute="bottom" constant="51" id="Px0-lz-vz4"/>
+                                    <constraint firstItem="Hgr-iN-qMy" firstAttribute="top" secondItem="klt-Ac-Gug" secondAttribute="top" constant="40" id="RAX-DR-FQo"/>
+                                    <constraint firstItem="zfl-hK-V6b" firstAttribute="leading" secondItem="klt-Ac-Gug" secondAttribute="leading" constant="52" id="Wzo-uw-lxf"/>
+                                    <constraint firstItem="b1c-Dw-Oll" firstAttribute="leading" secondItem="klt-Ac-Gug" secondAttribute="leading" constant="97" id="XQm-G0-wb2"/>
+                                    <constraint firstAttribute="trailing" secondItem="zfl-hK-V6b" secondAttribute="trailing" constant="52" id="n33-AO-dIL"/>
+                                    <constraint firstAttribute="trailing" secondItem="F27-MU-bLN" secondAttribute="trailing" constant="57" id="qrO-zQ-E78"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dB7-Fe-Yha">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="6Tu-vA-61h">
+                                        <rect key="frame" x="177" y="291" width="20" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </activityIndicatorView>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Fw-lj-4RI">
+                                        <rect key="frame" x="129" y="399" width="117" height="30"/>
+                                        <state key="normal" title="Заказать кальян"/>
+                                        <connections>
+                                            <segue destination="cDQ-3p-U6r" kind="show" identifier="chooseHookah" id="bLJ-rg-hew"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8wc-lF-djE">
+                                        <rect key="frame" x="148" y="478" width="78" height="30"/>
+                                        <state key="normal" title="Настройки"/>
+                                        <connections>
+                                            <action selector="settingsButtonPressed:" destination="1k4-R5-tfT" eventType="touchUpInside" id="e0G-xY-oZ6"/>
+                                            <segue destination="tMF-Ig-Ibo" kind="show" identifier="toSettings" id="zsT-8A-mud"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultTobacco" translatesAutoresizingMaskIntoConstraints="NO" id="5YH-AS-B1w">
+                                        <rect key="frame" x="39" y="8" width="297" height="307"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="297" id="gVK-uT-dSi"/>
+                                            <constraint firstAttribute="height" constant="307" id="ghE-zK-2t6"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="5YH-AS-B1w" firstAttribute="leading" secondItem="dB7-Fe-Yha" secondAttribute="leading" constant="39" id="6kj-iF-aqg"/>
+                                    <constraint firstItem="0Fw-lj-4RI" firstAttribute="top" secondItem="5YH-AS-B1w" secondAttribute="bottom" constant="84" id="7Ki-gl-wsy"/>
+                                    <constraint firstItem="0Fw-lj-4RI" firstAttribute="leading" secondItem="dB7-Fe-Yha" secondAttribute="leading" constant="129" id="PcD-2U-ypp"/>
+                                    <constraint firstAttribute="bottom" secondItem="8wc-lF-djE" secondAttribute="bottom" constant="95" id="UVE-oY-HKC"/>
+                                    <constraint firstItem="5YH-AS-B1w" firstAttribute="top" secondItem="dB7-Fe-Yha" secondAttribute="top" constant="8" id="bbe-oC-cOb"/>
+                                    <constraint firstItem="8wc-lF-djE" firstAttribute="leading" secondItem="dB7-Fe-Yha" secondAttribute="leading" constant="148" id="uxj-O6-zXT"/>
+                                    <constraint firstItem="8wc-lF-djE" firstAttribute="top" secondItem="0Fw-lj-4RI" secondAttribute="bottom" constant="49" id="y57-n7-07p"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="klt-Ac-Gug" firstAttribute="top" secondItem="S2k-a9-YxH" secondAttribute="top" id="02Q-cx-CZg"/>
+                            <constraint firstItem="dB7-Fe-Yha" firstAttribute="trailing" secondItem="S2k-a9-YxH" secondAttribute="trailing" id="9Kv-xx-gt4"/>
+                            <constraint firstItem="S2k-a9-YxH" firstAttribute="trailing" secondItem="klt-Ac-Gug" secondAttribute="trailing" constant="135" id="Agg-AX-Sak"/>
+                            <constraint firstItem="klt-Ac-Gug" firstAttribute="leading" secondItem="S2k-a9-YxH" secondAttribute="leading" id="C07-tu-l0P"/>
+                            <constraint firstItem="dB7-Fe-Yha" firstAttribute="leading" secondItem="S2k-a9-YxH" secondAttribute="leading" id="JkH-lg-mO3"/>
+                            <constraint firstItem="dB7-Fe-Yha" firstAttribute="top" secondItem="S2k-a9-YxH" secondAttribute="top" id="hxb-Un-CQG"/>
+                            <constraint firstItem="dB7-Fe-Yha" firstAttribute="bottom" secondItem="S2k-a9-YxH" secondAttribute="bottom" id="r5M-2I-cNK"/>
+                            <constraint firstItem="klt-Ac-Gug" firstAttribute="bottom" secondItem="S2k-a9-YxH" secondAttribute="bottom" id="rXW-2x-0d4"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="S2k-a9-YxH"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="CZt-3D-FqU">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="hamburger" id="nT2-zU-4U3">
+                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <connections>
+                                <action selector="sideMenuTapped:" destination="1k4-R5-tfT" id="Fjk-P8-PMM"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Выйти" id="gD2-Uc-JnX">
                             <connections>
                                 <action selector="signOutPressed:" destination="1k4-R5-tfT" id="BGg-oc-jEn"/>
@@ -1068,13 +1156,14 @@
                     <connections>
                         <outlet property="activityIndicator" destination="6Tu-vA-61h" id="kQg-ZA-b1a"/>
                         <outlet property="chooseHookahButton" destination="0Fw-lj-4RI" id="hB3-yx-od2"/>
+                        <outlet property="leadingC" destination="JkH-lg-mO3" id="4mY-PT-ivl"/>
                         <outlet property="settingsButton" destination="8wc-lF-djE" id="594-IY-iIW"/>
                         <outlet property="signOutButton" destination="gD2-Uc-JnX" id="LQv-hO-z79"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kOa-i3-wcn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="60" y="158"/>
+            <point key="canvasLocation" x="60" y="157.87106446776613"/>
         </scene>
         <!--Result-->
         <scene sceneID="Qvj-pZ-4IO">
@@ -1208,7 +1297,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ab9-Hg-sDE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="b0w-LM-ys4" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4645.6000000000004" y="157.87106446776613"/>
+            <point key="canvasLocation" x="4583" y="158"/>
         </scene>
         <!--Title-->
         <scene sceneID="BDN-u3-plC">
@@ -1263,10 +1352,13 @@
     </scenes>
     <resources>
         <image name="defaultImage" width="1024" height="1024"/>
-        <image name="defaultTobacco" width="512" height="512"/>
+        <image name="defaultTobacco" width="1024" height="1024"/>
+        <image name="hamburger" width="37.5" height="37.5"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KHK-SC-RzL"/>
+        <segue reference="yrL-ht-TRZ"/>
+        <segue reference="PgY-DI-q0w"/>
         <segue reference="uaU-fm-qDL"/>
+        <segue reference="7FN-N2-ftS"/>
     </inferredMetricsTieBreakers>
 </document>

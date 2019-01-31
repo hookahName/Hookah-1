@@ -94,7 +94,7 @@ class DetailTobaccoInfo: UIViewController, UIImagePickerControllerDelegate, UINa
             if let uploadData = self.tobaccoImageView.image!.pngData() {
                 storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
                     if error != nil {
-                        print(error)
+                        print(error!)
                         return
                     }
                     storageRef.downloadURL { (url, error) in
@@ -118,7 +118,7 @@ class DetailTobaccoInfo: UIViewController, UIImagePickerControllerDelegate, UINa
             if let uploadData = self.tobaccoImageView.image!.pngData() {
                 storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
                     if error != nil {
-                        print(error)
+                        print(error!)
                         return
                     }
                     storageRef.downloadURL { (url, error) in
