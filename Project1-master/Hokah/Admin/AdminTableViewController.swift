@@ -30,7 +30,7 @@ class AdminTableViewController: UITableViewController, UINavigationControllerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Available"
+        title = "Табаки"
         tableView.tableFooterView = UIView()
         
         self.refreshControl = UIRefreshControl()

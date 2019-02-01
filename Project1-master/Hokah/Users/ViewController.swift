@@ -25,7 +25,7 @@ class ViewController: UITableViewController, UINavigationBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Choose table"
+        title = "Выберите столик"
         tableView.tableFooterView = UIView()
     }
     

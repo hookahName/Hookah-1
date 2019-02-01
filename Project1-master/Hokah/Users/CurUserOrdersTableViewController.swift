@@ -25,7 +25,7 @@ class CurUserOrdersTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Ваши заказы"
+        self.title = "Мои заказы"
         self.tableView.tableFooterView = UIView()
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.addTarget(self, action: #selector(refresh(_:)), for: UIControl.Event.valueChanged)

@@ -25,6 +25,7 @@ class TastesDetailViewController: UIViewController, UIImagePickerControllerDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Добавить вкус"
         activityIndicator.isHidden = true
         saveButton.isEnabled = false
         tasteImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(presentImagePicker)))

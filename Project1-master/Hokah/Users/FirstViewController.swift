@@ -43,7 +43,7 @@ class FirstViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "<Кальянная>"
         if Auth.auth().currentUser!.uid == "9v3ziIPm9hWZW3IvasRw904xd2d2" {
             loadUsersAndAllOrders()
         }
@@ -250,13 +250,15 @@ class FirstViewController: UIViewController {
     }
     
     private func activityIndicatorSettings() {
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "smoke.jpg")!)
+        
         chooseHookahButton.isHidden = true
         defaultTobaccoImage.isHidden = true
         self.navigationController?.isNavigationBarHidden = true
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "smoke.jpg")!)
         
         container.frame = view.frame
         container.center = view.center
+        container.backgroundColor = UIColor(patternImage: UIImage(named: "smoke.jpg")!)
         
         loadingView.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
         loadingView.center = view.center

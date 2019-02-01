@@ -36,6 +36,7 @@ class DetailTobaccoInfo: UIViewController, UIImagePickerControllerDelegate, UINa
         imagePicker.sourceType = .photoLibrary
     
         if let tobacco = tobacco {
+            title = "Изменить \(tobacco.name)"
             tobaccoNameText.text = tobacco.name.capitalized
             tobaccoNameText.isEnabled = false
             tobaccoPriceText.text = tobacco.price
@@ -53,6 +54,7 @@ class DetailTobaccoInfo: UIViewController, UIImagePickerControllerDelegate, UINa
 //                }
 //            }
         } else {
+            title = "Добавить табак"
             tobaccoNameText.placeholder = "Name"
             tobaccoPriceText.placeholder = "Price"
             tobaccoImageView.image = UIImage(named: "addPhoto")
@@ -60,7 +62,6 @@ class DetailTobaccoInfo: UIViewController, UIImagePickerControllerDelegate, UINa
         
         
         
-        title = "Tobacco Detail"
         saveButton.isEnabled = false
     }
 

@@ -46,7 +46,7 @@ class TastesCollectionViewController: UICollectionViewController {
         readyButton.isEnabled = false
         self.navigationItem.rightBarButtonItem = readyButton
         
-        title = selectedTobacco?.name.capitalized
+        title = "Выберите вкус \(selectedTobacco!.name.capitalized)"
 
     }
     

@@ -27,6 +27,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Информация о нас"
         if infoDB.count > 0 {
             contactsTextView.text = infoDB[0].contacts
             locationTextView.text = infoDB[0].location

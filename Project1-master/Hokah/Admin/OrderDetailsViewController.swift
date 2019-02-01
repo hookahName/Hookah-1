@@ -47,6 +47,7 @@ class OrderDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = order?.identifier
         hookahsSegmented.isHidden = true
         changeHidden()
     }
@@ -77,7 +78,7 @@ class OrderDetailsViewController: UIViewController {
         timeLabel.text = "Время: \(String(describing: hookahs[0].time))"
         identifierLabel.text = "Номер заказа: \(String(describing: order.identifier))"
         thisHookahPriceLabel.text = "Цена: \(hookahs[0].price)"
-        
+        fortressLabel.text = "Крепость: \(hookahs[0].fortress)"
         if order.isDone == true {
             orderIsDoneButton.isEnabled = false
         }

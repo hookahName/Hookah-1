@@ -30,7 +30,7 @@ class ChangeTeaTasteTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
-        title = "Change tea tastes"
+        title = "Чай"
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -98,13 +98,13 @@ class ChangeTeaTasteTableViewController: UITableViewController {
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         ref = Database.database().reference()
-        let alertController = UIAlertController(title: "New taste", message: "Add new taste", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Новый вкус", message: "Добавьте новый вкус", preferredStyle: .alert)
         alertController.addTextField() { (textField) in
             textField.placeholder = "Вкус"
             textField.borderStyle = UITextField.BorderStyle.roundedRect
             
         }
-        let save = UIAlertAction(title: "Save", style: .default) { [ weak self] _ in
+        let save = UIAlertAction(title: "Сохранить", style: .default) { [ weak self] _ in
             
             guard let textField = alertController.textFields?.first, textField.text != "" else {return}
             let taste = TasteDB(name: textField.text!, imageName: "")
@@ -112,7 +112,7 @@ class ChangeTeaTasteTableViewController: UITableViewController {
             tasteRef?.setValue(taste!.convertToDictionary())
         }
         
-        let cancel = UIAlertAction(title: "Cancel", style: .default)
+        let cancel = UIAlertAction(title: "Отмена", style: .default)
         
         alertController.addAction(save)
         alertController.addAction(cancel)

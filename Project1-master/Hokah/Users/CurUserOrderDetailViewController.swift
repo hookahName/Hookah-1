@@ -35,6 +35,7 @@ class CurUserOrderDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "\(String(describing: order?.identifier))"
         identifierLabel.isHidden = true
         changeHidden()
         hookahSegmented.isHidden = true

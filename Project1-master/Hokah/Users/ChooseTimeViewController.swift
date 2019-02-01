@@ -36,7 +36,7 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = ""
         //DatePicker
         chooseTimeOutlet.minimumDate = Date()
         

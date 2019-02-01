@@ -29,7 +29,7 @@ class TobaccoCollectionViewController: UICollectionViewController, UINavigationC
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Choose tobacco"
+        title = "Выберите табак"
     }
 
     override func viewWillDisappear(_ animated: Bool) {
