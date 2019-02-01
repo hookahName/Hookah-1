@@ -77,7 +77,7 @@ class Result: UIViewController, UINavigationControllerDelegate {
         }
         priceLabel.text = "Итого: \(finalPrice) Руб."
         fortressLabel.text = "Крепость: \(selectedFortress)"
-        thisHookahPriceLabel.text = "Цена: \(hookah?.price)"
+        thisHookahPriceLabel.text = "Цена: \(String(describing: hookah!.price))"
         if Auth.auth().currentUser!.uid == "9v3ziIPm9hWZW3IvasRw904xd2d2" {
             makeOrderBUTTON.isHidden = true
             getMoreHookahsButton.isHidden = true
@@ -123,6 +123,8 @@ class Result: UIViewController, UINavigationControllerDelegate {
         tabacoo.text = "Табак: \(hookah.tobacco)"
         TimeLabel.text = "Ждем вас в \(String(describing: hookah.time))"
         teaTaste.text = "Чай: \(hookah.tea)"
+        fortressLabel.text = "Крепость: \(hookah.fortress)"
+        thisHookahPriceLabel.text = "Цена: \(hookah.price)"
     }
  
     private func getUniqueIdentifier() -> String {

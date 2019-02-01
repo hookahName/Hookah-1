@@ -25,7 +25,18 @@ class TastesCollectionViewController: UICollectionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        ref = Database.database().reference().child("tobaccos").child((selectedTobacco?.name)!.lowercased()).child("tastes")
+        ref.observe(.value, with: {[weak self] (snapshot) in
+            var _tastes = Array<TasteDB>()
+            for item in snapshot.children{
+                let taste = TasteDB(snapshot: item as! DataSnapshot)
+                if taste.isAvailable {
+                    _tastes.append(taste)
+                }
+            }
+            self?.tastes = _tastes
+            self?.collectionView.reloadData()
+        })
     }
     
     override func viewDidLoad() {
