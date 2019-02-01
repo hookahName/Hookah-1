@@ -17,6 +17,7 @@ class OrderDetailsViewController: UIViewController {
     var hookahs = Array<HookahDB>()
     var ref: DatabaseReference!
     var tastes = ""
+    var finalPrice = 0
     
     @IBOutlet var hookahsSegmented: UISegmentedControl!
     @IBOutlet var tableNumberLabel: UILabel!
@@ -27,6 +28,8 @@ class OrderDetailsViewController: UIViewController {
     @IBOutlet weak var identifierLabel: UILabel!
     @IBOutlet weak var orderIsDoneButton: UIButton!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var fortressLabel: UILabel!
+    @IBOutlet weak var thisHookahPriceLabel: UILabel!
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,6 +66,9 @@ class OrderDetailsViewController: UIViewController {
                 tastes += hookahs[0].tastes[i] + ", "
             }
         }
+        for hookah in hookahs {
+            finalPrice += Int(hookah.price)!
+        }
         
         tableNumberLabel.text = "Стол: Номер \(order.tableNumber)"
         tobaccoNameLabel.text = "Табак: \(hookahs[0].tobacco)"
@@ -70,11 +76,12 @@ class OrderDetailsViewController: UIViewController {
         teaTasteLabel.text = "Чай: \(hookahs[0].tea)"
         timeLabel.text = "Время: \(String(describing: hookahs[0].time))"
         identifierLabel.text = "Номер заказа: \(String(describing: order.identifier))"
+        thisHookahPriceLabel.text = "Цена: \(hookahs[0].price)"
         
         if order.isDone == true {
             orderIsDoneButton.isEnabled = false
         }
-        priceLabel.text = "Цена: \(hookahs[0].price) Руб."
+        priceLabel.text = "Итого: \(finalPrice) Руб."
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -91,6 +98,8 @@ class OrderDetailsViewController: UIViewController {
         timeLabel.isHidden = !timeLabel.isHidden
         identifierLabel.isHidden = !identifierLabel.isHidden
         priceLabel.isHidden = !priceLabel.isHidden
+        thisHookahPriceLabel.isHidden = !thisHookahPriceLabel.isHidden
+        fortressLabel.isHidden = !fortressLabel.isHidden
     }
  
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
@@ -108,7 +117,8 @@ class OrderDetailsViewController: UIViewController {
         tastesLabel.text = "Вкусы: \(flavours)"
         teaTasteLabel.text = "Чай: \(hookah.tea)"
         timeLabel.text = "Время: \(hookah.time)"
-        priceLabel.text = "Цена: \(hookah.price) Руб."
+        thisHookahPriceLabel.text = "Цена: \(hookah.price)"
+        fortressLabel.text = "Крепость: \(hookah.fortress)"
     }
     
     private func segmentedControlSettings() {

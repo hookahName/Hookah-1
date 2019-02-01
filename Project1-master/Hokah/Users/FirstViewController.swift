@@ -32,6 +32,7 @@ class FirstViewController: UIViewController {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var defaultTobaccoImage: UIImageView!
     @IBOutlet weak var signOutButton: UIView!
     @IBOutlet weak var chooseHookahButton: UIButton!
     
@@ -251,6 +252,7 @@ class FirstViewController: UIViewController {
     private func activityIndicatorSettings() {
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "smoke.jpg")!)
         chooseHookahButton.isHidden = true
+        defaultTobaccoImage.isHidden = true
         self.navigationController?.isNavigationBarHidden = true
         
         container.frame = view.frame
@@ -282,6 +284,7 @@ class FirstViewController: UIViewController {
         container.removeFromSuperview()
         loadingView.removeFromSuperview()
         chooseHookahButton.isHidden = false
+        defaultTobaccoImage.isHidden = false
         self.navigationController?.isNavigationBarHidden = false
     }
     

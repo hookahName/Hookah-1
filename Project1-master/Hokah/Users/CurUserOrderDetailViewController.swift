@@ -20,10 +20,12 @@ class CurUserOrderDetailViewController: UIViewController {
     @IBOutlet weak var fortressLabel: UILabel!
     @IBOutlet weak var identifierLabel: UILabel!
     @IBOutlet weak var hookahSegmented: UISegmentedControl!
+    @IBOutlet weak var finalPriceLabel: UILabel!
     
     var ref: DatabaseReference!
     var hookahs = Array<HookahDB>()
     var order: OrderDB?
+    var finalPrice = 0
     var tastes = ""
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,11 +59,11 @@ class CurUserOrderDetailViewController: UIViewController {
                     tastes += hookahs[0].tastes[i] + ", "
                 }
             }
-            /*
+            
             for hookah in hookahs {
                 finalPrice += Int(hookah.price)!
             }
-*/
+
             PriceLabel.text = "Цена: \(hookahs[0].price)"
             tableLabel.text = "Стол: \(order.tableNumber)"
             tobaccoLabel.text = "Табак: \(hookahs[0].tobacco)"
@@ -70,6 +72,7 @@ class CurUserOrderDetailViewController: UIViewController {
             timeLabel.text = "Время: \(hookahs[0].time)"
             identifierLabel.text = "Номер заказа: \(order.identifier)"
             fortressLabel.text = "Крепость: \(hookahs[0].fortress)"
+            finalPriceLabel.text = "Итого: \(finalPrice)"
             // Do any additional setup after loading the view.
         }
     }
@@ -94,6 +97,7 @@ class CurUserOrderDetailViewController: UIViewController {
         timeLabel.text = "Время: \(String(describing: hookah.time))"
         teaTastesLabel.text = "Чай: \(hookah.tea)"
         fortressLabel.text = "Крепость: \(hookah.fortress)"
+        finalPriceLabel.text = "Итого: \(finalPrice)"
     }
     
     func changeHidden() {
@@ -103,6 +107,8 @@ class CurUserOrderDetailViewController: UIViewController {
         tobaccoTasteLabel.isHidden = !tobaccoTasteLabel.isHidden
         teaTastesLabel.isHidden = !teaTastesLabel.isHidden
         timeLabel.isHidden = !timeLabel.isHidden
+        fortressLabel.isHidden = !fortressLabel.isHidden
+        finalPriceLabel.isHidden = !finalPriceLabel.isHidden
     }
 
     private func segmentedControlSettings() {

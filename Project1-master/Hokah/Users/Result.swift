@@ -69,7 +69,7 @@ class Result: UIViewController, UINavigationControllerDelegate {
         flavour.text = "Вкус: \(flavours)"
         tableNumber.text = "Стол: \(String(describing: selectedTable))"
         tabacoo.text = "Табак: \(selectedTabacoo.name)"
-        TimeLabel.text = "Ждем вас в \(String(describing: selectedTime))"
+        TimeLabel.text = "Время: \(String(describing: selectedTime))"
         if let selectedTea = selectedTea {
             teaTaste.text = "Чай: \(selectedTea)"
         } else {
@@ -121,7 +121,7 @@ class Result: UIViewController, UINavigationControllerDelegate {
         flavour.text = "Вкус: \(flavours)"
         //tableNumber.text = "Стол: \(hookah.tableNumber)"
         tabacoo.text = "Табак: \(hookah.tobacco)"
-        TimeLabel.text = "Ждем вас в \(String(describing: hookah.time))"
+        TimeLabel.text = "Время: \(String(describing: hookah.time))"
         teaTaste.text = "Чай: \(hookah.tea)"
         fortressLabel.text = "Крепость: \(hookah.fortress)"
         thisHookahPriceLabel.text = "Цена: \(hookah.price)"

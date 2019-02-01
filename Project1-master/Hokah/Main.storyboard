@@ -131,6 +131,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhO-cR-pie">
+                                <rect key="frame" x="16" y="470" width="343" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CX6-Xj-NbZ">
                                 <rect key="frame" x="16" y="351" width="343" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -163,6 +170,7 @@
                     </view>
                     <connections>
                         <outlet property="PriceLabel" destination="DB7-9g-wgt" id="WKi-MU-BXG"/>
+                        <outlet property="finalPriceLabel" destination="mhO-cR-pie" id="Y0j-jN-xja"/>
                         <outlet property="fortressLabel" destination="cd2-qp-2za" id="qWt-jc-LH8"/>
                         <outlet property="hookahSegmented" destination="sHy-gj-FmO" id="8Fd-ug-djB"/>
                         <outlet property="identifierLabel" destination="Vx2-rB-1AU" id="C7D-IS-alb"/>
@@ -303,15 +311,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ndT-oP-hcJ">
-                                <rect key="frame" x="132" y="508" width="115" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Заказ выполнен"/>
-                                <connections>
-                                    <action selector="orderIsDoneButton:" destination="snj-hc-mIU" eventType="touchUpInside" id="h4B-Kb-yi9"/>
-                                    <segue destination="VJ0-5v-kPe" kind="unwind" identifier="backToOrders" unwindAction="unwindToOrdersWithSegue:" id="lSN-4q-NSu"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="as5-Xn-QMr">
                                 <rect key="frame" x="16" y="248" width="343" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -354,6 +353,29 @@
                                     <action selector="segmentChanged:" destination="snj-hc-mIU" eventType="valueChanged" id="Og9-9F-mr4"/>
                                 </connections>
                             </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSf-aW-gKf">
+                                <rect key="frame" x="16" y="503" width="343" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F08-rG-dSS">
+                                <rect key="frame" x="16" y="546" width="343" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ndT-oP-hcJ">
+                                <rect key="frame" x="130" y="575" width="115" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Заказ выполнен"/>
+                                <connections>
+                                    <action selector="orderIsDoneButton:" destination="snj-hc-mIU" eventType="touchUpInside" id="h4B-Kb-yi9"/>
+                                    <segue destination="VJ0-5v-kPe" kind="unwind" identifier="backToOrders" unwindAction="unwindToOrdersWithSegue:" id="lSN-4q-NSu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -364,6 +386,7 @@
                         <viewLayoutGuide key="safeArea" id="yGR-6I-pfG"/>
                     </view>
                     <connections>
+                        <outlet property="fortressLabel" destination="vSf-aW-gKf" id="ZAL-wk-tz4"/>
                         <outlet property="hookahsSegmented" destination="Lb1-Kr-Adf" id="gVf-C9-goG"/>
                         <outlet property="identifierLabel" destination="b4q-Lh-LK8" id="MEX-WU-jzu"/>
                         <outlet property="orderIsDoneButton" destination="ndT-oP-hcJ" id="yE9-VA-HIy"/>
@@ -371,6 +394,7 @@
                         <outlet property="tableNumberLabel" destination="5F7-qG-rHS" id="plg-fY-H8r"/>
                         <outlet property="tastesLabel" destination="TC0-us-zIZ" id="aGF-dq-reX"/>
                         <outlet property="teaTasteLabel" destination="xeN-bB-G12" id="nZu-qb-uVR"/>
+                        <outlet property="thisHookahPriceLabel" destination="F08-rG-dSS" id="Fj1-la-cqe"/>
                         <outlet property="timeLabel" destination="wFW-3J-Jnz" id="Fth-Y3-MqE"/>
                         <outlet property="tobaccoNameLabel" destination="as5-Xn-QMr" id="t0b-Z2-Rc1"/>
                     </connections>
@@ -1210,6 +1234,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="6Tu-vA-61h" id="kQg-ZA-b1a"/>
                         <outlet property="chooseHookahButton" destination="0Fw-lj-4RI" id="hB3-yx-od2"/>
+                        <outlet property="defaultTobaccoImage" destination="5YH-AS-B1w" id="POB-Q4-jPf"/>
                         <outlet property="leadingC" destination="JkH-lg-mO3" id="4mY-PT-ivl"/>
                         <outlet property="signOutButton" destination="dB7-Fe-Yha" id="v3K-sL-T22"/>
                         <segue destination="tMF-Ig-Ibo" kind="show" identifier="toSettings" id="YAe-nV-xx8"/>
@@ -1415,9 +1440,9 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7KR-yc-jZi"/>
-        <segue reference="AO2-bm-ZNG"/>
+        <segue reference="PgY-DI-q0w"/>
         <segue reference="uaU-fm-qDL"/>
-        <segue reference="jSL-ua-KJt"/>
-        <segue reference="R4H-80-VrB"/>
+        <segue reference="7FN-N2-ftS"/>
+        <segue reference="bLJ-rg-hew"/>
     </inferredMetricsTieBreakers>
 </document>
