@@ -18,6 +18,7 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
     var selectedTabacoo: TobaccoDB?
     var selectedFlavour: [String]?
     var chosenTime: String = ""
+    var chosenTimeTill: String = ""
     var chosenTea: TeaDB?
     var hookahs = Array<HookahDB>()
     var selectedFortress: String = "5"
@@ -31,13 +32,14 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
     @IBOutlet weak var fortressSlider: UISlider!
     @IBOutlet weak var fortressLabel: UILabel!
     @IBOutlet weak var chooseTeaLabel: UILabel!
+    @IBOutlet weak var chooseTimeTillDatePicker: UIDatePicker!
     
     // MARK: View settings
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = ""
-        //DatePicker
+        //DatePicker since
         chooseTimeOutlet.minimumDate = Date()
         
         let dateString = "23:59" // change to your date format
@@ -49,6 +51,12 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
         chooseTimeOutlet.maximumDate = date
         dateFormatter.dateFormat = "HH:mm"
         chosenTime = dateFormatter.string(from: Date())
+        chooseTimeTillDatePicker.maximumDate = date
+        chosenTimeTill = dateFormatter.string(from: Date())
+        
+        //Date Picker till
+        
+        chooseTimeTillDatePicker.isEnabled = false
         
         //Switch
         TeaSwitch.isOn = false
@@ -95,7 +103,22 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
         let dateString = dateFormatter.string(from: currentTime)
         print("Custom date format Sample 1 =  \(dateString)")
         chosenTime = dateString
+        chooseTimeTillDatePicker.minimumDate = sender.date
+        chooseTimeTillDatePicker.isEnabled = true
     }
+    
+    @IBAction func chooseTimeTill(_ sender: UIDatePicker) {
+        if self.chosenTime != "" {
+            let dateFormatter = DateFormatter()
+            let currentTime = sender.date
+            dateFormatter.locale = Locale(identifier: "ru_RU")
+            dateFormatter.dateFormat = "HH:mm"
+            let dateStringTill = dateFormatter.string(from: currentTime)
+            print("Время ДО \(dateStringTill)")
+            chosenTimeTill = dateStringTill
+        }
+    }
+    
     
     
     @objc func switchChange(paramTarget: UISwitch) {
@@ -130,6 +153,7 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
             resultController.selectedFlavour = self.selectedFlavour
             resultController.selectedTime = self.chosenTime
             resultController.selectedFortress = self.selectedFortress
+            resultController.chosenTimeTill = self.chosenTimeTill
             if TeaSwitch.isOn == true {
                 resultController.selectedTea = self.chosenTea?.name
             } else {

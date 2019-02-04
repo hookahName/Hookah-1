@@ -17,6 +17,7 @@ class Result: UIViewController, UINavigationControllerDelegate {
     var selectedTabacoo: TobaccoDB?
     var selectedFlavour: [String]!
     var selectedTime: String!
+    var chosenTimeTill: String!
     var selectedTea: String!
     var flavours: String = ""
     var ref: DatabaseReference!
@@ -48,6 +49,7 @@ class Result: UIViewController, UINavigationControllerDelegate {
         guard let selectedFlavour = selectedFlavour else { return }
         guard let selectedTime = selectedTime else { return }
         guard let selectedFortress = selectedFortress else { return }
+        guard let chosenTimeTill = chosenTimeTill else { return }
         
         let hookah = HookahDB(tobacco: selectedTabacoo.name, tastes: selectedFlavour, tea: selectedTea, time: selectedTime, price: selectedTabacoo.price, fortress: selectedFortress)
         
@@ -69,7 +71,7 @@ class Result: UIViewController, UINavigationControllerDelegate {
         flavour.text = "Вкус: \(flavours)"
         tableNumber.text = "Стол: \(String(describing: selectedTable))"
         tabacoo.text = "Табак: \(selectedTabacoo.name)"
-        TimeLabel.text = "Время: \(String(describing: selectedTime))"
+        TimeLabel.text = "Время: \(String(describing: selectedTime)) до \(String(describing: chosenTimeTill))"
         if let selectedTea = selectedTea {
             teaTaste.text = "Чай: \(selectedTea)"
         } else {

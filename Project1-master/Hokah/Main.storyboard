@@ -19,12 +19,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Table" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Table" rowHeight="44" id="hG4-ct-phn">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Table" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Table" textLabel="aSr-BM-NFB" detailTextLabel="tRL-fz-Twv" rowHeight="44" style="IBUITableViewCellStyleSubtitle" id="hG4-ct-phn">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hG4-ct-phn" id="CTd-uE-X10">
                                     <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aSr-BM-NFB">
+                                            <rect key="frame" x="16" y="5" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tRL-fz-Twv">
+                                            <rect key="frame" x="16" y="25.5" width="44" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="hIE-v2-zpO" kind="show" identifier="tobacco" id="feB-B2-s4l"/>
@@ -803,7 +819,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="NFi-8a-cKH">
-                                <rect key="frame" x="27" y="123" width="152" height="216"/>
+                                <rect key="frame" x="27" y="123" width="152" height="204"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <date key="date" timeIntervalSinceReferenceDate="569773795.66890597">
                                     <!--2019-01-21 14:29:55 +0000-->
@@ -814,43 +830,61 @@
                                 </connections>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Чай" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRA-Qc-tZo">
-                                <rect key="frame" x="70" y="377" width="30.5" height="20.5"/>
+                                <rect key="frame" x="70" y="401" width="30.5" height="20.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Erx-Jz-dL2">
-                                <rect key="frame" x="258" y="372" width="49" height="31"/>
+                                <rect key="frame" x="257" y="396" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </switch>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rfs-as-agS">
-                                <rect key="frame" x="187" y="123" width="187" height="216"/>
+                                <rect key="frame" x="70" y="435" width="235" height="113"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="y0f-Nk-nx7">
-                                <rect key="frame" x="68" y="472" width="239" height="30"/>
+                                <rect key="frame" x="68" y="364" width="239" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="sliderAction:" destination="NO8-wy-wIw" eventType="valueChanged" id="XeI-ww-NWr"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Выберите крепость" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BSv-1I-757">
-                                <rect key="frame" x="70" y="427" width="235" height="21"/>
+                                <rect key="frame" x="70" y="335" width="235" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Выберите вкус" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qKp-X4-jgv">
-                                <rect key="frame" x="220" y="74" width="120" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="До" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qKp-X4-jgv">
+                                <rect key="frame" x="269" y="74" width="23" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Выберите время" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SgT-IW-3jq">
-                                <rect key="frame" x="36" y="74" width="134" height="21"/>
+                                <rect key="frame" x="120" y="20" width="134" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="eVf-pt-R9I">
+                                <rect key="frame" x="209" y="123" width="150" height="204"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <date key="date" timeIntervalSinceReferenceDate="570957803.60934603">
+                                    <!--2019-02-04 07:23:23 +0000-->
+                                </date>
+                                <locale key="locale" localeIdentifier="ru"/>
+                                <connections>
+                                    <action selector="chooseTimeTill:" destination="NO8-wy-wIw" eventType="valueChanged" id="7Rm-7y-JH0"/>
+                                </connections>
+                            </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="C" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebZ-A2-fax">
+                                <rect key="frame" x="97" y="74" width="12" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -874,6 +908,7 @@
                         <outlet property="TeaSwitch" destination="Erx-Jz-dL2" id="0ex-8y-oMa"/>
                         <outlet property="chooseTeaLabel" destination="qKp-X4-jgv" id="rz3-Oi-kMb"/>
                         <outlet property="chooseTimeOutlet" destination="NFi-8a-cKH" id="Van-ti-RAT"/>
+                        <outlet property="chooseTimeTillDatePicker" destination="eVf-pt-R9I" id="IaI-De-Zf5"/>
                         <outlet property="fortressLabel" destination="BSv-1I-757" id="yJp-1W-mTe"/>
                         <outlet property="fortressSlider" destination="y0f-Nk-nx7" id="1Xb-Dn-B1q"/>
                         <outlet property="readyBut" destination="Nhs-pj-Fyq" id="IkC-04-MkT"/>
@@ -1249,11 +1284,11 @@
             <objects>
                 <viewController storyboardIdentifier="Result" id="62v-KC-sj4" customClass="Result" customModule="Hokah" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YsI-vq-lYw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Vqf-Tq-Kva">
-                                <rect key="frame" x="20" y="80.5" width="335" height="442"/>
+                                <rect key="frame" x="20" y="112.5" width="335" height="442"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="AZF-BY-LkU">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="29"/>
@@ -1439,6 +1474,7 @@
         <image name="hamburger" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Eas-ft-ZXc"/>
         <segue reference="7KR-yc-jZi"/>
         <segue reference="PgY-DI-q0w"/>
         <segue reference="uaU-fm-qDL"/>

@@ -43,10 +43,19 @@ class ViewController: UITableViewController, UINavigationBarDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Table", for: indexPath)
         
         cell.textLabel?.text = tables[indexPath.row]
-        
+        cell.detailTextLabel?.adjustsFontSizeToFitWidth = true;
+        //cell.detailTextLabel?.lineBreakMode = NSLineBreakMode.byTruncatingTail
+        cell.detailTextLabel?.numberOfLines = 0
+        cell.detailTextLabel?.text = "Свободно: 08:00-10:00, 12:00 - 14:00, 16:00 - 19:00, 21:00 - 23:59"
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
     // MARK: Private functions
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
