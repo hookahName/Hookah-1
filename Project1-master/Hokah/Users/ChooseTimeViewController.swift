@@ -22,6 +22,7 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
     var chosenTea: TeaDB?
     var hookahs = Array<HookahDB>()
     var selectedFortress: String = "5"
+    var todayOrders: [String: Array<String>] = [:]
     
 
     @IBOutlet weak var TeaSwitch: UISwitch!
@@ -70,6 +71,8 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
         self.teaTastesPicker.dataSource = self
         self.teaTastesPicker.isUserInteractionEnabled = false
         self.teaTastesPicker.alpha = 0.6
+        
+        
     }
     
     // MARK: Picker view settings
@@ -104,7 +107,12 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
         print("Custom date format Sample 1 =  \(dateString)")
         chosenTime = dateString
         chooseTimeTillDatePicker.minimumDate = sender.date
+        
         chooseTimeTillDatePicker.isEnabled = true
+        if hookahs.count != 0 {
+            chooseTimeTillDatePicker.isEnabled = false
+            
+        }
     }
     
     @IBAction func chooseTimeTill(_ sender: UIDatePicker) {
@@ -143,6 +151,14 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     @IBAction func readyButPressed(_ sender: UIBarButtonItem) {
+        if todayOrders["2"]?.isEmpty == false {
+            let times = todayOrders["2"]!.split(separator: ", ")
+            
+            } else {
+            print("EMPTY")
+        }
+        performSegue(withIdentifier: "ToResult", sender: nil)
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

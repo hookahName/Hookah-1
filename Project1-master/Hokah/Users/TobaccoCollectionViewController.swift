@@ -21,6 +21,7 @@ class TobaccoCollectionViewController: UICollectionViewController, UINavigationC
     var tastes = Array<TasteDB>()
     var tobaccoPhotos: [String: UIImage] = [:]
     var tastePhotos: [String: UIImage] = [:]
+    var todayOrders: [String: Array<String>] = [:]
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -96,6 +97,7 @@ class TobaccoCollectionViewController: UICollectionViewController, UINavigationC
             dvc.tastePhotos = tastePhotos
             dvc.teaTastes = teaTastes
             dvc.tastes = tastes
+            dvc.todayOrders = todayOrders
             print(" TOBACCO = \(hookahs.count)")
 
         }

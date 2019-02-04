@@ -26,6 +26,7 @@ class FirstViewController: UIViewController {
     var curUserOrders = Array<OrderDB>()
     var allOrders = Array<OrderDB>()
     var menuBarIsVisible = false
+    var todayOrders: [String: Array<String>] = [:]
     
 
     @IBOutlet var leadingC: NSLayoutConstraint!
@@ -44,9 +45,9 @@ class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "<Кальянная>"
-        if Auth.auth().currentUser!.uid == "9v3ziIPm9hWZW3IvasRw904xd2d2" {
+        //if Auth.auth().currentUser!.uid == "9v3ziIPm9hWZW3IvasRw904xd2d2" {
             loadUsersAndAllOrders()
-        }
+        //}
         
         activityIndicatorSettings()
         getInfo()
@@ -55,6 +56,30 @@ class FirstViewController: UIViewController {
         loadTeaTastes()
         swipesObserves()
         
+    }
+    
+    private func getTodayOrders() {
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let dateString = formatter.string(from: date)
+        
+        var ordersTime = Array<String>()
+        for order in allOrders {
+            
+            let orderId = order.identifier
+            let orderDate = orderId.split(separator: " ")
+            if dateString == orderDate[0] && order.tableNumber == 1 { //Получаю число, месяц, год
+                ordersTime.append(orderDate[1] + " - " + order.timeTill + ", ")
+                todayOrders.updateValue(ordersTime, forKey: "1")
+            } else if dateString == orderDate[0] && order.tableNumber == 2 { //Получаю число, месяц, год
+                ordersTime.append(orderDate[1] + " - " + order.timeTill + ", ")
+                todayOrders.updateValue(ordersTime, forKey: "2")
+            } else if dateString == orderDate[0] && order.tableNumber == 3 { //Получаю число, месяц, год
+                ordersTime.append(orderDate[1] + " - " + order.timeTill + ", ")
+                todayOrders.updateValue(ordersTime, forKey: "3")
+            }
+        }
     }
     
     private func getInfo() {
@@ -110,7 +135,9 @@ class FirstViewController: UIViewController {
                             let order = OrderDB(snapshot: item as! DataSnapshot)
                             _orders.append(order)
                         }
-                        self?.allOrders = _orders
+                    self?.allOrders = _orders
+                    self?.getTodayOrders()
+                   
                     })
                 
                 //orders = _orders
@@ -238,6 +265,8 @@ class FirstViewController: UIViewController {
             hookah.tastePhotos = tastePhotos
             hookah.teaTastes = teaTastes
             hookah.tastes = tastes
+            hookah.allOrders = allOrders
+            hookah.todayOrders = todayOrders
             
         } else if segue.identifier == "currentUserOrders" {
             guard let orders = segue.destination as? CurUserOrdersTableViewController else {return}

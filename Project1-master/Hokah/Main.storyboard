@@ -898,7 +898,6 @@
                         <barButtonItem key="rightBarButtonItem" title="Готово" id="Nhs-pj-Fyq">
                             <connections>
                                 <action selector="readyButPressed:" destination="NO8-wy-wIw" id="0st-Sq-03o"/>
-                                <segue destination="62v-KC-sj4" kind="show" identifier="ToResult" id="Eas-ft-ZXc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -913,6 +912,7 @@
                         <outlet property="fortressSlider" destination="y0f-Nk-nx7" id="1Xb-Dn-B1q"/>
                         <outlet property="readyBut" destination="Nhs-pj-Fyq" id="IkC-04-MkT"/>
                         <outlet property="teaTastesPicker" destination="rfs-as-agS" id="evT-q3-oMo"/>
+                        <segue destination="62v-KC-sj4" kind="show" identifier="ToResult" id="Yzo-hW-Trs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YO8-rV-P5g" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1474,7 +1474,7 @@
         <image name="hamburger" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Eas-ft-ZXc"/>
+        <segue reference="Yzo-hW-Trs"/>
         <segue reference="7KR-yc-jZi"/>
         <segue reference="PgY-DI-q0w"/>
         <segue reference="uaU-fm-qDL"/>

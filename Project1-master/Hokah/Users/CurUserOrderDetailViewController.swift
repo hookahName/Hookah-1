@@ -35,7 +35,7 @@ class CurUserOrderDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "\(String(describing: order?.identifier))"
+        
         identifierLabel.isHidden = true
         changeHidden()
         hookahSegmented.isHidden = true
@@ -46,7 +46,7 @@ class CurUserOrderDetailViewController: UIViewController {
         super.viewDidAppear(animated)
         
         guard let order = order else {return}
-        
+        title = "\(String(describing: order.identifier))"
         segmentedControlSettings()
         
         changeHidden()
@@ -70,7 +70,7 @@ class CurUserOrderDetailViewController: UIViewController {
             tobaccoLabel.text = "Табак: \(hookahs[0].tobacco)"
             tobaccoTasteLabel.text = "Вкусы табака: \(tastes)"
             teaTastesLabel.text = "Чай: \(hookahs[0].tea)"
-            timeLabel.text = "Время: \(hookahs[0].time)"
+            timeLabel.text = "Время: \(hookahs[0].time) до \(hookahs[0].timeTill)"
             identifierLabel.text = "Номер заказа: \(order.identifier)"
             fortressLabel.text = "Крепость: \(hookahs[0].fortress)"
             finalPriceLabel.text = "Итого: \(finalPrice)"
@@ -95,7 +95,7 @@ class CurUserOrderDetailViewController: UIViewController {
         tobaccoTasteLabel.text = "Вкусы табака: \(flavours)"
         tableLabel.text = "Стол: \(order!.tableNumber)"
         tobaccoLabel.text = "Табак: \(hookah.tobacco)"
-        timeLabel.text = "Время: \(String(describing: hookah.time))"
+        timeLabel.text = "Время: \(String(describing: hookah.time)) \(hookahs[0].timeTill)"
         teaTastesLabel.text = "Чай: \(hookah.tea)"
         fortressLabel.text = "Крепость: \(hookah.fortress)"
         finalPriceLabel.text = "Итого: \(finalPrice)"

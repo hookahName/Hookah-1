@@ -51,7 +51,7 @@ class Result: UIViewController, UINavigationControllerDelegate {
         guard let selectedFortress = selectedFortress else { return }
         guard let chosenTimeTill = chosenTimeTill else { return }
         
-        let hookah = HookahDB(tobacco: selectedTabacoo.name, tastes: selectedFlavour, tea: selectedTea, time: selectedTime, price: selectedTabacoo.price, fortress: selectedFortress)
+        let hookah = HookahDB(tobacco: selectedTabacoo.name, tastes: selectedFlavour, tea: selectedTea, time: selectedTime, timeTill: chosenTimeTill, price: selectedTabacoo.price, fortress: selectedFortress)
         
         hookahs.insert(hookah!, at: 0)
         print(" RESULT = \(hookahs.count)")
@@ -71,7 +71,7 @@ class Result: UIViewController, UINavigationControllerDelegate {
         flavour.text = "Вкус: \(flavours)"
         tableNumber.text = "Стол: \(String(describing: selectedTable))"
         tabacoo.text = "Табак: \(selectedTabacoo.name)"
-        TimeLabel.text = "Время: \(String(describing: selectedTime)) до \(String(describing: chosenTimeTill))"
+        TimeLabel.text = "Время: \(String(describing: selectedTime)) до \(String(describing: hookahs[0].timeTill))"
         if let selectedTea = selectedTea {
             teaTaste.text = "Чай: \(selectedTea)"
         } else {
@@ -90,7 +90,7 @@ class Result: UIViewController, UINavigationControllerDelegate {
     
     @IBAction func makeOrderButton(_ sender: Any) {
         let identifier = getUniqueIdentifier()
-        let order = OrderDB(tableNumber: selectedTable, identifier: identifier, price: String(finalPrice), userId: (Auth.auth().currentUser?.uid)!)
+        let order = OrderDB(tableNumber: selectedTable, identifier: identifier, price: String(finalPrice), userId: (Auth.auth().currentUser?.uid)!, timeTill: chosenTimeTill)
         
         ref = Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).child("orders").child(identifier)
         ref.setValue(order?.convertToDictionary())
@@ -130,10 +130,13 @@ class Result: UIViewController, UINavigationControllerDelegate {
     }
  
     private func getUniqueIdentifier() -> String {
-        let curDate = Date()
-        let timeInterval = curDate.timeIntervalSince1970
-        let dateString = String(Int(timeInterval))
-        print(dateString)
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        var dateString = formatter.string(from: date)
+        let unique = NSUUID().uuidString
+        let uniqueArr = unique.split(separator: "-")
+        dateString = dateString + " " + uniqueArr[0]
         return dateString
     }
     

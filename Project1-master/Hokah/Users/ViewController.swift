@@ -19,6 +19,8 @@ class ViewController: UITableViewController, UINavigationBarDelegate {
     var tastePhotos: [String: UIImage] = [:]
     var teaTastes = Array<TeaDB>()
     var tastes = Array<TasteDB>()
+    var allOrders = Array<OrderDB>()
+    var todayOrders: [String: Array<String>] = [:]
     
     // MARK: View settings
 
@@ -27,6 +29,8 @@ class ViewController: UITableViewController, UINavigationBarDelegate {
         
         title = "Выберите столик"
         tableView.tableFooterView = UIView()
+        print(todayOrders.count)
+        
     }
     
     // MARK: Table view settings
@@ -43,13 +47,31 @@ class ViewController: UITableViewController, UINavigationBarDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Table", for: indexPath)
         
         cell.textLabel?.text = tables[indexPath.row]
+        cell.detailTextLabel?.numberOfLines = 0
+        
+        switch cell.textLabel!.text  {
+        case "Table 1": cell.detailTextLabel?.text = getBusyTime(tableNumber: "1")
+        case "Table 2": cell.detailTextLabel?.text = getBusyTime(tableNumber: "2")
+        case "Table 3": cell.detailTextLabel?.text = getBusyTime(tableNumber: "3")
+        default : cell.detailTextLabel!.text = "Свободно"
+        }
         cell.detailTextLabel?.adjustsFontSizeToFitWidth = true;
         //cell.detailTextLabel?.lineBreakMode = NSLineBreakMode.byTruncatingTail
-        cell.detailTextLabel?.numberOfLines = 0
-        cell.detailTextLabel?.text = "Свободно: 08:00-10:00, 12:00 - 14:00, 16:00 - 19:00, 21:00 - 23:59"
+        
         return cell
     }
     
+    func getBusyTime(tableNumber: String) -> String {
+        var busyTime: String = "Занято: "
+        if todayOrders[tableNumber]?.isEmpty == false {
+            for time in todayOrders[tableNumber]! {
+                busyTime += time
+            }
+        }
+        busyTime.remove(at: busyTime.index(before: busyTime.endIndex))
+        busyTime.remove(at: busyTime.index(before: busyTime.endIndex))
+        return busyTime
+    }
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
@@ -68,6 +90,7 @@ class ViewController: UITableViewController, UINavigationBarDelegate {
             tobaco.tastePhotos = tastePhotos
             tobaco.tastes = tastes
             tobaco.teaTastes = teaTastes
+            tobaco.todayOrders = todayOrders
             
             if let indexPath = tableView.indexPathForSelectedRow {
                 tobaco.selectedTable = indexPath.row + 1

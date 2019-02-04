@@ -22,6 +22,7 @@ class TastesCollectionViewController: UICollectionViewController {
     var readyButton = UIBarButtonItem()
     var hookahs = Array<HookahDB>()
     var tastePhotos: [String: UIImage] = [:]
+    var todayOrders: [String: Array<String>] = [:]
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -120,6 +121,7 @@ class TastesCollectionViewController: UICollectionViewController {
             dvc.selectedFlavour = selectedTastes
             dvc.teaTastes = teaTastes
             dvc.hookahs = hookahs
+            dvc.todayOrders = todayOrders
         }
     }
 }
