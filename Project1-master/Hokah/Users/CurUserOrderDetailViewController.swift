@@ -95,7 +95,7 @@ class CurUserOrderDetailViewController: UIViewController {
         tobaccoTasteLabel.text = "Вкусы табака: \(flavours)"
         tableLabel.text = "Стол: \(order!.tableNumber)"
         tobaccoLabel.text = "Табак: \(hookah.tobacco)"
-        timeLabel.text = "Время: \(String(describing: hookah.time)) \(hookahs[0].timeTill)"
+        timeLabel.text = "Время: \(String(describing: hookah.time)) до \(hookahs[0].timeTill)"
         teaTastesLabel.text = "Чай: \(hookah.tea)"
         fortressLabel.text = "Крепость: \(hookah.fortress)"
         finalPriceLabel.text = "Итого: \(finalPrice)"

@@ -71,7 +71,7 @@ class Result: UIViewController, UINavigationControllerDelegate {
         flavour.text = "Вкус: \(flavours)"
         tableNumber.text = "Стол: \(String(describing: selectedTable))"
         tabacoo.text = "Табак: \(selectedTabacoo.name)"
-        TimeLabel.text = "Время: \(String(describing: selectedTime)) до \(String(describing: hookahs[0].timeTill))"
+        TimeLabel.text = "Время: \(String(describing: selectedTime))"
         if let selectedTea = selectedTea {
             teaTaste.text = "Чай: \(selectedTea)"
         } else {
@@ -90,7 +90,7 @@ class Result: UIViewController, UINavigationControllerDelegate {
     
     @IBAction func makeOrderButton(_ sender: Any) {
         let identifier = getUniqueIdentifier()
-        let order = OrderDB(tableNumber: selectedTable, identifier: identifier, price: String(finalPrice), userId: (Auth.auth().currentUser?.uid)!, timeTill: chosenTimeTill)
+        let order = OrderDB(tableNumber: selectedTable, identifier: identifier, price: String(finalPrice), userId: (Auth.auth().currentUser?.uid)!, timeTill: hookahs[hookahs.count - 1].timeTill, timeStart: hookahs[hookahs.count - 1].time)
         
         ref = Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).child("orders").child(identifier)
         ref.setValue(order?.convertToDictionary())
@@ -132,11 +132,11 @@ class Result: UIViewController, UINavigationControllerDelegate {
     private func getUniqueIdentifier() -> String {
         let date = Date()
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        formatter.dateFormat = "yyyy-MM-dd "
         var dateString = formatter.string(from: date)
         let unique = NSUUID().uuidString
         let uniqueArr = unique.split(separator: "-")
-        dateString = dateString + " " + uniqueArr[0]
+        dateString = dateString + hookahs[hookahs.count - 1].time + " " + uniqueArr[0]
         return dateString
     }
     

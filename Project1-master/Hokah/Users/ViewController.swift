@@ -57,7 +57,9 @@ class ViewController: UITableViewController, UINavigationBarDelegate {
         }
         cell.detailTextLabel?.adjustsFontSizeToFitWidth = true;
         //cell.detailTextLabel?.lineBreakMode = NSLineBreakMode.byTruncatingTail
-        
+        for (key, value) in todayOrders {
+            print(key, value)
+        }
         return cell
     }
     
@@ -67,10 +69,12 @@ class ViewController: UITableViewController, UINavigationBarDelegate {
             for time in todayOrders[tableNumber]! {
                 busyTime += time
             }
+            busyTime.remove(at: busyTime.index(before: busyTime.endIndex))
+            busyTime.remove(at: busyTime.index(before: busyTime.endIndex))
+            return busyTime
+        } else {
+            return "Свободно"
         }
-        busyTime.remove(at: busyTime.index(before: busyTime.endIndex))
-        busyTime.remove(at: busyTime.index(before: busyTime.endIndex))
-        return busyTime
     }
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension

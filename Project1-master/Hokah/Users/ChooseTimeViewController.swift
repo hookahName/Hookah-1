@@ -72,7 +72,10 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
         self.teaTastesPicker.isUserInteractionEnabled = false
         self.teaTastesPicker.alpha = 0.6
         
-        
+        if hookahs.count != 0 {
+            chooseTimeOutlet.isEnabled = false
+            
+        }
     }
     
     // MARK: Picker view settings
@@ -151,14 +154,80 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     @IBAction func readyButPressed(_ sender: UIBarButtonItem) {
-        if todayOrders["2"]?.isEmpty == false {
-            let times = todayOrders["2"]!.split(separator: ", ")
-            
+        let selectedTableString = String(describing: selectedTable!)
+        print(selectedTableString, "выбранный столик")
+        var isFree = true
+        if hookahs.count == 0 {
+            if todayOrders[selectedTableString] == nil {
+                performSegue(withIdentifier: "ToResult", sender: nil)
             } else {
-            print("EMPTY")
+                
+                let times = todayOrders[selectedTableString]
+                for time in times! {
+                    let timeString = String(describing: time)
+                    var hoursAndMinutes = timeString.components(separatedBy: [" ", ",", "-"])
+                    hoursAndMinutes = hoursAndMinutes.filter(){$0 != ""}
+                    var hoursAndMinutesStart = hoursAndMinutes[0].components(separatedBy: ":")
+                    let hoursStart = Int(hoursAndMinutesStart[0])!
+                    let minutesStart = Int(hoursAndMinutesStart[1])!
+                    hoursAndMinutes = hoursAndMinutes[1].components(separatedBy: ":")
+                    let hoursEnd = Int(hoursAndMinutes[0])!
+                    let minutesEnd = Int(hoursAndMinutes[1])!
+                    
+                    let startTimeInSeconds = hoursStart * 3600 + minutesStart * 60
+                    //print("\(hoursStart) * 3600 + \(minutesStart) * 60 = \(hoursStart * 3600 + minutesStart * 60)")
+                    let endTimeInSeconds = hoursEnd * 3600 + minutesEnd * 60
+                    //print("\(hoursEnd) * 3600 + \(minutesEnd) * 60= \(hoursEnd * 3600 + minutesEnd * 60)")
+                    
+                    let chosenHour = Int(getHourFronChosenTime(fromWord: chosenTime))
+                    let chosenMinutes = Int(getMinutesFromChosenTime(fromWord: chosenTime))
+                    
+                    let chosenTimeInSeconds = chosenHour! * 3600 + chosenMinutes! * 60
+                    //print("\(chosenHour) * 3600 + \(chosenMinutes) * 60 = \(chosenHour! * 3600 + chosenMinutes! * 60)")
+                    let chosenHourEnd = Int(getHourFronChosenTime(fromWord: chosenTimeTill))
+                    let chosenMinutesEnd = Int(getMinutesFromChosenTime(fromWord: chosenTimeTill))
+                    
+                    let chosenTimeInSecondsEnd = chosenHourEnd! * 3600 + chosenMinutesEnd! * 60
+                    //                print(chosenTimeInSeconds, chosenTimeInSecondsEnd, startTimeInSeconds, endTimeInSeconds)
+                    //                print((startTimeInSeconds < chosenTimeInSeconds && chosenTimeInSecondsEnd > endTimeInSeconds && endTimeInSeconds > chosenTimeInSeconds))
+                    //                print((startTimeInSeconds < chosenTimeInSeconds && endTimeInSeconds > chosenTimeInSecondsEnd))
+                    //                print((startTimeInSeconds > chosenTimeInSeconds && endTimeInSeconds < chosenTimeInSecondsEnd))
+                    print((chosenTimeInSeconds, "<", startTimeInSeconds, "&&", chosenTimeInSecondsEnd, ">", startTimeInSeconds, "&&", chosenTimeInSecondsEnd, "<" ,endTimeInSeconds))
+                    if (startTimeInSeconds < chosenTimeInSeconds && chosenTimeInSecondsEnd > endTimeInSeconds && endTimeInSeconds > chosenTimeInSeconds) || (startTimeInSeconds < chosenTimeInSeconds && endTimeInSeconds > chosenTimeInSecondsEnd) || (startTimeInSeconds > chosenTimeInSeconds && endTimeInSeconds < chosenTimeInSecondsEnd) || (chosenTimeInSeconds < startTimeInSeconds && chosenTimeInSecondsEnd > startTimeInSeconds && chosenTimeInSecondsEnd < endTimeInSeconds)
+                    {
+                        
+                        isFree = false
+                        let ac = UIAlertController(title: "Выберите другое время", message: "Выбранное время занято", preferredStyle: .alert)
+                        let action = UIAlertAction(title: "Хорошо", style: .cancel)
+                        ac.addAction(action)
+                        present(ac, animated: true)
+                        
+                    }
+                }
+                if isFree == true {
+                    performSegue(withIdentifier: "ToResult", sender: nil)
+                }
+            }
+        } else {
+            performSegue(withIdentifier: "ToResult", sender: nil)
         }
-        performSegue(withIdentifier: "ToResult", sender: nil)
-        
+       
+    }
+    
+    func getHourFronChosenTime(fromWord word:String) -> String {
+        var word = word
+        word.removeLast()
+        word.removeLast()
+        word.removeLast()
+        return word
+    }
+    
+    func getMinutesFromChosenTime(fromWord word: String) -> String {
+        var word = word
+        word.removeFirst()
+        word.removeFirst()
+        word.removeFirst()
+        return word
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -167,9 +236,16 @@ class ChooseTimeViewController: UIViewController, UIPickerViewDataSource, UIPick
             resultController.selectedTable = self.selectedTable
             resultController.selectedTabacoo = self.selectedTabacoo
             resultController.selectedFlavour = self.selectedFlavour
-            resultController.selectedTime = self.chosenTime
+            if hookahs.count == 0 {
+                resultController.selectedTime = self.chosenTime
+                resultController.chosenTimeTill = self.chosenTimeTill
+            } else {
+                resultController.selectedTime = hookahs[hookahs.count - 1].time
+                resultController.chosenTimeTill = hookahs[hookahs.count - 1].timeTill
+            }
+            
             resultController.selectedFortress = self.selectedFortress
-            resultController.chosenTimeTill = self.chosenTimeTill
+            
             if TeaSwitch.isOn == true {
                 resultController.selectedTea = self.chosenTea?.name
             } else {

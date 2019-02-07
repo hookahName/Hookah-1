@@ -21,14 +21,16 @@ class OrderDB {
     var price: String
     var userId: String
     var timeTill: String
+    var timeStart: String
     var ref: DatabaseReference?
     
-    init?(tableNumber: Int, identifier: String, price: String, userId: String, timeTill: String){
+    init?(tableNumber: Int, identifier: String, price: String, userId: String, timeTill: String, timeStart: String){
         self.tableNumber = tableNumber
         self.identifier = identifier
         self.price = price
         self.userId = userId
         self.timeTill = timeTill
+        self.timeStart = timeStart
         self.ref = nil
     }
     
@@ -40,10 +42,11 @@ class OrderDB {
         price = snapshotValue["price"] as! String
         userId = snapshotValue["userId"] as! String
         timeTill = snapshotValue["timeTill"] as! String
+        timeStart = snapshotValue["timeStart"] as! String
         ref = snapshot.ref
     }
     
     func convertToDictionary() -> Any {
-        return ["table": tableNumber, "isDone": isDone, "identifier": identifier, "price": price, "userId": userId, "timeTill": timeTill]
+        return ["table": tableNumber, "isDone": isDone, "identifier": identifier, "price": price, "userId": userId, "timeTill": timeTill, "timeStart": timeStart]
     }
 }

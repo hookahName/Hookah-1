@@ -45,10 +45,8 @@ class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "<Кальянная>"
-        //if Auth.auth().currentUser!.uid == "9v3ziIPm9hWZW3IvasRw904xd2d2" {
-            loadUsersAndAllOrders()
-        //}
         
+        loadUsersAndAllOrders()
         activityIndicatorSettings()
         getInfo()
         loadTobaccos()
@@ -64,22 +62,28 @@ class FirstViewController: UIViewController {
         formatter.dateFormat = "yyyy-MM-dd"
         let dateString = formatter.string(from: date)
         
-        var ordersTime = Array<String>()
         for order in allOrders {
             
             let orderId = order.identifier
-            let orderDate = orderId.split(separator: " ")
+            var orderDate = orderId.split(separator: " ")
             if dateString == orderDate[0] && order.tableNumber == 1 { //Получаю число, месяц, год
-                ordersTime.append(orderDate[1] + " - " + order.timeTill + ", ")
-                todayOrders.updateValue(ordersTime, forKey: "1")
+                
+                todayOrders = getDictOfTimes(forTable: "1", order: order)
             } else if dateString == orderDate[0] && order.tableNumber == 2 { //Получаю число, месяц, год
-                ordersTime.append(orderDate[1] + " - " + order.timeTill + ", ")
-                todayOrders.updateValue(ordersTime, forKey: "2")
+                todayOrders = getDictOfTimes(forTable: "2", order: order)
             } else if dateString == orderDate[0] && order.tableNumber == 3 { //Получаю число, месяц, год
-                ordersTime.append(orderDate[1] + " - " + order.timeTill + ", ")
-                todayOrders.updateValue(ordersTime, forKey: "3")
+                todayOrders = getDictOfTimes(forTable: "3", order: order)
             }
         }
+    }
+    
+    func getDictOfTimes(forTable table: String, order: OrderDB) -> [String: Array<String>] {
+        if todayOrders[table] == nil {
+            todayOrders.updateValue(["\(order.timeStart) - \(order.timeTill) , "], forKey: table)
+        } else {
+            todayOrders[table]?.append(order.timeStart + " - " + order.timeTill + ", ")
+        }
+        return todayOrders
     }
     
     private func getInfo() {
@@ -96,12 +100,13 @@ class FirstViewController: UIViewController {
             //print("инфа загружена")
             let reference = Storage.storage().reference(withPath: "infoImage/\(self!.infoDB[0].imageName).png")
             reference.getData(maxSize: (1 * 1772 * 2362)) { (data, error) in
-                if let _error = error{
+                if error != nil{
                     //print("ОШИБКА")
                     //print(_error)
                 } else {
                     if let _data  = data {
                         self!.infoPhoto = UIImage(data: _data)
+                        self?.getTodayOrders()
                         self?.activityIndicatorStopped()
                         if Auth.auth().currentUser!.uid == "9v3ziIPm9hWZW3IvasRw904xd2d2" {
                             self!.performSegue(withIdentifier: "toSettings", sender: nil)
@@ -136,7 +141,7 @@ class FirstViewController: UIViewController {
                             _orders.append(order)
                         }
                     self?.allOrders = _orders
-                    self?.getTodayOrders()
+                    
                    
                     })
                 
